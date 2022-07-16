@@ -167,8 +167,8 @@ class AnalyticsDashboard extends React.Component {
               style={{ borderColor: "black" }}
             >
               <CardTitle className="mb-1" tag="h4" style={{ color: "black" }}>
-              {/* <h6 class="card-title text-uppercase text-muted mb-0"> Drivers registered</h6> */}
-              Drivers registered
+                {/* <h6 class="card-title text-uppercase text-muted mb-0"> Drivers registered</h6> */}
+                GENERAL UPDATE
               </CardTitle>
 
               <CardText tag="h3" style={{ color: "black" }}>
@@ -184,7 +184,7 @@ class AnalyticsDashboard extends React.Component {
               style={{ borderColor: "black" }}
             >
               <CardTitle className="mb-1" tag="h4" style={{ color: "black" }}>
-              Drivers Approved
+                FNO INDEX
               </CardTitle>
 
               <CardText tag="h3" style={{ color: "black" }}>
@@ -200,7 +200,7 @@ class AnalyticsDashboard extends React.Component {
               style={{ borderColor: "black" }}
             >
               <CardTitle className="mb-1" tag="h4" style={{ color: "black" }}>
-              Drivers waiting for approval
+                FNO OPTIONS
               </CardTitle>
 
               <CardText tag="h3" style={{ color: "black" }}>
@@ -216,7 +216,7 @@ class AnalyticsDashboard extends React.Component {
               style={{ borderColor: "black" }}
             >
               <CardTitle className="mb-1" tag="h4" style={{ color: "black" }}>
-              Users registered
+                CASH QUITY
               </CardTitle>
               <CardText tag="h3" style={{ color: "black" }}>
                 {this.state.day7planearnig.Earning}
@@ -306,7 +306,7 @@ class AnalyticsDashboard extends React.Component {
               </CardText>
             </Card>
           </Col>*/}
-        </Row> 
+        </Row>
 
         <Row>
           <Col sm="12">

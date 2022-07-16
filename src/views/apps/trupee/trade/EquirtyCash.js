@@ -17,7 +17,7 @@ import { ContextLayout } from "../../../../utility/context/Layout";
 import "../../../assets/scss/plugins/tables/_agGridStyleOverride.scss";
 import Breadcrumbs from "../../../../components/@vuexy/breadCrumbs/BreadCrumb";
 
-class DealerList extends React.Component {
+class EquirtyCash extends React.Component {
   state = {
     rowData: [],
     paginationPageSize: 20,
@@ -212,7 +212,7 @@ class DealerList extends React.Component {
     return (
       <React.Fragment>
         <Breadcrumbs
-          breadCrumbTitle="Dealer List"
+          breadCrumbTitle="Equirty Cash List"
           // breadCrumbParent="Forms & Tables"
           // breadCrumbActive="Dealer List"
         />
@@ -310,4 +310,4 @@ class DealerList extends React.Component {
     );
   }
 }
-export default DealerList;
+export default EquirtyCash;
