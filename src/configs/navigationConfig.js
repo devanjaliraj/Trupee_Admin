@@ -1,0 +1,512 @@
+import React from "react";
+import * as Icon from "react-feather";
+const navigationConfig = [
+  
+    
+  {
+        id: "dashboard",
+        title: "Dashboard",
+        type: "item",
+        icon: <Icon.Circle size={12} />,
+        permissions: ["admin", "editor"],
+        navLink: "/",
+    
+  },
+  {
+    type: "groupHeader",
+    groupTitle: "Component",
+  },
+  {
+    id: "driver",
+    title: "Drivers",
+    type: "collapse",
+    icon: <Icon.Users size={20} />,
+    children: [
+      {
+        id: "approvalPendingDrivers",
+        title: "Approval Pending Drivers",
+        type: "item",
+        icon: <Icon.Circle size={12} />,
+        permissions: ["admin", "editor"],
+        navLink: "/app/driver/approvalPendingDrivers",
+      },
+      {
+        id: "approvedDrivers",
+        title: "Approved Drivers",
+        type: "item",
+        icon: <Icon.Circle size={12} />,
+        permissions: ["admin", "editor"],
+        navLink: "/app/driver/approvedDrivers",
+      },
+      {
+        id: "driverRatings",
+        title: "Driver Ratings",
+        type: "item",
+        icon: <Icon.Circle size={12} />,
+        permissions: ["admin", "editor"],
+        navLink: "/app/driver/driverRatings",
+      },
+      {
+        id: "negativeBalanceDrivers",
+        title: "Negative Balance Drivers",
+        type: "item",
+        icon: <Icon.Circle size={12} />,
+        permissions: ["admin", "editor"],
+        navLink: "/app/driver/negativeBalanceDrivers",
+      },
+      {
+        id: "withdrawalRequests",
+        title: "Withdrawal Requests",
+        type: "item",
+        icon: <Icon.Circle size={12} />,
+        permissions: ["admin", "editor"],
+        navLink: "/app/driver/withdrawalRequests",
+      },
+    ],
+  },
+  {
+    id: "userride",
+    title: "User",
+    type: "collapse",
+    icon: <Icon.User size={20} />,
+    children: [
+      {
+        id: "userRideList",
+        title: "user List",
+        type: "item",
+        icon: <Icon.Circle size={12} />,
+        permissions: ["admin", "editor"],
+        navLink: "/app/userride/userRideList",
+      },
+
+    ],
+  },
+ 
+  // shiftManagement
+  // {
+  //   id: "shiftManagement",
+  //   title: "Shift Management",
+  //   type: "collapse",
+  //   icon: <Icon.User size={20} />,
+  //   children: [
+  //     {
+  //       id: "dealerListInRSP",
+  //       title: "Retail Selling Price",
+  //       type: "item",
+  //       icon: <Icon.Circle size={12} />,
+  //       permissions: ["admin", "editor"],
+  //       navLink: "/app/shiftmanagement/dealerListInRSP",
+  //     },
+  //     {
+  //       id: "dealerListForBayMang",
+  //       title: "Bay Management",
+  //       type: "item",
+  //       icon: <Icon.Circle size={12} />,
+  //       permissions: ["admin", "editor"],
+  //       navLink: "/app/shiftmanagement/dealerListForBayMang",
+  //     },
+  //     {
+  //       id: "dealerListForLubricantSales",
+  //       title: "Lubricant Sales",
+  //       type: "item",
+  //       icon: <Icon.Circle size={12} />,
+  //       permissions: ["admin", "editor"],
+  //       navLink: "/app/shiftManagement/dealerListForLubricantSales",
+  //     },
+  //     {
+  //       id: "dealerListForDSMClosing",
+  //       title: "DSM Closing Sheet",
+  //       type: "item",
+  //       icon: <Icon.Circle size={12} />,
+  //       permissions: ["admin", "editor"],
+  //       navLink: "/app/shiftManagement/dealerListForDSMClosing",
+  //     },
+  //     {
+  //       id: "dealerListForCashCollection",
+  //       title: "Cash Collection",
+  //       type: "item",
+  //       icon: <Icon.Circle size={12} />,
+  //       permissions: ["admin", "editor"],
+  //       navLink: "/app/shiftManagement/dealerListForCashCollection",
+  //     },
+  //     {
+  //       id: "dealerListForSalesFigure",
+  //       title: "Sales Figure",
+  //       type: "item",
+  //       icon: <Icon.Circle size={12} />,
+  //       permissions: ["admin", "editor"],
+  //       navLink: "/app/shiftManagement/dealerListForSalesFigure",
+  //     },
+  //     {
+  //       id: "dealerListForCreditGivento",
+  //       title: "Credit Given To",
+  //       type: "item",
+  //       icon: <Icon.Circle size={12} />,
+  //       permissions: ["admin", "editor"],
+  //       navLink: "/app/shiftManagement/dealerListForCreditGivento",
+  //     },
+    
+  //     {
+  //       id: "dealerListForStaffAttendence",
+  //       title: "Staff Attendance",
+  //       type: "item",
+  //       icon: <Icon.Circle size={12} />,
+  //       permissions: ["admin", "editor"],
+  //       navLink: "/app/shiftManagement/dealerListForStaffAttendence",
+  //     },
+  //   ],
+  // },
+  // {
+  //   id: "cashManagement",
+  //   title: "Cash Management",
+  //   type: "collapse",
+  //   icon: <Icon.User size={20} />,
+  //   children: [
+  //     {
+  //       id: "status",
+  //       title: "Status",
+  //       type: "collapse",
+  //       icon: <Icon.User size={20} />,
+  //       children: [
+  //     {
+  //       id: "dealerListForMSStock",
+  //       title: "MS Stock",
+  //       type: "item",
+  //       icon: <Icon.Circle size={12} />,
+  //       permissions: ["admin", "editor"],
+  //       navLink: "/app/cashManagement/status/dealerListForMSStock",
+  //     },
+  //     {
+  //       id: "dealerListForHSDStock",
+  //       title: "HSD Stock",
+  //       type: "item",
+  //       icon: <Icon.Circle size={12} />,
+  //       permissions: ["admin", "editor"],
+  //       navLink: "/app/cashManagement/status/dealerListForHSDStock",
+  //     },
+  //     {
+  //       id: "dealerListForLubricant",
+  //       title: "Lubricant",
+  //       type: "item",
+  //       icon: <Icon.Circle size={12} />,
+  //       permissions: ["admin", "editor"],
+  //       navLink: "/app/cashManagement/status/dealerListForLubricant",
+  //     },
+  //     {
+  //       id: "dealerListForPaymentModeLists",
+  //       title: "Payment Mode",
+  //       type: "item",
+  //       icon: <Icon.Circle size={12} />,
+  //       permissions: ["admin", "editor"],
+  //       navLink: "/app/cashManagement/status/dealerListForPaymentModeLists",
+  //     },
+  //     {
+  //       id: "dealerListForNetProfit",
+  //       title: "Net Profit",
+  //       type: "item",
+  //       icon: <Icon.Circle size={12} />,
+  //       permissions: ["admin", "editor"],
+  //       navLink: "/app/cashManagement/status/dealerListForNetProfit",
+  //     },
+  //   ],
+  // },
+
+  
+  //     {
+  //       id: "dealerListForExpenses",
+  //       title: "Expenses",
+  //       type: "item",
+  //       icon: <Icon.Circle size={12} />,
+  //       permissions: ["admin", "editor"],
+  //       navLink: "/app/cashManagement/dealerListForExpenses",
+  //     },
+  //     {
+  //       id: "dealerListForOnlinePayment",
+  //       title: "Online Payment",
+  //       type: "item",
+  //       icon: <Icon.Circle size={12} />,
+  //       permissions: ["admin", "editor"],
+  //       navLink: "/app/cashManagement/dealerListForOnlinePayment",
+  //     },
+  //     {
+  //       id: "dealerListForBankDeposite",
+  //       title: "Bank Deposite",
+  //       type: "item",
+  //       icon: <Icon.Circle size={12} />,
+  //       permissions: ["admin", "editor"],
+  //       navLink: "/app/cashManagement/dealerListForBankDeposite",
+  //     },
+  //     {
+  //       id: "dealerListForCreditManagement",
+  //       title: "Cash Management",
+  //       type: "item",
+  //       icon: <Icon.Circle size={12} />,
+  //       permissions: ["admin", "editor"],
+  //       navLink: "/app/cashManagement/dealerListForCreditManagement",
+  //     },
+  //   ],
+  // },
+  // {
+  //   id: "stockManagement",
+  //   title: "Stock Management",
+  //   type: "collapse",
+  //   icon: <Icon.User size={20} />,
+  //   children: [
+  //     {
+  //       id: "dealerListForFuelStock",
+  //       title: "Fuel Stock",
+  //       type: "item",
+  //       icon: <Icon.Circle size={12} />,
+  //       permissions: ["admin", "editor"],
+  //       navLink: "/app/stockManagement/dealerListForFuelStock",
+  //     },
+  //     {
+  //       id: "dealerListForLubeStock",
+  //       title: "Lube Stock",
+  //       type: "item",
+  //       icon: <Icon.Circle size={12} />,
+  //       permissions: ["admin", "editor"],
+  //       navLink: "/app/stockManagement/dealerListForLubeStock",
+  //     },
+  //     {
+  //       id: "dealerListForProductReceipt",
+  //       title: "Product Receipt",
+  //       type: "item",
+  //       icon: <Icon.Circle size={12} />,
+  //       permissions: ["admin", "editor"],
+  //       navLink: "/app/stockManagement/dealerListForProductReceipt",
+  //     },
+  //   ],
+  // },
+  // ///////////////// facilityManagement start ///////////////////
+  // {
+  //   id: "facilityManagement",
+  //   title: "Facility Management",
+  //   type: "collapse",
+  //   icon: <Icon.User size={20} />,
+  //   children: [
+  //     {
+  //       id: "dealerListForStampingData",
+  //       title: "Stamping Data List",
+  //       type: "item",
+  //       icon: <Icon.Circle size={12} />,
+  //       permissions: ["admin", "editor"],
+  //       navLink: "/app/facilityManagement/dealerListForStampingData",
+  //     },
+  //     {
+  //       id: "StatutoryCertificateManagement",
+  //       title: "Statutory Certificate Management",
+  //       type: "collapse",
+  //       icon: <Icon.ArrowRight size={20} />,
+  //       children: [
+  //         {
+  //             id: "dealerListForlCan",
+  //             title: "5L Can",
+  //             type: "item",
+  //             icon: <Icon.Circle size={12} />,
+  //             permissions: ["admin", "editor"],
+  //             navLink: "/app/facilityManagement/statutoryCertificateManagement/dealerListForlCan",
+  //           },
+  //           {
+  //             id: "dealerListForPESOLicense",
+  //             title: "PESO License",
+  //             type: "item",
+  //             icon: <Icon.Circle size={12} />,
+  //             permissions: ["admin", "editor"],
+  //             navLink: "/app/facilityManagement/statutoryCertificateManagement/dealerListForPESOLicense",
+  //           },
+  //           {
+  //             id: "dealerListForHydrometer",
+  //             title: "Hydrometer",
+  //             type: "item",
+  //             icon: <Icon.Circle size={12} />,
+  //             permissions: ["admin", "editor"],
+  //             navLink: "/app/facilityManagement/statutoryCertificateManagement/dealerListForHydrometer",
+  //           },
+  //           {
+  //             id: "dealerListForThermometer",
+  //             title: "Thermometer",
+  //             type: "item",
+  //             icon: <Icon.Circle size={12} />,
+  //             permissions: ["admin", "editor"],
+  //             navLink: "/app/facilityManagement/statutoryCertificateManagement/dealerListForThermometer",
+  //           },
+  //           {
+  //             id: "dealerListForAirGaugage1",
+  //             title: "Air Gaugage 1",
+  //             type: "item",
+  //             icon: <Icon.Circle size={12} />,
+  //             permissions: ["admin", "editor"],
+  //             navLink: "/app/facilityManagement/statutoryCertificateManagement/dealerListForAirGaugage1",
+  //           },
+  //           {
+  //             id: "dealerListForDpsl",
+  //             title: "DPSL",
+  //             type: "item",
+  //             icon: <Icon.Circle size={12} />,
+  //             permissions: ["admin", "editor"],
+  //             navLink: "/app/facilityManagement/statutoryCertificateManagement/dealerListForDpsl",
+  //           },
+  //           {
+  //             id: "dealerListForAddOtherDocument",
+  //             title: "Add Other Document",
+  //             type: "item",
+  //             icon: <Icon.Circle size={12} />,
+  //             permissions: ["admin", "editor"],
+  //             navLink: "/app/facilityManagement/statutoryCertificateManagement/dealerListForAddOtherDocument",
+  //           },
+
+          
+        
+  //     ],
+  //   },
+  //   {
+  //     id: "otherEquipment",
+  //     title: "Other Equipments",
+  //     type: "collapse",
+  //     icon: <Icon.ArrowRight size={20} />,
+  //     children: [
+  //       {
+  //         id: "dealerListForDataFromRoConfimation",
+  //         title: "Data From RO-Confimation",
+  //         type: "item",
+  //         icon: <Icon.Circle size={12} />,
+  //         permissions: ["admin", "editor"],
+  //         navLink:
+  //           "/app/facilitymanagement/otherEquipment/delaerListForDataFromRoConfigration",
+  //       },
+
+  //       {
+  //         id: "dealerListForFireEquipment",
+  //         title: "Fire Equipments",
+  //         type: "item",
+  //         icon: <Icon.Circle size={12} />,
+  //         permissions: ["admin", "editor"],
+  //         navLink:
+  //           "/app/facilitymanagement/otherEquipment/dealerListForFireEquipment",
+  //       },
+  //     ],
+  // },
+  //     // {
+  //     //   id: "dealerListForStatutoryCertificateManagementList",
+  //     //   title: "SC Management List",
+  //     //   type: "item",
+  //     //   icon: <Icon.Circle size={12} />,
+  //     //   permissions: ["admin", "editor"],
+  //     //   navLink: "/app/facilityManagement/dealerListForStatutoryCertificateManagementList",
+  //     // },
+  //     {
+  //       id: "dealerListForMpdManagement",
+  //       title: "MPD Management",
+  //       type: "item",
+  //       icon: <Icon.Circle size={12} />,
+  //       permissions: ["admin", "editor"],
+  //       navLink: "/app/facilityManagement/dealerListForMpdManagement",
+  //     },
+  //     {
+  //       id: "dealerListForRaiseConcernToAES",
+  //       title: "Raise Concern To AES List",
+  //       type: "item",
+  //       icon: <Icon.Circle size={12} />,
+  //       permissions: ["admin", "editor"],
+  //       navLink: "/app/facilityManagement/dealerListForRaiseConcernToAES",
+      
+  //     },
+  //   ],
+  // },
+  ///////////////// facilityManagement end ///////////////////
+  // {
+  //   id: "subplan",
+  //   title: "Subscription Plan ",
+  //   type: "collapse",
+  //   icon: <Icon.User size={20} />,
+  //   children: [
+  //     {
+  //       id: "subplanvideos",
+  //       title: " plan videos List",
+  //       type: "item",
+  //       icon: <Icon.Circle size={12} />,
+  //       permissions: ["admin", "editor"],
+  //       navLink: "/app/subplan/subplanvideos",
+  //     },
+      // {
+      //   id: "addPlan",
+      //   title: "Add plan videos",
+      //   type: "item",
+      //   icon: <Icon.Circle size={12} />,
+      //   permissions: ["admin", "editor"],
+      //   navLink: "/app/subplan/addPlan",
+      // },
+  //   ],
+  // },
+  {
+    id: "notification",
+    title: "Notification",
+    type: "collapse",
+    icon: <Icon.User size={20} />,
+    children: [
+      {
+        id: "notificationList",
+        title: "Notification List ",
+        type: "item",
+        icon: <Icon.Circle size={12} />,
+        permissions: ["admin", "editor"],
+        navLink: "/app/notification/notificationList",
+      },
+    ],
+  },
+  // {
+  //   id: "traningVideoList",
+  //   title: "Traning Video List ",
+  //   type: "item",
+  //   icon: <Icon.User size={20} />,
+  //   permissions: ["admin", "editor"],
+  //   navLink: "/app/traningvideo/traningVideoList",
+  // },
+
+      {
+        id: "vehicle",
+        title: "Vehicle",
+        type: "collapse",
+        icon: <Icon.User size={20} />,
+        children: [
+      {
+        id: "vehicleTypes",
+        title: "Vehicle Types List ",
+        type: "item",
+        icon: <Icon.Circle size={12} />,
+        permissions: ["admin", "editor"],
+        navLink: "/app/vehicle/vehicleTypes",
+      },
+    ],
+  },
+  {
+    id: "aboutus",
+    title: "About Us ",
+    type: "item",
+    icon: <Icon.User size={20} />,
+    permissions: ["admin", "editor"],
+    navLink: "/app/about/AllaboutUs",
+  },
+  {
+    id: "helpUs",
+    title: "Help Us",
+    type: "item",
+    icon: <Icon.User size={20} />,
+    permissions: ["admin", "editor"],
+    navLink: "/app/helpUs/HelpUs",
+  },
+ 
+      {
+        id: "TermConditionList",
+        title: "Term And Condition ",
+        type: "item",
+        icon: <Icon.User size={20} />,
+        permissions: ["admin", "editor"],
+        navLink: "/app/termscondition/TermConditionList",
+      },
+ 
+
+  
+];
+export default navigationConfig;
