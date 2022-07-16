@@ -10,12 +10,12 @@ import {
   DropdownToggle,
 } from "reactstrap";
 import axios from "axios";
-import { history } from "../../../history";
+import { history } from "../../../../history";
 import { AgGridReact } from "ag-grid-react";
 import { ChevronDown, Trash2, Eye, Edit } from "react-feather";
-import { ContextLayout } from "../../../utility/context/Layout";
+import { ContextLayout } from "../../../../utility/context/Layout";
 import "../../../assets/scss/plugins/tables/_agGridStyleOverride.scss";
-import Breadcrumbs from "../../../components/@vuexy/breadCrumbs/BreadCrumb";
+import Breadcrumbs from "../../../../components/@vuexy/breadCrumbs/BreadCrumb";
 
 class DealerList extends React.Component {
   state = {
