@@ -1,177 +1,195 @@
 import React from "react";
-import { 
-  Row, Col,
+import {
+  Row,
   Card,
   CardBody,
   Input,
   Button,
+  Col,
   UncontrolledDropdown,
   DropdownMenu,
   DropdownItem,
   DropdownToggle,
 } from "reactstrap";
+import axios from "axios";
+import axiosConfig from "../../../axiosConfig";
+// import { history } from "../../../history";
 import { AgGridReact } from "ag-grid-react";
 import { ContextLayout } from "../../../utility/context/Layout";
-import { ChevronDown } from "react-feather";
-import axiosConfig from "../../../axiosConfig";
+import { ChevronDown, Trash2, Edit } from "react-feather";
 import "../../../assets/scss/plugins/tables/_agGridStyleOverride.scss";
 // import Breadcrumbs from "../../../components/@vuexy/breadCrumbs/BreadCrumb";
-import { Trash2, Edit } from "react-feather";
-// import { history } from "../../../history";
 import { Route } from "react-router-dom";
-class NozzleList extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      data: {},
-      rowData: [],
-      defaultColDef: {
-        sortable: true,
-        editable: true,
-        resizable: true,
-        suppressMenu: true,
+class ScriptList extends React.Component {
+  state = {
+    rowData: [],
+    paginationPageSize: 20,
+    currenPageSize: "",
+    getPageSize: "",
+    defaultColDef: {
+      sortable: true,
+      editable: true,
+      resizable: true,
+      suppressMenu: true,
+    },
+    columnDefs: [
+      {
+        headerName: "S.No",
+        valueGetter: "node.rowIndex + 1",
+        field: "node.rowIndex + 1",
+        width: 200,
+        filter: true,
+        // checkboxSelection: true,
+        // headerCheckboxSelectionFilteredOnly: true,
+        // headerCheckboxSelection: true,
       },
-      columnDefs: [
-        {
-          headerName: "Nozzle",
-          field: "nozzle",
-          width: 120,
-          pinned: window.innerWidth > 992 ? "left" : false,
-          cellRendererFramework: (params) => {
-            return (
-              <div className="d-flex align-items-center cursor-pointer">
-                <span>{params.data.nozzle}</span>
-              </div>
-            );
-          },
+      {
+        headerName: "Equity Script",
+        field: "userId",
+        width: 200,
+        // pinned: window.innerWidth > 992 ? "left" : false,
+        cellRendererFramework: (params) => {
+          return (
+            <div className="d-flex align-items-center cursor-pointer">
+              <span>{params.data.userId}</span>
+            </div>
+          );
         },
-        {
-          headerName: "MPD",
-          field: "mpd",
-          width: 120,
-          // pinned: window.innerWidth > 992 ? "left" : false,
-          cellRendererFramework: (params) => {
-            return (
-              <div className="d-flex align-items-center cursor-pointer">
-                <span>{params.data.mpd}</span>
-              </div>
-            );
-          },
+      },
+      {
+        headerName: "Script Name",
+        field: "title",
+        width: 200,
+        cellRendererFramework: (params) => {
+          return (
+            <div className="d-flex align-items-center cursor-pointer">
+              <span>{params.data.title}</span>
+            </div>
+          );
         },
-        {
-          headerName: "Bay",
-          field: "bay",
-          width: 120,
-          cellRendererFramework: (params) => {
-            return (
-              <div className="d-flex align-items-center cursor-pointer">
-                <span>{params.data.bay}</span>
-              </div>
-            );
-          },
-        },
-        {
-          headerName: "Tank",
-          field: "tank_map.tank",
-          width: 120,
-          cellRendererFramework: (params) => {
-            return (
-              <div className="d-flex align-items-center cursor-pointer">
-                <span>{params.data.tank_map?.tank}</span>
-              </div>
-            );
-          },
-        },
-        {
-          headerName: "Actions",
-          field: "sortorder",
-          width: 120,
-          pinned: window.innerWidth > 992 ? "right" : false,
+      },
 
-          cellRendererFramework: (params) => {
-            console.log("@@@@id@@@@@@@@@@", params);
-            return (
-              <div className="actions cursor-pointer">
-                {/* <Route
-                  render={({ history }) => (
-                    <Eye
-                      className="mr-50"
-                      size="25px"
-                      color="green"
-                      onClick={() =>
-                        history.push(
-                          `/app/ro-configuration/NozzleList/${params.data._id}`
-                        )
-                      }
-                    />
-                  )}
-                /> */}
-                <Route
-                  render={({ history }) => (
-                    <Edit
-                      className="mr-50"
-                      size="25px"
-                      color="blue"
-                      onClick={() =>
-                        history.push(
-                          `/app/ro-configuration/EditNozzleMap/${params.data._id}`
-                        )
-                      }
-                    />
-                  )}
-                />
-                <Trash2
-                  className="mr-50"
-                  size="25px"
-                  color="red"
-                  onClick={() => {
-                    let selectedData = this.gridApi.getSelectedRows();
-                    this.runthisfunction(params.data._id);
-                    this.gridApi.updateRowData({ remove: selectedData });
-                  }}
-                />
-              </div>
-            );
-          },
+      {
+        headerName: "Status",
+        field: "completed",
+        // filter: completed,
+        width: 200,
+        cellRendererFramework: (params) => {
+          return params.value === "Active" ? (
+            <div className="badge badge-pill badge-success">
+              {params.data.completed}
+            </div>
+          ) : params.value === "Inactive" ? (
+            <div className="badge badge-pill badge-warning">
+              {params.data.completed}
+            </div>
+          ) : null;
         },
-      ],
-    };
-  }
+      },
+      {
+        headerName: "Actions",
+        field: "sortorder",
+        width: 220,
+        // pinned: window.innerWidth > 992 ? "right" : false,
+        cellRendererFramework: (params) => {
+          return (
+            <div className="actions cursor-pointer">
+              <Route
+                render={({ history }) => (
+                  <Edit
+                    className="mr-50"
+                    size="25px"
+                    color="blue"
+                    onClick={() => history.push(`/app/script/editScript`)}
+                  />
+                )}
+              />
 
-  componentDidMount() {
-    let { id } = this.props.match.params;
-    axiosConfig
-      .get(`/dealer/allnozzleApp/${id}`)
+              <Trash2
+                className="mr-50"
+                size="25px"
+                color="red"
+                onClick={() => {
+                  let selectedData = this.gridApi.getSelectedRows();
+                  this.runthisfunction(params.data._id);
+                  this.gridApi.updateRowData({ remove: selectedData });
+                }}
+              />
+            </div>
+          );
+        },
+      },
+    ],
+  };
+  async componentDidMount() {
+    await axios
+      .get("https://jsonplaceholder.typicode.com/todos")
       .then((response) => {
-        console.log(response);
-        this.setState({
-          // tank: response.data.data.tank,
-          // nozzle: response.data.data.nozzle,
-          // mpd: response.data.data.mpd,
-          // bay: response.data.data.bay,
-        });
-        const rowData = response.data.data;
-        console.log(rowData);
+        let rowData = response.data;
         this.setState({ rowData });
-      })
-      .catch((error) => {
-        console.log(error.response);
       });
   }
+
+  async runthisfunction(id) {
+    console.log(id);
+    await axiosConfig
+      .get(`/dealer/deletedealershipform/${id}`)
+      .then((response) => {
+        console.log(response);
+      });
+  }
+
+  onGridReady = (params) => {
+    this.gridApi = params.api;
+    this.gridColumnApi = params.columnApi;
+    this.setState({
+      currenPageSize: this.gridApi.paginationGetCurrentPage() + 1,
+      getPageSize: this.gridApi.paginationGetPageSize(),
+      totalPages: this.gridApi.paginationGetTotalPages(),
+    });
+  };
+
+  updateSearchQuery = (val) => {
+    this.gridApi.setQuickFilter(val);
+  };
+
+  filterSize = (val) => {
+    if (this.gridApi) {
+      this.gridApi.paginationSetPageSize(Number(val));
+      this.setState({
+        currenPageSize: val,
+        getPageSize: val,
+      });
+    }
+  };
 
   render() {
     const { rowData, columnDefs, defaultColDef } = this.state;
     return (
-      <React.Fragment>
-        <div>
-          <Card className="overflow-hidden agGrid-card">
-          <Row className="m-1">
-            <Col>
-              <h1 col-sm-6 className="float-left">
-               Nozzle List
-              </h1>
+      <Row className="app-user-list">
+        <Col sm="12"></Col>
+        <Col sm="12">
+          <Card>
+            <Row className="m-2">
+              <Col>
+                <h1 col-sm-6 className="float-left">
+                  Script List
+                </h1>
+              </Col>
+            </Row>
+            <Col className="pt-4">
+              <Route
+                render={({ history }) => (
+                  <Button
+                    className=" btn btn-success float-right"
+                    onClick={() => history.push("/app/script/addScript")}
+                  >
+                    Add Script
+                  </Button>
+                )}
+              />
             </Col>
-          </Row>
+
             <CardBody className="py-0">
               {this.state.rowData === null ? null : (
                 <div className="ag-theme-material w-100 my-2 ag-grid-table">
@@ -263,9 +281,9 @@ class NozzleList extends React.Component {
               )}
             </CardBody>
           </Card>
-        </div>
-      </React.Fragment>
+        </Col>
+      </Row>
     );
   }
 }
-export default NozzleList;
+export default ScriptList;

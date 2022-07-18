@@ -1,7 +1,7 @@
 import React from "react";
 import {
-  Row,
   Col,
+  Row,
   Card,
   CardBody,
   Input,
@@ -11,15 +11,15 @@ import {
   DropdownItem,
   DropdownToggle,
 } from "reactstrap";
-import axiosConfig from "../../../axiosConfig";
-// import { history } from "../../../history";
+import axios from "axios";
+import { history } from "../../../history";
 import { AgGridReact } from "ag-grid-react";
+import { ChevronDown, Trash2, Eye, Edit } from "react-feather";
 import { ContextLayout } from "../../../utility/context/Layout";
-import { ChevronDown, Eye } from "react-feather";
 import "../../../assets/scss/plugins/tables/_agGridStyleOverride.scss";
-// import Breadcrumbs from "../../../components/@vuexy/breadCrumbs/BreadCrumb";
-import { Route } from "react-router-dom";
-class DealerListForCreditCus extends React.Component {
+import Breadcrumbs from "../../../components/@vuexy/breadCrumbs/BreadCrumb";
+
+class EquirtyCash extends React.Component {
   state = {
     rowData: [],
     paginationPageSize: 20,
@@ -35,7 +35,7 @@ class DealerListForCreditCus extends React.Component {
       {
         headerName: "Dealer Name",
         field: "dealer_name",
-        width: 200,
+        width: 140,
         pinned: window.innerWidth > 992 ? "left" : false,
         cellRendererFramework: (params) => {
           return (
@@ -48,7 +48,7 @@ class DealerListForCreditCus extends React.Component {
       {
         headerName: "Mobile",
         field: "mobile",
-        width: 150,
+        width: 140,
         cellRendererFramework: (params) => {
           return (
             <div className="d-flex align-items-center cursor-pointer">
@@ -60,7 +60,7 @@ class DealerListForCreditCus extends React.Component {
       {
         headerName: "Email",
         field: "email",
-        width: 180,
+        width: 140,
         cellRendererFramework: (params) => {
           return (
             <div className="d-flex align-items-center cursor-pointer">
@@ -71,12 +71,36 @@ class DealerListForCreditCus extends React.Component {
       },
       {
         headerName: "Master Oil Company",
-        field: "master_oil_company.name",
-        width: 200,
+        field: "master_oil_company",
+        width: 140,
         cellRendererFramework: (params) => {
           return (
             <div className="d-flex align-items-center cursor-pointer">
-              <span>{params.data.master_oil_company?.name}</span>
+              <span>{params.data.master_oil_company}</span>
+            </div>
+          );
+        },
+      },
+      {
+        headerName: "Location",
+        field: "location",
+        width: 140,
+        cellRendererFramework: (params) => {
+          return (
+            <div className="d-flex align-items-center cursor-pointer">
+              <span>{params.data.location}</span>
+            </div>
+          );
+        },
+      },
+      {
+        headerName: "OMC Customer Code",
+        field: "omc_customer_code",
+        width: 140,
+        cellRendererFramework: (params) => {
+          return (
+            <div className="d-flex align-items-center cursor-pointer">
+              <span>{params.data.omc_customer_code}</span>
             </div>
           );
         },
@@ -84,7 +108,7 @@ class DealerListForCreditCus extends React.Component {
       {
         headerName: "State",
         field: "state",
-        width: 150,
+        width: 140,
         cellRendererFramework: (params) => {
           return (
             <div className="d-flex align-items-center cursor-pointer">
@@ -96,7 +120,7 @@ class DealerListForCreditCus extends React.Component {
       {
         headerName: "District",
         field: "district",
-        width: 150,
+        width: 140,
         cellRendererFramework: (params) => {
           return (
             <div className="d-flex align-items-center cursor-pointer">
@@ -105,45 +129,38 @@ class DealerListForCreditCus extends React.Component {
           );
         },
       },
-      // {
-      //   headerName: "Status",
-      //   field: "userverified",
-      //   // filter: true,
-      //   width: 150,
-      //   cellRendererFramework: (params) => {
-      //     return params.value === "Active" ? (
-      //       <div className="badge badge-pill badge-success">
-      //         {params.data.userverified}
-      //       </div>
-      //     ) : params.value === "Inactive" ? (
-      //       <div className="badge badge-pill badge-warning">
-      //         {params.data.userverified}
-      //       </div>
-      //     ) : null;
-      //   },
-      // },
       {
         headerName: "Actions",
         field: "sortorder",
-        width: 120,
-        pinned: window.innerWidth > 992 ? "right" : false,
-
+        width: 140,
         cellRendererFramework: (params) => {
           return (
             <div className="actions cursor-pointer">
-              <Route
-                render={({ history }) => (
-                  <Eye
-                    className="mr-50"
-                    size="25px"
-                    color="green"
-                    onClick={() =>
-                      history.push(
-                        `/app/ro-configuration/creditCustomersList/${params.data._id}`
-                      )
-                    }
-                  />
-                )}
+              <Eye
+                className="mr-50"
+                size="25px"
+                color="green"
+                onClick={() =>
+                  history.push(`/app/dealer/viewDealer/${params.data._id}`)
+                }
+              />
+              <Edit
+                className="mr-50"
+                size="25px"
+                color="blue"
+                onClick={() =>
+                  history.push(`/app/dealer/editDealer/${params.data._id}`)
+                }
+              />
+              <Trash2
+                className="mr-50"
+                size="25px"
+                color="red"
+                onClick={() => {
+                  let selectedData = this.gridApi.getSelectedRows();
+                  this.runthisfunction(params.data._id);
+                  this.gridApi.updateRowData({ remove: selectedData });
+                }}
               />
             </div>
           );
@@ -152,13 +169,22 @@ class DealerListForCreditCus extends React.Component {
     ],
   };
   async componentDidMount() {
-    await axiosConfig.get("/dealer/alldealers").then((response) => {
-      const rowData = response.data.data;
-      console.log(rowData);
-      this.setState({ rowData });
-    });
+    await axios
+      .get("http://3.108.185.7/nodejs/api/dealer/alldealers")
+      .then((response) => {
+        const rowData = response.data.data;
+        console.log(rowData);
+        this.setState({ rowData });
+      });
   }
-
+  async runthisfunction(id) {
+    console.log(id);
+    await axios
+      .get(`http://3.108.185.7/nodejs/api/dealer/deletedealershipform/${id}`)
+      .then((response) => {
+        console.log(response);
+      });
+  }
   onGridReady = (params) => {
     this.gridApi = params.api;
     this.gridColumnApi = params.columnApi;
@@ -186,16 +212,13 @@ class DealerListForCreditCus extends React.Component {
   render() {
     const { rowData, columnDefs, defaultColDef } = this.state;
     return (
-       <React.Fragment>
-      {/* <Breadcrumbs breadCrumbTitle=" List of Dealers for Credit Customer " /> */}
+      <React.Fragment>
+        <Breadcrumbs
+          breadCrumbTitle="Equirty Cash List"
+          // breadCrumbParent="Forms & Tables"
+          // breadCrumbActive="Dealer List"
+        />
         <Card className="overflow-hidden agGrid-card">
-        <Row className="m-2">
-              <Col>
-            <h1 col-sm-6 className="float-left">
-            List of Dealers for Credit Customer
-            </h1>
-          </Col>
-          </Row>
           <CardBody className="py-0">
             {this.state.rowData === null ? null : (
               <div className="ag-theme-material w-100 my-2 ag-grid-table">
@@ -289,4 +312,4 @@ class DealerListForCreditCus extends React.Component {
     );
   }
 }
-export default DealerListForCreditCus;
+export default EquirtyCash;

@@ -56,12 +56,37 @@ const subplanvideos = lazy(() => import("./views/apps/subplan/SubPlanVideos"));
 const editSubplanvideos = lazy(() =>
   import("./views/apps/subplan/EditSubplanvideos")
 );
+// user//
+const UsersList = lazy(() => import("./views/apps/users/UsersList"));
+const AddUsers = lazy(() => import("./views/apps/users/AddUsers"));
+const EditUsers = lazy(() => import("./views/apps/users/EditUsers"));
+// const ViewUsers = lazy(() => import("./views/apps/users/ViewUsers"));
 
-const userRideList = lazy(() => import("./views/apps/userride/UserRideList"));
-const addUserRide = lazy(() => import("./views/apps/userride/AddUserRide"));
-const editUserRide = lazy(() => import("./views/apps/userride/EditUserRide"));
-const viewUserRide = lazy(() => import("./views/apps/userride/ViewUserRide"));
-// const roForm = lazy(() => import("./views/apps/ro-configuration/RoForm"));
+// script//
+const ScriptList = lazy(() => import("./views/apps/script/ScriptList"));
+const AddScript = lazy(() => import("./views/apps/script/AddScript"));
+const EditScript = lazy(() => import("./views/apps/script/EditScript"));
+
+// Trade
+const AllTradeList = lazy(() => import("./views/apps/trade/AllTradeList"));
+const AddAllTrade = lazy(() => import("./views/apps/trade/AddAllTrade"));
+const EditAllTrade = lazy(() => import("./views/apps/trade/EditAllTrade"));
+
+const EquirtyCashList = lazy(() =>
+  import("./views/apps/trade/EquirtyCashList")
+);
+const AddEquirtyCash = lazy(() => import("./views/apps/trade/AddEquirtyCash"));
+const EditEquirtyCash = lazy(() =>
+  import("./views/apps/trade/EditEquirtyCash")
+);
+
+const FnoEquityList = lazy(() => import("./views/apps/trade/FnoEquityList"));
+const AddFnoEquity = lazy(() => import("./views/apps/trade/AddFnoEquity"));
+const EditFnoEquity = lazy(() => import("./views/apps/trade/EditFnoEquity"));
+
+const FnoIndexList = lazy(() => import("./views/apps/trade/FnoIndexList"));
+const AddFnoIndex = lazy(() => import("./views/apps/trade/AddFnoIndex"));
+const EditFnoIndex = lazy(() => import("./views/apps/trade/EditFnoIndex"));
 
 // setting
 
@@ -297,25 +322,93 @@ class AppRouter extends React.Component {
               path="/ecommerce-dashboard"
               component={ecommerceDashboard}
             />
+            {/* user */}
             <AppRoute
               exact={true}
-              path="/app/userride/userRideList"
-              component={userRideList}
+              path="/app/users/usersList"
+              component={UsersList}
             />
             <AppRoute
               exact={true}
-              path="/app/userride/addUserRide"
-              component={addUserRide}
+              path="/app/users/addUsers"
+              component={AddUsers}
             />
             <AppRoute
               exact={true}
-              path="/app/userride/editUserRide/:id"
-              component={editUserRide}
+              path="/app/users/editUsers"
+              component={EditUsers}
             />
-            <AppRoute
+            {/* <AppRoute
               exact={true}
               path="/app/userride/viewUserRide/:id"
               component={viewUserRide}
+            /> */}
+            {/* script */}
+            <AppRoute
+              exact={true}
+              path="/app/script/scriptList"
+              component={ScriptList}
+            />
+            <AppRoute
+              exact={true}
+              path="/app/script/addScript"
+              component={AddScript}
+            />
+            <AppRoute
+              exact={true}
+              path="/app/script/editScript"
+              component={EditScript}
+            />
+            {/* Trade */}
+            <AppRoute
+              exact={true}
+              path="/app/trade/allTradeList"
+              component={AllTradeList}
+            />
+            <AppRoute
+              exact={true}
+              path="/app/trade/addAllTrade"
+              component={AddAllTrade}
+            />
+            <AppRoute
+              exact={true}
+              path="/app/trade/editAllTrade"
+              component={EditAllTrade}
+            />
+            <AppRoute
+              exact={true}
+              path="/app/trade/equirtyCashList"
+              component={EquirtyCashList}
+            />
+            <AppRoute
+              exact={true}
+              path="/app/trade/addEquirtyCash"
+              component={AddEquirtyCash}
+            />
+            <AppRoute
+              exact={true}
+              path="/app/trade/editEquirtyCash"
+              component={EditEquirtyCash}
+            />
+            <AppRoute
+              exact={true}
+              path="/app/trade/fnoEquityList"
+              component={FnoEquityList}
+            />
+            <AppRoute
+              exact={true}
+              path="/app/trade/addFnoEquity"
+              component={AddFnoEquity}
+            />
+            <AppRoute
+              exact={true}
+              path="/app/trade/editFnoEquity"
+              component={EditFnoEquity}
+            />
+            <AppRoute
+              exact={true}
+              path="/app/trade/addFnoIndex"
+              component={AddFnoIndex}
             />
             {/* setting */}
             <AppRoute

@@ -168,7 +168,7 @@ class AnalyticsDashboard extends React.Component {
             >
               <CardTitle className="mb-1" tag="h4" style={{ color: "black" }}>
                 {/* <h6 class="card-title text-uppercase text-muted mb-0"> Drivers registered</h6> */}
-                GENERAL UPDATE
+                ALL TRADE
               </CardTitle>
 
               <CardText tag="h3" style={{ color: "black" }}>
