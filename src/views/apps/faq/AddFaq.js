@@ -1,49 +1,64 @@
-import React from "react";
+import React, { Component } from "react";
 import {
   Card,
   CardBody,
-  Row,
   Col,
   Form,
-  Label,
+  Row,
   Input,
+  Label,
   Button,
+  // FormGroup,
+  // CustomInput,
 } from "reactstrap";
-// import swal from "sweetalert";
 import { Route } from "react-router-dom";
+import Select from "react-select";
+// import { history } from "../../../history";
+// import axiosConfig from "../../../../axiosConfig";
+// import swal from "sweetalert";
 import axiosConfig from "../../../axiosConfig";
-// import Textarea from "../../forms/form-elements/textarea/Textarea";
-import Breadcrumbs from "../../../components/@vuexy/breadCrumbs/BreadCrumb";
 
-class AboutUs extends React.Component {
+const dealerName = [];
+
+export class AddFaq extends Component {
   constructor(props) {
     super(props);
-
     this.state = {
-      dealer: "",
+      dealer: null,
       desc: "",
-    };
-    this.state = {
-      dealerN: [],
     };
   }
 
   async componentDidMount() {
     //dealer List
+    //let array =[]
+    //let obj ={}
     axiosConfig
       .get("/dealer/alldealers")
       .then((response) => {
         console.log(response);
-        this.setState({ dealerN: response.data.data });
+        //this.setState({ dealerN: response.data.data });
+
+        // eslint-disable-next-line no-unused-expressions
+        response.data?.data?.map((dealerp) => {
+          let obj = {
+            label: dealerp.dealer_name,
+            value: dealerp._id,
+          };
+          dealerName.push(obj);
+        });
       })
       .catch((error) => {
         console.log(error);
       });
   }
 
-  changeHandler1 = (e) => {
-    this.setState({ status: e.target.value });
+  handleChange = (dealer) => {
+    this.setState({ dealer }, () =>
+      console.log(`Option selected:`, this.state.dealer)
+    );
   };
+
   changeHandler = (e) => {
     this.setState({ [e.target.name]: e.target.value });
   };
@@ -52,7 +67,7 @@ class AboutUs extends React.Component {
 
     axiosConfig
       .post(
-        "/admin/addabout",
+        "/admin/addnotification",
         this.state
         // {
         //   headers: {
@@ -63,26 +78,21 @@ class AboutUs extends React.Component {
       .then((response) => {
         console.log(response);
         // swal("Success!", "Submitted SuccessFull!", "success");
-        this.props.history.push("/app/about/AllaboutUs");
+        this.props.history.push("/app/notification/notificationList");
       })
       .catch((error) => {
         console.log(error);
       });
   };
-
   render() {
+    const { dealer } = this.state;
     return (
       <div>
-        <Breadcrumbs
-          breadCrumbTitle="About Us"
-          breadCrumbParent="Home"
-          breadCrumbActive=" About Us"
-        />
         <Card>
           <Row className="m-2">
             <Col>
               <h1 col-sm-6 className="float-left">
-                About Us
+                Add FAQ
               </h1>
             </Col>
             <Col>
@@ -90,7 +100,7 @@ class AboutUs extends React.Component {
                 render={({ history }) => (
                   <Button
                     className=" btn btn-danger float-right"
-                    onClick={() => history.push("/app/about/allaboutUs")}
+                    onClick={() => history.push("/app/faq/faqList")}
                   >
                     Back
                   </Button>
@@ -100,30 +110,39 @@ class AboutUs extends React.Component {
           </Row>
           <CardBody>
             <Form className="m-1" onSubmit={this.submitHandler}>
-              <Row>
-                <Col lg="12" md="12" sm="12" className="mb-2">
-                  <Label>Descriptions</Label>
+              <Row className="mb-2">
+                {/* <Col md="6" sm="12">
+                  <Label>Dealer List</Label>
+                  <Select
+                    isMulti
+                    type="select"
+                    name="dealer"
+                    className="React"
+                    classNamePrefix="select"
+                    options={dealerName}
+                    value={dealer}
+                    onChange={this.handleChange}
+                  />
+                </Col> */}
+
+                <Col lg="12" md="12" className="mb-2">
+                  <Label>Descripiton</Label>
                   <Input
                     type="textarea"
                     name="desc"
                     value={this.state.desc}
                     onChange={this.changeHandler}
-                    rows="3"
-                    placeholder="Textarea"
                   />
                 </Col>
               </Row>
-
               <Row>
-                <Col lg="6" md="6" sm="6" className="mb-2">
-                  <Button.Ripple
-                    color="primary"
-                    type="submit"
-                    className="mr-1 mb-1"
-                  >
-                    Submit
-                  </Button.Ripple>
-                </Col>
+                <Button.Ripple
+                  className="mr-1 mb-1"
+                  type="submit"
+                  color="primary"
+                >
+                  Add FAQ List
+                </Button.Ripple>
               </Row>
             </Form>
           </CardBody>
@@ -132,5 +151,4 @@ class AboutUs extends React.Component {
     );
   }
 }
-
-export default AboutUs;
+export default AddFaq;

@@ -20,7 +20,7 @@ import axiosConfig from "../../../axiosConfig";
 
 const dealerName = [];
 
-export class PackagePlan extends Component {
+export class AddPaidServeice extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -78,7 +78,7 @@ export class PackagePlan extends Component {
       .then((response) => {
         console.log(response);
         // swal("Success!", "Submitted SuccessFull!", "success");
-        this.props.history.push("/app/users/usersList");
+        this.props.history.push("/app/premium/paidServeiceList");
       })
       .catch((error) => {
         console.log(error);
@@ -92,7 +92,7 @@ export class PackagePlan extends Component {
           <Row className="m-2">
             <Col>
               <h1 col-sm-6 className="float-left">
-                Add Package Plan
+                Add Paid Serveice
               </h1>
             </Col>
             <Col>
@@ -100,7 +100,9 @@ export class PackagePlan extends Component {
                 render={({ history }) => (
                   <Button
                     className=" btn btn-danger float-right"
-                    onClick={() => history.push("app/script/scriptList")}
+                    onClick={() =>
+                      history.push("/app/premium/paidServeiceList")
+                    }
                   >
                     Back
                   </Button>
@@ -111,36 +113,27 @@ export class PackagePlan extends Component {
           <CardBody>
             <Form className="m-1" onSubmit={this.submitHandler}>
               <Row className="mb-2">
-                {/* <Col lg="6" md="6" className="mb-2">
-                  <Label>User ID</Label>
-                  <Input
-                    type="text"
-                    placeholder="Enter User Id"
-                    // name="desc"
-                    // value={this.state.desc}
-                    // onChange={this.changeHandler}
+                {/* <Col md="6" sm="12">
+                  <Label>Dealer List</Label>
+                  <Select
+                    isMulti
+                    type="select"
+                    name="dealer"
+                    className="React"
+                    classNamePrefix="select"
+                    options={dealerName}
+                    value={dealer}
+                    onChange={this.handleChange}
                   />
                 </Col> */}
 
-                <Col lg="6" md="6" className="mb-2">
-                  <Label for="exampleSelect">Equity Script</Label>
-                  <Input id="exampleSelect" name="select" type="select">
-                    <option>Select Script</option>
-                    <option>All TRADES</option>
-                    <option>FNO INDEX</option>
-                    <option>FNO EQUITY</option>
-                    <option>CASH EQUITY</option>
-                  </Input>
-                </Col>
-                <Col lg="6" md="6" className="mb-2">
-                  <Label>Script Name</Label>
+                <Col lg="12" md="12" className="mb-2">
+                  <Label>Descripiton</Label>
                   <Input
-                    type="text"
-                    placeholder="Enter Script Name"
-
-                    // name="desc"
-                    // value={this.state.desc}
-                    // onChange={this.changeHandler}
+                    type="textarea"
+                    name="desc"
+                    value={this.state.desc}
+                    onChange={this.changeHandler}
                   />
                 </Col>
               </Row>
@@ -150,7 +143,7 @@ export class PackagePlan extends Component {
                   type="submit"
                   color="primary"
                 >
-                  Add Package Plan
+                  Add Paid Serveice
                 </Button.Ripple>
               </Row>
             </Form>
@@ -160,4 +153,4 @@ export class PackagePlan extends Component {
     );
   }
 }
-export default PackagePlan;
+export default AddPaidServeice;

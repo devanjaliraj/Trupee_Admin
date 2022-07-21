@@ -1,25 +1,26 @@
 import React from "react";
 import {
-  Col,
   Row,
   Card,
   CardBody,
   Input,
   Button,
+  Col,
   UncontrolledDropdown,
   DropdownMenu,
   DropdownItem,
   DropdownToggle,
 } from "reactstrap";
 import axios from "axios";
-import { history } from "../../../history";
+import axiosConfig from "../../../axiosConfig";
+// import { history } from "../../../history";
 import { AgGridReact } from "ag-grid-react";
-import { ChevronDown, Trash2, Eye, Edit } from "react-feather";
 import { ContextLayout } from "../../../utility/context/Layout";
+import { ChevronDown, Trash2, Edit } from "react-feather";
 import "../../../assets/scss/plugins/tables/_agGridStyleOverride.scss";
 // import Breadcrumbs from "../../../components/@vuexy/breadCrumbs/BreadCrumb";
 import { Route } from "react-router-dom";
-class FnoIndexList extends React.Component {
+class PackagePlanList extends React.Component {
   state = {
     rowData: [],
     paginationPageSize: 20,
@@ -33,196 +34,89 @@ class FnoIndexList extends React.Component {
     },
     columnDefs: [
       {
-        headerName: "Script Name",
-        field: "script_name",
-        width: 140,
-        pinned: window.innerWidth > 992 ? "left" : false,
+        headerName: "S.No",
+        valueGetter: "node.rowIndex + 1",
+        field: "node.rowIndex + 1",
+        width: 200,
+        filter: true,
+        // checkboxSelection: true,
+        // headerCheckboxSelectionFilteredOnly: true,
+        // headerCheckboxSelection: true,
+      },
+      {
+        headerName: "Package Plan",
+        field: "userId",
+        width: 200,
+        // pinned: window.innerWidth > 992 ? "left" : false,
         cellRendererFramework: (params) => {
           return (
             <div className="d-flex align-items-center cursor-pointer">
-              <span>{params.data.script_name}</span>
+              <span>{params.data.userId}</span>
             </div>
           );
         },
       },
       {
-        headerName: "Call Type",
-        field: "mobile",
-        width: 140,
+        headerName: "MRP Price",
+        field: "title",
+        width: 200,
         cellRendererFramework: (params) => {
           return (
             <div className="d-flex align-items-center cursor-pointer">
-              <span>{params.data.mobile}</span>
+              <span>{params.data.title}</span>
             </div>
           );
         },
       },
       {
-        headerName: "Active Value",
-        field: "",
-        width: 140,
+        headerName: "Discount Price",
+        field: "title",
+        width: 200,
         cellRendererFramework: (params) => {
           return (
             <div className="d-flex align-items-center cursor-pointer">
-              <span>{params.data.email}</span>
-            </div>
-          );
-        },
-      },
-      {
-        headerName: "Enter SL",
-        field: "master_oil_company",
-        width: 140,
-        cellRendererFramework: (params) => {
-          return (
-            <div className="d-flex align-items-center cursor-pointer">
-              <span>{params.data.master_oil_company}</span>
-            </div>
-          );
-        },
-      },
-      {
-        headerName: "Target ",
-        field: "location",
-        width: 140,
-        cellRendererFramework: (params) => {
-          return (
-            <div className="d-flex align-items-center cursor-pointer">
-              <span>{params.data.location}</span>
-            </div>
-          );
-        },
-      },
-      // {
-      //   headerName: "Target 2",
-      //   field: "location",
-      //   width: 140,
-      //   cellRendererFramework: (params) => {
-      //     return (
-      //       <div className="d-flex align-items-center cursor-pointer">
-      //         <span>{params.data.location}</span>
-      //       </div>
-      //     );
-      //   },
-      // },
-      // {
-      //   headerName: "Target 3",
-      //   field: "location",
-      //   width: 140,
-      //   cellRendererFramework: (params) => {
-      //     return (
-      //       <div className="d-flex align-items-center cursor-pointer">
-      //         <span>{params.data.location}</span>
-      //       </div>
-      //     );
-      //   },
-      // },
-      // {
-      //   headerName: "Target 4",
-      //   field: "location",
-      //   width: 140,
-      //   cellRendererFramework: (params) => {
-      //     return (
-      //       <div className="d-flex align-items-center cursor-pointer">
-      //         <span>{params.data.location}</span>
-      //       </div>
-      //     );
-      //   },
-      // },
-      {
-        headerName: "Lots",
-        field: "state",
-        width: 140,
-        cellRendererFramework: (params) => {
-          return (
-            <div className="d-flex align-items-center cursor-pointer">
-              <span>{params.data.state}</span>
+              <span>{params.data.title}</span>
             </div>
           );
         },
       },
 
       {
-        headerName: "Quantity",
-        field: "state",
-        width: 140,
+        headerName: "Status",
+        field: "completed",
+        // filter: completed,
+        width: 200,
         cellRendererFramework: (params) => {
-          return (
-            <div className="d-flex align-items-center cursor-pointer">
-              <span>{params.data.state}</span>
+          return params.value === "Active" ? (
+            <div className="badge badge-pill badge-success">
+              {params.data.completed}
             </div>
-          );
-        },
-      },
-      {
-        headerName: "Investment Amount",
-        field: "state",
-        width: 140,
-        cellRendererFramework: (params) => {
-          return (
-            <div className="d-flex align-items-center cursor-pointer">
-              <span>{params.data.state}</span>
+          ) : params.value === "Inactive" ? (
+            <div className="badge badge-pill badge-warning">
+              {params.data.completed}
             </div>
-          );
-        },
-      },
-      {
-        headerName: "Lots Price",
-        field: "district",
-        width: 140,
-        cellRendererFramework: (params) => {
-          return (
-            <div className="d-flex align-items-center cursor-pointer">
-              <span>{params.data.district}</span>
-            </div>
-          );
-        },
-      },
-      {
-        headerName: "Inversment Amount",
-        field: "district",
-        width: 140,
-        cellRendererFramework: (params) => {
-          return (
-            <div className="d-flex align-items-center cursor-pointer">
-              <span>{params.data.district}</span>
-            </div>
-          );
-        },
-      },
-      {
-        headerName: "Lots Price",
-        field: "district",
-        width: 140,
-        cellRendererFramework: (params) => {
-          return (
-            <div className="d-flex align-items-center cursor-pointer">
-              <span>{params.data.district}</span>
-            </div>
-          );
+          ) : null;
         },
       },
       {
         headerName: "Actions",
         field: "sortorder",
-        width: 140,
+        width: 220,
+        // pinned: window.innerWidth > 992 ? "right" : false,
         cellRendererFramework: (params) => {
           return (
             <div className="actions cursor-pointer">
-              {/* <Eye
-                className="mr-50"
-                size="25px"
-                color="green"
-                onClick={() =>
-                  history.push(`/app/dealer/viewDealer/${params.data._id}`)
-                }
-              /> */}
-              <Edit
-                className="mr-50"
-                size="25px"
-                color="blue"
-                onClick={() => history.push(`/app/trade/editDealer`)}
+              <Route
+                render={({ history }) => (
+                  <Edit
+                    className="mr-50"
+                    size="25px"
+                    color="blue"
+                    onClick={() => history.push(`/app/package/editScript`)}
+                  />
+                )}
               />
+
               <Trash2
                 className="mr-50"
                 size="25px"
@@ -241,21 +135,22 @@ class FnoIndexList extends React.Component {
   };
   async componentDidMount() {
     await axios
-      .get("http://3.108.185.7/nodejs/api/dealer/alldealers")
+      .get("https://jsonplaceholder.typicode.com/todos")
       .then((response) => {
-        const rowData = response.data.data;
-        console.log(rowData);
+        let rowData = response.data;
         this.setState({ rowData });
       });
   }
+
   async runthisfunction(id) {
     console.log(id);
-    await axios
-      .get(`http://3.108.185.7/nodejs/api/dealer/deletedealershipform/${id}`)
+    await axiosConfig
+      .get(`/dealer/deletedealershipform/${id}`)
       .then((response) => {
         console.log(response);
       });
   }
+
   onGridReady = (params) => {
     this.gridApi = params.api;
     this.gridColumnApi = params.columnApi;
@@ -290,7 +185,7 @@ class FnoIndexList extends React.Component {
             <Row className="m-2">
               <Col>
                 <h1 col-sm-6 className="float-left">
-                  FNO Index List
+                  Plan List
                 </h1>
               </Col>
             </Row>
@@ -299,9 +194,9 @@ class FnoIndexList extends React.Component {
                 render={({ history }) => (
                   <Button
                     className=" btn btn-success float-right"
-                    onClick={() => history.push("/app/trade/AddFnoIndex")}
+                    onClick={() => history.push("/app/package/addPackagePlan")}
                   >
-                    Add FNO Index
+                    Add Package Plan
                   </Button>
                 )}
               />
@@ -386,7 +281,7 @@ class FnoIndexList extends React.Component {
                         onGridReady={this.onGridReady}
                         colResizeDefault={"shift"}
                         animateRows={true}
-                        floatingFilter={true}
+                        floatingFilter={false}
                         pagination={true}
                         paginationPageSize={this.state.paginationPageSize}
                         pivotPanelShow="always"
@@ -403,4 +298,4 @@ class FnoIndexList extends React.Component {
     );
   }
 }
-export default FnoIndexList;
+export default PackagePlanList;

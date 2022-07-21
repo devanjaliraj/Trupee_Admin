@@ -18,8 +18,8 @@ import { ChevronDown, Trash2, Eye, Edit } from "react-feather";
 import { ContextLayout } from "../../../utility/context/Layout";
 import "../../../assets/scss/plugins/tables/_agGridStyleOverride.scss";
 import Breadcrumbs from "../../../components/@vuexy/breadCrumbs/BreadCrumb";
-
-class EquirtyCash extends React.Component {
+import { Route } from "react-router-dom";
+class EquirtyCashList extends React.Component {
   state = {
     rowData: [],
     paginationPageSize: 20,
@@ -33,20 +33,20 @@ class EquirtyCash extends React.Component {
     },
     columnDefs: [
       {
-        headerName: "Dealer Name",
-        field: "dealer_name",
+        headerName: "Script Name",
+        field: "script_name",
         width: 140,
         pinned: window.innerWidth > 992 ? "left" : false,
         cellRendererFramework: (params) => {
           return (
             <div className="d-flex align-items-center cursor-pointer">
-              <span>{params.data.dealer_name}</span>
+              <span>{params.data.script_name}</span>
             </div>
           );
         },
       },
       {
-        headerName: "Mobile",
+        headerName: "Call Type",
         field: "mobile",
         width: 140,
         cellRendererFramework: (params) => {
@@ -58,8 +58,8 @@ class EquirtyCash extends React.Component {
         },
       },
       {
-        headerName: "Email",
-        field: "email",
+        headerName: "Active Value",
+        field: "",
         width: 140,
         cellRendererFramework: (params) => {
           return (
@@ -70,7 +70,7 @@ class EquirtyCash extends React.Component {
         },
       },
       {
-        headerName: "Master Oil Company",
+        headerName: "Enter SL",
         field: "master_oil_company",
         width: 140,
         cellRendererFramework: (params) => {
@@ -82,7 +82,7 @@ class EquirtyCash extends React.Component {
         },
       },
       {
-        headerName: "Location",
+        headerName: "Target ",
         field: "location",
         width: 140,
         cellRendererFramework: (params) => {
@@ -93,20 +93,57 @@ class EquirtyCash extends React.Component {
           );
         },
       },
+      // {
+      //   headerName: "Target 2",
+      //   field: "location",
+      //   width: 140,
+      //   cellRendererFramework: (params) => {
+      //     return (
+      //       <div className="d-flex align-items-center cursor-pointer">
+      //         <span>{params.data.location}</span>
+      //       </div>
+      //     );
+      //   },
+      // },
+      // {
+      //   headerName: "Target 3",
+      //   field: "location",
+      //   width: 140,
+      //   cellRendererFramework: (params) => {
+      //     return (
+      //       <div className="d-flex align-items-center cursor-pointer">
+      //         <span>{params.data.location}</span>
+      //       </div>
+      //     );
+      //   },
+      // },
+      // {
+      //   headerName: "Target 4",
+      //   field: "location",
+      //   width: 140,
+      //   cellRendererFramework: (params) => {
+      //     return (
+      //       <div className="d-flex align-items-center cursor-pointer">
+      //         <span>{params.data.location}</span>
+      //       </div>
+      //     );
+      //   },
+      // },
       {
-        headerName: "OMC Customer Code",
-        field: "omc_customer_code",
+        headerName: "Lots",
+        field: "state",
         width: 140,
         cellRendererFramework: (params) => {
           return (
             <div className="d-flex align-items-center cursor-pointer">
-              <span>{params.data.omc_customer_code}</span>
+              <span>{params.data.state}</span>
             </div>
           );
         },
       },
+
       {
-        headerName: "State",
+        headerName: "Quantity",
         field: "state",
         width: 140,
         cellRendererFramework: (params) => {
@@ -118,7 +155,43 @@ class EquirtyCash extends React.Component {
         },
       },
       {
-        headerName: "District",
+        headerName: "Investment Amount",
+        field: "state",
+        width: 140,
+        cellRendererFramework: (params) => {
+          return (
+            <div className="d-flex align-items-center cursor-pointer">
+              <span>{params.data.state}</span>
+            </div>
+          );
+        },
+      },
+      {
+        headerName: "Lots Price",
+        field: "district",
+        width: 140,
+        cellRendererFramework: (params) => {
+          return (
+            <div className="d-flex align-items-center cursor-pointer">
+              <span>{params.data.district}</span>
+            </div>
+          );
+        },
+      },
+      {
+        headerName: "Inversment Amount",
+        field: "district",
+        width: 140,
+        cellRendererFramework: (params) => {
+          return (
+            <div className="d-flex align-items-center cursor-pointer">
+              <span>{params.data.district}</span>
+            </div>
+          );
+        },
+      },
+      {
+        headerName: "Lots Price",
         field: "district",
         width: 140,
         cellRendererFramework: (params) => {
@@ -136,21 +209,19 @@ class EquirtyCash extends React.Component {
         cellRendererFramework: (params) => {
           return (
             <div className="actions cursor-pointer">
-              <Eye
+              {/* <Eye
                 className="mr-50"
                 size="25px"
                 color="green"
                 onClick={() =>
                   history.push(`/app/dealer/viewDealer/${params.data._id}`)
                 }
-              />
+              /> */}
               <Edit
                 className="mr-50"
                 size="25px"
                 color="blue"
-                onClick={() =>
-                  history.push(`/app/dealer/editDealer/${params.data._id}`)
-                }
+                onClick={() => history.push(`/app/trade/editDealer`)}
               />
               <Trash2
                 className="mr-50"
@@ -212,104 +283,124 @@ class EquirtyCash extends React.Component {
   render() {
     const { rowData, columnDefs, defaultColDef } = this.state;
     return (
-      <React.Fragment>
-        <Breadcrumbs
-          breadCrumbTitle="Equirty Cash List"
-          // breadCrumbParent="Forms & Tables"
-          // breadCrumbActive="Dealer List"
-        />
-        <Card className="overflow-hidden agGrid-card">
-          <CardBody className="py-0">
-            {this.state.rowData === null ? null : (
-              <div className="ag-theme-material w-100 my-2 ag-grid-table">
-                <div className="d-flex flex-wrap justify-content-between align-items-center">
-                  <div className="mb-1">
-                    <UncontrolledDropdown className="p-1 ag-dropdown">
-                      <DropdownToggle tag="div">
-                        {this.gridApi
-                          ? this.state.currenPageSize
-                          : "" * this.state.getPageSize -
-                            (this.state.getPageSize - 1)}{" "}
-                        -{" "}
-                        {this.state.rowData.length -
-                          this.state.currenPageSize * this.state.getPageSize >
-                        0
-                          ? this.state.currenPageSize * this.state.getPageSize
-                          : this.state.rowData.length}{" "}
-                        of {this.state.rowData.length}
-                        <ChevronDown className="ml-50" size={15} />
-                      </DropdownToggle>
-                      <DropdownMenu right>
-                        <DropdownItem
-                          tag="div"
-                          onClick={() => this.filterSize(20)}
+      <Row className="app-user-list">
+        <Col sm="12"></Col>
+        <Col sm="12">
+          <Card>
+            <Row className="m-2">
+              <Col>
+                <h1 col-sm-6 className="float-left">
+                  Equirty Cash List
+                </h1>
+              </Col>
+            </Row>
+            <Col className="pt-4">
+              <Route
+                render={({ history }) => (
+                  <Button
+                    className=" btn btn-success float-right"
+                    onClick={() => history.push("/app/trade/AddEquirtyCash")}
+                  >
+                    Add Equirty Cash
+                  </Button>
+                )}
+              />
+            </Col>
+
+            <CardBody className="py-0">
+              {this.state.rowData === null ? null : (
+                <div className="ag-theme-material w-100 my-2 ag-grid-table">
+                  <div className="d-flex flex-wrap justify-content-between align-items-center">
+                    <div className="mb-1">
+                      <UncontrolledDropdown className="p-1 ag-dropdown">
+                        <DropdownToggle tag="div">
+                          {this.gridApi
+                            ? this.state.currenPageSize
+                            : "" * this.state.getPageSize -
+                              (this.state.getPageSize - 1)}{" "}
+                          -{" "}
+                          {this.state.rowData.length -
+                            this.state.currenPageSize * this.state.getPageSize >
+                          0
+                            ? this.state.currenPageSize * this.state.getPageSize
+                            : this.state.rowData.length}{" "}
+                          of {this.state.rowData.length}
+                          <ChevronDown className="ml-50" size={15} />
+                        </DropdownToggle>
+                        <DropdownMenu right>
+                          <DropdownItem
+                            tag="div"
+                            onClick={() => this.filterSize(20)}
+                          >
+                            20
+                          </DropdownItem>
+                          <DropdownItem
+                            tag="div"
+                            onClick={() => this.filterSize(50)}
+                          >
+                            50
+                          </DropdownItem>
+                          <DropdownItem
+                            tag="div"
+                            onClick={() => this.filterSize(100)}
+                          >
+                            100
+                          </DropdownItem>
+                          <DropdownItem
+                            tag="div"
+                            onClick={() => this.filterSize(134)}
+                          >
+                            134
+                          </DropdownItem>
+                        </DropdownMenu>
+                      </UncontrolledDropdown>
+                    </div>
+                    <div className="d-flex flex-wrap justify-content-between mb-1">
+                      <div className="table-input mr-1">
+                        <Input
+                          placeholder="search..."
+                          onChange={(e) =>
+                            this.updateSearchQuery(e.target.value)
+                          }
+                          value={this.state.value}
+                        />
+                      </div>
+                      <div className="export-btn">
+                        <Button.Ripple
+                          color="primary"
+                          onClick={() => this.gridApi.exportDataAsCsv()}
                         >
-                          20
-                        </DropdownItem>
-                        <DropdownItem
-                          tag="div"
-                          onClick={() => this.filterSize(50)}
-                        >
-                          50
-                        </DropdownItem>
-                        <DropdownItem
-                          tag="div"
-                          onClick={() => this.filterSize(100)}
-                        >
-                          100
-                        </DropdownItem>
-                        <DropdownItem
-                          tag="div"
-                          onClick={() => this.filterSize(134)}
-                        >
-                          134
-                        </DropdownItem>
-                      </DropdownMenu>
-                    </UncontrolledDropdown>
+                          Export as CSV
+                        </Button.Ripple>
+                      </div>
+                    </div>
                   </div>
-                  <div className="d-flex flex-wrap justify-content-between mb-1">
-                    <div className="table-input mr-1">
-                      <Input
-                        placeholder="search..."
-                        onChange={(e) => this.updateSearchQuery(e.target.value)}
-                        value={this.state.value}
+                  <ContextLayout.Consumer>
+                    {(context) => (
+                      <AgGridReact
+                        gridOptions={{}}
+                        rowSelection="multiple"
+                        defaultColDef={defaultColDef}
+                        columnDefs={columnDefs}
+                        rowData={rowData}
+                        onGridReady={this.onGridReady}
+                        colResizeDefault={"shift"}
+                        animateRows={true}
+                        floatingFilter={true}
+                        pagination={true}
+                        paginationPageSize={this.state.paginationPageSize}
+                        pivotPanelShow="always"
+                        enableRtl={context.state.direction === "rtl"}
                       />
-                    </div>
-                    <div className="export-btn">
-                      <Button.Ripple
-                        color="primary"
-                        onClick={() => this.gridApi.exportDataAsCsv()}
-                      >
-                        Export as CSV
-                      </Button.Ripple>
-                    </div>
-                  </div>
+                    )}
+                  </ContextLayout.Consumer>
                 </div>
-                <ContextLayout.Consumer>
-                  {(context) => (
-                    <AgGridReact
-                      gridOptions={{}}
-                      rowSelection="multiple"
-                      defaultColDef={defaultColDef}
-                      columnDefs={columnDefs}
-                      rowData={rowData}
-                      onGridReady={this.onGridReady}
-                      colResizeDefault={"shift"}
-                      animateRows={true}
-                      floatingFilter={true}
-                      pagination={true}
-                      paginationPageSize={this.state.paginationPageSize}
-                      pivotPanelShow="always"
-                      enableRtl={context.state.direction === "rtl"}
-                    />
-                  )}
-                </ContextLayout.Consumer>
-              </div>
-            )}
-          </CardBody>
-        </Card>
-      </React.Fragment>
+              )}
+            </CardBody>
+          </Card>
+        </Col>
+      </Row>
     );
   }
 }
-export default EquirtyCash;
+export default EquirtyCashList;

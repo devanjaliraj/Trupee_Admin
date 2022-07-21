@@ -34,13 +34,13 @@ class AllTradeList extends React.Component {
     columnDefs: [
       {
         headerName: "Script Name",
-        field: "dealer_name",
+        field: "script_name",
         width: 140,
         pinned: window.innerWidth > 992 ? "left" : false,
         cellRendererFramework: (params) => {
           return (
             <div className="d-flex align-items-center cursor-pointer">
-              <span>{params.data.dealer_name}</span>
+              <span>{params.data.script_name}</span>
             </div>
           );
         },
@@ -59,7 +59,7 @@ class AllTradeList extends React.Component {
       },
       {
         headerName: "Active Value",
-        field: "email",
+        field: "",
         width: 140,
         cellRendererFramework: (params) => {
           return (

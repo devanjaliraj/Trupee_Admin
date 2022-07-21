@@ -1,28 +1,25 @@
-
 import React from "react";
 import {
+  Col,
   Row,
   Card,
   CardBody,
   Input,
   Button,
-  Col,
   UncontrolledDropdown,
   DropdownMenu,
   DropdownItem,
   DropdownToggle,
-  // CardTitle,
 } from "reactstrap";
-import axiosConfig from "../../../axiosConfig";
-// import { history } from "../../../history";
+import { Route } from "react-router-dom";
 import { AgGridReact } from "ag-grid-react";
 import { ContextLayout } from "../../../utility/context/Layout";
-import { ChevronDown, Edit } from "react-feather";
+import { ChevronDown, Trash2, Edit } from "react-feather";
+import axiosConfig from "../../../axiosConfig";
 import "../../../assets/scss/plugins/tables/_agGridStyleOverride.scss";
 // import Breadcrumbs from "../../../components/@vuexy/breadCrumbs/BreadCrumb";
-import { Route } from "react-router-dom";
 
-class termscondition extends React.Component {
+class PaidServeiceList extends React.Component {
   state = {
     rowData: [],
     paginationPageSize: 20,
@@ -34,12 +31,14 @@ class termscondition extends React.Component {
       resizable: true,
       suppressMenu: true,
     },
+
     columnDefs: [
-   
       {
-        headerName: "Descriptions",
+        headerName: "Descripiton",
         field: "desc",
-        width: 400,
+        filter: true,
+        width: 600,
+        // pinned: window.innerWidth > 992 ? "left" : false,
         cellRendererFramework: (params) => {
           return (
             <div className="d-flex align-items-center cursor-pointer">
@@ -48,34 +47,15 @@ class termscondition extends React.Component {
           );
         },
       },
-
-
-
-      // {
-      //   headerName: "Status",
-      //   field: "userverified",
-      //   // filter: true,
-      //   width: 150,
-      //   cellRendererFramework: (params) => {
-      //     return params.value === "Active" ? (
-      //       <div className="badge badge-pill badge-success">
-      //         {params.data.userverified}
-      //       </div>
-      //     ) : params.value === "Inactive" ? (
-      //       <div className="badge badge-pill badge-warning">
-      //         {params.data.userverified}
-      //       </div>
-      //     ) : null;
-      //   },
-      // },
       {
         headerName: "Actions",
         field: "sortorder",
         width: 200,
+        pinned: window.innerWidth > 992 ? "right" : false,
         cellRendererFramework: (params) => {
           return (
             <div className="actions cursor-pointer">
-              <Route
+              {/* <Route
                 render={({ history }) => (
                   <Edit
                     className="mr-50"
@@ -84,14 +64,14 @@ class termscondition extends React.Component {
                     onClick={() =>
                       history.push(
                         
-                        `/app/termscondition/EditTermCondition/${params.data._id}`
+                        `/app/premium/EditAboutUs/${params.data._id}`
                       )
                     }
                   />
                 )}
-              />
+              /> */}
 
-              {/* <Trash2
+              <Trash2
                 className="mr-50"
                 size="25px"
                 color="red"
@@ -100,28 +80,33 @@ class termscondition extends React.Component {
                   this.runthisfunction(params.data._id);
                   this.gridApi.updateRowData({ remove: selectedData });
                 }}
-              /> */}
+              />
             </div>
           );
         },
       },
     ],
   };
-  async componentDidMount() {
-    await axiosConfig.get("/admin/alltermscondition").then((response) => {
-      const rowData = response.data.data;
-      console.log(rowData);
-      this.setState({ rowData });
-    });
+  componentDidMount() {
+    axiosConfig
+      .get(`/admin/allnotification`)
+      .then((response) => {
+        let rowData = response.data.data;
+        JSON.stringify(rowData);
+        this.setState({ rowData });
+      })
+      .catch((error) => {
+        console.log(error.response);
+      });
   }
-//   async runthisfunction(id) {
-//     console.log(id);
-//     await axiosConfig
-//       .get(`/admin/deleteabout/${id}`)
-//       .then((response) => {
-//         console.log(response);
-//       });
-//   }
+  async runthisfunction(id) {
+    console.log(id);
+    await axiosConfig
+      .get(`/admin/deletenotification/${id}`)
+      .then((response) => {
+        console.log(response);
+      });
+  }
 
   onGridReady = (params) => {
     this.gridApi = params.api;
@@ -151,33 +136,30 @@ class termscondition extends React.Component {
     const { rowData, columnDefs, defaultColDef } = this.state;
     return (
       <React.Fragment>
-         {/* <Breadcrumbs
-          breadCrumbTitle="Term & Condition List"
-          breadCrumbParent="Home"
-          breadCrumbActive="Term & Condition List"
-        /> */}
+        {/* <Breadcrumbs
+          breadCrumbTitle="Notification"
+          breadCrumbParent="Forms & Tables"
+          breadCrumbActive="Notification List"/> */}
         <Card className="overflow-hidden agGrid-card">
-        <Row className="m-1">
+          <Row className="m-2">
             <Col>
-              <h1 col-sm-6 className="float-left">
-              Term & Condition List
+              <h1 sm="6" className="float-left">
+                Paid Serveice List
               </h1>
             </Col>
-          </Row>
-            <Col className="pt-4">
-                <Route
+            <Col>
+              <Route
                 render={({ history }) => (
                   <Button
-                    className=" btn btn-success float-right"
-                    onClick={() =>
-                      history.push("/app/termscondition/AddTermsCondition")}
+                    className=" btn btn-danger float-right"
+                    onClick={() => history.push("/app/premium/addPaidServeice")}
                   >
-                    Add TermConditionList
-                    </Button>
+                    Add Paid Serveice
+                  </Button>
                 )}
-              /> 
-
+              />
             </Col>
+          </Row>
           <CardBody className="py-0">
             {this.state.rowData === null ? null : (
               <div className="ag-theme-material w-100 my-2 ag-grid-table">
@@ -255,7 +237,7 @@ class termscondition extends React.Component {
                       onGridReady={this.onGridReady}
                       colResizeDefault={"shift"}
                       animateRows={true}
-                      floatingFilter={false}
+                      floatingFilter={true}
                       pagination={true}
                       paginationPageSize={this.state.paginationPageSize}
                       pivotPanelShow="always"
@@ -271,4 +253,4 @@ class termscondition extends React.Component {
     );
   }
 }
-export default termscondition;
+export default PaidServeiceList;

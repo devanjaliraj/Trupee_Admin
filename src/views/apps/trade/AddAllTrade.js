@@ -161,10 +161,10 @@ export class AddAllTrade extends Component {
                   <Input type="text" placeholder="Enter Stop Loss" />
                 </Col>
                 <Col lg="6" md="6" className="mb-2">
-                  <Label>Target 1 </Label>
+                  <Label>Target </Label>
                   <Input type="text" placeholder="Enter Target 1" />
                 </Col>{" "}
-                <Col lg="6" md="6" className="mb-2">
+                {/* <Col lg="6" md="6" className="mb-2">
                   <Label>Target 2</Label>
                   <Input type="text" placeholder="Enter Target 2" />
                 </Col>{" "}
@@ -175,7 +175,7 @@ export class AddAllTrade extends Component {
                 <Col lg="6" md="6" className="mb-2">
                   <Label>Target 4</Label>
                   <Input type="text" placeholder="Enter Target 4" />
-                </Col>
+                </Col> */}
                 <Col lg="6" md="6" className="mb-2">
                   <Label>Quantity</Label>
                   <Input type="text" placeholder="Enter Quantity" />

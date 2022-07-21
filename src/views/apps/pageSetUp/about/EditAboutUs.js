@@ -15,7 +15,7 @@ import {
 // import swal from "sweetalert";
 import { Route } from "react-router-dom";
 // import { history } from "../../../history";
-import axiosConfig from "../../../axiosConfig";
+import axiosConfig from "../../../../axiosConfig";
 
 export default class EditAboutUs extends Component {
   constructor(props) {
@@ -53,7 +53,7 @@ export default class EditAboutUs extends Component {
       .then((response) => {
         console.log(response);
         // swal("Success!", "Submitted SuccessFull!", "success");
-        this.props.history.push(`/app/about/AllaboutUs`);
+        this.props.history.push(`/app/pageSetUp/about/AllaboutUs`);
       })
       .catch((error) => {
         console.log(error.response);
@@ -90,7 +90,9 @@ export default class EditAboutUs extends Component {
                 render={({ history }) => (
                   <Button
                     className=" btn btn-danger float-right"
-                    onClick={() => history.push("/app/about/AllaboutUs")}
+                    onClick={() =>
+                      history.push("/app/pageSetUp/about/AllaboutUs")
+                    }
                   >
                     Back
                   </Button>

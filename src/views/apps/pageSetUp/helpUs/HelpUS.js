@@ -12,12 +12,12 @@ import {
   DropdownToggle,
   // CardTitle,
 } from "reactstrap";
-import axiosConfig from "../../../axiosConfig";
+import axiosConfig from "../../../../axiosConfig";
 // import { history } from "../../../history";
 import { AgGridReact } from "ag-grid-react";
-import { ContextLayout } from "../../../utility/context/Layout";
-import { ChevronDown, Trash2,  Eye } from "react-feather";
-import "../../../assets/scss/plugins/tables/_agGridStyleOverride.scss";
+import { ContextLayout } from "../../../../utility/context/Layout";
+import { ChevronDown, Trash2, Eye } from "react-feather";
+import "../../../../assets/scss/plugins/tables/_agGridStyleOverride.scss";
 // import Breadcrumbs from "../../../components/@vuexy/breadCrumbs/BreadCrumb";
 import { Route } from "react-router-dom";
 class HelpUs extends React.Component {
@@ -98,7 +98,6 @@ class HelpUs extends React.Component {
         },
       },
 
-
       {
         headerName: "Actions",
         field: "sortorder",
@@ -130,7 +129,7 @@ class HelpUs extends React.Component {
                     color="green"
                     onClick={() =>
                       history.push(
-                        `/app/helpUs/ViewHelpUs/${params.data._id}`
+                        `/app/pageSetUp/helpUs/ViewHelpUs/${params.data._id}`
                       )
                     }
                   />
@@ -162,11 +161,9 @@ class HelpUs extends React.Component {
   }
   async runthisfunction(id) {
     console.log(id);
-    await axiosConfig
-      .get(`/admin/deleteequairy/${id}`)
-      .then((response) => {
-        console.log(response);
-      });
+    await axiosConfig.get(`/admin/deleteequairy/${id}`).then((response) => {
+      console.log(response);
+    });
   }
 
   onGridReady = (params) => {
@@ -197,16 +194,16 @@ class HelpUs extends React.Component {
     const { rowData, columnDefs, defaultColDef } = this.state;
     return (
       <React.Fragment>
-         {/* <Breadcrumbs
+        {/* <Breadcrumbs
           breadCrumbTitle="HelpUs List"
           breadCrumbParent="Home"
           breadCrumbActive="HelpUs List"
         /> */}
         <Card className="overflow-hidden agGrid-card">
-        <Row className="m-1">
+          <Row className="m-1">
             <Col>
               <h1 col-sm-6 className="float-left">
-              HelpUs List
+                HelpUs List
               </h1>
             </Col>
           </Row>

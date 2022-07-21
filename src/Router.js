@@ -16,22 +16,31 @@ const ecommerceDashboard = lazy(() =>
   import("./views/dashboard/ecommerce/EcommerceDashboard")
 );
 const checkout = lazy(() => import("./views/apps/ecommerce/cart/Cart"));
-const aboutUs = lazy(() => import("./views/apps/about/AboutUs"));
-const AllaboutUs = lazy(() => import("./views/apps/about/AllaboutUs"));
-const EditAboutUs = lazy(() => import("./views/apps/about/EditAboutUs"));
+//pageSetUp//
+const aboutUs = lazy(() => import("./views/apps/pageSetUp/about/AboutUs"));
+const AllaboutUs = lazy(() =>
+  import("./views/apps/pageSetUp/about/AllaboutUs")
+);
+const EditAboutUs = lazy(() =>
+  import("./views/apps/pageSetUp/about/EditAboutUs")
+);
 
 const TermConditionList = lazy(() =>
-  import("./views/apps/termscondition/TermConditionList")
+  import("./views/apps/pageSetUp/termscondition/TermConditionList")
 );
 const AddTermsCondition = lazy(() =>
-  import("./views/apps/termscondition/AddTermsCondition")
+  import("./views/apps/pageSetUp/termscondition/AddTermsCondition")
 );
 const EditTermCondition = lazy(() =>
-  import("./views/apps/termscondition/EditTermCondition")
+  import("./views/apps/pageSetUp/termscondition/EditTermCondition")
 );
-const helpUs = lazy(() => import("./views/apps/helpUs/HelpUS"));
-const EdithelpusForm = lazy(() => import("./views/apps/helpUs/EdithelpusForm"));
-const ViewHelpUs = lazy(() => import("./views/apps/helpUs/ViewHelpUs"));
+const helpUs = lazy(() => import("./views/apps/pageSetUp/helpUs/HelpUS"));
+const EdithelpusForm = lazy(() =>
+  import("./views/apps/pageSetUp/helpUs/EdithelpusForm")
+);
+const ViewHelpUs = lazy(() =>
+  import("./views/apps/pageSetUp/helpUs/ViewHelpUs")
+);
 
 const membershipList = lazy(() =>
   import("./views/apps/membership/MembershipList")
@@ -87,6 +96,26 @@ const EditFnoEquity = lazy(() => import("./views/apps/trade/EditFnoEquity"));
 const FnoIndexList = lazy(() => import("./views/apps/trade/FnoIndexList"));
 const AddFnoIndex = lazy(() => import("./views/apps/trade/AddFnoIndex"));
 const EditFnoIndex = lazy(() => import("./views/apps/trade/EditFnoIndex"));
+
+//package//
+const PackagePlanList = lazy(() =>
+  import("./views/apps/package/PackagePlanList")
+);
+const AddPackagePlan = lazy(() =>
+  import("./views/apps/package/AddPackagePlan")
+);
+
+//FAQ//
+const FaqList = lazy(() => import("./views/apps/faq/FaqList"));
+const AddFaq = lazy(() => import("./views/apps/faq/AddFaq"));
+
+//Premium//
+const AddPaidServeice = lazy(() =>
+  import("./views/apps/premium/AddPaidServeice")
+);
+const PaidServeiceList = lazy(() =>
+  import("./views/apps/premium/PaidServeiceList")
+);
 
 // setting
 
@@ -343,6 +372,35 @@ class AppRouter extends React.Component {
               path="/app/userride/viewUserRide/:id"
               component={viewUserRide}
             /> */}
+            {/* package */}
+            <AppRoute
+              exact={true}
+              path="/app/package/packagePlanList"
+              component={PackagePlanList}
+            />
+            <AppRoute
+              exact={true}
+              path="/app/package/addPackagePlan"
+              component={AddPackagePlan}
+            />
+            {/* FAQ */}
+            <AppRoute
+              exact={true}
+              path="/app/faq/faqList"
+              component={FaqList}
+            />
+            <AppRoute exact={true} path="/app/faq/addFaq" component={AddFaq} />
+            {/* Premium */}
+            <AppRoute
+              exact={true}
+              path="/app/premium/paidServeiceList"
+              component={PaidServeiceList}
+            />
+            <AppRoute
+              exact={true}
+              path="/app/premium/addPaidServeice"
+              component={AddPaidServeice}
+            />
             {/* script */}
             <AppRoute
               exact={true}
@@ -377,7 +435,7 @@ class AppRouter extends React.Component {
             />
             <AppRoute
               exact={true}
-              path="/app/trade/equirtyCashList"
+              path="/app/trade/equityCashList"
               component={EquirtyCashList}
             />
             <AppRoute
@@ -404,6 +462,16 @@ class AppRouter extends React.Component {
               exact={true}
               path="/app/trade/editFnoEquity"
               component={EditFnoEquity}
+            />
+            <AppRoute
+              exact={true}
+              path="/app/trade/fnoIndexList"
+              component={FnoIndexList}
+            />
+            <AppRoute
+              exact={true}
+              path="/app/trade/editFnoIndex"
+              component={EditFnoIndex}
             />
             <AppRoute
               exact={true}
@@ -443,49 +511,50 @@ class AppRouter extends React.Component {
               path="/ecommerce/product-detail"
               component={productDetail}
             />
+            {/* pageSetUp */}
             <AppRoute
               exact={true}
-              path="/app/about/aboutUs"
+              path="/app/pageSetUp/about/aboutUs"
               component={aboutUs}
             />
             <AppRoute
               exact={true}
-              path="/app/about/AllaboutUs"
+              path="/app/pageSetUp/about/AllaboutUs"
               component={AllaboutUs}
             />
             <AppRoute
               exact={true}
-              path="/app/about/EditAboutUs/:id"
+              path="/app/about/pageSetUp/EditAboutUs/:id"
               component={EditAboutUs}
             />
             <AppRoute
               exact={true}
-              path="/app/termscondition/AddTermsCondition"
+              path="/app/pageSetUp/termscondition/AddTermsCondition"
               component={AddTermsCondition}
             />
             <AppRoute
               exact={true}
-              path="/app/termscondition/EditTermCondition/:id"
+              path="/app/pageSetUp/termscondition/EditTermCondition/:id"
               component={EditTermCondition}
             />
             <AppRoute
               exact={true}
-              path="/app/termscondition/TermConditionList"
+              path="/app/pageSetUp/termscondition/TermConditionList"
               component={TermConditionList}
             />
             <AppRoute
               exact={true}
-              path="/app/helpUs/HelpUs"
+              path="/app/pageSetUp/helpUs/HelpUs"
               component={helpUs}
             />
             <AppRoute
               exact={true}
-              path="/app/helpUs/EdithelpusForm/:id"
+              path="/app/pageSetUp/helpUs/EdithelpusForm/:id"
               component={EdithelpusForm}
             />
             <AppRoute
               exact={true}
-              path="/app/helpUs/ViewHelpUs/:id"
+              path="/app/pageSetUp/helpUs/ViewHelpUs/:id"
               component={ViewHelpUs}
             />
             <AppRoute

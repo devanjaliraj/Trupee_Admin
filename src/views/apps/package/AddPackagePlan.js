@@ -20,19 +20,13 @@ import axiosConfig from "../../../axiosConfig";
 
 const dealerName = [];
 
-export class AddNotification extends Component {
+export class PackagePlan extends Component {
   constructor(props) {
     super(props);
-    this.state = {
-      dealer: null,
-      desc: "",
-    };
+    this.state = {};
   }
 
   async componentDidMount() {
-    //dealer List
-    //let array =[]
-    //let obj ={}
     axiosConfig
       .get("/dealer/alldealers")
       .then((response) => {
@@ -78,21 +72,20 @@ export class AddNotification extends Component {
       .then((response) => {
         console.log(response);
         // swal("Success!", "Submitted SuccessFull!", "success");
-        this.props.history.push("/app/notification/notificationList");
+        this.props.history.push("/app/users/usersList");
       })
       .catch((error) => {
         console.log(error);
       });
   };
   render() {
-    const { dealer } = this.state;
     return (
       <div>
         <Card>
           <Row className="m-2">
             <Col>
               <h1 col-sm-6 className="float-left">
-                Add Notification
+                Add Package Plan
               </h1>
             </Col>
             <Col>
@@ -100,9 +93,7 @@ export class AddNotification extends Component {
                 render={({ history }) => (
                   <Button
                     className=" btn btn-danger float-right"
-                    onClick={() =>
-                      history.push("/app/notification/notificationList")
-                    }
+                    onClick={() => history.push("app/package/PackagePlanList")}
                   >
                     Back
                   </Button>
@@ -113,27 +104,48 @@ export class AddNotification extends Component {
           <CardBody>
             <Form className="m-1" onSubmit={this.submitHandler}>
               <Row className="mb-2">
-                <Col md="6" sm="12">
-                  <Label>Dealer List</Label>
-                  <Select
-                    isMulti
-                    type="select"
-                    name="dealer"
-                    className="React"
-                    classNamePrefix="select"
-                    options={dealerName}
-                    value={dealer}
-                    onChange={this.handleChange}
+                {/* <Col lg="6" md="6" className="mb-2">
+                  <Label>User ID</Label>
+                  <Input
+                    type="text"
+                    placeholder="Enter User Id"
+                    // name="desc"
+                    // value={this.state.desc}
+                    // onChange={this.changeHandler}
+                  />
+                </Col> */}
+
+                <Col lg="6" md="6" className="mb-2">
+                  <Label for="exampleSelect">Package Plan</Label>
+                  <Input id="exampleSelect" name="select" type="select">
+                    <option>Select Plan</option>
+                    <option>FREE PLAN</option>
+                    <option>1 Month</option>
+                    <option>3 Month</option>
+                    <option>6 Month</option>
+                    <option>1 Year</option>
+                  </Input>
+                </Col>
+                <Col lg="6" md="6" className="mb-2">
+                  <Label>MRP Price</Label>
+                  <Input
+                    type="text"
+                    placeholder="Enter MRP Price"
+
+                    // name="desc"
+                    // value={this.state.desc}
+                    // onChange={this.changeHandler}
                   />
                 </Col>
-
-                <Col lg="12" md="12" className="mb-2">
-                  <Label>Descripiton</Label>
+                <Col lg="6" md="6" className="mb-2">
+                  <Label>Discount Price</Label>
                   <Input
-                    type="textarea"
-                    name="desc"
-                    value={this.state.desc}
-                    onChange={this.changeHandler}
+                    type="text"
+                    placeholder="Enter Discount Price"
+
+                    // name="desc"
+                    // value={this.state.desc}
+                    // onChange={this.changeHandler}
                   />
                 </Col>
               </Row>
@@ -143,7 +155,7 @@ export class AddNotification extends Component {
                   type="submit"
                   color="primary"
                 >
-                  Add Notification List
+                  Add Package Plan
                 </Button.Ripple>
               </Row>
             </Form>
@@ -153,4 +165,4 @@ export class AddNotification extends Component {
     );
   }
 }
-export default AddNotification;
+export default PackagePlan;
