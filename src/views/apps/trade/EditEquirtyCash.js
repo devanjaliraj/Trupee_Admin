@@ -98,10 +98,10 @@ class EditEquirtyCash extends React.Component {
                   <Label>SL</Label>
                   <Input type="text" placeholder="Enter Stop Loss" />
                 </Col>
-                <Col lg="6" md="6" className="mb-2">
+                {/* <Col lg="6" md="6" className="mb-2">
                   <Label>Target </Label>
                   <Input type="text" placeholder="Enter Target 1" />
-                </Col>{" "}
+                </Col>{" "} */}
                 {/* <Col lg="6" md="6" className="mb-2">
                   <Label>Target 2</Label>
                   <Input type="text" placeholder="Enter Target 2" />

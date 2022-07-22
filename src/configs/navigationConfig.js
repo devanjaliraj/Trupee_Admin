@@ -93,12 +93,6 @@ const navigationConfig = [
     permissions: ["admin", "editor"],
     navLink: "/app/package/packagePlanList",
   },
-  // {
-  //     id:   "services",
-  //     title: "Services",
-  //     type: "collapse",
-  //     icon: <Icon.User size={20} />,
-  //     children: [
   {
     id: "paidServeiceList",
     title: "Paid Serveice Content",
@@ -115,115 +109,6 @@ const navigationConfig = [
     permissions: ["admin", "editor"],
     navLink: "/app/faq/faqList",
   },
-  // {
-  //   id: "referRalWalletBalance",
-  //   title: "refer RalWallet Balance",
-  //   type: "item",
-  //   icon: <Icon.Circle size={12} />,
-  //   permissions: ["admin", "editor"],
-  //   navLink: "/app/trade/referralWalletBalance",
-  // },
-  // {
-  //   id: "haveAPromoCode",
-  //   title: "Have A Promo Code",
-  //   type: "item",
-  //   icon: <Icon.Circle size={12} />,
-  //   permissions: ["admin", "editor"],
-  //   navLink: "/app/trade/haveAPromoCode",
-  // },
-  //   ],
-  // },
-
-  // {
-  //   id: "traningVideoList",
-  //   title: "Traning Video List ",
-  //   type: "item",
-  //   icon: <Icon.User size={20} />,
-  //   permissions: ["admin", "editor"],
-  //   navLink: "/app/traningvideo/traningVideoList",
-  // },
-
-  // {
-  //   id: "generalUpdates",
-  //   title: "General Updates",
-  //   type: "collapse",
-  //   icon: <Icon.User size={20} />,
-  //   children: [
-  //     {
-  //       id: "textInsert",
-  //       title: "Text Insert ",
-  //       type: "item",
-  //       icon: <Icon.Circle size={12} />,
-  //       permissions: ["admin", "editor"],
-  //       navLink: "/app/generalUpdates/textInsert",
-  //     },
-  //     {
-  //       id: "image",
-  //       title: "Image",
-  //       type: "item",
-  //       icon: <Icon.Circle size={12} />,
-  //       permissions: ["admin", "editor"],
-  //       navLink: "/app/generalUpdates/image",
-  //     },
-  //   ],
-  // },
-  // {
-  //   id: "fnoIndex",
-  //   title: "FNO Index ",
-  //   type: "collapse",
-  //   icon: <Icon.User size={20} />,
-  //   children: [
-  //     {
-  //       id: "nifty50",
-  //       title: "NIFTY50",
-  //       type: "item",
-  //       icon: <Icon.Circle size={12} />,
-  //       permissions: ["admin", "editor"],
-  //       navLink: "/app/fnoIndex/nifty50",
-  //     },
-  //     {
-  //       id: "banknifty",
-  //       title: "BANKNIFTY",
-  //       type: "item",
-  //       icon: <Icon.Circle size={12} />,
-  //       permissions: ["admin", "editor"],
-  //       navLink: "/app/fnoIndex/banknifty",
-  //     },
-  //   ],
-  // },
-  // {
-  //   id: "fnoOption",
-  //   title: "FNO Options",
-  //   type: "collapse",
-  //   icon: <Icon.User size={20} />,
-  //   children: [
-  //     {
-  //       id: "optionScripts",
-  //       title: "Option Scripts",
-  //       type: "item",
-  //       icon: <Icon.Circle size={12} />,
-  //       permissions: ["admin", "editor"],
-  //       navLink: "/app/fnoOption/optionScripts",
-  //     },
-  //   ],
-  // },
-  // {
-  //   id: "cashQuity",
-  //   title: "Cash Quity ",
-  //   type: "collapse",
-  //   icon: <Icon.User size={20} />,
-  //   children: [
-  //     {
-  //       id: "equityScripts",
-  //       title: "Equity Scripts",
-  //       type: "item",
-  //       icon: <Icon.Circle size={12} />,
-  //       permissions: ["admin", "editor"],
-  //       navLink: "/app/cashQuity/equityScripts",
-  //     },
-  //   ],
-  // },
-
   {
     id: "notification",
     title: "Notification",
@@ -239,6 +124,30 @@ const navigationConfig = [
         navLink: "/app/notification/notificationList",
       },
     ],
+  },
+  {
+    id: "subplan",
+    title: "Subscription ",
+    type: "collapse",
+    icon: <Icon.User size={20} />,
+    children: [
+      {
+        id: "SubPlanVideos",
+        title: "Plan Video ",
+        type: "item",
+        icon: <Icon.Circle size={12} />,
+        permissions: ["admin", "editor"],
+        navLink: "/app/subplan/SubPlanVideos",
+      },
+    ],
+  },
+  {
+    id: "feedbackList",
+    title: "Feedback List ",
+    type: "item",
+    icon: <Icon.Circle size={12} />,
+    permissions: ["admin", "editor"],
+    navLink: "/app/feedback/feedbackList",
   },
   {
     id: "pageSetUP",

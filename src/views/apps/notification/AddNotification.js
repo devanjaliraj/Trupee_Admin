@@ -114,7 +114,7 @@ export class AddNotification extends Component {
             <Form className="m-1" onSubmit={this.submitHandler}>
               <Row className="mb-2">
                 <Col md="6" sm="12">
-                  <Label>Dealer List</Label>
+                  <Label>Name</Label>
                   <Select
                     isMulti
                     type="select"

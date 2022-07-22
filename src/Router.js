@@ -16,6 +16,10 @@ const ecommerceDashboard = lazy(() =>
   import("./views/dashboard/ecommerce/EcommerceDashboard")
 );
 const checkout = lazy(() => import("./views/apps/ecommerce/cart/Cart"));
+
+// feedback //
+const FeedBackList = lazy(() => import("./views/apps/feedback/FeedBackList"));
+
 //pageSetUp//
 const aboutUs = lazy(() => import("./views/apps/pageSetUp/about/AboutUs"));
 const AllaboutUs = lazy(() =>
@@ -65,6 +69,8 @@ const subplanvideos = lazy(() => import("./views/apps/subplan/SubPlanVideos"));
 const editSubplanvideos = lazy(() =>
   import("./views/apps/subplan/EditSubplanvideos")
 );
+const addPlan = lazy(() => import("./views/apps/subplan/AddPlan"));
+
 // user//
 const UsersList = lazy(() => import("./views/apps/users/UsersList"));
 const AddUsers = lazy(() => import("./views/apps/users/AddUsers"));
@@ -390,6 +396,12 @@ class AppRouter extends React.Component {
               component={FaqList}
             />
             <AppRoute exact={true} path="/app/faq/addFaq" component={AddFaq} />
+            {/* FeedBack */}
+            <AppRoute
+              exact={true}
+              path="/app/feedback/FeedBackList"
+              component={FeedBackList}
+            />
             {/* Premium */}
             <AppRoute
               exact={true}
@@ -494,6 +506,11 @@ class AppRouter extends React.Component {
               exact={true}
               path="/app/subplan/subplanvideos"
               component={subplanvideos}
+            />
+            <AppRoute
+              exact={true}
+              path="/app/subplan/addPlan"
+              component={addPlan}
             />
             <AppRoute
               exact={true}
