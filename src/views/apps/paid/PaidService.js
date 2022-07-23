@@ -19,7 +19,7 @@ import axiosConfig from "../../../axiosConfig";
 import "../../../assets/scss/plugins/tables/_agGridStyleOverride.scss";
 // import Breadcrumbs from "../../../components/@vuexy/breadCrumbs/BreadCrumb";
 
-class NotificationList extends React.Component {
+class PaidServeice extends React.Component {
   state = {
     rowData: [],
     paginationPageSize: 20,
@@ -34,10 +34,10 @@ class NotificationList extends React.Component {
 
     columnDefs: [
       {
-        headerName: "Title",
+        headerName: "User Name",
         field: "desc",
         // filter: true,
-        width: 250,
+        width: 140,
         // pinned: window.innerWidth > 992 ? "left" : false,
         cellRendererFramework: (params) => {
           return (
@@ -48,10 +48,10 @@ class NotificationList extends React.Component {
         },
       },
       {
-        headerName: "Descripiton",
+        headerName: "Mobile No.",
         field: "desc",
         // filter: true,
-        width: 250,
+        width: 140,
         // pinned: window.innerWidth > 992 ? "left" : false,
         cellRendererFramework: (params) => {
           return (
@@ -62,10 +62,10 @@ class NotificationList extends React.Component {
         },
       },
       {
-        headerName: "Image",
+        headerName: "Paid Service Name",
         field: "desc",
         // filter: true,
-        width: 250,
+        width: 160,
         // pinned: window.innerWidth > 992 ? "left" : false,
         cellRendererFramework: (params) => {
           return (
@@ -73,12 +73,57 @@ class NotificationList extends React.Component {
               <span>{params.data.desc}</span>
             </div>
           );
+        },
+      },
+      {
+        headerName: "Start Date",
+        field: "desc",
+        // filter: true,
+        width: 140,
+        // pinned: window.innerWidth > 992 ? "left" : false,
+        cellRendererFramework: (params) => {
+          return (
+            <div className="d-flex align-items-center cursor-pointer">
+              <span>{params.data.desc}</span>
+            </div>
+          );
+        },
+      },
+      {
+        headerName: "Expiry Date",
+        field: "desc",
+        // filter: true,
+        width: 140,
+        // pinned: window.innerWidth > 992 ? "left" : false,
+        cellRendererFramework: (params) => {
+          return (
+            <div className="d-flex align-items-center cursor-pointer">
+              <span>{params.data.desc}</span>
+            </div>
+          );
+        },
+      },
+      {
+        headerName: "Status",
+        field: "completed",
+        // filter: completed,
+        width: 140,
+        cellRendererFramework: (params) => {
+          return params.value === "Active" ? (
+            <div className="badge badge-pill badge-success">
+              {params.data.completed}
+            </div>
+          ) : params.value === "Inactive" ? (
+            <div className="badge badge-pill badge-warning">
+              {params.data.completed}
+            </div>
+          ) : null;
         },
       },
       {
         headerName: "Actions",
         field: "sortorder",
-        width: 250,
+        width: 140,
         // pinned: window.innerWidth > 992 ? "right" : false,
         cellRendererFramework: (params) => {
           return (
@@ -92,7 +137,7 @@ class NotificationList extends React.Component {
                     onClick={() =>
                       history.push(
                         
-                        `/app/about/EditAboutUs/${params.data._id}`
+                        `/app/premium/EditAboutUs/${params.data._id}`
                       )
                     }
                   />
@@ -172,23 +217,21 @@ class NotificationList extends React.Component {
           <Row className="m-2">
             <Col>
               <h1 sm="6" className="float-left">
-                Notification List
+                Paid Serveice List
               </h1>
             </Col>
-            <Col>
+            {/* <Col>
               <Route
                 render={({ history }) => (
                   <Button
                     className=" btn btn-danger float-right"
-                    onClick={() =>
-                      history.push("/app/notification/Addnotification")
-                    }
+                    onClick={() => history.push("/app/premium/addPaidServeice")}
                   >
-                    Add Notification
+                    Add Paid Serveice
                   </Button>
                 )}
               />
-            </Col>
+            </Col> */}
           </Row>
           <CardBody className="py-0">
             {this.state.rowData === null ? null : (
@@ -283,4 +326,4 @@ class NotificationList extends React.Component {
     );
   }
 }
-export default NotificationList;
+export default PaidServeice;

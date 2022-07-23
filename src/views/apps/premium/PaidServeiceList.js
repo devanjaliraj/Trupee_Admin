@@ -36,7 +36,7 @@ class PaidServeiceList extends React.Component {
       {
         headerName: "Descripiton",
         field: "desc",
-        filter: true,
+        // filter: true,
         width: 600,
         // pinned: window.innerWidth > 992 ? "left" : false,
         cellRendererFramework: (params) => {
@@ -49,7 +49,7 @@ class PaidServeiceList extends React.Component {
       },
       {
         headerName: "Actions",
-        field: "sortorder",
+        // field: "sortorder",
         width: 200,
         pinned: window.innerWidth > 992 ? "right" : false,
         cellRendererFramework: (params) => {

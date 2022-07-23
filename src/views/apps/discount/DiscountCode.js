@@ -8,6 +8,7 @@ import {
   Input,
   Label,
   Button,
+  AccordionToggle,
   // FormGroup,
   // CustomInput,
 } from "reactstrap";
@@ -17,10 +18,11 @@ import Select from "react-select";
 // import axiosConfig from "../../../../axiosConfig";
 // import swal from "sweetalert";
 import axiosConfig from "../../../axiosConfig";
+import { Accordion } from "react-bootstrap-accordion";
 
 const dealerName = [];
 
-export class PackagePlan extends Component {
+export class DiscountCode extends Component {
   constructor(props) {
     super(props);
     this.state = {};
@@ -85,7 +87,7 @@ export class PackagePlan extends Component {
           <Row className="m-2">
             <Col>
               <h1 col-sm-6 className="float-left">
-                Add Membership Plan
+                Add Discount Code
               </h1>
             </Col>
             <Col>
@@ -116,18 +118,20 @@ export class PackagePlan extends Component {
                 </Col> */}
 
                 <Col lg="6" md="6" className="mb-2">
-                  <Label for="exampleSelect">Package Plan</Label>
-                  <Input id="exampleSelect" name="select" type="select">
-                    <option>Select Plan</option>
-                    <option>FREE PLAN</option>
-                    <option>1 Month</option>
-                    <option>3 Month</option>
-                    <option>6 Month</option>
-                    <option>1 Year</option>
-                  </Input>
+                  {/* <Accordion.Toggle as={Button} variant="link" eventKey="0">
+                    Panel 1
+                  </Accordion.Toggle> */}
+                  <Accordion>
+                    <Label for="exampleSelect">Code</Label>
+                    <Input id="exampleSelect" name="select" type="select">
+                      <option>Select Option</option>
+                      <option>FALT </option>
+                      <option>Percentage</option>
+                    </Input>
+                  </Accordion>
                 </Col>
                 <Col lg="6" md="6" className="mb-2">
-                  <Label>MRP Price</Label>
+                  <Label>Title</Label>
                   <Input
                     type="text"
                     placeholder="Enter MRP Price"
@@ -138,7 +142,7 @@ export class PackagePlan extends Component {
                   />
                 </Col>
                 <Col lg="6" md="6" className="mb-2">
-                  <Label>Discount Price</Label>
+                  <Label>Start Date</Label>
                   <Input
                     type="text"
                     placeholder="Enter Discount Price"
@@ -148,6 +152,14 @@ export class PackagePlan extends Component {
                     // onChange={this.changeHandler}
                   />
                 </Col>
+                <Col lg="6" md="6" className="mb-2">
+                  <Label>Expiry Date</Label>
+                  <Input type="text" placeholder="Enter Discount Price" />
+                </Col>
+                <Col lg="6" md="6" className="mb-2">
+                  <Label>Discount Code</Label>
+                  <Input readOnly type="text" placeholder="code" />
+                </Col>
               </Row>
               <Row>
                 <Button.Ripple
@@ -155,7 +167,7 @@ export class PackagePlan extends Component {
                   type="submit"
                   color="primary"
                 >
-                  Add Membership Plan
+                  Add Discount Code
                 </Button.Ripple>
               </Row>
             </Form>
@@ -165,4 +177,4 @@ export class PackagePlan extends Component {
     );
   }
 }
-export default PackagePlan;
+export default DiscountCode;

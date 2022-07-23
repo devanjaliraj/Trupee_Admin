@@ -15,7 +15,11 @@ const analyticsDashboard = lazy(() =>
 const ecommerceDashboard = lazy(() =>
   import("./views/dashboard/ecommerce/EcommerceDashboard")
 );
+
 const checkout = lazy(() => import("./views/apps/ecommerce/cart/Cart"));
+
+//Discount Code//
+const DiscountCode = lazy(() => import("./views/apps/discount/DiscountCode"));
 
 // feedback //
 const FeedBackList = lazy(() => import("./views/apps/feedback/FeedBackList"));
@@ -76,6 +80,10 @@ const UsersList = lazy(() => import("./views/apps/users/UsersList"));
 const AddUsers = lazy(() => import("./views/apps/users/AddUsers"));
 const EditUsers = lazy(() => import("./views/apps/users/EditUsers"));
 // const ViewUsers = lazy(() => import("./views/apps/users/ViewUsers"));
+// userNotification//
+const UserNotification = lazy(() =>
+  import("./views/apps/userNotif/UserNotification")
+);
 
 // script//
 const ScriptList = lazy(() => import("./views/apps/script/ScriptList"));
@@ -123,6 +131,28 @@ const PaidServeiceList = lazy(() =>
   import("./views/apps/premium/PaidServeiceList")
 );
 
+// Appreciation//
+const AddShowAppreciation = lazy(() =>
+  import("./views/apps/showAppre/AddShowAppreciation")
+);
+const EditShowAppreciation = lazy(() =>
+  import("./views/apps/showAppre/EditShowAppreciation")
+);
+const ShowAppreciation = lazy(() =>
+  import("./views/apps/showAppre/ShowAppreciation")
+);
+const UserAppreciation = lazy(() =>
+  import("./views/apps/showAppre/UserAppreciation")
+);
+// Explore//
+const TrupeeUnivercity = lazy(() =>
+  import("./views/apps/explore/Trupee/TrupeeUnivercity")
+);
+const StartUp = lazy(() => import("./views/apps/explore/Trupee/StartUp"));
+const RefferEarn = lazy(() => import("./views/apps/explore/Trupee/RefferEarn"));
+
+// Paid//
+const PaidServeice = lazy(() => import("./views/apps/paid/PaidService"));
 // setting
 
 const enquiryForm = lazy(() => import("./views/apps/setting/EnquiryForm"));
@@ -357,6 +387,12 @@ class AppRouter extends React.Component {
               path="/ecommerce-dashboard"
               component={ecommerceDashboard}
             />
+            {/* paid */}
+            <AppRoute
+              exact={true}
+              path="/app/paid/paidServeice"
+              component={PaidServeice}
+            />
             {/* user */}
             <AppRoute
               exact={true}
@@ -500,6 +536,55 @@ class AppRouter extends React.Component {
               exact={true}
               path="/email"
               component={() => <Redirect to="/email/inbox" />}
+            />
+            {/* Appreciation */}
+            <AppRoute
+              exact={true}
+              path="/app/showAppre/addShowAppreciation"
+              component={AddShowAppreciation}
+            />
+            <AppRoute
+              exact={true}
+              path="/app/showAppre/editShowAppreciation"
+              component={EditShowAppreciation}
+            />
+            <AppRoute
+              exact={true}
+              path="/app/showAppre/showAppreciation"
+              component={ShowAppreciation}
+            />
+            <AppRoute
+              exact={true}
+              path="/app/showAppre/userAppreciation"
+              component={UserAppreciation}
+            />
+            {/* DiscountCode */}
+            <AppRoute
+              exact={true}
+              path="/app/discount/discountCode"
+              component={DiscountCode}
+            />
+            {/*userNotification*/}
+            <AppRoute
+              exact={true}
+              path="/app/userNotif/userNotification"
+              component={UserNotification}
+            />
+            {/* Explore */}
+            <AppRoute
+              exact={true}
+              path="/app/explore/Trupee/trupeeUnivercity"
+              component={TrupeeUnivercity}
+            />
+            <AppRoute
+              exact={true}
+              path="/app/explore/Trupee/startUp"
+              component={StartUp}
+            />
+            <AppRoute
+              exact={true}
+              path="/app/explore/Trupee/refferEarn"
+              component={RefferEarn}
             />
             {/* my componet */}
             <AppRoute

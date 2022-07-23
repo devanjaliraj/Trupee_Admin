@@ -44,7 +44,7 @@ class ScriptList extends React.Component {
         // headerCheckboxSelection: true,
       },
       {
-        headerName: "Equity Script",
+        headerName: "Entry Script",
         field: "userId",
         width: 200,
         // pinned: window.innerWidth > 992 ? "left" : false,

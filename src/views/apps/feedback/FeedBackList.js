@@ -144,10 +144,10 @@ class FeedBackList extends React.Component {
           <Row className="m-2">
             <Col>
               <h1 sm="6" className="float-left">
-                Notification List
+                FeedBack List
               </h1>
             </Col>
-            <Col>
+            {/* <Col>
               <Route
                 render={({ history }) => (
                   <Button
@@ -160,7 +160,7 @@ class FeedBackList extends React.Component {
                   </Button>
                 )}
               />
-            </Col>
+            </Col> */}
           </Row>
           <CardBody className="py-0">
             {this.state.rowData === null ? null : (

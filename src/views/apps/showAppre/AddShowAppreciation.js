@@ -20,13 +20,19 @@ import axiosConfig from "../../../axiosConfig";
 
 const dealerName = [];
 
-export class PackagePlan extends Component {
+export class AddShowAppreciation extends Component {
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = {
+      dealer: null,
+      desc: "",
+    };
   }
 
   async componentDidMount() {
+    //dealer List
+    //let array =[]
+    //let obj ={}
     axiosConfig
       .get("/dealer/alldealers")
       .then((response) => {
@@ -79,13 +85,14 @@ export class PackagePlan extends Component {
       });
   };
   render() {
+    const { dealer } = this.state;
     return (
       <div>
         <Card>
           <Row className="m-2">
             <Col>
               <h1 col-sm-6 className="float-left">
-                Add Membership Plan
+                Add Appreciation
               </h1>
             </Col>
             <Col>
@@ -93,7 +100,9 @@ export class PackagePlan extends Component {
                 render={({ history }) => (
                   <Button
                     className=" btn btn-danger float-right"
-                    onClick={() => history.push("app/package/PackagePlanList")}
+                    onClick={() =>
+                      history.push("/app/showAppre/showAppreciation")
+                    }
                   >
                     Back
                   </Button>
@@ -116,21 +125,10 @@ export class PackagePlan extends Component {
                 </Col> */}
 
                 <Col lg="6" md="6" className="mb-2">
-                  <Label for="exampleSelect">Package Plan</Label>
-                  <Input id="exampleSelect" name="select" type="select">
-                    <option>Select Plan</option>
-                    <option>FREE PLAN</option>
-                    <option>1 Month</option>
-                    <option>3 Month</option>
-                    <option>6 Month</option>
-                    <option>1 Year</option>
-                  </Input>
-                </Col>
-                <Col lg="6" md="6" className="mb-2">
-                  <Label>MRP Price</Label>
+                  <Label>Title </Label>
                   <Input
                     type="text"
-                    placeholder="Enter MRP Price"
+                    placeholder="Enter Mobile Number"
 
                     // name="desc"
                     // value={this.state.desc}
@@ -138,16 +136,67 @@ export class PackagePlan extends Component {
                   />
                 </Col>
                 <Col lg="6" md="6" className="mb-2">
-                  <Label>Discount Price</Label>
+                  <Label>Descripiton</Label>
                   <Input
                     type="text"
-                    placeholder="Enter Discount Price"
+                    placeholder="Enter First Name"
 
                     // name="desc"
                     // value={this.state.desc}
                     // onChange={this.changeHandler}
                   />
                 </Col>
+                {/* <Col lg="6" md="6" className="mb-2">
+                  <Label>Email ID</Label>
+                  <Input
+                    type="text"
+                    placeholder="Enter Email Id"
+
+                    // name="desc"
+                    // value={this.state.desc}
+                    // onChange={this.changeHandler}
+                  />
+                </Col> */}
+                {/* <Col lg="6" md="6" className="mb-2">
+                  <Label>Address</Label>
+                  <Input
+                    type="text"
+                    placeholder="Enter Address"
+
+                    // name="desc"
+                    // value={this.state.desc}
+                    // onChange={this.changeHandler}
+                  />
+                </Col>
+                <Col lg="6" md="6" className="mb-2">
+                  <Label>Package Name</Label>
+                  <Input
+                    type="text"
+                    placeholder="Enter Package Name"
+
+                    // name="desc"
+                    // value={this.state.desc}
+                    // onChange={this.changeHandler}
+                  />
+                </Col>
+                <Col lg="6" md="6" className="mb-2">
+                  <Label>Start Date</Label>
+                  <Input
+                    type="date"
+                    // name="desc"
+                    // value={this.state.desc}
+                    // onChange={this.changeHandler}
+                  />
+                </Col>
+                <Col lg="6" md="6" className="mb-2">
+                  <Label>Expiry Date</Label>
+                  <Input
+                    type="date"
+                    // name="desc"
+                    // value={this.state.desc}
+                    // onChange={this.changeHandler}
+                  />
+                </Col> */}
               </Row>
               <Row>
                 <Button.Ripple
@@ -155,7 +204,7 @@ export class PackagePlan extends Component {
                   type="submit"
                   color="primary"
                 >
-                  Add Membership Plan
+                  Add Appreciation
                 </Button.Ripple>
               </Row>
             </Form>
@@ -165,4 +214,4 @@ export class PackagePlan extends Component {
     );
   }
 }
-export default PackagePlan;
+export default AddShowAppreciation;

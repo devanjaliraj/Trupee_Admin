@@ -20,7 +20,7 @@ import { ChevronDown, Trash2, Edit } from "react-feather";
 import "../../../assets/scss/plugins/tables/_agGridStyleOverride.scss";
 // import Breadcrumbs from "../../../components/@vuexy/breadCrumbs/BreadCrumb";
 import { Route } from "react-router-dom";
-class PackagePlanList extends React.Component {
+class UserNotification extends React.Component {
   state = {
     rowData: [],
     paginationPageSize: 20,
@@ -37,85 +37,145 @@ class PackagePlanList extends React.Component {
         headerName: "S.No",
         valueGetter: "node.rowIndex + 1",
         field: "node.rowIndex + 1",
-        width: 200,
+        width: 100,
         filter: true,
         // checkboxSelection: true,
         // headerCheckboxSelectionFilteredOnly: true,
         // headerCheckboxSelection: true,
       },
       {
-        headerName: "Package Plan",
-        field: "userId",
-        width: 200,
+        headerName: "User Name",
+        field: "dealer_name",
+        width: 180,
         // pinned: window.innerWidth > 992 ? "left" : false,
         cellRendererFramework: (params) => {
           return (
             <div className="d-flex align-items-center cursor-pointer">
-              <span>{params.data.userId}</span>
+              <span>{params.data.dealer_name}</span>
             </div>
           );
         },
       },
       {
-        headerName: "MRP Price",
-        field: "title",
-        width: 200,
+        headerName: "Mobile",
+        field: "mobile",
+        width: 180,
         cellRendererFramework: (params) => {
           return (
             <div className="d-flex align-items-center cursor-pointer">
-              <span>{params.data.title}</span>
+              <span>{params.data.mobile}</span>
             </div>
           );
         },
       },
       {
-        headerName: "Discount Price",
-        field: "title",
-        width: 200,
+        headerName: "Date/Time",
+        field: "first_name",
+        width: 180,
         cellRendererFramework: (params) => {
           return (
             <div className="d-flex align-items-center cursor-pointer">
-              <span>{params.data.title}</span>
+              <span>{params.data.master_oil_company?.name}</span>
             </div>
           );
         },
       },
+      //   {
+      //     headerName: "Email",
+      //     field: "email",
+      //     width: 180,
+      //     cellRendererFramework: (params) => {
+      //       return (
+      //         <div className="d-flex align-items-center cursor-pointer">
+      //           <span>{params.data.email}</span>
+      //         </div>
+      //       );
+      //     },
+      //   },
 
       {
-        headerName: "Status",
-        field: "completed",
-        // filter: completed,
-        width: 200,
+        headerName: "Image",
+        field: "state",
+        width: 180,
         cellRendererFramework: (params) => {
-          return params.value === "Active" ? (
-            <div className="badge badge-pill badge-success">
-              {params.data.completed}
+          return (
+            <div className="d-flex align-items-center cursor-pointer">
+              <span>{params.data.state}</span>
             </div>
-          ) : params.value === "Inactive" ? (
-            <div className="badge badge-pill badge-warning">
-              {params.data.completed}
-            </div>
-          ) : null;
+          );
         },
       },
+      //   {
+      //     headerName: "City",
+      //     field: "district",
+      //     width: 180,
+      //     cellRendererFramework: (params) => {
+      //       return (
+      //         <div className="d-flex align-items-center cursor-pointer">
+      //           <span>{params.data.district}</span>
+      //         </div>
+      //       );
+      //     },
+      //   },
+      //   {
+      //     headerName: "Start Date",
+      //     field: "district",
+      //     width: 180,
+      //     cellRendererFramework: (params) => {
+      //       return (
+      //         <div className="d-flex align-items-center cursor-pointer">
+      //           <span>{params.data.district}</span>
+      //         </div>
+      //       );
+      //     },
+      //   },
+      //   {
+      //     headerName: "Expiry Date",
+      //     field: "district",
+      //     width: 180,
+      //     cellRendererFramework: (params) => {
+      //       return (
+      //         <div className="d-flex align-items-center cursor-pointer">
+      //           <span>{params.data.district}</span>
+      //         </div>
+      //       );
+      //     },
+      //   },
+      //   // {
+      //   //   headerName: "Status",
+      //   //   field: "userverified",
+      //   //   // filter: true,
+      //   //   width: 150,
+      //   //   cellRendererFramework: (params) => {
+      //   //     return params.value === "Active" ? (
+      //   //       <div className="badge badge-pill badge-success">
+      //   //         {params.data.userverified}
+      //   //       </div>
+      //   //     ) : params.value === "Inactive" ? (
+      //   //       <div className="badge badge-pill badge-warning">
+      //   //         {params.data.userverified}
+      //   //       </div>
+      //   //     ) : null;
+      //   //   },
+      //   // },
       {
         headerName: "Actions",
         field: "sortorder",
-        width: 220,
+        width: 180,
         // pinned: window.innerWidth > 992 ? "right" : false,
         cellRendererFramework: (params) => {
           return (
             <div className="actions cursor-pointer">
-              <Route
+              {/* <Route
                 render={({ history }) => (
                   <Edit
                     className="mr-50"
                     size="25px"
                     color="blue"
-                    onClick={() => history.push(`/app/package/editScript`)}
+                    onClick={() => history.push(`/app/users/editUsers`)}
                   />
                 )}
-              />
+              /> */}
 
               <Trash2
                 className="mr-50"
@@ -134,14 +194,11 @@ class PackagePlanList extends React.Component {
     ],
   };
   async componentDidMount() {
-    await axios
-      .get("https://jsonplaceholder.typicode.com/todos")
-      .then((response) => {
-        let rowData = response.data;
-        this.setState({ rowData });
-      });
+    await axios.get("api/users/list").then((response) => {
+      let rowData = response.data;
+      this.setState({ rowData });
+    });
   }
-
   async runthisfunction(id) {
     console.log(id);
     await axiosConfig
@@ -185,22 +242,22 @@ class PackagePlanList extends React.Component {
             <Row className="m-2">
               <Col>
                 <h1 col-sm-6 className="float-left">
-                  Membership Plan List
+                  User Notificarion List
                 </h1>
               </Col>
             </Row>
-            <Col className="pt-4">
+            {/* <Col className="pt-4">
               <Route
                 render={({ history }) => (
                   <Button
                     className=" btn btn-success float-right"
-                    onClick={() => history.push("/app/package/addPackagePlan")}
+                    onClick={() => history.push("/app/users/addUsers")}
                   >
-                    Add Membership Plan
+                    Edit UserNotification
                   </Button>
                 )}
               />
-            </Col>
+            </Col> */}
 
             <CardBody className="py-0">
               {this.state.rowData === null ? null : (
@@ -298,4 +355,4 @@ class PackagePlanList extends React.Component {
     );
   }
 }
-export default PackagePlanList;
+export default UserNotification;

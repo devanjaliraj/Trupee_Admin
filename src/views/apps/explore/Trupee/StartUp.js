@@ -13,13 +13,13 @@ import {
 } from "reactstrap";
 import { Route } from "react-router-dom";
 import { AgGridReact } from "ag-grid-react";
-import { ContextLayout } from "../../../utility/context/Layout";
+import { ContextLayout } from "../../../../utility/context/Layout";
 import { ChevronDown, Trash2, Edit } from "react-feather";
-import axiosConfig from "../../../axiosConfig";
-import "../../../assets/scss/plugins/tables/_agGridStyleOverride.scss";
+import axiosConfig from "../../../../axiosConfig";
+import "../../../../assets/scss/plugins/tables/_agGridStyleOverride.scss";
 // import Breadcrumbs from "../../../components/@vuexy/breadCrumbs/BreadCrumb";
 
-class NotificationList extends React.Component {
+class StartUp extends React.Component {
   state = {
     rowData: [],
     paginationPageSize: 20,
@@ -62,7 +62,7 @@ class NotificationList extends React.Component {
         },
       },
       {
-        headerName: "Image",
+        headerName: "Upload Image",
         field: "desc",
         // filter: true,
         width: 250,
@@ -75,6 +75,34 @@ class NotificationList extends React.Component {
           );
         },
       },
+      //   {
+      //     headerName: "Date",
+      //     field: "desc",
+      //     // filter: true,
+      //     width: 250,
+      //     // pinned: window.innerWidth > 992 ? "left" : false,
+      //     cellRendererFramework: (params) => {
+      //       return (
+      //         <div className="d-flex align-items-center cursor-pointer">
+      //           <span>{params.data.desc}</span>
+      //         </div>
+      //       );
+      //     },
+      //   },
+      //   {
+      //     headerName: "Time",
+      //     field: "desc",
+      //     // filter: true,
+      //     width: 250,
+      //     // pinned: window.innerWidth > 992 ? "left" : false,
+      //     cellRendererFramework: (params) => {
+      //       return (
+      //         <div className="d-flex align-items-center cursor-pointer">
+      //           <span>{params.data.desc}</span>
+      //         </div>
+      //       );
+      //     },
+      //   },
       {
         headerName: "Actions",
         field: "sortorder",
@@ -172,10 +200,10 @@ class NotificationList extends React.Component {
           <Row className="m-2">
             <Col>
               <h1 sm="6" className="float-left">
-                Notification List
+                StartUp List
               </h1>
             </Col>
-            <Col>
+            {/* <Col>
               <Route
                 render={({ history }) => (
                   <Button
@@ -188,7 +216,7 @@ class NotificationList extends React.Component {
                   </Button>
                 )}
               />
-            </Col>
+            </Col> */}
           </Row>
           <CardBody className="py-0">
             {this.state.rowData === null ? null : (
@@ -283,4 +311,4 @@ class NotificationList extends React.Component {
     );
   }
 }
-export default NotificationList;
+export default StartUp;

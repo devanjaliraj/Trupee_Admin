@@ -167,7 +167,7 @@ export class EditUsers extends Component {
                   />
                 </Col>
                 <Col lg="6" md="6" className="mb-2">
-                  <Label>Package Name</Label>
+                  <Label>City</Label>
                   <Input
                     type="text"
                     placeholder="Enter Package Name"

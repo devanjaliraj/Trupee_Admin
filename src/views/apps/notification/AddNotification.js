@@ -113,7 +113,7 @@ export class AddNotification extends Component {
           <CardBody>
             <Form className="m-1" onSubmit={this.submitHandler}>
               <Row className="mb-2">
-                <Col md="6" sm="12">
+                {/* <Col md="6" sm="6">
                   <Label>Name</Label>
                   <Select
                     isMulti
@@ -125,12 +125,30 @@ export class AddNotification extends Component {
                     value={dealer}
                     onChange={this.handleChange}
                   />
+                </Col> */}
+                <Col lg="6" md="6" className="mb-2">
+                  <Label>Title</Label>
+                  <Input
+                    type="text"
+                    name="desc"
+                    value={this.state.desc}
+                    onChange={this.changeHandler}
+                  />
                 </Col>
-
-                <Col lg="12" md="12" className="mb-2">
+                <Col lg="6" md="6" className="mb-2">
                   <Label>Descripiton</Label>
                   <Input
                     type="textarea"
+                    name="desc"
+                    value={this.state.desc}
+                    onChange={this.changeHandler}
+                  />
+                </Col>
+
+                <Col lg="6" md="6" className="mb-2">
+                  <Label>Image</Label>
+                  <Input
+                    type="text"
                     name="desc"
                     value={this.state.desc}
                     onChange={this.changeHandler}

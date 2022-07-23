@@ -106,7 +106,7 @@ class UsersList extends React.Component {
         },
       },
       {
-        headerName: "Package Name",
+        headerName: "City",
         field: "district",
         width: 120,
         cellRendererFramework: (params) => {
