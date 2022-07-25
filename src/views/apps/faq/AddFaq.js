@@ -262,44 +262,15 @@ export class AddFaq extends Component {
                   />
                 </Col> */}
                 <Accordion>
-                  {/* <Accordion.Item eventKey="0" className="m-4">
-                    <Accordion.Header> */}
-                  I have received a call/sms/email asking for money? 
-                  {/* </Accordion.Header>
-                    <Accordion.Body> */}
-                  We NEVER request our customers for unsolicited
-                  financial information or advance payments in exchange for
-                  rewards. Please DO NOT respond to any call/sms/email claiming
-                  to offer rewards/lucky draw prizes on behalf of Agricoin. 
-                  {/* </Accordion.Body>
-                  </Accordion.Item>
-                  <Accordion.Item eventKey="1" className="m-4">
-                    <Accordion.Header> */}
-                  What are the payment options available for my orders at
-                  Agricoin?
-                  {/* </Accordion.Header>
-                    <Accordion.Body> */}
-                  Cash-on-Delivery (COD), UPI, Net Banking. All these options
-                  are available for payment. 
-                  {/* </Accordion.Body>
-                  </Accordion.Item> */}
-                  {/* <Accordion.Item eventKey="3" className="m-4">
-                    <Accordion.Header> */}
-                  Why can’t I see the COD option on the payment page? 
-                  {/* </Accordion.Header>
-                    <Accordion.Body> */}
-                  If you do not see the COD option, then either your order value
-                  is less than Rs299 or above Rs49,999.  
-                  {/* </Accordion.Body>
-                  </Accordion.Item> */}
-                  {/* <Accordion.Item eventKey="4" className="m-4"> */}
-                  {/* <Accordion.Header>What is the COD limit?</Accordion.Header> */}
-                  {/* <Accordion.Body> */}
-                  Agricoin reserves the right to determine the COD limit for
-                  every customer and/or orders. The COD limit includes any
-                  undelivered, unpaid orders and any new orders being placed. 
-                  {/* </Accordion.Body>
-                  </Accordion.Item> */}
+                  <Col lg="12" md="12" className="mb-2">
+                    <Label>ans</Label>
+                    <Input
+                      type="text"
+                      name="desc"
+                      value={this.state.desc}
+                      onChange={this.changeHandler}
+                    />
+                  </Col>
                 </Accordion>
                 <Col lg="12" md="12" className="mb-2">
                   <Label>Descripiton</Label>

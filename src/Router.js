@@ -150,6 +150,17 @@ const TrupeeUnivercity = lazy(() =>
 );
 const StartUp = lazy(() => import("./views/apps/explore/Trupee/StartUp"));
 const RefferEarn = lazy(() => import("./views/apps/explore/Trupee/RefferEarn"));
+const TradingViewCharts = lazy(() =>
+  import("./views/apps/explore/Trupee/TradingViewCharts")
+);
+const PerformanceSheet = lazy(() =>
+  import("./views/apps/explore/Trupee/PerformanceSheet")
+);
+const Opportunity = lazy(() =>
+  import("./views/apps/explore/Trupee/Opportunity")
+);
+const AddTVC = lazy(() => import("./views/apps/explore/Trupee/AddTVC"));
+// const RefferEarn = lazy(() => import("./views/apps/explore/Trupee/RefferEarn"));
 
 // Paid//
 const PaidServeice = lazy(() => import("./views/apps/paid/PaidService"));
@@ -585,6 +596,26 @@ class AppRouter extends React.Component {
               exact={true}
               path="/app/explore/Trupee/refferEarn"
               component={RefferEarn}
+            />
+            <AppRoute
+              exact={true}
+              path="/app/explore/Trupee/addTVC"
+              component={AddTVC}
+            />
+            <AppRoute
+              exact={true}
+              path="/app/explore/Trupee/opportunity"
+              component={Opportunity}
+            />
+            <AppRoute
+              exact={true}
+              path="/app/explore/Trupee/tradingViewCharts"
+              component={TradingViewCharts}
+            />
+            <AppRoute
+              exact={true}
+              path="/app/explore/Trupee/performanceSheet"
+              component={PerformanceSheet}
             />
             {/* my componet */}
             <AppRoute

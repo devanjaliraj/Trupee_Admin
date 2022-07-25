@@ -19,7 +19,7 @@ import axiosConfig from "../../../../axiosConfig";
 import "../../../../assets/scss/plugins/tables/_agGridStyleOverride.scss";
 // import Breadcrumbs from "../../../components/@vuexy/breadCrumbs/BreadCrumb";
 
-class TrupeeUnivercity extends React.Component {
+class TradingViewCharts extends React.Component {
   state = {
     rowData: [],
     paginationPageSize: 20,
@@ -34,6 +34,20 @@ class TrupeeUnivercity extends React.Component {
 
     columnDefs: [
       {
+        headerName: "Charts",
+        field: "desc",
+        // filter: true,
+        width: 250,
+        // pinned: window.innerWidth > 992 ? "left" : false,
+        cellRendererFramework: (params) => {
+          return (
+            <div className="d-flex align-items-center cursor-pointer">
+              <span>{params.data.desc}</span>
+            </div>
+          );
+        },
+      },
+      {
         headerName: "Title",
         field: "desc",
         // filter: true,
@@ -47,22 +61,8 @@ class TrupeeUnivercity extends React.Component {
           );
         },
       },
-      // {
-      //   headerName: "Descripiton",
-      //   field: "desc",
-      //   // filter: true,
-      //   width: 250,
-      //   // pinned: window.innerWidth > 992 ? "left" : false,
-      //   cellRendererFramework: (params) => {
-      //     return (
-      //       <div className="d-flex align-items-center cursor-pointer">
-      //         <span>{params.data.desc}</span>
-      //       </div>
-      //     );
-      //   },
-      // },
       {
-        headerName: "Upload Video",
+        headerName: "Descripiton",
         field: "desc",
         // filter: true,
         width: 250,
@@ -75,34 +75,7 @@ class TrupeeUnivercity extends React.Component {
           );
         },
       },
-      {
-        headerName: "Date",
-        field: "desc",
-        // filter: true,
-        width: 250,
-        // pinned: window.innerWidth > 992 ? "left" : false,
-        cellRendererFramework: (params) => {
-          return (
-            <div className="d-flex align-items-center cursor-pointer">
-              <span>{params.data.desc}</span>
-            </div>
-          );
-        },
-      },
-      {
-        headerName: "Time",
-        field: "desc",
-        // filter: true,
-        width: 250,
-        // pinned: window.innerWidth > 992 ? "left" : false,
-        cellRendererFramework: (params) => {
-          return (
-            <div className="d-flex align-items-center cursor-pointer">
-              <span>{params.data.desc}</span>
-            </div>
-          );
-        },
-      },
+
       {
         headerName: "Actions",
         field: "sortorder",
@@ -200,7 +173,7 @@ class TrupeeUnivercity extends React.Component {
           <Row className="m-2">
             <Col>
               <h1 sm="6" className="float-left">
-                Trupee Univercity List
+                StartUp List
               </h1>
             </Col>
             {/* <Col>
@@ -311,4 +284,4 @@ class TrupeeUnivercity extends React.Component {
     );
   }
 }
-export default TrupeeUnivercity;
+export default TradingViewCharts;

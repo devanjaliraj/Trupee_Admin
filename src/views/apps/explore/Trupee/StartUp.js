@@ -33,34 +33,34 @@ class StartUp extends React.Component {
     },
 
     columnDefs: [
-      {
-        headerName: "Title",
-        field: "desc",
-        // filter: true,
-        width: 250,
-        // pinned: window.innerWidth > 992 ? "left" : false,
-        cellRendererFramework: (params) => {
-          return (
-            <div className="d-flex align-items-center cursor-pointer">
-              <span>{params.data.desc}</span>
-            </div>
-          );
-        },
-      },
-      {
-        headerName: "Descripiton",
-        field: "desc",
-        // filter: true,
-        width: 250,
-        // pinned: window.innerWidth > 992 ? "left" : false,
-        cellRendererFramework: (params) => {
-          return (
-            <div className="d-flex align-items-center cursor-pointer">
-              <span>{params.data.desc}</span>
-            </div>
-          );
-        },
-      },
+      // {
+      //   headerName: "Title",
+      //   field: "desc",
+      //   // filter: true,
+      //   width: 250,
+      //   // pinned: window.innerWidth > 992 ? "left" : false,
+      //   cellRendererFramework: (params) => {
+      //     return (
+      //       <div className="d-flex align-items-center cursor-pointer">
+      //         <span>{params.data.desc}</span>
+      //       </div>
+      //     );
+      //   },
+      // },
+      // {
+      //   headerName: "Descripiton",
+      //   field: "desc",
+      //   // filter: true,
+      //   width: 250,
+      //   // pinned: window.innerWidth > 992 ? "left" : false,
+      //   cellRendererFramework: (params) => {
+      //     return (
+      //       <div className="d-flex align-items-center cursor-pointer">
+      //         <span>{params.data.desc}</span>
+      //       </div>
+      //     );
+      //   },
+      // },
       {
         headerName: "Upload Image",
         field: "desc",
@@ -75,34 +75,34 @@ class StartUp extends React.Component {
           );
         },
       },
-      //   {
-      //     headerName: "Date",
-      //     field: "desc",
-      //     // filter: true,
-      //     width: 250,
-      //     // pinned: window.innerWidth > 992 ? "left" : false,
-      //     cellRendererFramework: (params) => {
-      //       return (
-      //         <div className="d-flex align-items-center cursor-pointer">
-      //           <span>{params.data.desc}</span>
-      //         </div>
-      //       );
-      //     },
-      //   },
-      //   {
-      //     headerName: "Time",
-      //     field: "desc",
-      //     // filter: true,
-      //     width: 250,
-      //     // pinned: window.innerWidth > 992 ? "left" : false,
-      //     cellRendererFramework: (params) => {
-      //       return (
-      //         <div className="d-flex align-items-center cursor-pointer">
-      //           <span>{params.data.desc}</span>
-      //         </div>
-      //       );
-      //     },
-      //   },
+      {
+        headerName: "Video",
+        field: "desc",
+        // filter: true,
+        width: 250,
+        // pinned: window.innerWidth > 992 ? "left" : false,
+        cellRendererFramework: (params) => {
+          return (
+            <div className="d-flex align-items-center cursor-pointer">
+              <span>{params.data.desc}</span>
+            </div>
+          );
+        },
+      },
+      {
+        headerName: "Content",
+        field: "desc",
+        // filter: true,
+        width: 250,
+        // pinned: window.innerWidth > 992 ? "left" : false,
+        cellRendererFramework: (params) => {
+          return (
+            <div className="d-flex align-items-center cursor-pointer">
+              <span>{params.data.desc}</span>
+            </div>
+          );
+        },
+      },
       {
         headerName: "Actions",
         field: "sortorder",

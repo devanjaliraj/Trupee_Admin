@@ -34,7 +34,7 @@ class Opportunity extends React.Component {
 
     columnDefs: [
       {
-        headerName: "Title",
+        headerName: "Upload Image",
         field: "desc",
         // filter: true,
         width: 250,
@@ -48,7 +48,21 @@ class Opportunity extends React.Component {
         },
       },
       {
-        headerName: "Descripiton",
+        headerName: "Video",
+        field: "desc",
+        // filter: true,
+        width: 250,
+        // pinned: window.innerWidth > 992 ? "left" : false,
+        cellRendererFramework: (params) => {
+          return (
+            <div className="d-flex align-items-center cursor-pointer">
+              <span>{params.data.desc}</span>
+            </div>
+          );
+        },
+      },
+      {
+        headerName: "Content",
         field: "desc",
         // filter: true,
         width: 250,
