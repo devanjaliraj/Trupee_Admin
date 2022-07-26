@@ -20,6 +20,8 @@ import { ChevronDown, Trash2, Edit } from "react-feather";
 import "../../../assets/scss/plugins/tables/_agGridStyleOverride.scss";
 // import Breadcrumbs from "../../../components/@vuexy/breadCrumbs/BreadCrumb";
 import { Route } from "react-router-dom";
+import moment from "moment";
+
 class UsersList extends React.Component {
   state = {
     rowData: [],
@@ -44,14 +46,13 @@ class UsersList extends React.Component {
         // headerCheckboxSelection: true,
       },
       {
-        headerName: "User ID",
-        field: "dealer_name",
+        headerName: "First Name",
+        field: "fullname",
         width: 120,
-        // pinned: window.innerWidth > 992 ? "left" : false,
         cellRendererFramework: (params) => {
           return (
             <div className="d-flex align-items-center cursor-pointer">
-              <span>{params.data.dealer_name}</span>
+              <span>{params.data.fullname}</span>
             </div>
           );
         },
@@ -68,20 +69,9 @@ class UsersList extends React.Component {
           );
         },
       },
+
       {
-        headerName: "First Name",
-        field: "first_name",
-        width: 120,
-        cellRendererFramework: (params) => {
-          return (
-            <div className="d-flex align-items-center cursor-pointer">
-              <span>{params.data.master_oil_company?.name}</span>
-            </div>
-          );
-        },
-      },
-      {
-        headerName: "Email",
+        headerName: "Email ID",
         field: "email",
         width: 120,
         cellRendererFramework: (params) => {
@@ -95,69 +85,69 @@ class UsersList extends React.Component {
 
       {
         headerName: "Address",
-        field: "state",
+        field: "address",
         width: 120,
         cellRendererFramework: (params) => {
           return (
             <div className="d-flex align-items-center cursor-pointer">
-              <span>{params.data.state}</span>
+              <span>{params.data.address}</span>
             </div>
           );
         },
       },
       {
         headerName: "City",
-        field: "district",
+        field: "city",
         width: 120,
         cellRendererFramework: (params) => {
           return (
             <div className="d-flex align-items-center cursor-pointer">
-              <span>{params.data.district}</span>
+              <span>{params.data.city}</span>
             </div>
           );
         },
       },
       {
         headerName: "Start Date",
-        field: "district",
+        field: "createdAt",
         width: 120,
         cellRendererFramework: (params) => {
           return (
             <div className="d-flex align-items-center cursor-pointer">
-              <span>{params.data.district}</span>
+              <span>{moment(params.data.createdAt).format("ll")} </span>
             </div>
           );
         },
       },
       {
         headerName: "Expiry Date",
-        field: "district",
+        field: "updatedAt",
         width: 120,
         cellRendererFramework: (params) => {
           return (
             <div className="d-flex align-items-center cursor-pointer">
-              <span>{params.data.district}</span>
+              <span>{moment(params.data.updatedAt).format("ll")} </span>
             </div>
           );
         },
       },
-      // {
-      //   headerName: "Status",
-      //   field: "userverified",
-      //   // filter: true,
-      //   width: 150,
-      //   cellRendererFramework: (params) => {
-      //     return params.value === "Active" ? (
-      //       <div className="badge badge-pill badge-success">
-      //         {params.data.userverified}
-      //       </div>
-      //     ) : params.value === "Inactive" ? (
-      //       <div className="badge badge-pill badge-warning">
-      //         {params.data.userverified}
-      //       </div>
-      //     ) : null;
-      //   },
-      // },
+      {
+        headerName: "Status",
+        field: "status",
+        filter: true,
+        width: 150,
+        cellRendererFramework: (params) => {
+          return params.value === "Active" ? (
+            <div className="badge badge-pill badge-success">
+              {params.data.status}
+            </div>
+          ) : params.value === "Deactive" ? (
+            <div className="badge badge-pill badge-warning">
+              {params.data.status}
+            </div>
+          ) : null;
+        },
+      },
       {
         headerName: "Actions",
         field: "sortorder",
@@ -194,10 +184,12 @@ class UsersList extends React.Component {
     ],
   };
   async componentDidMount() {
-    await axios.get("api/users/list").then((response) => {
-      let rowData = response.data;
-      this.setState({ rowData });
-    });
+    await axios
+      .get("http://65.0.183.149:8000/admin/getuser")
+      .then((response) => {
+        let rowData = response.data.data;
+        this.setState({ rowData });
+      });
   }
   async runthisfunction(id) {
     console.log(id);
@@ -246,7 +238,7 @@ class UsersList extends React.Component {
                 </h1>
               </Col>
             </Row>
-            <Col className="pt-4">
+            {/* <Col className="pt-4">
               <Route
                 render={({ history }) => (
                   <Button
@@ -257,7 +249,7 @@ class UsersList extends React.Component {
                   </Button>
                 )}
               />
-            </Col>
+            </Col> */}
 
             <CardBody className="py-0">
               {this.state.rowData === null ? null : (
