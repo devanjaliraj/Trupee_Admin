@@ -23,7 +23,7 @@ const Footer = (props) => {
             target="_blank"
             rel="noopener noreferrer"
           >
-            AES,
+            TRUPEE,
           </a>
           All rights reserved
         </span>

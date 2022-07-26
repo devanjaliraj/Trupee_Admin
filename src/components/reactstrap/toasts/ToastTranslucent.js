@@ -1,4 +1,4 @@
-import React from "react"
+import React from "react";
 import {
   Toast,
   ToastBody,
@@ -13,23 +13,23 @@ import {
   NavItem,
   NavLink,
   Row,
-  Col
-} from "reactstrap"
-import classnames from "classnames"
-import { Eye, Code } from "react-feather"
-import { toastTranslucent } from "./ToastSourceCode"
-import transparentBg from "../../../assets/img/svg/transparent.svg"
+  Col,
+} from "reactstrap";
+import classnames from "classnames";
+import { Eye, Code } from "react-feather";
+import { toastTranslucent } from "./ToastSourceCode";
+import transparentBg from "../../../assets/img/svg/transparent.svg";
 
 class ToastTranslucent extends React.Component {
   state = {
-    activeTab: "1"
-  }
+    activeTab: "1",
+  };
 
-  toggleTab = tab => {
+  toggleTab = (tab) => {
     if (this.state.activeTab !== tab) {
-      this.setState({ activeTab: tab })
+      this.setState({ activeTab: tab });
     }
-  }
+  };
 
   render() {
     return (
@@ -42,10 +42,10 @@ class ToastTranslucent extends React.Component {
                 <NavItem>
                   <NavLink
                     className={classnames({
-                      active: this.state.activeTab === "1"
+                      active: this.state.activeTab === "1",
                     })}
                     onClick={() => {
-                      this.toggleTab("1")
+                      this.toggleTab("1");
                     }}
                   >
                     <Eye size={15} />
@@ -54,10 +54,10 @@ class ToastTranslucent extends React.Component {
                 <NavItem>
                   <NavLink
                     className={classnames({
-                      active: this.state.activeTab === "2"
+                      active: this.state.activeTab === "2",
                     })}
                     onClick={() => {
-                      this.toggleTab("2")
+                      this.toggleTab("2");
                     }}
                   >
                     <Code size={15} />
@@ -79,7 +79,7 @@ class ToastTranslucent extends React.Component {
                   <Col md="6" sm="12">
                     <div className="p-3 bg-primary my-2 rounded">
                       <Toast>
-                        <ToastHeader>AES</ToastHeader>
+                        <ToastHeader>TRUPEE</ToastHeader>
                         <ToastBody>
                           This is a toast on a primary background — check it
                           out!
@@ -90,7 +90,7 @@ class ToastTranslucent extends React.Component {
                   <Col md="6" sm="12">
                     <div className="p-3 bg-secondary my-2 rounded">
                       <Toast>
-                        <ToastHeader>AES</ToastHeader>
+                        <ToastHeader>TRUPEE</ToastHeader>
                         <ToastBody>
                           This is a toast on a secondary background — check it
                           out!
@@ -101,7 +101,7 @@ class ToastTranslucent extends React.Component {
                   <Col md="6" sm="12">
                     <div className="p-3 bg-success my-2 rounded">
                       <Toast>
-                        <ToastHeader>AES</ToastHeader>
+                        <ToastHeader>TRUPEE</ToastHeader>
                         <ToastBody>
                           This is a toast on a success background — check it
                           out!
@@ -112,7 +112,7 @@ class ToastTranslucent extends React.Component {
                   <Col md="6" sm="12">
                     <div className="p-3 bg-danger my-2 rounded">
                       <Toast>
-                        <ToastHeader>AES</ToastHeader>
+                        <ToastHeader>TRUPEE</ToastHeader>
                         <ToastBody>
                           This is a toast on a danger background — check it out!
                         </ToastBody>
@@ -122,7 +122,7 @@ class ToastTranslucent extends React.Component {
                   <Col md="6" sm="12">
                     <div className="p-3 bg-warning my-2 rounded">
                       <Toast>
-                        <ToastHeader>AES</ToastHeader>
+                        <ToastHeader>TRUPEE</ToastHeader>
                         <ToastBody>
                           This is a toast on a warning background — check it
                           out!
@@ -133,7 +133,7 @@ class ToastTranslucent extends React.Component {
                   <Col md="6" sm="12">
                     <div className="p-3 bg-info my-2 rounded">
                       <Toast>
-                        <ToastHeader>AES</ToastHeader>
+                        <ToastHeader>TRUPEE</ToastHeader>
                         <ToastBody>
                           This is a toast on an info background — check it out!
                         </ToastBody>
@@ -144,7 +144,7 @@ class ToastTranslucent extends React.Component {
                   <Col md="6" sm="12">
                     <div className="p-3 bg-dark my-2 rounded">
                       <Toast>
-                        <ToastHeader>AES</ToastHeader>
+                        <ToastHeader>TRUPEE</ToastHeader>
                         <ToastBody>
                           This is a toast on an dark background — check it out!
                         </ToastBody>
@@ -156,11 +156,11 @@ class ToastTranslucent extends React.Component {
                     <div
                       className="p-3 my-2 rounded"
                       style={{
-                        background: `url(${transparentBg})`
+                        background: `url(${transparentBg})`,
                       }}
                     >
                       <Toast>
-                        <ToastHeader>AES</ToastHeader>
+                        <ToastHeader>TRUPEE</ToastHeader>
                         <ToastBody>
                           This is a toast on a transparent background — check it
                           out!
@@ -177,7 +177,7 @@ class ToastTranslucent extends React.Component {
           </CardBody>
         </Card>
       </React.Fragment>
-    )
+    );
   }
 }
-export default ToastTranslucent
+export default ToastTranslucent;

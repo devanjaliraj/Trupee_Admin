@@ -112,7 +112,7 @@ class PackagePlanList extends React.Component {
                     className="mr-50"
                     size="25px"
                     color="blue"
-                    onClick={() => history.push(`/app/package/editScript`)}
+                    onClick={() => history.push(`/app/package/EditPackagePlan`)}
                   />
                 )}
               />

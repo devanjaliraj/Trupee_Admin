@@ -1,139 +1,4 @@
-// import React, { Component } from "react";
-// import {
-//   AccordionItem,
-//   AccordionHeader,
-//   Container,
-//   Row,
-//   Col,
-// } from "reactstrap";
-// // import LayoutOne from "../../../../layouts/LayoutOne";
-// // import Accordion from "react-bootstrap/Accordion";
-// // import Cloth from "../../../../assets/img/Cloth.jpg";
-// import { width } from "dom-helpers";
-// import { Route } from "react-router-dom";
-// import Select from "react-select";
-// // import { history } from "../../../history";
-// // import axiosConfig from "../../../../axiosConfig";
-// // import swal from "sweetalert";
-// import axiosConfig from "../../../axiosConfig";
-// import { Accordion } from "react-bootstrap-accordion";
-
-// export class AddFaq extends Component {
-//   render() {
-//     return (
-//       // <LayoutOne>
-//       <Container fluid>
-//         <Row className="mb-5">
-//           {/* <div
-//               className="d-flex justify-content-center align-items-center"
-//               style={{
-//                 backgroundImage: `url(${Cloth})`,
-//                 height: "70vh",
-//                 width: "100%",
-//               }}
-//             > */}
-//           <div className="">
-//             <h1 className="">Frequently Asked Questions</h1>
-//           </div>
-//           {/* </div> */}
-//         </Row>
-//         <Row className="">
-//           <Col xs lg="2"></Col>
-//           <Col xs lg="8">
-//             <Accordion>
-//               <Accordion.Item eventKey="0" className="m-4">
-//                 <Accordion.Header>
-//                   What to expect from Agricoin?
-//                 </Accordion.Header>
-//                 <Accordion.Body>
-//                   Agricoin is an online discovery platform plus an e-commerce
-//                   platform. Here you can search for clothes, or you can search
-//                   for specific shops. Go to shop profiles and check out which
-//                   products are listed for online shopping. You can check out the
-//                   shop profile and then pay a visit for the “look and feel” of
-//                   the clothes. You can view reviews and ratings of other
-//                   customers before you buy. You can expect SMS communication
-//                   from the shops once you have made a transaction.
-//                 </Accordion.Body>
-//               </Accordion.Item>
-//               <Accordion.Item eventKey="1" className="m-4">
-//                 <Accordion.Header>
-//                   I don’t remember my password. Help!?
-//                 </Accordion.Header>
-//                 <Accordion.Body>
-//                   Very Easy. You can reset the password through the following
-//                   <br></br>
-//                   steps<br></br>
-//                   a.Click on Forgot Password<br></br>
-//                   b.Enter your registered email address or your registered
-//                   contact number<br></br>
-//                   c.In case you have entered your registered email address,
-//                   click on the link received in your email or in case you have
-//                   entered your contact number, enter the OTP received in your
-//                   phone.<br></br>
-//                   d.Now enter the new password as well re-enter the new Password
-//                   and click on Save.
-//                 </Accordion.Body>
-//               </Accordion.Item>
-//             </Accordion>
-//           </Col>
-//           <Col xs lg="2"></Col>
-//         </Row>
-//         <Row className="justify-content-md-center">
-//           <Col xs lg="2"></Col>
-//           <Col xs lg="8">
-//             <Accordion>
-//               <Accordion.Item eventKey="0" className="m-4">
-//                 <Accordion.Header>
-//                   I have received a call/sms/email asking for money?
-//                 </Accordion.Header>
-//                 <Accordion.Body>
-//                   We NEVER request our customers for unsolicited
-//                   financial information or advance payments in exchange for
-//                   rewards. Please DO NOT respond to any call/sms/email claiming
-//                   to offer rewards/lucky draw prizes on behalf of Agricoin.
-//                 </Accordion.Body>
-//               </Accordion.Item>
-//               <Accordion.Item eventKey="1" className="m-4">
-//                 <Accordion.Header>
-//                   What are the payment options available for my orders at
-//                   Agricoin?
-//                 </Accordion.Header>
-//                 <Accordion.Body>
-//                   Cash-on-Delivery (COD), UPI, Net Banking. All these options
-//                   are available for payment.
-//                 </Accordion.Body>
-//               </Accordion.Item>
-//               <Accordion.Item eventKey="3" className="m-4">
-//                 <Accordion.Header>
-//                   Why can’t I see the COD option on the payment page?
-//                 </Accordion.Header>
-//                 <Accordion.Body>
-//                   If you do not see the COD option, then either your order value
-//                   is less than Rs299 or above Rs49,999.
-//                 </Accordion.Body>
-//               </Accordion.Item>
-//               <Accordion.Item eventKey="4" className="m-4">
-//                 <Accordion.Header>What is the COD limit?</Accordion.Header>
-//                 <Accordion.Body>
-//                   Agricoin reserves the right to determine the COD limit for
-//                   every customer and/or orders. The COD limit includes any
-//                   undelivered, unpaid orders and any new orders being placed.
-//                 </Accordion.Body>
-//               </Accordion.Item>
-//             </Accordion>
-//           </Col>
-//           <Col xs lg="2"></Col>
-//         </Row>
-//       </Container>
-//       // </LayoutOne>
-//     );
-//   }
-// }
-
-// export default AddFaq;
-
-import React, { Component } from "react";
+import React from "react";
 import {
   Card,
   CardBody,
@@ -143,92 +8,126 @@ import {
   Input,
   Label,
   Button,
-  // FormGroup,
-  // CustomInput,
+  Collapse,
+  CardHeader,
+  CardTitle,
+  TabContent,
+  TabPane,
+  Nav,
+  NavItem,
+  NavLink,
 } from "reactstrap";
 import { Route } from "react-router-dom";
-import Select from "react-select";
-// import { history } from "../../../history";
-// import axiosConfig from "../../../../axiosConfig";
-// import swal from "sweetalert";
-import axiosConfig from "../../../axiosConfig";
-// import axiosConfig from "../../../axiosConfig";
-import { Accordion } from "react-bootstrap-accordion";
-const dealerName = [];
+import classnames from "classnames";
+import { Eye, Code, ChevronDown } from "react-feather";
+import { Accordion } from "../../../components/reactstrap/collapse/Accordion";
+const collapseItems = [
+  {
+    id: 1,
+    title: "Accordion Item 1",
+    content:
+      "Pie dragée muffin. Donut cake liquorice marzipan carrot cake topping powder candy. Sugar plum brownie brownie cotton candy.",
+  },
+  {
+    id: 2,
+    title: "Accordion Item 2",
+    content:
+      "Jelly-o brownie marshmallow soufflé I love jelly beans oat cake. I love gummies chocolate bar marshmallow sugar plum.",
+  },
+  {
+    id: 3,
+    title: "Accordion Item 3",
+    content:
+      "Pudding lollipop dessert chocolate gingerbread. Cake cupcake bonbon cupcake marshmallow. Gummi bears carrot cake bonbon cake.",
+  },
+  {
+    id: 4,
+    title: "Accordion Item 4",
+    content:
+      "Brownie sweet carrot cake dragée caramels fruitcake. Gummi bears tootsie roll croissant gingerbread dragée tootsie roll.",
+  },
+];
 
-export class AddFaq extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      dealer: null,
-      desc: "",
-    };
-  }
-
-  async componentDidMount() {
-    //dealer List
-    //let array =[]
-    //let obj ={}
-    axiosConfig
-      .get("/dealer/alldealers")
-      .then((response) => {
-        console.log(response);
-        //this.setState({ dealerN: response.data.data });
-
-        // eslint-disable-next-line no-unused-expressions
-        response.data?.data?.map((dealerp) => {
-          let obj = {
-            label: dealerp.dealer_name,
-            value: dealerp._id,
-          };
-          dealerName.push(obj);
-        });
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  }
-
-  handleChange = (dealer) => {
-    this.setState({ dealer }, () =>
-      console.log(`Option selected:`, this.state.dealer)
-    );
+class AddFaq extends React.Component {
+  state = {
+    activeTab: "1",
+    collapseID: "",
+    status: "Closed",
   };
 
-  changeHandler = (e) => {
-    this.setState({ [e.target.name]: e.target.value });
+  toggleTab = (tab) => {
+    if (this.state.activeTab !== tab) {
+      this.setState({ activeTab: tab });
+    }
   };
-  submitHandler = (e) => {
-    e.preventDefault();
 
-    axiosConfig
-      .post(
-        "/admin/addnotification",
-        this.state
-        // {
-        //   headers: {
-        //     "auth-adtoken": localStorage.getItem("auth-adtoken"),
-        //   },
-        // }
-      )
-      .then((response) => {
-        console.log(response);
-        // swal("Success!", "Submitted SuccessFull!", "success");
-        this.props.history.push("/app/notification/notificationList");
-      })
-      .catch((error) => {
-        console.log(error);
-      });
+  toggleCollapse = (collapseID) => {
+    this.setState((prevState) => ({
+      collapseID: prevState.collapseID !== collapseID ? collapseID : "",
+    }));
   };
+  onEntered = (id) => {
+    if (id === this.state.collapseID) this.setState({ status: "Opened" });
+  };
+  onEntering = (id) => {
+    if (id === this.state.collapseID) this.setState({ status: "Opening..." });
+  };
+
+  onExited = (id) => {
+    if (id === this.state.collapseID) this.setState({ status: "Closed" });
+  };
+
+  onExiting = (id) => {
+    if (id === this.state.collapseID) this.setState({ status: "Closing..." });
+  };
+
   render() {
-    const { dealer } = this.state;
+    const accordionItems = collapseItems.map((collapseItem) => {
+      return (
+        <Card
+          key={collapseItem.id}
+          onClick={() => this.toggleCollapse(collapseItem.id)}
+          className={classnames({
+            "collapse-collapsed":
+              this.state.status === "Closed" &&
+              this.state.collapseID === collapseItem.id,
+            "collapse-shown":
+              this.state.status === "Opened" &&
+              this.state.collapseID === collapseItem.id,
+            closing:
+              this.state.status === "Closing..." &&
+              this.state.collapseID === collapseItem.id,
+            opening:
+              this.state.status === "Opening..." &&
+              this.state.collapseID === collapseItem.id,
+          })}
+        >
+          <CardHeader>
+            <CardTitle className="lead collapse-title collapsed">
+              {collapseItem.title}
+            </CardTitle>
+            <ChevronDown size={15} className="collapse-icon" />
+          </CardHeader>
+          <Collapse
+            isOpen={collapseItem.id === this.state.collapseID}
+            onEntering={() => this.onEntering(collapseItem.id)}
+            onEntered={() => this.onEntered(collapseItem.id)}
+            onExiting={() => this.onExiting(collapseItem.id)}
+            onExited={() => this.onExited(collapseItem.id)}
+          >
+            <CardBody>{collapseItem.content}</CardBody>
+          </Collapse>
+        </Card>
+      );
+    });
+
     return (
-      <div>
+      <React.Fragment>
         <Card>
           <Row className="m-2">
             <Col>
               <h1 col-sm-6 className="float-left">
-                Add FAQ
+                Edit FAQ
               </h1>
             </Col>
             <Col>
@@ -244,57 +143,56 @@ export class AddFaq extends Component {
               />
             </Col>
           </Row>
-          <CardBody>
-            <Form className="m-1" onSubmit={this.submitHandler}>
-              <Row className="mb-2">
-                {/* <Col md="6" sm="12">
+          <CardHeader>
+            <CardTitle>Frequently Asked Questions</CardTitle>
+            <div className="views">
+              <Nav tabs>
+                <NavItem>
+                  <NavLink
+                    className={classnames({
+                      active: this.state.activeTab === "1",
+                    })}
+                    onClick={() => {
+                      this.toggleTab("1");
+                    }}
+                  >
+                    <Eye size={15} />
+                  </NavLink>
+                </NavItem>
+                <NavItem>
+                  <NavLink
+                    className={classnames({
+                      active: this.state.activeTab === "2",
+                    })}
+                    onClick={() => {
+                      this.toggleTab("2");
+                    }}
+                  >
+                    <Code size={15} />
+                  </NavLink>
+                </NavItem>
+              </Nav>
+            </div>
+          </CardHeader>
 
-                  <Label>Dealer List</Label>
-                  <Select
-                    isMulti
-                    type="select"
-                    name="dealer"
-                    className="React"
-                    classNamePrefix="select"
-                    options={dealerName}
-                    value={dealer}
-                    onChange={this.handleChange}
-                  />
-                </Col> */}
-                <Accordion>
-                  <Col lg="12" md="12" className="mb-2">
-                    <Label>ans</Label>
-                    <Input
-                      type="text"
-                      name="desc"
-                      value={this.state.desc}
-                      onChange={this.changeHandler}
-                    />
-                  </Col>
-                </Accordion>
-                <Col lg="12" md="12" className="mb-2">
-                  <Label>Descripiton</Label>
-                  <Input
-                    type="textarea"
-                    name="desc"
-                    value={this.state.desc}
-                    onChange={this.changeHandler}
-                  />
-                </Col>
-              </Row>
-              <Row>
-                <Button.Ripple
-                  className="mr-1 mb-1"
-                  type="submit"
-                  color="primary"
-                >
-                  Add FAQ List
-                </Button.Ripple>
-              </Row>
-            </Form>
+          <CardBody>
+            {/* <p>
+              You may want to open one item at a time for that you can use
+              accordion.
+            </p> */}
+            <TabContent activeTab={this.state.activeTab}>
+              <TabPane tabId="1">
+                <div className="vx-collapse collapse-bordered">
+                  {accordionItems}
+                </div>
+              </TabPane>
+              <TabPane className="component-code" tabId="2">
+                {/* {accordion} */}
+              </TabPane>
+            </TabContent>
           </CardBody>
         </Card>
-      </div>
+      </React.Fragment>
     );
   }
 }

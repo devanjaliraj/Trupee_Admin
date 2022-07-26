@@ -118,7 +118,9 @@ const PackagePlanList = lazy(() =>
 const AddPackagePlan = lazy(() =>
   import("./views/apps/package/AddPackagePlan")
 );
-
+const EditPackagePlan = lazy(() =>
+  import("./views/apps/package/EditPackagePlan")
+);
 //FAQ//
 const FaqList = lazy(() => import("./views/apps/faq/FaqList"));
 const AddFaq = lazy(() => import("./views/apps/faq/AddFaq"));
@@ -435,6 +437,11 @@ class AppRouter extends React.Component {
               exact={true}
               path="/app/package/addPackagePlan"
               component={AddPackagePlan}
+            />
+            <AppRoute
+              exact={true}
+              path="/app/package/editPackagePlan"
+              component={EditPackagePlan}
             />
             {/* FAQ */}
             <AppRoute

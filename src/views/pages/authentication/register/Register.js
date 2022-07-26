@@ -56,7 +56,7 @@ class Register extends React.Component {
                     </CardTitle>
                   </CardHeader>
                   <p className="px-2 auth-title mb-0">
-                    Fill the below form to create a new AES account.
+                    Fill the below form to create a new TRUPEE account.
                   </p>
                   <Nav tabs className="px-2">
                     <NavItem>

@@ -104,17 +104,6 @@ export class PackagePlan extends Component {
           <CardBody>
             <Form className="m-1" onSubmit={this.submitHandler}>
               <Row className="mb-2">
-                {/* <Col lg="6" md="6" className="mb-2">
-                  <Label>User ID</Label>
-                  <Input
-                    type="text"
-                    placeholder="Enter User Id"
-                    // name="desc"
-                    // value={this.state.desc}
-                    // onChange={this.changeHandler}
-                  />
-                </Col> */}
-
                 <Col lg="6" md="6" className="mb-2">
                   <Label for="exampleSelect">Package Plan</Label>
                   <Input id="exampleSelect" name="select" type="select">

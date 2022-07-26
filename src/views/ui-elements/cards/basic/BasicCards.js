@@ -1,4 +1,4 @@
-import React from "react"
+import React from "react";
 import {
   Card,
   CardBody,
@@ -6,11 +6,11 @@ import {
   Row,
   Col,
   Button,
-  Progress
-} from "reactstrap"
-import img1 from "../../../../assets/img/pages/content-img-1.jpg"
-import img2 from "../../../../assets/img/pages/content-img-2.jpg"
-import img3 from "../../../../assets/img/pages/content-img-3.jpg"
+  Progress,
+} from "reactstrap";
+import img1 from "../../../../assets/img/pages/content-img-1.jpg";
+import img2 from "../../../../assets/img/pages/content-img-2.jpg";
+import img3 from "../../../../assets/img/pages/content-img-3.jpg";
 
 class BasicCards extends React.Component {
   render() {
@@ -25,7 +25,7 @@ class BasicCards extends React.Component {
               alt="card image cap"
             />
             <CardBody>
-              <h5>AES Admin</h5>
+              <h5>TRUPEE Admin</h5>
               <p className="mb-0">By Pixinvent Creative Studio</p>
               <span>Elite Author</span>
               <div className="card-btns d-flex justify-content-between mt-2">
@@ -47,7 +47,7 @@ class BasicCards extends React.Component {
                 src={img2}
                 alt="card image cap"
               />
-              <h5>AES Admin</h5>
+              <h5>TRUPEE Admin</h5>
               <p>By Pixinvent Creative Studio</p>
               <hr className="my-1" />
               <div className="card-btns d-flex justify-content-between mt-2">
@@ -71,7 +71,7 @@ class BasicCards extends React.Component {
                 src={img3}
                 alt="card image cap"
               />
-              <h5>AES Admin</h5>
+              <h5>TRUPEE Admin</h5>
               <div className="d-flex justify-content-between mt-1">
                 <small className="float-left font-weight-bold mb-25">
                   $ 5975
@@ -93,7 +93,7 @@ class BasicCards extends React.Component {
           </Card>
         </Col>
       </Row>
-    )
+    );
   }
 }
-export default BasicCards
+export default BasicCards;
