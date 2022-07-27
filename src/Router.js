@@ -382,8 +382,9 @@ class AppRouter extends React.Component {
     sessionStorage.clear();
     if (data === undefined || data === null) {
       //history.push("/#/pages/login")
+      window.location.replace("/#/");
 
-      window.location.replace("/#/pages/login");
+      // window.location.replace("/#/pages/login");
     }
   }
   render() {
@@ -440,7 +441,7 @@ class AppRouter extends React.Component {
             />
             <AppRoute
               exact={true}
-              path="/app/package/editPackagePlan"
+              path="/app/package/editPackagePlan/:id"
               component={EditPackagePlan}
             />
             {/* FAQ */}

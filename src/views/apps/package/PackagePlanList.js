@@ -11,7 +11,7 @@ import {
   DropdownItem,
   DropdownToggle,
 } from "reactstrap";
-import axios from "axios";
+// import axios from "axios";
 import axiosConfig from "../../../axiosConfig";
 // import { history } from "../../../history";
 import { AgGridReact } from "ag-grid-react";
@@ -45,37 +45,49 @@ class PackagePlanList extends React.Component {
       },
       {
         headerName: "Package Plan",
-        field: "userId",
+        field: "pack_name",
         width: 200,
         // pinned: window.innerWidth > 992 ? "left" : false,
         cellRendererFramework: (params) => {
           return (
             <div className="d-flex align-items-center cursor-pointer">
-              <span>{params.data.userId}</span>
+              <span>{params.data.pack_name}</span>
             </div>
           );
         },
       },
       {
         headerName: "MRP Price",
-        field: "title",
+        field: "mrp_price",
         width: 200,
         cellRendererFramework: (params) => {
           return (
             <div className="d-flex align-items-center cursor-pointer">
-              <span>{params.data.title}</span>
+              <span>{params.data.mrp_price}</span>
             </div>
           );
         },
       },
       {
         headerName: "Discount Price",
-        field: "title",
+        field: "des_price",
         width: 200,
         cellRendererFramework: (params) => {
           return (
             <div className="d-flex align-items-center cursor-pointer">
-              <span>{params.data.title}</span>
+              <span>{params.data.des_price}</span>
+            </div>
+          );
+        },
+      },
+      {
+        headerName: "Discount",
+        field: "desc",
+        width: 200,
+        cellRendererFramework: (params) => {
+          return (
+            <div className="d-flex align-items-center cursor-pointer">
+              <span>{params.data.desc}</span>
             </div>
           );
         },
@@ -83,17 +95,17 @@ class PackagePlanList extends React.Component {
 
       {
         headerName: "Status",
-        field: "completed",
+        field: "status",
         // filter: completed,
         width: 200,
         cellRendererFramework: (params) => {
           return params.value === "Active" ? (
             <div className="badge badge-pill badge-success">
-              {params.data.completed}
+              {params.data.status}
             </div>
           ) : params.value === "Inactive" ? (
             <div className="badge badge-pill badge-warning">
-              {params.data.completed}
+              {params.data.status}
             </div>
           ) : null;
         },
@@ -112,7 +124,11 @@ class PackagePlanList extends React.Component {
                     className="mr-50"
                     size="25px"
                     color="blue"
-                    onClick={() => history.push(`/app/package/EditPackagePlan`)}
+                    onClick={() =>
+                      history.push(
+                        `/app/package/EditPackagePlan/${params.data._id}`
+                      )
+                    }
                   />
                 )}
               />
@@ -134,12 +150,10 @@ class PackagePlanList extends React.Component {
     ],
   };
   async componentDidMount() {
-    await axios
-      .get("https://jsonplaceholder.typicode.com/todos")
-      .then((response) => {
-        let rowData = response.data;
-        this.setState({ rowData });
-      });
+    await axiosConfig.get("/membership_list").then((response) => {
+      let rowData = response.data.data;
+      this.setState({ rowData });
+    });
   }
 
   async runthisfunction(id) {
@@ -189,7 +203,7 @@ class PackagePlanList extends React.Component {
                 </h1>
               </Col>
             </Row>
-            <Col className="pt-4">
+            {/* <Col className="pt-4">
               <Route
                 render={({ history }) => (
                   <Button
@@ -200,7 +214,7 @@ class PackagePlanList extends React.Component {
                   </Button>
                 )}
               />
-            </Col>
+            </Col> */}
 
             <CardBody className="py-0">
               {this.state.rowData === null ? null : (

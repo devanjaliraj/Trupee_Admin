@@ -11,7 +11,7 @@ import {
   DropdownItem,
   DropdownToggle,
 } from "reactstrap";
-import axios from "axios";
+// import axios from "axios";
 import axiosConfig from "../../../axiosConfig";
 // import { history } from "../../../history";
 import { AgGridReact } from "ag-grid-react";
@@ -108,6 +108,18 @@ class UsersList extends React.Component {
         },
       },
       {
+        headerName: "Membership plan",
+        // field: "city",
+        width: 120,
+        cellRendererFramework: (params) => {
+          return (
+            <div className="d-flex align-items-center cursor-pointer">
+              {/* <span>{params.data.city}</span> */}
+            </div>
+          );
+        },
+      },
+      {
         headerName: "Start Date",
         field: "createdAt",
         width: 120,
@@ -119,6 +131,7 @@ class UsersList extends React.Component {
           );
         },
       },
+
       {
         headerName: "Expiry Date",
         field: "updatedAt",
@@ -184,12 +197,10 @@ class UsersList extends React.Component {
     ],
   };
   async componentDidMount() {
-    await axios
-      .get("http://65.0.183.149:8000/admin/getuser")
-      .then((response) => {
-        let rowData = response.data.data;
-        this.setState({ rowData });
-      });
+    await axiosConfig.get("/getuser").then((response) => {
+      let rowData = response.data.data;
+      this.setState({ rowData });
+    });
   }
   async runthisfunction(id) {
     console.log(id);
@@ -238,18 +249,6 @@ class UsersList extends React.Component {
                 </h1>
               </Col>
             </Row>
-            {/* <Col className="pt-4">
-              <Route
-                render={({ history }) => (
-                  <Button
-                    className=" btn btn-success float-right"
-                    onClick={() => history.push("/app/users/addUsers")}
-                  >
-                    Edit Users
-                  </Button>
-                )}
-              />
-            </Col> */}
 
             <CardBody className="py-0">
               {this.state.rowData === null ? null : (

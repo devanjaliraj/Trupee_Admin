@@ -7,14 +7,14 @@ import {
   Label,
   Input,
   Card,
-  CardTitle
+  CardTitle,
 } from "reactstrap";
 import "../../../assets/scss/pages/users-profile.scss";
 import CheckBoxesVuexy from "../../../components/@vuexy/checkbox/CheckboxesVuexy";
 import { Check } from "react-feather";
 import Breadcrumbs from "../../../components/@vuexy/breadCrumbs/BreadCrumb";
 // import axios from "axios";
-import swal from 'sweetalert';
+import swal from "sweetalert";
 import axiosConfig from "../../../axiosConfig";
 // import { Route } from "react-router-dom";
 
@@ -23,11 +23,11 @@ class Profile extends React.Component {
     super(props);
     this.state = {
       name: "",
-      email:"",
+      email: "",
       mobile: "",
-      resetpassword:"",
-      password:"",
-      profilepic:"",
+      cnfmPassword: "",
+      password: "",
+      adminimg: "",
       selectedName: "",
       selectedFile: null,
       data: {},
@@ -36,7 +36,7 @@ class Profile extends React.Component {
 
   //Image Submit Handler
   onChangeHandler = (event) => {
-     this.setState({ selectedFile: event.target.files[0] });
+    this.setState({ selectedFile: event.target.files[0] });
     this.setState({ selectedName: event.target.files[0].name });
     console.log(event.target.files[0]);
   };
@@ -44,38 +44,41 @@ class Profile extends React.Component {
   componentDidMount() {
     // let { id } = this.props.match.params;
     axiosConfig
-      .get(`http://15.206.122.110:4000/api/user/viewoneadmin/629b43e4b481821324ad3006`)
+      .get(
+        `http://65.0.183.149:8000/admin/viewoneadmin/62e125db337df218d9c152f9`
+      )
       .then((response) => {
         //console.log(response.data);
         console.log(response);
-        this.setState({ 
+        this.setState({
           data: response.data.data,
           name: response.data.data.name,
           email: response.data.data.email,
           mobile: response.data.data.mobile,
           password: response.data.data.password,
-         });
+          cnfmPassword: response.data.data.cnfmPassword,
+        });
       })
       .catch((error) => {
         console.log(error.response);
       });
   }
-  
+
   changeHandler = (e) => {
     this.setState({ [e.target.name]: e.target.value });
   };
 
   submitHandler = (e) => {
     e.preventDefault();
-    console.log(this.state);
+    console.log(this.state.data);
     const data = new FormData();
     data.append("name", this.state.name);
     data.append("email", this.state.email);
     data.append("mobile", this.state.mobile);
     data.append("password", this.state.password);
-    // data.append("resetpassword", this.state.resetpassword);
+    data.append("cnfmPassword", this.state.cnfmPassword);
     if (this.state.selectedFile !== null) {
-    data.append("profilepic", this.state.selectedFile, this.state.selectedName);
+      data.append("adminimg", this.state.selectedFile, this.state.selectedName);
     }
 
     for (var value of data.values()) {
@@ -87,46 +90,53 @@ class Profile extends React.Component {
     }
     //  let { id } = this.props.match.params;
     axiosConfig
-      .post(`http://15.206.122.110:4000/api/user/updateoneadmin/629b43e4b481821324ad3006`, data)
+      .post(`/editAdmin/62e125db337df218d9c152f9`, data, {
+        headers: {
+          "ad-token": localStorage.getItem("ad-token"),
+        },
+      })
       .then((response) => {
-        console.log(response.data);
+        console.log(response.data.message);
         swal("Success!", "Submitted SuccessFull!", "success");
         window.location.reload("/#/pages/profile");
       })
 
-    .catch((error) => {
-      swal("Error!", "You clicked the button!", "error");
-      console.log(error.response);
-    })
+      .catch((error) => {
+        swal("Error!", "You clicked the button!", "error");
+        console.log(error.response);
+      });
   };
   render() {
     return (
       <React.Fragment>
         <Breadcrumbs
-            breadCrumbTitle="Profile"
-            breadCrumbParent="Pages"
-            breadCrumbActive="Profile"
-         />
+          breadCrumbTitle="Profile"
+          breadCrumbParent="Pages"
+          breadCrumbActive="Profile"
+        />
         <div id="user-profile">
           <Row className="m-0 justify-content-center">
             <Col lg="4" md="4" xl="4" sm="12">
               <Card className="bg-authentication rounded-0 mb-0 w-100">
                 <div className="profile-img text-center st-1">
                   <img
-                    src={this.state.data.profilepic}
-                    alt="porfileImg"
+                    src={this.state.data.adminimg}
+                    alt="adminimg"
                     className="img-fluid img-border rounded-circle box-shadow-1"
                     width="150"
                   />
                   <ul className="lst-1">
                     <li className="lst-2">
-                      Name: <span className="lst-3">{this.state.data.name}</span>
+                      Name:{" "}
+                      <span className="lst-3">{this.state.data.name}</span>
                     </li>
                     <li className="lst-2">
-                      Mobile: <span className="lst-3">{this.state.data.mobile}</span>
+                      Mobile:{" "}
+                      <span className="lst-3">{this.state.data.mobile}</span>
                     </li>
                     <li className="lst-2">
-                      Email: <span className="lst-3">{this.state.data.email}</span>
+                      Email:{" "}
+                      <span className="lst-3">{this.state.data.email}</span>
                     </li>
                   </ul>
                 </div>
@@ -137,7 +147,8 @@ class Profile extends React.Component {
               xl="8"
               lg="8"
               md="8"
-              className="d-flex justify-content-center">
+              className="d-flex justify-content-center"
+            >
               <Card className="bg-authentication rounded-0 mb-0 w-100">
                 <Form className="m-1" onSubmit={this.submitHandler}>
                   <div className="st-2">
@@ -145,73 +156,77 @@ class Profile extends React.Component {
                       <h4 className="mb-3">Edit Profile</h4>
                       <Col></Col>
                     </CardTitle>
-                      <Row className="m-0">
-                        <Col sm="12" className="p-0">
-                          <Form action="/">
+                    <Row className="m-0">
+                      <Col sm="12" className="p-0">
+                        <Form action="/">
                           <Label>Name</Label>
-                            <Input
-                              type="text"
-                              name="name"
-                              placeholder="Name"
-                              value={this.state.name}
-                              onChange={this.changeHandler}
-                            />
-                            <Label>Email</Label>
-                              <Input
-                                type="email"
-                                name="email"
-                                placeholder="email"
-                                value={this.state.email}
-                                onChange={this.changeHandler}
-                              />
-                            <Label>Mobile No.</Label>
-                              <Input
-                                type="number"
-                                name="mobile"
-                                placeholder="Mobile No."
-                                value={this.state.mobile}
-                                onChange={this.changeHandler}
-                              />
-                             <Label>Password</Label>
-                              <Input
-                                type="password"
-                                name="password"
-                                placeholder="Reset password"
-                                value={this.state.password}
-                                onChange={this.changeHandler}
-                              />
-                              <Label>User Image</Label>
-                                <Input 
-                                  className="form-control"  
-                                  type="file"
-                                  name="profilepic"
-                                  onChange={this.onChangeHandler}
-                                />
-                              <CheckBoxesVuexy
-                                color="primary"
-                                icon={<Check className="vx-icon"
-                                size={16} />}
-                                label=" I accept the terms & conditions."
-                                defaultChecked={true}
-                              />
-                            <div className="d-flex justify-content-between">
-                              <Button.Ripple 
-                                color="primary" 
-                                type="submit"
-                              >
-                                Submit
-                              </Button.Ripple>
-                            </div>
-                          </Form>
-                        </Col>
-                      </Row>
-                    </div>
-                  </Form>
-                </Card>
-              </Col>
-            </Row>
-          </div>
-        </React.Fragment>
+                          <Input
+                            type="text"
+                            name="name"
+                            placeholder="Name"
+                            value={this.state.name}
+                            onChange={this.changeHandler}
+                          />
+                          <Label>Email</Label>
+                          <Input
+                            type="email"
+                            name="email"
+                            placeholder="email"
+                            value={this.state.email}
+                            onChange={this.changeHandler}
+                          />
+                          <Label>Mobile No.</Label>
+                          <Input
+                            type="number"
+                            name="mobile"
+                            placeholder="Mobile No."
+                            value={this.state.mobile}
+                            onChange={this.changeHandler}
+                          />
+                          <Label>Password</Label>
+                          <Input
+                            type="password"
+                            name="password"
+                            placeholder="Password"
+                            value={this.state.password}
+                            onChange={this.changeHandler}
+                          />
+                          <Label>Confirm Password</Label>
+                          <Input
+                            type="password"
+                            name="cnfmPassword"
+                            placeholder="Reset password"
+                            value={this.state.cnfmPassword}
+                            onChange={this.changeHandler}
+                          />
+                          <Label>User Image</Label>
+                          <Input
+                            className="form-control"
+                            type="file"
+                            name="adminimg"
+                            onChange={this.onChangeHandler}
+                          />
+                          <CheckBoxesVuexy
+                            color="primary"
+                            icon={<Check className="vx-icon" size={16} />}
+                            label=" I accept the terms & conditions."
+                            defaultChecked={true}
+                          />
+                          <div className="d-flex justify-content-between">
+                            <Button.Ripple color="primary" type="submit">
+                              Submit
+                            </Button.Ripple>
+                          </div>
+                        </Form>
+                      </Col>
+                    </Row>
+                  </div>
+                </Form>
+              </Card>
+            </Col>
+          </Row>
+        </div>
+      </React.Fragment>
     );
   }
 }

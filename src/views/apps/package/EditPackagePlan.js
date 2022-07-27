@@ -22,57 +22,57 @@ export default class EditPackagePlan extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      planId: "",
-      dealer_name: "",
-      // start_date:'',
-      plan_name: "",
-      date: "",
-      expdate: "",
-      transaction_id: "",
-      sttaus: "",
-      membershipData: {},
+      pack_name: "",
+      mrp_price: "",
+      desc: "",
+      des_price: "",
+      // date: "",
+      // expdate: "",
+      // transaction_id: "",
+      staus: "",
+      // membershipData: {},
     };
-    this.state = {
-      planN: [],
-    };
+    // this.state = {
+    //   planN: [],
+    // };
     this.submitHandler = this.submitHandler.bind(this);
   }
 
   componentDidMount() {
     //plan
-    axiosConfig
-      .get("/admin/allplan")
-      .then((response) => {
-        console.log(response.data.data);
-        this.setState({ planN: response.data.data });
-      })
-      .catch((error) => {
-        console.log(error);
-      });
+    // axiosConfig
+    //   .get("/admin/allplan")
+    //   .then((response) => {
+    //     console.log(response.data.data);
+    //     this.setState({ planN: response.data.data });
+    //   })
+    //   .catch((error) => {
+    //     console.log(error);
+    //   });
 
-    var transaction_id = "";
-    var expdate = "";
-    const queryParams = new URLSearchParams(window.location.href);
-    transaction_id = queryParams.get("transaction_id");
-    expdate = queryParams.get("expdate");
+    // var transaction_id = "";
+    // var expdate = "";
+    // const queryParams = new URLSearchParams(window.location.href);
+    // transaction_id = queryParams.get("transaction_id");
+    // expdate = queryParams.get("expdate");
 
-    this.setState({ transaction_id: transaction_id, expdate: expdate });
-    var payload = {
-      transaction_id: transaction_id,
-      expdate: expdate,
-    };
+    // this.setState({ transaction_id: transaction_id, expdate: expdate });
+    // var payload = {
+    //   transaction_id: transaction_id,
+    //   expdate: expdate,
+    // };
 
     let { id } = this.props.match.params;
     axiosConfig
-      .post(`/dealer/updatemembership/${id}`, payload)
+      .post(`/dealer/updatemembership/${id}`)
       .then((response) => {
         console.log(response.data.data);
         this.setState({
-          membershipData: response.data.data,
-          date: response.data.data?.date,
-          // start_date:response.data.data?.date,
-          expdate: response.data.data?.expdate,
-          amount: response.data.data?.amount,
+          pack_name: response.data.data.pack_name,
+          mrp_price: response.data.data.mrp_price,
+
+          des_price: response.data.data.des_price,
+          desc: response.data.data.desc,
         });
       })
       .catch((error) => {
@@ -98,11 +98,11 @@ export default class EditPackagePlan extends Component {
     console.log(payload);
     let { id } = this.props.match.params;
     axiosConfig
-      .post(`/dealer/updatemembership/${id}`, payload)
+      .post(`/editMembership/${id}`, payload)
       .then((response) => {
         console.log(response);
         // swal("Success!", "Submitted SuccessFull!", "success");
-        this.props.history.push(`/app/membership/MembershipList`);
+        this.props.history.push(`/app/package/PackagePlanList`);
       })
 
       .catch((error) => {
@@ -150,14 +150,17 @@ export default class EditPackagePlan extends Component {
                   <Input
                     type="text"
                     placeholder="Enter User Id"
-                    // name="desc"
+                    // name="desc"{
+  
+    
+
                     // value={this.state.desc}
                     // onChange={this.changeHandler}
                   />
                 </Col> */}
                 <Col lg="6" md="6" className="mb-2">
                   <Label for="exampleSelect">Package Plan</Label>
-                  <Input id="exampleSelect" name="select" type="select">
+                  <Input id="exampleSelect" name="pack_name" type="select">
                     <option>Select Plan</option>
                     <option>FREE PLAN</option>
                     <option>1 Month</option>
@@ -171,10 +174,9 @@ export default class EditPackagePlan extends Component {
                   <Input
                     type="text"
                     placeholder="Enter MRP Price"
-
-                    // name="desc"
-                    // value={this.state.desc}
-                    // onChange={this.changeHandler}
+                    name="mrp_price"
+                    value={this.state.mrp_price}
+                    onChange={this.changeHandler}
                   />
                 </Col>
                 <Col lg="6" md="6" className="mb-2">
@@ -182,10 +184,19 @@ export default class EditPackagePlan extends Component {
                   <Input
                     type="text"
                     placeholder="Enter Discount Price"
-
-                    // name="desc"
-                    // value={this.state.desc}
-                    // onChange={this.changeHandler}
+                    name="des_price"
+                    value={this.state.des_price}
+                    onChange={this.changeHandler}
+                  />
+                </Col>{" "}
+                <Col lg="6" md="6" className="mb-2">
+                  <Label>Discount </Label>
+                  <Input
+                    type="text"
+                    placeholder="Enter Discount "
+                    name="desc"
+                    value={this.state.desc}
+                    onChange={this.changeHandler}
                   />
                 </Col>{" "}
               </Row>
