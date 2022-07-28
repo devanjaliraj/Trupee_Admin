@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Component } from "react";
 import {
   Card,
   CardBody,
@@ -8,126 +8,80 @@ import {
   Input,
   Label,
   Button,
-  Collapse,
-  CardHeader,
-  CardTitle,
-  TabContent,
-  TabPane,
-  Nav,
-  NavItem,
-  NavLink,
+  // FormGroup,
+  // CustomInput,
 } from "reactstrap";
 import { Route } from "react-router-dom";
-import classnames from "classnames";
-import { Eye, Code, ChevronDown } from "react-feather";
-import { Accordion } from "../../../components/reactstrap/collapse/Accordion";
-const collapseItems = [
-  {
-    id: 1,
-    title: "Accordion Item 1",
-    content:
-      "Pie dragée muffin. Donut cake liquorice marzipan carrot cake topping powder candy. Sugar plum brownie brownie cotton candy.",
-  },
-  {
-    id: 2,
-    title: "Accordion Item 2",
-    content:
-      "Jelly-o brownie marshmallow soufflé I love jelly beans oat cake. I love gummies chocolate bar marshmallow sugar plum.",
-  },
-  {
-    id: 3,
-    title: "Accordion Item 3",
-    content:
-      "Pudding lollipop dessert chocolate gingerbread. Cake cupcake bonbon cupcake marshmallow. Gummi bears carrot cake bonbon cake.",
-  },
-  {
-    id: 4,
-    title: "Accordion Item 4",
-    content:
-      "Brownie sweet carrot cake dragée caramels fruitcake. Gummi bears tootsie roll croissant gingerbread dragée tootsie roll.",
-  },
-];
+import Select from "react-select";
+// import { history } from "../../../history";
+// import axiosConfig from "../../../../axiosConfig";
+// import swal from "sweetalert";
+import axiosConfig from "../../../axiosConfig";
 
-class AddFaq extends React.Component {
-  state = {
-    activeTab: "1",
-    collapseID: "",
-    status: "Closed",
-  };
+export class AddFaq extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      title: "",
+      desc: "",
+    };
+  }
 
-  toggleTab = (tab) => {
-    if (this.state.activeTab !== tab) {
-      this.setState({ activeTab: tab });
-    }
-  };
+  async componentDidMount() {
+    axiosConfig
+      .get("/dealer/alldealers")
+      .then((response) => {
+        console.log(response);
+        //this.setState({ dealerN: response.data.data });
 
-  toggleCollapse = (collapseID) => {
-    this.setState((prevState) => ({
-      collapseID: prevState.collapseID !== collapseID ? collapseID : "",
-    }));
-  };
-  onEntered = (id) => {
-    if (id === this.state.collapseID) this.setState({ status: "Opened" });
-  };
-  onEntering = (id) => {
-    if (id === this.state.collapseID) this.setState({ status: "Opening..." });
-  };
+        // eslint-disable-next-line no-unused-expressions
+        response.data?.data?.map((dealerp) => {
+          let obj = {
+            label: dealerp.dealer_name,
+            value: dealerp._id,
+          };
+          dealerName.push(obj);
+        });
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }
 
-  onExited = (id) => {
-    if (id === this.state.collapseID) this.setState({ status: "Closed" });
+  changeHandler = (e) => {
+    this.setState({ [e.target.name]: e.target.value });
   };
+  submitHandler = (e) => {
+    e.preventDefault();
 
-  onExiting = (id) => {
-    if (id === this.state.collapseID) this.setState({ status: "Closing..." });
+    axiosConfig
+      .post(
+        "/admin/addnotification",
+        this.state
+        // {
+        //   headers: {
+        //     "auth-adtoken": localStorage.getItem("auth-adtoken"),
+        //   },
+        // }
+      )
+      .then((response) => {
+        console.log(response);
+        // swal("Success!", "Submitted SuccessFull!", "success");
+        this.props.history.push("/app/users/usersList");
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   };
-
   render() {
-    const accordionItems = collapseItems.map((collapseItem) => {
-      return (
-        <Card
-          key={collapseItem.id}
-          onClick={() => this.toggleCollapse(collapseItem.id)}
-          className={classnames({
-            "collapse-collapsed":
-              this.state.status === "Closed" &&
-              this.state.collapseID === collapseItem.id,
-            "collapse-shown":
-              this.state.status === "Opened" &&
-              this.state.collapseID === collapseItem.id,
-            closing:
-              this.state.status === "Closing..." &&
-              this.state.collapseID === collapseItem.id,
-            opening:
-              this.state.status === "Opening..." &&
-              this.state.collapseID === collapseItem.id,
-          })}
-        >
-          <CardHeader>
-            <CardTitle className="lead collapse-title collapsed">
-              {collapseItem.title}
-            </CardTitle>
-            <ChevronDown size={15} className="collapse-icon" />
-          </CardHeader>
-          <Collapse
-            isOpen={collapseItem.id === this.state.collapseID}
-            onEntering={() => this.onEntering(collapseItem.id)}
-            onEntered={() => this.onEntered(collapseItem.id)}
-            onExiting={() => this.onExiting(collapseItem.id)}
-            onExited={() => this.onExited(collapseItem.id)}
-          >
-            <CardBody>{collapseItem.content}</CardBody>
-          </Collapse>
-        </Card>
-      );
-    });
-
+    const { dealer } = this.state;
     return (
-      <React.Fragment>
+      <div>
         <Card>
           <Row className="m-2">
             <Col>
               <h1 col-sm-6 className="float-left">
-                Edit FAQ
+                Add Script
               </h1>
             </Col>
             <Col>
@@ -135,7 +89,7 @@ class AddFaq extends React.Component {
                 render={({ history }) => (
                   <Button
                     className=" btn btn-danger float-right"
-                    onClick={() => history.push("/app/faq/faqList")}
+                    onClick={() => history.push("app/script/scriptList")}
                   >
                     Back
                   </Button>
@@ -143,56 +97,55 @@ class AddFaq extends React.Component {
               />
             </Col>
           </Row>
-          <CardHeader>
-            <CardTitle>Frequently Asked Questions</CardTitle>
-            <div className="views">
-              <Nav tabs>
-                <NavItem>
-                  <NavLink
-                    className={classnames({
-                      active: this.state.activeTab === "1",
-                    })}
-                    onClick={() => {
-                      this.toggleTab("1");
-                    }}
-                  >
-                    <Eye size={15} />
-                  </NavLink>
-                </NavItem>
-                <NavItem>
-                  <NavLink
-                    className={classnames({
-                      active: this.state.activeTab === "2",
-                    })}
-                    onClick={() => {
-                      this.toggleTab("2");
-                    }}
-                  >
-                    <Code size={15} />
-                  </NavLink>
-                </NavItem>
-              </Nav>
-            </div>
-          </CardHeader>
-
           <CardBody>
-            {/* <p>
-              You may want to open one item at a time for that you can use
-              accordion.
-            </p> */}
-            <TabContent activeTab={this.state.activeTab}>
-              <TabPane tabId="1">
-                <div className="vx-collapse collapse-bordered">
-                  {accordionItems}
-                </div>
-              </TabPane>
-              <TabPane className="component-code" tabId="2">
-                {/* {accordion} */}
-              </TabPane>
-            </TabContent>
+            <Form className="m-1" onSubmit={this.submitHandler}>
+              <Row className="mb-2">
+                {/* <Col lg="6" md="6" className="mb-2">
+                  <Label>User ID</Label>
+                  <Input
+                    type="text"
+                    placeholder="Enter User Id"
+                    // name="desc"
+                    // value={this.state.desc}
+                    // onChange={this.changeHandler}
+                  />
+                </Col> */}
+
+                <Col lg="6" md="6" className="mb-2">
+                  <Label for="exampleSelect">Entry Script</Label>
+                  <Input id="exampleSelect" name="select" type="select">
+                    <option>Select Script</option>
+                    <option>All TRADES</option>
+                    <option>FNO INDEX</option>
+                    <option>FNO EQUITY</option>
+                    <option>CASH EQUITY</option>
+                  </Input>
+                </Col>
+                <Col lg="6" md="6" className="mb-2">
+                  <Label>Script Name</Label>
+                  <Input
+                    type="text"
+                    placeholder="Enter Script Name"
+
+                    // name="desc"
+                    // value={this.state.desc}
+                    // onChange={this.changeHandler}
+                  />
+                </Col>
+              </Row>
+              <Row>
+                <Button.Ripple
+                  className="mr-1 mb-1"
+                  type="submit"
+                  color="primary"
+                >
+                  Add Script
+                </Button.Ripple>
+              </Row>
+            </Form>
           </CardBody>
         </Card>
-      </React.Fragment>
+      </div>
     );
   }
 }
