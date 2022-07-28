@@ -8,7 +8,7 @@ import {
   Input,
   Label,
   Button,
-  // FormGroup,
+  FormGroup,
   // CustomInput,
 } from "reactstrap";
 import { Route } from "react-router-dom";
@@ -22,32 +22,27 @@ export class AddFaq extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      addTextbox: [{}],
       title: "",
       desc: "",
     };
   }
+  addControls() {
+    this.setState({
+      title: [...this.state.title, ""],
+      desc: [...this.state.desc, ""],
 
-  async componentDidMount() {
-    axiosConfig
-      .get("/dealer/alldealers")
-      .then((response) => {
-        console.log(response);
-        //this.setState({ dealerN: response.data.data });
-
-        // eslint-disable-next-line no-unused-expressions
-        response.data?.data?.map((dealerp) => {
-          let obj = {
-            label: dealerp.dealer_name,
-            value: dealerp._id,
-          };
-          dealerName.push(obj);
-        });
-      })
-      .catch((error) => {
-        console.log(error);
-      });
+      addTextbox: [...this.state.addTextbox, ""],
+    });
   }
+  delControl(i) {
+    console.log(this.state);
+    this.state.addTextbox.splice(i, 1);
+    this.state.title.splice(i, 1);
+    this.state.desc.splice(i, 1);
 
+    this.setState({});
+  }
   changeHandler = (e) => {
     this.setState({ [e.target.name]: e.target.value });
   };
@@ -56,7 +51,7 @@ export class AddFaq extends Component {
 
     axiosConfig
       .post(
-        "/admin/addnotification",
+        "/addFAQ",
         this.state
         // {
         //   headers: {
@@ -67,21 +62,20 @@ export class AddFaq extends Component {
       .then((response) => {
         console.log(response);
         // swal("Success!", "Submitted SuccessFull!", "success");
-        this.props.history.push("/app/users/usersList");
+        this.props.history.push("/app/faq/faqList");
       })
       .catch((error) => {
         console.log(error);
       });
   };
   render() {
-    const { dealer } = this.state;
     return (
       <div>
         <Card>
           <Row className="m-2">
             <Col>
               <h1 col-sm-6 className="float-left">
-                Add Script
+                Add FAQ
               </h1>
             </Col>
             <Col>
@@ -89,7 +83,7 @@ export class AddFaq extends Component {
                 render={({ history }) => (
                   <Button
                     className=" btn btn-danger float-right"
-                    onClick={() => history.push("app/script/scriptList")}
+                    onClick={() => history.push("/app/faq/faqList")}
                   >
                     Back
                   </Button>
@@ -100,36 +94,24 @@ export class AddFaq extends Component {
           <CardBody>
             <Form className="m-1" onSubmit={this.submitHandler}>
               <Row className="mb-2">
-                {/* <Col lg="6" md="6" className="mb-2">
-                  <Label>User ID</Label>
+                <Col lg="6" md="6" className="mb-2">
+                  <Label>Title</Label>
                   <Input
                     type="text"
-                    placeholder="Enter User Id"
-                    // name="desc"
-                    // value={this.state.desc}
-                    // onChange={this.changeHandler}
+                    placeholder="Enter Title"
+                    name="title"
+                    value={this.state.title}
+                    onChange={this.changeHandler}
                   />
-                </Col> */}
-
-                <Col lg="6" md="6" className="mb-2">
-                  <Label for="exampleSelect">Entry Script</Label>
-                  <Input id="exampleSelect" name="select" type="select">
-                    <option>Select Script</option>
-                    <option>All TRADES</option>
-                    <option>FNO INDEX</option>
-                    <option>FNO EQUITY</option>
-                    <option>CASH EQUITY</option>
-                  </Input>
                 </Col>
                 <Col lg="6" md="6" className="mb-2">
-                  <Label>Script Name</Label>
+                  <Label>Description</Label>
                   <Input
                     type="text"
-                    placeholder="Enter Script Name"
-
-                    // name="desc"
-                    // value={this.state.desc}
-                    // onChange={this.changeHandler}
+                    placeholder="Enter Description"
+                    name="desc"
+                    value={this.state.desc}
+                    onChange={this.changeHandler}
                   />
                 </Col>
               </Row>
@@ -139,7 +121,7 @@ export class AddFaq extends Component {
                   type="submit"
                   color="primary"
                 >
-                  Add Script
+                  Add FAQ
                 </Button.Ripple>
               </Row>
             </Form>

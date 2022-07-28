@@ -52,7 +52,7 @@ class AboutUs extends React.Component {
 
     axiosConfig
       .post(
-        "/admin/addabout",
+        "/add_aboutus",
         this.state
         // {
         //   headers: {

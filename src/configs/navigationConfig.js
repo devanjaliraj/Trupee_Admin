@@ -83,6 +83,22 @@ const navigationConfig = [
         permissions: ["admin", "editor"],
         navLink: "/app/trade/equityCashList",
       },
+      {
+        id: "niftyList",
+        title: "NIFTY",
+        type: "item",
+        icon: <Icon.Circle size={12} />,
+        permissions: ["admin", "editor"],
+        navLink: "/app/trade/niftyList",
+      },
+      {
+        id: "bankNiftyList",
+        title: "BANK NIFTY",
+        type: "item",
+        icon: <Icon.Circle size={12} />,
+        permissions: ["admin", "editor"],
+        navLink: "/app/trade/bankNiftyList",
+      },
     ],
   },
   {

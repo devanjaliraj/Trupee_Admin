@@ -28,7 +28,7 @@ export default class EditAboutUs extends Component {
   componentDidMount() {
     let { id } = this.props.match.params;
     axiosConfig
-      .get(`/admin/viewoneabout/${id}`)
+      .get(`/getone_aboutus/${id}`)
       .then((response) => {
         console.log(response);
         this.setState({
@@ -49,7 +49,7 @@ export default class EditAboutUs extends Component {
     e.preventDefault();
     let { id } = this.props.match.params;
     axiosConfig
-      .post(`/admin/edit_aboutus/${id}`, this.state)
+      .post(`/edit_aboutus/${id}`, this.state)
       .then((response) => {
         console.log(response);
         // swal("Success!", "Submitted SuccessFull!", "success");
@@ -102,7 +102,7 @@ export default class EditAboutUs extends Component {
           </Row>
           <CardBody>
             <Form className="m-1" onSubmit={this.submitHandler}>
-              <Col lg="6" md="6" sm="6" className="mb-2">
+              <Col lg="12" md="12" sm="12" className="mb-2">
                 <Label>Descriptions</Label>
                 <Input
                   type="textarea"

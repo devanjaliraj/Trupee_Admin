@@ -82,7 +82,7 @@ class FnoIndexList extends React.Component {
         },
       },
       {
-        headerName: "Target ",
+        headerName: "TRL ",
         field: "location",
         width: 140,
         cellRendererFramework: (params) => {
@@ -93,42 +93,42 @@ class FnoIndexList extends React.Component {
           );
         },
       },
-      // {
-      //   headerName: "Target 2",
-      //   field: "location",
-      //   width: 140,
-      //   cellRendererFramework: (params) => {
-      //     return (
-      //       <div className="d-flex align-items-center cursor-pointer">
-      //         <span>{params.data.location}</span>
-      //       </div>
-      //     );
-      //   },
-      // },
-      // {
-      //   headerName: "Target 3",
-      //   field: "location",
-      //   width: 140,
-      //   cellRendererFramework: (params) => {
-      //     return (
-      //       <div className="d-flex align-items-center cursor-pointer">
-      //         <span>{params.data.location}</span>
-      //       </div>
-      //     );
-      //   },
-      // },
-      // {
-      //   headerName: "Target 4",
-      //   field: "location",
-      //   width: 140,
-      //   cellRendererFramework: (params) => {
-      //     return (
-      //       <div className="d-flex align-items-center cursor-pointer">
-      //         <span>{params.data.location}</span>
-      //       </div>
-      //     );
-      //   },
-      // },
+      {
+        headerName: "T₹ 1",
+        field: "location",
+        width: 140,
+        cellRendererFramework: (params) => {
+          return (
+            <div className="d-flex align-items-center cursor-pointer">
+              <span>{params.data.location}</span>
+            </div>
+          );
+        },
+      },
+      {
+        headerName: "T₹ 2",
+        field: "location",
+        width: 140,
+        cellRendererFramework: (params) => {
+          return (
+            <div className="d-flex align-items-center cursor-pointer">
+              <span>{params.data.location}</span>
+            </div>
+          );
+        },
+      },
+      {
+        headerName: "T₹ 3",
+        field: "location",
+        width: 140,
+        cellRendererFramework: (params) => {
+          return (
+            <div className="d-flex align-items-center cursor-pointer">
+              <span>{params.data.location}</span>
+            </div>
+          );
+        },
+      },
       {
         headerName: "Lots",
         field: "state",

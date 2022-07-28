@@ -16,7 +16,7 @@ import { Route } from "react-router-dom";
 import { AgGridReact } from "ag-grid-react";
 // import { history } from "../../../history";
 import axiosConfig from "../../../../axiosConfig";
-import { ChevronDown, Edit } from "react-feather";
+import { ChevronDown, Edit, Trash2 } from "react-feather";
 import { ContextLayout } from "../../../../utility/context/Layout";
 import "../../../../assets/scss/plugins/tables/_agGridStyleOverride.scss";
 // import Breadcrumbs from "../../../components/@vuexy/breadCrumbs/BreadCrumb";
@@ -35,9 +35,19 @@ class AllaboutUs extends React.Component {
     },
     columnDefs: [
       {
+        headerName: "S.No",
+        valueGetter: "node.rowIndex + 1",
+        field: "node.rowIndex + 1",
+        width: 100,
+        filter: true,
+        // checkboxSelection: true,
+        // headerCheckboxSelectionFilteredOnly: true,
+        // headerCheckboxSelection: true,
+      },
+      {
         headerName: "Descriptions",
         field: "desc",
-        width: 600,
+        width: 700,
         cellRendererFramework: (params) => {
           return (
             <div className="d-flex align-items-center cursor-pointer">
@@ -67,7 +77,7 @@ class AllaboutUs extends React.Component {
         headerName: "Actions",
         field: "sortorder",
         width: 200,
-        pinned: window.innerWidth > 992 ? "right" : false,
+        // pinned: window.innerWidth > 992 ? "right" : false,
         cellRendererFramework: (params) => {
           return (
             <div className="actions cursor-pointer">
@@ -79,14 +89,14 @@ class AllaboutUs extends React.Component {
                     color="blue"
                     onClick={() =>
                       history.push(
-                        `/app/pageSetUp/about/EditAboutUs/${params.data._id}`
+                        `/app/pageSetUp/about/editAboutUs/${params.data._id}`
                       )
                     }
                   />
                 )}
               />
 
-              {/* <Trash2
+              <Trash2
                 className="mr-50"
                 size="25px"
                 color="red"
@@ -95,7 +105,7 @@ class AllaboutUs extends React.Component {
                   this.runthisfunction(params.data._id);
                   this.gridApi.updateRowData({ remove: selectedData });
                 }}
-              /> */}
+              />
             </div>
           );
         },
@@ -103,7 +113,7 @@ class AllaboutUs extends React.Component {
     ],
   };
   async componentDidMount() {
-    await axiosConfig.get("/admin/allabout").then((response) => {
+    await axiosConfig.get("/getAbout_us").then((response) => {
       const rowData = response.data.data;
       console.log(rowData);
       this.setState({ rowData });
@@ -111,7 +121,7 @@ class AllaboutUs extends React.Component {
   }
   async runthisfunction(id) {
     console.log(id);
-    await axiosConfig.get(`/admin/deleteabout/${id}`).then((response) => {
+    await axiosConfig.get(`/dlt_abtus/${id}`).then((response) => {
       console.log(response);
     });
   }

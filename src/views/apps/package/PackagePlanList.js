@@ -133,7 +133,7 @@ class PackagePlanList extends React.Component {
                 )}
               />
 
-              <Trash2
+              {/* <Trash2
                 className="mr-50"
                 size="25px"
                 color="red"
@@ -142,7 +142,7 @@ class PackagePlanList extends React.Component {
                   this.runthisfunction(params.data._id);
                   this.gridApi.updateRowData({ remove: selectedData });
                 }}
-              />
+              /> */}
             </div>
           );
         },
@@ -150,20 +150,20 @@ class PackagePlanList extends React.Component {
     ],
   };
   async componentDidMount() {
-    await axiosConfig.get("/membership_list").then((response) => {
+    await axiosConfig.get("/plan_list").then((response) => {
       let rowData = response.data.data;
       this.setState({ rowData });
     });
   }
 
-  async runthisfunction(id) {
-    console.log(id);
-    await axiosConfig
-      .get(`/dealer/deletedealershipform/${id}`)
-      .then((response) => {
-        console.log(response);
-      });
-  }
+  // async runthisfunction(id) {
+  //   console.log(id);
+  //   await axiosConfig
+  //     .get(`/dealer/deletedealershipform/${id}`)
+  //     .then((response) => {
+  //       console.log(response);
+  //     });
+  // }
 
   onGridReady = (params) => {
     this.gridApi = params.api;

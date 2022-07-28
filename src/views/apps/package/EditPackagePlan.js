@@ -98,7 +98,7 @@ export default class EditPackagePlan extends Component {
     console.log(payload);
     let { id } = this.props.match.params;
     axiosConfig
-      .post(`/editMembership/${id}`, payload)
+      .post(`/editplan/${id}`, payload)
       .then((response) => {
         console.log(response);
         // swal("Success!", "Submitted SuccessFull!", "success");
