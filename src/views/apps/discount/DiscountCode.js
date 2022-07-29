@@ -117,19 +117,14 @@ export class DiscountCode extends Component {
                   />
                 </Col> */}
 
-                <Col lg="6" md="6" className="mb-2">
-                  {/* <Accordion.Toggle as={Button} variant="link" eventKey="0">
-                    Panel 1
-                  </Accordion.Toggle> */}
-                  <Accordion>
-                    <Label for="exampleSelect">Code</Label>
-                    <Input id="exampleSelect" name="select" type="select">
-                      <option>Select Option</option>
-                      <option>FALT </option>
-                      <option>Percentage</option>
-                    </Input>
-                  </Accordion>
-                </Col>
+                {/* <Col lg="6" md="6" className="mb-2">
+                  <Label for="exampleSelect">Code</Label>
+                  <Input id="exampleSelect" name="select" type="select">
+                    <option>Select Option</option>
+                    <option>FALT </option>
+                    <option>Percentage</option>
+                  </Input>
+                </Col> */}
                 <Col lg="6" md="6" className="mb-2">
                   <Label>Title</Label>
                   <Input
@@ -140,6 +135,32 @@ export class DiscountCode extends Component {
                     // value={this.state.desc}
                     // onChange={this.changeHandler}
                   />
+                </Col>
+                <Col lg="6" md="6" className="mb-2">
+                  <Label>FALT</Label>
+                  <Input
+                    type="text"
+                    placeholder="Enter MRP Price"
+
+                    // name="desc"
+                    // value={this.state.desc}
+                    // onChange={this.changeHandler}
+                  />
+                </Col>
+                <Col lg="6" md="6" className="mb-2">
+                  <Label>Percentage</Label>
+                  <Input
+                    type="text"
+                    placeholder="Enter MRP Price"
+
+                    // name="desc"
+                    // value={this.state.desc}
+                    // onChange={this.changeHandler}
+                  />
+                </Col>
+                <Col lg="6" md="6" className="mb-2">
+                  <Label>Discount Code</Label>
+                  <Input readOnly type="text" placeholder="code" />
                 </Col>
                 <Col lg="6" md="6" className="mb-2">
                   <Label>Start Date</Label>
@@ -155,10 +176,6 @@ export class DiscountCode extends Component {
                 <Col lg="6" md="6" className="mb-2">
                   <Label>Expiry Date</Label>
                   <Input type="text" placeholder="Enter Discount Price" />
-                </Col>
-                <Col lg="6" md="6" className="mb-2">
-                  <Label>Discount Code</Label>
-                  <Input readOnly type="text" placeholder="code" />
                 </Col>
               </Row>
               <Row>

@@ -37,7 +37,7 @@ class termscondition extends React.Component {
       {
         headerName: "Descriptions",
         field: "desc",
-        width: 400,
+        width: 800,
         cellRendererFramework: (params) => {
           return (
             <div className="d-flex align-items-center cursor-pointer">
@@ -67,7 +67,7 @@ class termscondition extends React.Component {
       {
         headerName: "Actions",
         field: "sortorder",
-        width: 200,
+        width: 100,
         cellRendererFramework: (params) => {
           return (
             <div className="actions cursor-pointer">
@@ -103,7 +103,7 @@ class termscondition extends React.Component {
     ],
   };
   async componentDidMount() {
-    await axiosConfig.get("/admin/alltermscondition").then((response) => {
+    await axiosConfig.get("/get_term_cond").then((response) => {
       const rowData = response.data.data;
       console.log(rowData);
       this.setState({ rowData });

@@ -1,12 +1,15 @@
 import React, { Component } from "react";
 import {
   Card,
+  CardHeader,
+  CardTitle,
   CardBody,
   Row,
   Col,
   Form,
   Label,
   Input,
+  CustomInput,
   Button,
   Breadcrumb,
   BreadcrumbItem,
@@ -14,15 +17,33 @@ import {
 import axiosConfig from "../../../axiosConfig";
 import { history } from "../../../history";
 import swal from "sweetalert";
-import { Route } from "react-router-dom";
-
-export default class AddScript extends Component {
+export default class EditSize extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      script_type: "",
-      script_name: "",
+      sizeName: "",
+      status: "",
     };
+  }
+
+  componentDidMount() {
+    let { id } = this.props.match.params;
+    axiosConfig
+      .get(`/viewonesize/${id}`, {
+        headers: {
+          "auth-adtoken": localStorage.getItem("auth-adtoken"),
+        },
+      })
+      .then((response) => {
+        console.log(response);
+        this.setState({
+          sizeName: response.data.data.sizeName,
+          status: response.data.data.status,
+        });
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   }
   changeHandler1 = (e) => {
     this.setState({ status: e.target.value });
@@ -33,9 +54,9 @@ export default class AddScript extends Component {
   };
   submitHandler = (e) => {
     e.preventDefault();
-
+    let { id } = this.props.match.params;
     axiosConfig
-      .post("/addScript", this.state, {
+      .post(`/editsize/${id}`, this.state, {
         headers: {
           "auth-adtoken": localStorage.getItem("auth-adtoken"),
         },
@@ -43,13 +64,12 @@ export default class AddScript extends Component {
       .then((response) => {
         console.log(response);
         swal("Success!", "Submitted SuccessFull!", "success");
-        this.props.history.push("/app/script/scriptList");
+        this.props.history.push("/app/size/sizeList");
       })
       .catch((error) => {
         console.log(error);
       });
   };
-
   render() {
     return (
       <div>
@@ -60,10 +80,10 @@ export default class AddScript extends Component {
                 <BreadcrumbItem href="/analyticsDashboard" tag="a">
                   Home
                 </BreadcrumbItem>
-                <BreadcrumbItem href="/app/script/scriptList" tag="a">
-                  Script List
+                <BreadcrumbItem href="/app/size/sizeList" tag="a">
+                  Size List
                 </BreadcrumbItem>
-                <BreadcrumbItem active>Add Script</BreadcrumbItem>
+                <BreadcrumbItem active>Edit Size</BreadcrumbItem>
               </Breadcrumb>
             </div>
           </Col>
@@ -72,51 +92,27 @@ export default class AddScript extends Component {
           <Row className="m-2">
             <Col>
               <h1 col-sm-6 className="float-left">
-                Add Script
+                Edit Size
               </h1>
             </Col>
             <Col>
-              <Route
-                render={({ history }) => (
-                  <Button
-                    className=" btn btn-danger float-right"
-                    onClick={() => history.push("/app/script/scriptList")}
-                  >
-                    Back
-                  </Button>
-                )}
-              />
+              <Button
+                className=" btn btn-danger float-right"
+                onClick={() => history.push("/app/size/sizeList")}
+              >
+                Back
+              </Button>
             </Col>
           </Row>
           <CardBody>
             <Form className="m-1" onSubmit={this.submitHandler}>
               <Row>
-                <Col lg="6" md="6" className="mb-2">
-                  <Label for="exampleSelect">Entry Script</Label>
-                  <Input
-                    id="exampleSelect"
-                    name="script_type"
-                    type="select"
-                    value={this.state.script_type}
-                    onChange={this.changeHandler}
-                  >
-                    <option>Select Script</option>
-                    <option>All TRADES</option>
-                    <option>FNO INDEX</option>
-                    <option>FNO EQUITY</option>
-                    <option>CASH EQUITY</option>
-                    <option>BANK NIFTY</option>
-                    <option>NIFTY </option>
-                  </Input>
-                </Col>
                 <Col lg="6" md="6" sm="6" className="mb-2">
-                  <Label>Script Name</Label>
+                  <Label>Size</Label>
                   <Input
-                    required
                     type="text"
-                    name="script_name"
-                    placeholder=""
-                    value={this.state.script_name}
+                    name="sizeName"
+                    value={this.state.sizeName}
                     onChange={this.changeHandler}
                   ></Input>
                 </Col>

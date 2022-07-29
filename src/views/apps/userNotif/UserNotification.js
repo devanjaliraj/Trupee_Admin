@@ -45,13 +45,13 @@ class UserNotification extends React.Component {
       },
       {
         headerName: "User Name",
-        field: "dealer_name",
+        field: "fullname",
         width: 180,
         // pinned: window.innerWidth > 992 ? "left" : false,
         cellRendererFramework: (params) => {
           return (
             <div className="d-flex align-items-center cursor-pointer">
-              <span>{params.data.dealer_name}</span>
+              <span>{params.data.userid.fullname}</span>
             </div>
           );
         },
@@ -63,19 +63,19 @@ class UserNotification extends React.Component {
         cellRendererFramework: (params) => {
           return (
             <div className="d-flex align-items-center cursor-pointer">
-              <span>{params.data.mobile}</span>
+              <span>{params.data.userid.mobile}</span>
             </div>
           );
         },
       },
       {
         headerName: "Date/Time",
-        field: "first_name",
+        field: "createdAt",
         width: 180,
         cellRendererFramework: (params) => {
           return (
             <div className="d-flex align-items-center cursor-pointer">
-              <span>{params.data.master_oil_company?.name}</span>
+              <span>{params.data.createdAt}</span>
             </div>
           );
         },
@@ -95,12 +95,12 @@ class UserNotification extends React.Component {
 
       {
         headerName: "Image",
-        field: "state",
+        field: "userimg",
         width: 180,
         cellRendererFramework: (params) => {
           return (
             <div className="d-flex align-items-center cursor-pointer">
-              <span>{params.data.state}</span>
+              <span>{params.data.userid.userimg}</span>
             </div>
           );
         },
@@ -194,10 +194,16 @@ class UserNotification extends React.Component {
     ],
   };
   async componentDidMount() {
-    await axios.get("api/users/list").then((response) => {
-      let rowData = response.data;
-      this.setState({ rowData });
-    });
+    axiosConfig
+      .get(`/`)
+      .then((response) => {
+        let rowData = response.data.data;
+        JSON.stringify(rowData);
+        this.setState({ rowData });
+      })
+      .catch((error) => {
+        console.log(error.response);
+      });
   }
   async runthisfunction(id) {
     console.log(id);

@@ -16,6 +16,7 @@ import {
 } from "reactstrap";
 import axiosConfig from "../../../axiosConfig";
 import { history } from "../../../history";
+import { Route } from "react-router-dom";
 import swal from "sweetalert";
 export default class EditScript extends Component {
   constructor(props) {
@@ -96,12 +97,16 @@ export default class EditScript extends Component {
               </h1>
             </Col>
             <Col>
-              <Button
-                className=" btn btn-danger float-right"
-                onClick={() => history.push("/app/script/scriptList")}
-              >
-                Back
-              </Button>
+              <Route
+                render={({ history }) => (
+                  <Button
+                    className=" btn btn-danger float-right"
+                    onClick={() => history.push("/app/script/scriptList")}
+                  >
+                    Back
+                  </Button>
+                )}
+              />
             </Col>
           </Row>
           <CardBody>

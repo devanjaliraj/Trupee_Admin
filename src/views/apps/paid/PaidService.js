@@ -142,7 +142,7 @@ class PaidServeice extends React.Component {
                     }
                   />
                 )}
-              /> */}
+          /> */}
 
               <Trash2
                 className="mr-50"

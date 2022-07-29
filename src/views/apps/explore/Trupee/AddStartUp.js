@@ -1,27 +1,32 @@
 import React, { Component } from "react";
 import {
   Card,
+  CardHeader,
+  CardTitle,
   CardBody,
   Row,
   Col,
   Form,
   Label,
   Input,
+  CustomInput,
   Button,
   Breadcrumb,
   BreadcrumbItem,
 } from "reactstrap";
-import axiosConfig from "../../../axiosConfig";
-import { history } from "../../../history";
+import axiosConfig from "../../../../axiosConfig";
+import { history } from "../../../../history";
 import swal from "sweetalert";
 import { Route } from "react-router-dom";
 
-export default class AddScript extends Component {
+export default class AddStartUp extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      script_type: "",
-      script_name: "",
+      title: "",
+      desc: "",
+      image: "",
+      video_link: "",
     };
   }
   changeHandler1 = (e) => {
@@ -35,7 +40,7 @@ export default class AddScript extends Component {
     e.preventDefault();
 
     axiosConfig
-      .post("/addScript", this.state, {
+      .post("/addsize", this.state, {
         headers: {
           "auth-adtoken": localStorage.getItem("auth-adtoken"),
         },
@@ -43,7 +48,7 @@ export default class AddScript extends Component {
       .then((response) => {
         console.log(response);
         swal("Success!", "Submitted SuccessFull!", "success");
-        this.props.history.push("/app/script/scriptList");
+        this.props.history.push("/app/explore/Trupee/startUp");
       })
       .catch((error) => {
         console.log(error);
@@ -60,10 +65,10 @@ export default class AddScript extends Component {
                 <BreadcrumbItem href="/analyticsDashboard" tag="a">
                   Home
                 </BreadcrumbItem>
-                <BreadcrumbItem href="/app/script/scriptList" tag="a">
-                  Script List
+                <BreadcrumbItem href="/app/explore/Trupee/startUp" tag="a">
+                  StartUp List
                 </BreadcrumbItem>
-                <BreadcrumbItem active>Add Script</BreadcrumbItem>
+                <BreadcrumbItem active>Add StartUp</BreadcrumbItem>
               </Breadcrumb>
             </div>
           </Col>
@@ -72,7 +77,7 @@ export default class AddScript extends Component {
           <Row className="m-2">
             <Col>
               <h1 col-sm-6 className="float-left">
-                Add Script
+                Add StartUp
               </h1>
             </Col>
             <Col>
@@ -80,7 +85,7 @@ export default class AddScript extends Component {
                 render={({ history }) => (
                   <Button
                     className=" btn btn-danger float-right"
-                    onClick={() => history.push("/app/script/scriptList")}
+                    onClick={() => history.push("/app/explore/Trupee/startUp")}
                   >
                     Back
                   </Button>
@@ -91,35 +96,63 @@ export default class AddScript extends Component {
           <CardBody>
             <Form className="m-1" onSubmit={this.submitHandler}>
               <Row>
-                <Col lg="6" md="6" className="mb-2">
-                  <Label for="exampleSelect">Entry Script</Label>
-                  <Input
-                    id="exampleSelect"
-                    name="script_type"
-                    type="select"
-                    value={this.state.script_type}
-                    onChange={this.changeHandler}
-                  >
-                    <option>Select Script</option>
-                    <option>All TRADES</option>
-                    <option>FNO INDEX</option>
-                    <option>FNO EQUITY</option>
-                    <option>CASH EQUITY</option>
-                    <option>BANK NIFTY</option>
-                    <option>NIFTY </option>
-                  </Input>
-                </Col>
                 <Col lg="6" md="6" sm="6" className="mb-2">
-                  <Label>Script Name</Label>
+                  <Label>Size</Label>
                   <Input
                     required
                     type="text"
-                    name="script_name"
+                    name="sizeName"
                     placeholder=""
-                    value={this.state.script_name}
+                    value={this.state.sizeName}
                     onChange={this.changeHandler}
                   ></Input>
                 </Col>
+                {/* <Col lg="6" md="6" sm="6" className="mb-2">
+                  <Label>Value</Label>
+                  <Input
+                    required
+                    type="number"
+                    name="value"
+                    placeholder=""
+                    value={this.state.value}
+                    onChange={this.changeHandler}
+                  ></Input>
+                </Col>
+                <Col lg="6" md="6" sm="6" className="mb-2">
+                  <Label>Descripition</Label>
+                  <Input
+                    required
+                    type="textarea"
+                    name="desc"
+                    placeholder=""
+                    value={this.state.desc}
+                    onChange={this.changeHandler}
+                  ></Input>
+                </Col> */}
+
+                {/* <Col lg="6" md="6" sm="6" className="mb-2">
+                  <Label className="mb-1">Status</Label>
+                  <div
+                    className="form-label-group"
+                    onChange={(e) => this.changeHandler1(e)}
+                  >
+                    <input
+                      style={{ marginRight: "3px" }}
+                      type="radio"
+                      name="status"
+                      value="Active"
+                    />
+                    <span style={{ marginRight: "20px" }}>Active</span>
+
+                    <input
+                      style={{ marginRight: "3px" }}
+                      type="radio"
+                      name="status"
+                      value="Inactive"
+                    />
+                    <span style={{ marginRight: "3px" }}>Inactive</span>
+                  </div>
+                </Col>  */}
               </Row>
               <Row>
                 <Col lg="6" md="6" sm="6" className="mb-2">

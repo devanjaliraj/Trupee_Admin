@@ -11,7 +11,7 @@ import {
 import { history } from "../../../history";
 import "../../../assets/scss/pages/app-ecommerce-shop.scss";
 import axiosConfig from "../../../axiosConfig";
-class ViewUsers extends React.Component {
+class ViewSize extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -97,4 +97,4 @@ class ViewUsers extends React.Component {
     );
   }
 }
-export default ViewUsers;
+export default ViewSize;

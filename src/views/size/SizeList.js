@@ -17,10 +17,9 @@ import { AgGridReact } from "ag-grid-react";
 import { Eye, Edit, Trash2, ChevronDown } from "react-feather";
 //import classnames from "classnames";
 import { history } from "../../../history";
-import { Route } from "react-router-dom";
 import "../../../assets/scss/plugins/tables/_agGridStyleOverride.scss";
 import "../../../assets/scss/pages/users.scss";
-class FaqList extends React.Component {
+class SizeList extends React.Component {
   state = {
     rowData: [],
     paginationPageSize: 20,
@@ -35,60 +34,47 @@ class FaqList extends React.Component {
 
     columnDefs: [
       {
-        headerName: "Title",
-        field: "title",
-        // filter: true,
-        width: 400,
-        // pinned: window.innerWidth > 992 ? "left" : false,
-        cellRendererFramework: (params) => {
-          return (
-            <div className="d-flex align-items-center cursor-pointer">
-              <span>{params.data.title}</span>
-            </div>
-          );
-        },
+        headerName: "S.No",
+        valueGetter: "node.rowIndex + 1",
+        field: "node.rowIndex + 1",
+        width: 150,
+        filter: true,
+        // checkboxSelection: true,
+        // headerCheckboxSelectionFilteredOnly: true,
+        // headerCheckboxSelection: true,
       },
       {
-        headerName: "Descripiton",
-        field: "desc",
-        // filter: true,
-        width: 500,
-        // pinned: window.innerWidth > 992 ? "left" : false,
+        headerName: "Size ",
+        field: "sizeName",
+        filter: true,
+        width: 200,
         cellRendererFramework: (params) => {
           return (
-            <div className="d-flex align-items-center cursor-pointer">
-              <span>{params.data.desc}</span>
+            <div>
+              <span>{params.data.sizeName}</span>
             </div>
           );
         },
       },
+
       {
         headerName: "Actions",
         field: "sortorder",
+        // field: "transactions",
         width: 150,
-        // pinned: window.innerWidth > 992 ? "right" : false,
         cellRendererFramework: (params) => {
           return (
             <div className="actions cursor-pointer">
-              {/* <Route
-                render={({ history }) => (
-                  <Edit
-                    className="mr-50"
-                    size="25px"
-                    color="blue"
-                    onClick={() =>
-                      history.push(
-                        
-                        `/app/about/EditAboutUs/${params.data._id}`
-                      )
-                    }
-                  />
-                )}
-              /> */}
-
-              <Trash2
+              <Edit
                 className="mr-50"
-                size="25px"
+                color="blue"
+                size={20}
+                onClick={() =>
+                  history.push(`/app/size/editSize/${params.data._id}`)
+                }
+              />
+              <Trash2
+                size={20}
                 color="red"
                 onClick={() => {
                   let selectedData = this.gridApi.getSelectedRows();
@@ -105,10 +91,10 @@ class FaqList extends React.Component {
 
   async componentDidMount() {
     await axiosConfig
-      .get("/faq_list", {
-        // headers: {
-        //   "auth-adtoken": localStorage.getItem("auth-adtoken"),
-        // },
+      .get("/getsizebyseller", {
+        headers: {
+          "auth-adtoken": localStorage.getItem("auth-adtoken"),
+        },
       })
       .then((response) => {
         const rowData = response.data.data;
@@ -118,7 +104,7 @@ class FaqList extends React.Component {
   }
   async runthisfunction(id) {
     console.log(id);
-    await axiosConfig.get(`/dltFaq/${id}`).then(
+    await axiosConfig.get(`/deleteSize/${id}`).then(
       (response) => {
         console.log(response);
       },
@@ -163,20 +149,16 @@ class FaqList extends React.Component {
               <Row className="m-2">
                 <Col>
                   <h1 sm="6" className="float-left">
-                    FAQ List
+                    Size List
                   </h1>
                 </Col>
                 <Col>
-                  <Route
-                    render={({ history }) => (
-                      <Button
-                        className=" btn btn-danger float-right"
-                        onClick={() => history.push("/app/faq/AddFaq")}
-                      >
-                        Add FAQ
-                      </Button>
-                    )}
-                  />
+                  <Button
+                    className=" btn btn-danger float-right"
+                    onClick={() => history.push("/app/size/addSize")}
+                  >
+                    Add Size
+                  </Button>
                 </Col>
               </Row>
               <CardBody>
@@ -278,4 +260,4 @@ class FaqList extends React.Component {
     );
   }
 }
-export default FaqList;
+export default SizeList;

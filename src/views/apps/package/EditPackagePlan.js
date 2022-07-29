@@ -64,7 +64,7 @@ export default class EditPackagePlan extends Component {
 
     let { id } = this.props.match.params;
     axiosConfig
-      .post(`/dealer/updatemembership/${id}`)
+      .post(`/editplan/${id}`)
       .then((response) => {
         console.log(response.data.data);
         this.setState({
@@ -85,10 +85,8 @@ export default class EditPackagePlan extends Component {
   };
   submitHandler = (e) => {
     e.preventDefault();
-    const { transaction_id, expdate, date, status, amount, planId } =
-      this.state;
+    const { expdate, date, status, amount, planId } = this.state;
     var payload = {
-      transaction_id: transaction_id,
       expdate: expdate,
       amount: amount,
       planId: planId,
@@ -114,7 +112,6 @@ export default class EditPackagePlan extends Component {
   };
 
   render() {
-    let { membershipData } = this.state;
     return (
       <div>
         <Breadcrumbs
@@ -160,7 +157,13 @@ export default class EditPackagePlan extends Component {
                 </Col> */}
                 <Col lg="6" md="6" className="mb-2">
                   <Label for="exampleSelect">Package Plan</Label>
-                  <Input id="exampleSelect" name="pack_name" type="select">
+                  <Input
+                    id="exampleSelect"
+                    name="pack_name"
+                    type="select"
+                    value={this.state.pack_name}
+                    onChange={this.changeHandler}
+                  >
                     <option>Select Plan</option>
                     <option>FREE PLAN</option>
                     <option>1 Month</option>

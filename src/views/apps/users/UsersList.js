@@ -52,7 +52,7 @@ class UsersList extends React.Component {
         cellRendererFramework: (params) => {
           return (
             <div className="d-flex align-items-center cursor-pointer">
-              <span>{params.data.fullname}</span>
+              <span>{params.data.userid.fullname}</span>
             </div>
           );
         },
@@ -64,7 +64,7 @@ class UsersList extends React.Component {
         cellRendererFramework: (params) => {
           return (
             <div className="d-flex align-items-center cursor-pointer">
-              <span>{params.data.mobile}</span>
+              <span>{params.data.userid.mobile}</span>
             </div>
           );
         },
@@ -77,7 +77,7 @@ class UsersList extends React.Component {
         cellRendererFramework: (params) => {
           return (
             <div className="d-flex align-items-center cursor-pointer">
-              <span>{params.data.email}</span>
+              <span>{params.data.userid.email}</span>
             </div>
           );
         },
@@ -90,7 +90,7 @@ class UsersList extends React.Component {
         cellRendererFramework: (params) => {
           return (
             <div className="d-flex align-items-center cursor-pointer">
-              <span>{params.data.address}</span>
+              <span>{params.data.userid.address}</span>
             </div>
           );
         },
@@ -102,31 +102,32 @@ class UsersList extends React.Component {
         cellRendererFramework: (params) => {
           return (
             <div className="d-flex align-items-center cursor-pointer">
-              <span>{params.data.city}</span>
+              <span>{params.data.userid.city}</span>
             </div>
           );
         },
       },
       {
         headerName: "Membership plan",
-        // field: "city",
+        field: "pack_name",
         width: 120,
         cellRendererFramework: (params) => {
           return (
             <div className="d-flex align-items-center cursor-pointer">
-              {/* <span>{params.data.city}</span> */}
+              <span>{params.data.planId.pack_name}</span>
             </div>
           );
         },
       },
       {
         headerName: "Start Date",
-        field: "createdAt",
+        field: "date",
         width: 120,
         cellRendererFramework: (params) => {
           return (
             <div className="d-flex align-items-center cursor-pointer">
-              <span>{moment(params.data.createdAt).format("ll")} </span>
+              {/* <span>{moment(params.data.createdAt).format("ll")} </span> */}
+              <span>{params.data.date}</span>
             </div>
           );
         },
@@ -134,12 +135,13 @@ class UsersList extends React.Component {
 
       {
         headerName: "Expiry Date",
-        field: "updatedAt",
+        field: "expdate",
         width: 120,
         cellRendererFramework: (params) => {
           return (
             <div className="d-flex align-items-center cursor-pointer">
-              <span>{moment(params.data.updatedAt).format("ll")} </span>
+              <span>{params.data.expdate}</span>
+              {/* <span>{moment(params.data.updatedAt).format("ll")} </span> */}
             </div>
           );
         },
@@ -169,13 +171,15 @@ class UsersList extends React.Component {
         cellRendererFramework: (params) => {
           return (
             <div className="actions cursor-pointer">
-              <Route
+              {/* <Route
                 render={({ history }) => (
                   <Edit
                     className="mr-50"
                     size="25px"
                     color="blue"
-                    onClick={() => history.push("/app/users/addUsers")}
+                    onClick={() =>
+                      history.push(`/app/users/editUsers/${params.data._id}`)
+                    }
                   />
                 )}
               />
@@ -189,7 +193,7 @@ class UsersList extends React.Component {
                   this.runthisfunction(params.data._id);
                   this.gridApi.updateRowData({ remove: selectedData });
                 }}
-              />
+              /> */}
             </div>
           );
         },
@@ -197,17 +201,17 @@ class UsersList extends React.Component {
     ],
   };
   async componentDidMount() {
-    await axiosConfig.get("/getuser").then((response) => {
+    await axiosConfig.get("/allmembership").then((response) => {
       let rowData = response.data.data;
       this.setState({ rowData });
     });
   }
-  async runthisfunction(id) {
-    console.log(id);
-    await axiosConfig.get(`/deletuser/${id}`).then((response) => {
-      console.log(response);
-    });
-  }
+  // async runthisfunction(id) {
+  //   console.log(id);
+  //   await axiosConfig.get(`/deletuser/${id}`).then((response) => {
+  //     console.log(response);
+  //   });
+  // }
 
   onGridReady = (params) => {
     this.gridApi = params.api;
