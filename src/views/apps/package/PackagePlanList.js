@@ -37,7 +37,7 @@ class PackagePlanList extends React.Component {
         headerName: "S.No",
         valueGetter: "node.rowIndex + 1",
         field: "node.rowIndex + 1",
-        width: 200,
+        width: 100,
         filter: true,
         // checkboxSelection: true,
         // headerCheckboxSelectionFilteredOnly: true,
@@ -46,7 +46,7 @@ class PackagePlanList extends React.Component {
       {
         headerName: "Package Plan",
         field: "pack_name",
-        width: 200,
+        width: 150,
         // pinned: window.innerWidth > 992 ? "left" : false,
         cellRendererFramework: (params) => {
           return (
@@ -59,7 +59,7 @@ class PackagePlanList extends React.Component {
       {
         headerName: "MRP Price",
         field: "mrp_price",
-        width: 200,
+        width: 120,
         cellRendererFramework: (params) => {
           return (
             <div className="d-flex align-items-center cursor-pointer">
@@ -71,7 +71,7 @@ class PackagePlanList extends React.Component {
       {
         headerName: "Discount Price",
         field: "des_price",
-        width: 200,
+        width: 150,
         cellRendererFramework: (params) => {
           return (
             <div className="d-flex align-items-center cursor-pointer">
@@ -83,7 +83,7 @@ class PackagePlanList extends React.Component {
       {
         headerName: "Discount",
         field: "desc",
-        width: 200,
+        width: 150,
         cellRendererFramework: (params) => {
           return (
             <div className="d-flex align-items-center cursor-pointer">
@@ -97,7 +97,7 @@ class PackagePlanList extends React.Component {
         headerName: "Status",
         field: "status",
         // filter: completed,
-        width: 200,
+        width: 150,
         cellRendererFramework: (params) => {
           return params.value === "Active" ? (
             <div className="badge badge-pill badge-success">
@@ -113,7 +113,7 @@ class PackagePlanList extends React.Component {
       {
         headerName: "Actions",
         field: "sortorder",
-        width: 220,
+        width: 180,
         // pinned: window.innerWidth > 992 ? "right" : false,
         cellRendererFramework: (params) => {
           return (

@@ -20,6 +20,7 @@ const checkout = lazy(() => import("./views/apps/ecommerce/cart/Cart"));
 
 //Discount Code//
 const DiscountCode = lazy(() => import("./views/apps/discount/DiscountCode"));
+const DiscountList = lazy(() => import("./views/apps/discount/DiscountList"));
 
 // feedback //
 const FeedBackList = lazy(() => import("./views/apps/feedback/FeedBackList"));
@@ -156,7 +157,6 @@ const TrupeeUnivercity = lazy(() =>
 );
 const StartUp = lazy(() => import("./views/apps/explore/Trupee/StartUp"));
 const AddStartUp = lazy(() => import("./views/apps/explore/Trupee/AddStartUp"));
-
 const RefferEarn = lazy(() => import("./views/apps/explore/Trupee/RefferEarn"));
 const TradingViewCharts = lazy(() =>
   import("./views/apps/explore/Trupee/TradingViewCharts")
@@ -599,6 +599,11 @@ class AppRouter extends React.Component {
               path="/app/discount/discountCode"
               component={DiscountCode}
             />
+            <AppRoute
+              exact={true}
+              path="/app/discount/discountList"
+              component={DiscountList}
+            />
             {/*userNotification*/}
             <AppRoute
               exact={true}
@@ -618,8 +623,13 @@ class AppRouter extends React.Component {
             />
             <AppRoute
               exact={true}
-              path="/app/explore/Trupee/addStartUp"
+              path="/app/explore/Trupee/addStratUp"
               component={AddStartUp}
+            />
+            <AppRoute
+              exact={true}
+              path="/app/explore/Trupee/performance"
+              component={Performance}
             />
             <AppRoute
               exact={true}

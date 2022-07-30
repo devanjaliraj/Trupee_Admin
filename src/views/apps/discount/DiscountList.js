@@ -11,17 +11,16 @@ import {
   DropdownItem,
   DropdownToggle,
 } from "reactstrap";
-import axiosConfig from "../../../../axiosConfig";
-import { ContextLayout } from "../../../../utility/context/Layout";
+import axiosConfig from "../../../axiosConfig";
+import { ContextLayout } from "../../../utility/context/Layout";
 import { AgGridReact } from "ag-grid-react";
 import { Eye, Edit, Trash2, ChevronDown } from "react-feather";
 //import classnames from "classnames";
-import { history } from "../../../../history";
-import "../../../../assets/scss/plugins/tables/_agGridStyleOverride.scss";
-import "../../../../assets/scss/pages/users.scss";
+import { history } from "../../../history";
+import "../../../assets/scss/plugins/tables/_agGridStyleOverride.scss";
+import "../../../assets/scss/pages/users.scss";
 import { Route } from "react-router-dom";
-
-class TrupeeUnivercity extends React.Component {
+class DiscountList extends React.Component {
   state = {
     rowData: [],
     paginationPageSize: 20,
@@ -39,12 +38,13 @@ class TrupeeUnivercity extends React.Component {
         headerName: "S.No",
         valueGetter: "node.rowIndex + 1",
         field: "node.rowIndex + 1",
-        width: 100,
+        width: 150,
         filter: true,
         // checkboxSelection: true,
         // headerCheckboxSelectionFilteredOnly: true,
         // headerCheckboxSelection: true,
       },
+
       {
         headerName: "Title",
         field: "title",
@@ -60,84 +60,99 @@ class TrupeeUnivercity extends React.Component {
         },
       },
       {
-        headerName: "Descripiton",
-        field: "desc",
+        headerName: "FLAT",
+        field: "flat_price",
         // filter: true,
         width: 150,
         // pinned: window.innerWidth > 992 ? "left" : false,
         cellRendererFramework: (params) => {
           return (
             <div className="d-flex align-items-center cursor-pointer">
-              <span>{params.data.desc}</span>
+              <span>{params.data.flat_price}</span>
             </div>
           );
         },
       },
       {
-        headerName: "Upload Video",
-        field: "video_link",
+        headerName: "Percentage",
+        field: "percentage",
         // filter: true,
         width: 150,
         // pinned: window.innerWidth > 992 ? "left" : false,
         cellRendererFramework: (params) => {
           return (
             <div className="d-flex align-items-center cursor-pointer">
-              <span>{params.data.video_link}</span>
+              <span>{params.data.percentage}</span>
             </div>
           );
         },
       },
       {
-        headerName: "Date/Time",
-        field: "createdAt",
+        headerName: "Discount Code",
+        field: "code",
         // filter: true,
-        width: 150,
+        width: 200,
         // pinned: window.innerWidth > 992 ? "left" : false,
         cellRendererFramework: (params) => {
           return (
             <div className="d-flex align-items-center cursor-pointer">
-              <span>{params.data.createdAt}</span>
+              <span>{params.data.code}</span>
             </div>
           );
         },
       },
-      // {
-      //   headerName: "Time",
-      //   field: "desc",
-      //   // filter: true,
-      //   width: 250,
-      //   // pinned: window.innerWidth > 992 ? "left" : false,
-      //   cellRendererFramework: (params) => {
-      //     return (
-      //       <div className="d-flex align-items-center cursor-pointer">
-      //         <span>{params.data.desc}</span>
-      //       </div>
-      //     );
-      //   },
-      // },
+      {
+        headerName: "Start Date",
+        field: "startdate",
+        // filter: true,
+        width: 200,
+        // pinned: window.innerWidth > 992 ? "left" : false,
+        cellRendererFramework: (params) => {
+          return (
+            <div className="d-flex align-items-center cursor-pointer">
+              <span>{params.data.startdate}</span>
+            </div>
+          );
+        },
+      },
+      {
+        headerName: "Exp. Date",
+        field: "expdate",
+        // filter: true,
+        width: 200,
+        // pinned: window.innerWidth > 992 ? "left" : false,
+        cellRendererFramework: (params) => {
+          return (
+            <div className="d-flex align-items-center cursor-pointer">
+              <span>{params.data.expdate}</span>
+            </div>
+          );
+        },
+      },
+
       {
         headerName: "Actions",
         field: "sortorder",
-        width: 250,
+        width: 200,
         // pinned: window.innerWidth > 992 ? "right" : false,
         cellRendererFramework: (params) => {
           return (
             <div className="actions cursor-pointer">
               {/* <Route
-                render={({ history }) => (
-                  <Edit
-                    className="mr-50"
-                    size="25px"
-                    color="blue"
-                    onClick={() =>
-                      history.push(
-                        
-                        `/app/about/EditAboutUs/${params.data._id}`
-                      )
-                    }
-                  />
-                )}
-              /> */}
+                  render={({ history }) => (
+                    <Edit
+                      className="mr-50"
+                      size="25px"
+                      color="blue"
+                      onClick={() =>
+                        history.push(
+                          
+                          `/app/about/EditAboutUs/${params.data._id}`
+                        )
+                      }
+                    />
+                  )}
+                /> */}
 
               <Trash2
                 className="mr-50"
@@ -155,25 +170,31 @@ class TrupeeUnivercity extends React.Component {
       },
     ],
   };
-  componentDidMount() {
-    axiosConfig
-      .get(`/get_Tuniversity`)
-      .then((response) => {
-        let rowData = response.data.data;
-        JSON.stringify(rowData);
-        this.setState({ rowData });
+
+  async componentDidMount() {
+    await axiosConfig
+      .get("/discount_list", {
+        // headers: {
+        //   "auth-adtoken": localStorage.getItem("auth-adtoken"),
+        // },
       })
-      .catch((error) => {
-        console.log(error.response);
+      .then((response) => {
+        const rowData = response.data.data;
+        console.log(rowData);
+        this.setState({ rowData });
       });
   }
   async runthisfunction(id) {
     console.log(id);
-    await axiosConfig.get(`/dlt_Tuniversity/${id}`).then((response) => {
-      console.log(response);
-    });
+    await axiosConfig.get(`/dlt_startup/${id}`).then(
+      (response) => {
+        console.log(response);
+      },
+      (error) => {
+        console.log(error);
+      }
+    );
   }
-
   onGridReady = (params) => {
     this.gridApi = params.api;
     this.gridColumnApi = params.columnApi;
@@ -210,24 +231,23 @@ class TrupeeUnivercity extends React.Component {
               <Row className="m-2">
                 <Col>
                   <h1 sm="6" className="float-left">
-                    Trupee Univercity List
+                    Discount Code List
                   </h1>
                 </Col>
-
-                {/* <Col>
-              <Route
-                render={({ history }) => (
-                  <Button
-                    className=" btn btn-danger float-right"
-                    onClick={() =>
-                      history.push("/app/notification/Addnotification")
-                    }
-                  >
-                    Add Notification
-                  </Button>
-                )}
-              />
-            </Col> */}
+                <Col>
+                  <Route
+                    render={({ history }) => (
+                      <Button
+                        className="btn btn-success float-right"
+                        onClick={() =>
+                          history.push("/app/discount/discountCode")
+                        }
+                      >
+                        Add
+                      </Button>
+                    )}
+                  />
+                </Col>
               </Row>
               <CardBody>
                 {this.state.rowData === null ? null : (
@@ -328,4 +348,4 @@ class TrupeeUnivercity extends React.Component {
     );
   }
 }
-export default TrupeeUnivercity;
+export default DiscountList;

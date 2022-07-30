@@ -25,7 +25,13 @@ const dealerName = [];
 export class DiscountCode extends Component {
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = {
+      title: "",
+      flat_price: "",
+      percentage: "",
+      startdate: "",
+      expdate: "",
+    };
   }
 
   async componentDidMount() {
@@ -63,7 +69,7 @@ export class DiscountCode extends Component {
 
     axiosConfig
       .post(
-        "/admin/addnotification",
+        "/add_discount",
         this.state
         // {
         //   headers: {
@@ -74,7 +80,7 @@ export class DiscountCode extends Component {
       .then((response) => {
         console.log(response);
         // swal("Success!", "Submitted SuccessFull!", "success");
-        this.props.history.push("/app/users/usersList");
+        this.props.history.push("/app/discount/discountList");
       })
       .catch((error) => {
         console.log(error);
@@ -95,7 +101,7 @@ export class DiscountCode extends Component {
                 render={({ history }) => (
                   <Button
                     className=" btn btn-danger float-right"
-                    onClick={() => history.push("app/package/PackagePlanList")}
+                    onClick={() => history.push("app/discount/discountList")}
                   >
                     Back
                   </Button>
@@ -129,11 +135,10 @@ export class DiscountCode extends Component {
                   <Label>Title</Label>
                   <Input
                     type="text"
-                    placeholder="Enter MRP Price"
-
-                    // name="desc"
-                    // value={this.state.desc}
-                    // onChange={this.changeHandler}
+                    placeholder="Title"
+                    name="title"
+                    value={this.state.title}
+                    onChange={this.changeHandler}
                   />
                 </Col>
                 <Col lg="6" md="6" className="mb-2">
@@ -141,41 +146,44 @@ export class DiscountCode extends Component {
                   <Input
                     type="text"
                     placeholder="Enter MRP Price"
-
-                    // name="desc"
-                    // value={this.state.desc}
-                    // onChange={this.changeHandler}
+                    name="flat_price"
+                    value={this.state.flat_price}
+                    onChange={this.changeHandler}
                   />
                 </Col>
                 <Col lg="6" md="6" className="mb-2">
                   <Label>Percentage</Label>
                   <Input
                     type="text"
-                    placeholder="Enter MRP Price"
-
-                    // name="desc"
-                    // value={this.state.desc}
-                    // onChange={this.changeHandler}
+                    placeholder="Percentage"
+                    name="percentage"
+                    value={this.state.percentage}
+                    onChange={this.changeHandler}
                   />
                 </Col>
-                <Col lg="6" md="6" className="mb-2">
+                {/* <Col lg="6" md="6" className="mb-2">
                   <Label>Discount Code</Label>
                   <Input readOnly type="text" placeholder="code" />
-                </Col>
+                </Col> */}
                 <Col lg="6" md="6" className="mb-2">
                   <Label>Start Date</Label>
                   <Input
-                    type="text"
+                    type="date"
                     placeholder="Enter Discount Price"
-
-                    // name="desc"
-                    // value={this.state.desc}
-                    // onChange={this.changeHandler}
+                    name=" startdate"
+                    value={this.state.startdate}
+                    onChange={this.changeHandler}
                   />
                 </Col>
                 <Col lg="6" md="6" className="mb-2">
                   <Label>Expiry Date</Label>
-                  <Input type="text" placeholder="Enter Discount Price" />
+                  <Input
+                    type="date"
+                    placeholder="Enter Discount Price"
+                    name=" expdate"
+                    value={this.state.expdate}
+                    onChange={this.changeHandler}
+                  />
                 </Col>
               </Row>
               <Row>

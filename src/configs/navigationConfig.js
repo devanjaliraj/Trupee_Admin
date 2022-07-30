@@ -134,12 +134,12 @@ const navigationConfig = [
     navLink: "/app/faq/faqList",
   },
   {
-    id: "discountCode",
-    title: "Discount Code",
+    id: "discountList",
+    title: "Discount Code List",
     type: "item",
     icon: <Icon.User size={20} />,
     permissions: ["admin", "editor"],
-    navLink: "/app/discount/discountCode",
+    navLink: "/app/discount/discountList",
   },
   {
     id: "notification",
@@ -180,12 +180,12 @@ const navigationConfig = [
         navLink: "/app/explore/Trupee/trupeeUnivercity",
       },
       {
-        id: "performance",
+        id: "performanceSheet",
         title: "Performance Sheet List ",
         type: "item",
         icon: <Icon.Circle size={12} />,
         permissions: ["admin", "editor"],
-        navLink: "/app/explore/Trupee/performance",
+        navLink: "/app/explore/Trupee/performanceSheet",
       },
       {
         id: "refferEarn",
