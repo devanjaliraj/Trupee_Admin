@@ -10,7 +10,10 @@ import {
 } from "reactstrap";
 import { history } from "../../../history";
 import "../../../assets/scss/pages/app-ecommerce-shop.scss";
+import "../../../assets/scss/pages/users.scss";
 import axiosConfig from "../../../axiosConfig";
+import axios from "axios";
+import { Route } from "react-router-dom";
 class ViewUsers extends React.Component {
   constructor(props) {
     super(props);
@@ -22,24 +25,18 @@ class ViewUsers extends React.Component {
   componentDidMount() {
     let { id } = this.props.match.params;
     axiosConfig
-      .get(`/viewonesize/${id}`, {
-        headers: {
-          "auth-adtoken": localStorage.getItem("auth-adtoken"),
-        },
-      })
+      .get(`/viewonemembership/${id}`)
+
       .then((response) => {
         // console.log(response.data);
         console.log(response.data.data);
         this.setState({ data: response.data.data });
       })
       .catch((error) => {
-        console.log(error);
+        console.log(error.response);
       });
   }
-  // state = {
-  //   selectedColor: 1,
-  // };
-  // toggleSelectedColor = (color) => this.setState({ selectedColor: color });
+
   render() {
     return (
       <React.Fragment>
@@ -51,10 +48,10 @@ class ViewUsers extends React.Component {
                   <BreadcrumbItem href="/analyticsDashboard" tag="a">
                     Home
                   </BreadcrumbItem>
-                  <BreadcrumbItem href="/app/size/sizeList" tag="a">
-                    Size List
+                  <BreadcrumbItem href="/app/users/usersList" tag="a">
+                    User List
                   </BreadcrumbItem>
-                  <BreadcrumbItem active>View Size</BreadcrumbItem>
+                  <BreadcrumbItem active>View Users</BreadcrumbItem>
                 </Breadcrumb>
               </div>
             </Col>
@@ -63,32 +60,100 @@ class ViewUsers extends React.Component {
             <Row className="m-2">
               <Col>
                 <h1 col-sm-6 className="float-left">
-                  View Size
+                  View Users
                 </h1>
               </Col>
               <Col>
-                <Button
-                  className=" btn btn-danger float-right"
-                  onClick={() => history.push("/app/size/sizeList")}
-                >
-                  Back
-                </Button>
+                <Route
+                  render={({ history }) => (
+                    <Button
+                      className=" btn btn-danger float-right"
+                      onClick={() => history.push("/app/users/usersList")}
+                    >
+                      Back
+                    </Button>
+                  )}
+                />
               </Col>
             </Row>
             <CardBody className="pb-0">
-              <Row className="mb-5 mt-2">
-                <Col md="6" sm="12" className="mb-4">
-                  <h4>Size</h4>
-                  <h6 className=""> {this.state.data.sizeName}</h6>
+              <Row className="ml-4">
+                <Col sm="9" md="12" lg="12">
+                  <div className="users-page-view-table">
+                    <div className="d-flex user-info">
+                      <div className="user-info-title font-weight-bold">
+                        Users Name
+                      </div>
+                      <div className="text-truncate">
+                        <span>{this.state.data.userid?.fullname}</span>
+                      </div>
+                    </div>
+                    <div className="d-flex user-info">
+                      <div className="user-info-title font-weight-bold">
+                        Mobile
+                      </div>
+                      <div className="text-truncate">
+                        <span>{this.state.data.userid?.mobile}</span>
+                      </div>
+                    </div>
+                    <div className="d-flex user-info">
+                      <div className="user-info-title font-weight-bold">
+                        Email
+                      </div>
+                      <div className="text-truncate">
+                        <span>{this.state.data.userid?.email}</span>
+                      </div>
+                    </div>
+                    <div className="d-flex user-info">
+                      <div className="user-info-title font-weight-bold">
+                        City
+                      </div>
+                      <div className="text-truncate">
+                        <span>{this.state.data.userid?.city}</span>
+                      </div>
+                    </div>
+                    <div className="d-flex user-info">
+                      <div className="user-info-title font-weight-bold">
+                        Address
+                      </div>
+                      <div className="text-truncate">
+                        <span>{this.state.data.userid?.address}</span>
+                      </div>
+                    </div>
+                    <div className="d-flex user-info">
+                      <div className="user-info-title font-weight-bold">
+                        Membership Plan
+                      </div>
+                      <div className="text-truncate">
+                        <span>{this.state.data.planId?.pack_name}</span>
+                      </div>
+                    </div>
+                    <div className="d-flex user-info">
+                      <div className="user-info-title font-weight-bold">
+                        Start Date
+                      </div>
+                      <div className="text-truncate">
+                        <span>{this.state.data.date}</span>
+                      </div>
+                    </div>
+                    <div className="d-flex user-info">
+                      <div className="user-info-title font-weight-bold">
+                        Expiry Date
+                      </div>
+                      <div className="text-truncate">
+                        <span>{this.state.data.expdate}</span>
+                      </div>
+                    </div>
+                    <div className="d-flex user-info">
+                      <div className="user-info-title font-weight-bold">
+                        Status
+                      </div>
+                      <div className="text-truncate">
+                        <span>{this.state.data.status}</span>
+                      </div>
+                    </div>
+                  </div>
                 </Col>
-                {/* <Col md="6" sm="12" className="mb-4">
-                  <h4>Value</h4>
-                  <h6 className=""> {this.state.data.value}</h6>
-                </Col>
-                <Col md="6" sm="12" className="mb-4">
-                  <h4>Description</h4>
-                  <h6 className=""> {this.state.data.desc}</h6>
-                </Col> */}
               </Row>
             </CardBody>
           </Card>
@@ -97,4 +162,5 @@ class ViewUsers extends React.Component {
     );
   }
 }
+
 export default ViewUsers;

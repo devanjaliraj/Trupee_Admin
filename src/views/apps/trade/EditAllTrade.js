@@ -71,14 +71,14 @@ class EditAllTrade extends React.Component {
                   <Label>Script Name</Label>
                   <Input type="text" placeholder="Enter Script Name" />
                 </Col>
-                <Col lg="6" md="6" className="mb-2">
+                {/* <Col lg="6" md="6" className="mb-2">
                   <Label>Tip</Label>
                   <Input type="text" placeholder="Enter Tip" />
-                </Col>
+                </Col> */}
                 <Col lg="6" md="6" className="mb-2">
                   <Label for="exampleSelect">Call Type</Label>
                   <Input id="exampleSelect" name="select" type="select">
-                    <option>Select Typr</option>
+                    <option>Select Call Type</option>
                     <option>Intraday</option>
                     <option>BTST</option>
                     <option>Short Term</option>
@@ -123,7 +123,7 @@ class EditAllTrade extends React.Component {
                   <Input type="text" placeholder="Enter Investment Amount" />
                 </Col>
                 <Col lg="6" md="6" className="mb-2">
-                  <Label>Lots Price</Label>
+                  <Label>Number Of Lots</Label>
                   <Input type="text" placeholder="Enter Lots Price" />
                 </Col>
               </Row>

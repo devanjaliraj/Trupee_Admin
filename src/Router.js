@@ -80,7 +80,7 @@ const addPlan = lazy(() => import("./views/apps/subplan/AddPlan"));
 const UsersList = lazy(() => import("./views/apps/users/UsersList"));
 const AddUsers = lazy(() => import("./views/apps/users/AddUsers"));
 const EditUsers = lazy(() => import("./views/apps/users/EditUsers"));
-// const ViewUsers = lazy(() => import("./views/apps/users/ViewUsers"));
+const ViewUsers = lazy(() => import("./views/apps/users/ViewUsers"));
 // userNotification//
 const UserNotification = lazy(() =>
   import("./views/apps/userNotif/UserNotification")
@@ -438,11 +438,11 @@ class AppRouter extends React.Component {
               path="/app/users/editUsers/:id"
               component={EditUsers}
             />
-            {/* <AppRoute
+            <AppRoute
               exact={true}
-              path="/app/userride/viewUserRide/:id"
-              component={viewUserRide}
-            /> */}
+              path="/app/users/viewUsers/:id"
+              component={ViewUsers}
+            />
             {/* package */}
             <AppRoute
               exact={true}
@@ -512,7 +512,7 @@ class AppRouter extends React.Component {
             />
             <AppRoute
               exact={true}
-              path="/app/trade/editAllTrade"
+              path="/app/trade/editAllTrade/:id"
               component={EditAllTrade}
             />
             <AppRoute

@@ -452,6 +452,7 @@ class AllTradeList extends React.Component {
         // headerCheckboxSelectionFilteredOnly: true,
         // headerCheckboxSelection: true,
       },
+
       {
         headerName: "Equity Script",
         field: "equity_script",
@@ -466,18 +467,30 @@ class AllTradeList extends React.Component {
         },
       },
       {
-        headerName: "Active Value",
-        field: "active_value",
+        headerName: "Script",
+        field: "script_type",
         width: 140,
+        // pinned: window.innerWidth > 992 ? "left" : false,
         cellRendererFramework: (params) => {
           return (
-            <div className="d-flex align-items-center cursor-pointer">
-              <span>{params.data.active_value}</span>
+            <div className="d-flex  align-items-center cursor-pointer">
+              <span>{params.data.script_name.script_type}</span>
             </div>
           );
         },
       },
-
+      {
+        headerName: "Script Name",
+        field: "script_name",
+        width: 140,
+        cellRendererFramework: (params) => {
+          return (
+            <div className="d-flex align-items-center cursor-pointer">
+              <span>{params.data.script_name.script_name}</span>
+            </div>
+          );
+        },
+      },
       {
         headerName: "Call Type",
         field: "call_type",
@@ -491,13 +504,13 @@ class AllTradeList extends React.Component {
         },
       },
       {
-        headerName: "Intraday",
-        field: "intraday",
+        headerName: "Active Value",
+        field: "active_value",
         width: 140,
         cellRendererFramework: (params) => {
           return (
             <div className="d-flex align-items-center cursor-pointer">
-              <span>{params.data.intraday}</span>
+              <span>{params.data.active_value}</span>
             </div>
           );
         },
@@ -562,6 +575,7 @@ class AllTradeList extends React.Component {
           );
         },
       },
+
       {
         headerName: "Quantity",
         field: "qty",
@@ -574,20 +588,6 @@ class AllTradeList extends React.Component {
           );
         },
       },
-
-      {
-        headerName: "Lots",
-        field: "qty_of_lots",
-        width: 140,
-        cellRendererFramework: (params) => {
-          return (
-            <div className="d-flex align-items-center cursor-pointer">
-              <span>{params.data.qty_of_lots}</span>
-            </div>
-          );
-        },
-      },
-
       {
         headerName: "Investment Amount",
         field: "investment_amt",
@@ -600,14 +600,27 @@ class AllTradeList extends React.Component {
           );
         },
       },
+      // {
+      //   headerName: "Intraday",
+      //   field: "intraday",
+      //   width: 140,
+      //   cellRendererFramework: (params) => {
+      //     return (
+      //       <div className="d-flex align-items-center cursor-pointer">
+      //         <span>{params.data.intraday}</span>
+      //       </div>
+      //     );
+      //   },
+      // },
+
       {
-        headerName: "Script Name",
-        field: "script_name",
+        headerName: "Number Of Lots",
+        field: "no_of_lots",
         width: 140,
         cellRendererFramework: (params) => {
           return (
             <div className="d-flex align-items-center cursor-pointer">
-              <span>{params.data.script_name.script_name}</span>
+              <span>{params.data.no_of_lots}</span>
             </div>
           );
         },

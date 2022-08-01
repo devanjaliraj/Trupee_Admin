@@ -9,7 +9,7 @@ import {
   Label,
   Button,
   // FormGroup,
-  // CustomInput,
+  CustomInput,
 } from "reactstrap";
 import { Route } from "react-router-dom";
 import Select from "react-select";
@@ -18,34 +18,38 @@ import Select from "react-select";
 // import swal from "sweetalert";
 import axiosConfig from "../../../axiosConfig";
 
-const dealerName = [];
-
 export class AddAllTrade extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      dealer: null,
-      desc: "",
+      equity_script: "",
+      script_type: "",
+      script_name: "",
+      call_type: "",
+      active_value: "",
+      SL: "",
+      T1: "",
+      T2: "",
+      T3: "",
+      T4: "",
+      qty: "",
+      investment_amt: "",
+      no_of_lots: "",
+    };
+    this.state = {
+      scriptT: [],
+      scriptN: [],
     };
   }
 
   async componentDidMount() {
-    //dealer List
-    //let array =[]
-    //let obj ={}
     axiosConfig
-      .get("/dealer/alldealers")
+      .get("/getScript")
       .then((response) => {
         console.log(response);
-        //this.setState({ dealerN: response.data.data });
-
-        // eslint-disable-next-line no-unused-expressions
-        response.data?.data?.map((dealerp) => {
-          let obj = {
-            label: dealerp.dealer_name,
-            value: dealerp._id,
-          };
-          dealerName.push(obj);
+        this.setState({
+          scriptT: response.data.data,
+          scriptN: response.data.data,
         });
       })
       .catch((error) => {
@@ -53,11 +57,11 @@ export class AddAllTrade extends Component {
       });
   }
 
-  handleChange = (dealer) => {
-    this.setState({ dealer }, () =>
-      console.log(`Option selected:`, this.state.dealer)
-    );
-  };
+  // handleChange = (dealer) => {
+  //   this.setState({ dealer }, () =>
+  //     console.log(`Option selected:`, this.state.dealer)
+  //   );
+  // };
 
   changeHandler = (e) => {
     this.setState({ [e.target.name]: e.target.value });
@@ -67,7 +71,7 @@ export class AddAllTrade extends Component {
 
     axiosConfig
       .post(
-        "/admin/addnotification",
+        "/addTrade",
         this.state
         // {
         //   headers: {
@@ -78,7 +82,7 @@ export class AddAllTrade extends Component {
       .then((response) => {
         console.log(response);
         // swal("Success!", "Submitted SuccessFull!", "success");
-        this.props.history.push("/app/users/usersList");
+        this.props.history.push("/app/trade/allTradeList");
       })
       .catch((error) => {
         console.log(error);
@@ -119,6 +123,36 @@ export class AddAllTrade extends Component {
                   <Label>Time</Label>
                   <Input type="time" placeholder="Enter User Id" />
                 </Col>
+                <Col lg="6" md="6" sm="6" className="mb-2">
+                  <Label>Script</Label>
+                  <CustomInput
+                    type="select"
+                    name="script_type"
+                    value={this.state.script_type}
+                    onChange={this.changeHandler}
+                  >
+                    {this.state.scriptT.map((allScript) => (
+                      <option value={allScript._id} key={allScript._id}>
+                        {allScript.script_type}
+                      </option>
+                    ))}
+                  </CustomInput>
+                </Col>
+                <Col lg="6" md="6" sm="6" className="mb-2">
+                  <Label>Script</Label>
+                  <CustomInput
+                    type="select"
+                    name="script_name"
+                    value={this.state.script_name}
+                    onChange={this.changeHandler}
+                  >
+                    {this.state.scriptN.map((allScript) => (
+                      <option value={allScript._id} key={allScript._id}>
+                        {allScript.script_name}
+                      </option>
+                    ))}
+                  </CustomInput>
+                </Col>
                 <Col lg="6" md="6" className="mb-2">
                   <Label for="exampleSelect">Equity Script</Label>
                   <Input id="exampleSelect" name="select" type="select">
@@ -129,18 +163,18 @@ export class AddAllTrade extends Component {
                     <option>SELL</option>
                   </Input>
                 </Col>
-                <Col lg="6" md="6" className="mb-2">
+                {/* <Col lg="6" md="6" className="mb-2">
                   <Label>Script Name</Label>
                   <Input type="text" placeholder="Enter Script Name" />
-                </Col>
-                <Col lg="6" md="6" className="mb-2">
+                </Col> */}
+                {/* <Col lg="6" md="6" className="mb-2">
                   <Label>Tip</Label>
                   <Input type="text" placeholder="Enter Tip" />
-                </Col>
+                </Col> */}
                 <Col lg="6" md="6" className="mb-2">
                   <Label for="exampleSelect">Call Type</Label>
                   <Input id="exampleSelect" name="select" type="select">
-                    <option>Select Typr</option>
+                    <option>Select Call Type</option>
                     <option>Intraday</option>
                     <option>BTST</option>
                     <option>Short Term</option>
@@ -185,7 +219,7 @@ export class AddAllTrade extends Component {
                   <Input type="text" placeholder="Enter Investment Amount" />
                 </Col>
                 <Col lg="6" md="6" className="mb-2">
-                  <Label>Lots Price</Label>
+                  <Label>Number Of Lots</Label>
                   <Input type="text" placeholder="Enter Lots Price" />
                 </Col>
               </Row>
