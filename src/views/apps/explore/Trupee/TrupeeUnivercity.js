@@ -123,7 +123,7 @@ class TrupeeUnivercity extends React.Component {
         cellRendererFramework: (params) => {
           return (
             <div className="actions cursor-pointer">
-              {/* <Route
+              <Route
                 render={({ history }) => (
                   <Edit
                     className="mr-50"
@@ -131,13 +131,12 @@ class TrupeeUnivercity extends React.Component {
                     color="blue"
                     onClick={() =>
                       history.push(
-                        
-                        `/app/about/EditAboutUs/${params.data._id}`
+                        `/app/explore/Trupee/editTruUni/${params.data._id}`
                       )
                     }
                   />
                 )}
-              /> */}
+              />
 
               <Trash2
                 className="mr-50"

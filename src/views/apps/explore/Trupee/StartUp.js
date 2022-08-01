@@ -110,21 +110,20 @@ class StartUp extends React.Component {
         cellRendererFramework: (params) => {
           return (
             <div className="actions cursor-pointer">
-              {/* <Route
-                  render={({ history }) => (
-                    <Edit
-                      className="mr-50"
-                      size="25px"
-                      color="blue"
-                      onClick={() =>
-                        history.push(
-                          
-                          `/app/about/EditAboutUs/${params.data._id}`
-                        )
-                      }
-                    />
-                  )}
-                /> */}
+              <Route
+                render={({ history }) => (
+                  <Edit
+                    className="mr-50"
+                    size="25px"
+                    color="blue"
+                    onClick={() =>
+                      history.push(
+                        `/app/explore/Trupee/editStartUp/${params.data._id}`
+                      )
+                    }
+                  />
+                )}
+              />
 
               <Trash2
                 className="mr-50"

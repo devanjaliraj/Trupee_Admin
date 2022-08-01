@@ -155,8 +155,17 @@ const UserAppreciation = lazy(() =>
 const TrupeeUnivercity = lazy(() =>
   import("./views/apps/explore/Trupee/TrupeeUnivercity")
 );
+const EditTruUni = lazy(() => import("./views/apps/explore/Trupee/EditTruUni"));
+
 const StartUp = lazy(() => import("./views/apps/explore/Trupee/StartUp"));
 const AddStartUp = lazy(() => import("./views/apps/explore/Trupee/AddStartUp"));
+const EditStartUp = lazy(() =>
+  import("./views/apps/explore/Trupee/EditStartUp")
+);
+const ViewStartUp = lazy(() =>
+  import("./views/apps/explore/Trupee/ViewStartUp")
+);
+
 const RefferEarn = lazy(() => import("./views/apps/explore/Trupee/RefferEarn"));
 const TradingViewCharts = lazy(() =>
   import("./views/apps/explore/Trupee/TradingViewCharts")
@@ -618,6 +627,11 @@ class AppRouter extends React.Component {
             />
             <AppRoute
               exact={true}
+              path="/app/explore/Trupee/editTruUni/:id"
+              component={EditTruUni}
+            />
+            <AppRoute
+              exact={true}
               path="/app/explore/Trupee/startUp"
               component={StartUp}
             />
@@ -625,6 +639,16 @@ class AppRouter extends React.Component {
               exact={true}
               path="/app/explore/Trupee/addStratUp"
               component={AddStartUp}
+            />
+            <AppRoute
+              exact={true}
+              path="/app/explore/Trupee/editStartUp/:id"
+              component={EditStartUp}
+            />
+            <AppRoute
+              exact={true}
+              path="/app/explore/Trupee/viewStratUp/:id"
+              component={ViewStartUp}
             />
             <AppRoute
               exact={true}
