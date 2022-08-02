@@ -21,7 +21,7 @@ import "../../../assets/scss/plugins/tables/_agGridStyleOverride.scss";
 import "../../../assets/scss/pages/users.scss";
 import { Route } from "react-router-dom";
 
-class AllTradeList extends React.Component {
+class EquityCashList extends React.Component {
   state = {
     rowData: [],
     paginationPageSize: 20,
@@ -67,7 +67,7 @@ class AllTradeList extends React.Component {
         cellRendererFramework: (params) => {
           return (
             <div className="d-flex  align-items-center cursor-pointer">
-              <span>{params.data.script_name.script_type}</span>
+              <span>{params.data.script_name?.script_type}</span>
             </div>
           );
         },
@@ -79,7 +79,7 @@ class AllTradeList extends React.Component {
         cellRendererFramework: (params) => {
           return (
             <div className="d-flex align-items-center cursor-pointer">
-              <span>{params.data.script_name.script_name}</span>
+              <span>{params.data.script_name?.script_name}</span>
             </div>
           );
         },
@@ -244,7 +244,9 @@ class AllTradeList extends React.Component {
                     size="25px"
                     color="blue"
                     onClick={() =>
-                      history.push(`/app/trade/editAllTrade/${params.data._id}`)
+                      history.push(
+                        `/app/trade/editEquityCash/${params.data._id}`
+                      )
                     }
                   />
                 )}
@@ -267,7 +269,7 @@ class AllTradeList extends React.Component {
   };
 
   async componentDidMount() {
-    await axiosConfig.get(`/tradelist`).then((response) => {
+    await axiosConfig.get(`/equityCash_list`).then((response) => {
       const rowData = response.data.data;
       console.log(rowData);
       this.setState({ rowData });
@@ -275,7 +277,7 @@ class AllTradeList extends React.Component {
   }
   async runthisfunction(id) {
     console.log(id);
-    await axiosConfig.get(`/dlt_trade/${id}`).then(
+    await axiosConfig.get(`/dlt_equityCash/${id}`).then(
       (response) => {
         console.log(response);
       },
@@ -320,7 +322,7 @@ class AllTradeList extends React.Component {
               <Row className="m-2">
                 <Col>
                   <h1 sm="6" className="float-left">
-                    All Trade List
+                    Equity Cash List
                   </h1>
                 </Col>
                 <Col className="pt-4">
@@ -328,9 +330,9 @@ class AllTradeList extends React.Component {
                     render={({ history }) => (
                       <Button
                         className=" btn btn-success float-right"
-                        onClick={() => history.push("/app/trade/AddAllTrade")}
+                        onClick={() => history.push("/app/trade/AddEquityCash")}
                       >
-                        Add All Trade
+                        Add Equity Cash
                       </Button>
                     )}
                   />
@@ -435,4 +437,4 @@ class AllTradeList extends React.Component {
     );
   }
 }
-export default AllTradeList;
+export default EquityCashList;

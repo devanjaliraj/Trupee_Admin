@@ -68,12 +68,12 @@ const navigationConfig = [
         navLink: "/app/trade/fNoIndexList",
       },
       {
-        id: "fNoEquityList",
+        id: "fnoEquityList",
         title: "FNO Equity",
         type: "item",
         icon: <Icon.Circle size={12} />,
         permissions: ["admin", "editor"],
-        navLink: "/app/trade/fNoEquityList",
+        navLink: "/app/trade/fnoEquityList",
       },
       {
         id: "equityCashList",

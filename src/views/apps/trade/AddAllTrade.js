@@ -15,7 +15,7 @@ import { Route } from "react-router-dom";
 import Select from "react-select";
 // import { history } from "../../../history";
 // import axiosConfig from "../../../../axiosConfig";
-// import swal from "sweetalert";
+import swal from "sweetalert";
 import axiosConfig from "../../../axiosConfig";
 
 export class AddAllTrade extends Component {
@@ -41,7 +41,7 @@ export class AddAllTrade extends Component {
       scriptN: [],
     };
   }
-
+  //Script//
   async componentDidMount() {
     axiosConfig
       .get("/getScript")
@@ -81,7 +81,7 @@ export class AddAllTrade extends Component {
       )
       .then((response) => {
         console.log(response);
-        // swal("Success!", "Submitted SuccessFull!", "success");
+        swal("Success!", "Submitted SuccessFull!", "success");
         this.props.history.push("/app/trade/allTradeList");
       })
       .catch((error) => {
@@ -89,7 +89,6 @@ export class AddAllTrade extends Component {
       });
   };
   render() {
-    const { dealer } = this.state;
     return (
       <div>
         <Card>
@@ -155,7 +154,13 @@ export class AddAllTrade extends Component {
                 </Col>
                 <Col lg="6" md="6" className="mb-2">
                   <Label for="exampleSelect">Equity Script</Label>
-                  <Input id="exampleSelect" name="select" type="select">
+                  <Input
+                    id="exampleSelect"
+                    name="equity_script"
+                    type="select"
+                    value={this.state.equity_script}
+                    onChange={this.changeHandler}
+                  >
                     <option>Select Script</option>
                     <option>CE</option>
                     <option>PF</option>
@@ -173,7 +178,13 @@ export class AddAllTrade extends Component {
                 </Col> */}
                 <Col lg="6" md="6" className="mb-2">
                   <Label for="exampleSelect">Call Type</Label>
-                  <Input id="exampleSelect" name="select" type="select">
+                  <Input
+                    id="exampleSelect"
+                    name="call_type"
+                    type="select"
+                    value={this.state.call_type}
+                    onChange={this.changeHandler}
+                  >
                     <option>Select Call Type</option>
                     <option>Intraday</option>
                     <option>BTST</option>
@@ -188,39 +199,93 @@ export class AddAllTrade extends Component {
                 </Col>
                 <Col lg="6" md="6" className="mb-2">
                   <Label>Active Value</Label>
-                  <Input type="text" placeholder="Enter Active Value" />
+                  <Input
+                    type="text"
+                    placeholder="Enter Active Value"
+                    name="active_value"
+                    value={this.state.active_value}
+                    onChange={this.changeHandler}
+                  />
                 </Col>
                 <Col lg="6" md="6" className="mb-2">
                   <Label>SL</Label>
-                  <Input type="text" placeholder="Enter Stop Loss" />
+                  <Input
+                    name="SL"
+                    type="text"
+                    placeholder="Enter Stop Loss"
+                    value={this.state.SL}
+                    onChange={this.changeHandler}
+                  />
                 </Col>
                 <Col lg="6" md="6" className="mb-2">
                   <Label>T₹ 1 </Label>
-                  <Input type="text" placeholder="Enter Target 1" />
+                  <Input
+                    type="text"
+                    placeholder="Enter Target 1"
+                    name="T1"
+                    value={this.state.T1}
+                    onChange={this.changeHandler}
+                  />
                 </Col>{" "}
                 <Col lg="6" md="6" className="mb-2">
                   <Label>T₹ 2</Label>
-                  <Input type="text" placeholder="Enter Target 2" />
+                  <Input
+                    type="text"
+                    placeholder="Enter Target 2"
+                    name="T2"
+                    value={this.state.T2}
+                    onChange={this.changeHandler}
+                  />
                 </Col>{" "}
                 <Col lg="6" md="6" className="mb-2">
                   <Label>T₹ 3</Label>
-                  <Input type="text" placeholder="Enter Target 3" />
+                  <Input
+                    type="text"
+                    placeholder="Enter Target 3"
+                    name="T3"
+                    value={this.state.T3}
+                    onChange={this.changeHandler}
+                  />
                 </Col>{" "}
                 <Col lg="6" md="6" className="mb-2">
                   <Label>T₹ 4</Label>
-                  <Input type="text" placeholder="Enter Target 4" />
+                  <Input
+                    type="text"
+                    placeholder="Enter Target 4"
+                    name="T4"
+                    value={this.state.T4}
+                    onChange={this.changeHandler}
+                  />
                 </Col>
                 <Col lg="6" md="6" className="mb-2">
                   <Label>Quantity</Label>
-                  <Input type="text" placeholder="Enter Quantity" />
+                  <Input
+                    type="text"
+                    name="qty"
+                    placeholder="Enter Quantity"
+                    value={this.state.qty}
+                    onChange={this.changeHandler}
+                  />
                 </Col>
                 <Col lg="6" md="6" className="mb-2">
                   <Label>Investment Amount</Label>
-                  <Input type="text" placeholder="Enter Investment Amount" />
+                  <Input
+                    name="investment_amt"
+                    type="text"
+                    placeholder="Enter Investment Amount"
+                    value={this.state.investment_amt}
+                    onChange={this.changeHandler}
+                  />
                 </Col>
                 <Col lg="6" md="6" className="mb-2">
                   <Label>Number Of Lots</Label>
-                  <Input type="text" placeholder="Enter Lots Price" />
+                  <Input
+                    type="text"
+                    name="no_of_lots"
+                    placeholder="Enter Lots Price"
+                    value={this.state.no_of_lots}
+                    onChange={this.changeHandler}
+                  />
                 </Col>
               </Row>
               <Row>

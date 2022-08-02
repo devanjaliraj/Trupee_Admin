@@ -96,13 +96,9 @@ const AllTradeList = lazy(() => import("./views/apps/trade/AllTradeList"));
 const AddAllTrade = lazy(() => import("./views/apps/trade/AddAllTrade"));
 const EditAllTrade = lazy(() => import("./views/apps/trade/EditAllTrade"));
 
-const EquirtyCashList = lazy(() =>
-  import("./views/apps/trade/EquirtyCashList")
-);
-const AddEquirtyCash = lazy(() => import("./views/apps/trade/AddEquirtyCash"));
-const EditEquirtyCash = lazy(() =>
-  import("./views/apps/trade/EditEquirtyCash")
-);
+const EquityCashList = lazy(() => import("./views/apps/trade/EquityCashList"));
+const AddEquityCash = lazy(() => import("./views/apps/trade/AddEquityCash"));
+const EditEquityCash = lazy(() => import("./views/apps/trade/EditEquityCash"));
 
 const FnoEquityList = lazy(() => import("./views/apps/trade/FnoEquityList"));
 const AddFnoEquity = lazy(() => import("./views/apps/trade/AddFnoEquity"));
@@ -417,400 +413,253 @@ class AppRouter extends React.Component {
               component={ecommerceDashboard}
             />
             {/* paid */}
-            <AppRoute
-              exact={true}
-              path="/app/paid/paidServeice"
-              component={PaidServeice}
-            />
+            <AppRoute path="/app/paid/paidServeice" component={PaidServeice} />
             {/* user */}
-            <AppRoute
-              exact={true}
-              path="/app/users/usersList"
-              component={UsersList}
-            />
-            <AppRoute
-              exact={true}
-              path="/app/users/addUsers"
-              component={AddUsers}
-            />
-            <AppRoute
-              exact={true}
-              path="/app/users/editUsers/:id"
-              component={EditUsers}
-            />
-            <AppRoute
-              exact={true}
-              path="/app/users/viewUsers/:id"
-              component={ViewUsers}
-            />
+            <AppRoute path="/app/users/usersList" component={UsersList} />
+            <AppRoute path="/app/users/addUsers" component={AddUsers} />
+            <AppRoute path="/app/users/editUsers/:id" component={EditUsers} />
+            <AppRoute path="/app/users/viewUsers/:id" component={ViewUsers} />
             {/* package */}
             <AppRoute
-              exact={true}
               path="/app/package/packagePlanList"
               component={PackagePlanList}
             />
             <AppRoute
-              exact={true}
               path="/app/package/addPackagePlan"
               component={AddPackagePlan}
             />
             <AppRoute
-              exact={true}
               path="/app/package/editPackagePlan/:id"
               component={EditPackagePlan}
             />
             {/* FAQ */}
-            <AppRoute
-              exact={true}
-              path="/app/faq/faqList"
-              component={FaqList}
-            />
-            <AppRoute exact={true} path="/app/faq/addFaq" component={AddFaq} />
+            <AppRoute path="/app/faq/faqList" component={FaqList} />
+            <AppRoute path="/app/faq/addFaq" component={AddFaq} />
             {/* FeedBack */}
             <AppRoute
-              exact={true}
               path="/app/feedback/FeedBackList"
               component={FeedBackList}
             />
             {/* Premium */}
             <AppRoute
-              exact={true}
               path="/app/premium/paidServeiceList"
               component={PaidServeiceList}
             />
             <AppRoute
-              exact={true}
               path="/app/premium/addPaidServeice"
               component={AddPaidServeice}
             />
             {/* script */}
+            <AppRoute path="/app/script/scriptList" component={ScriptList} />
+            <AppRoute path="/app/script/addScript" component={AddScript} />
             <AppRoute
-              exact={true}
-              path="/app/script/scriptList"
-              component={ScriptList}
-            />
-            <AppRoute
-              exact={true}
-              path="/app/script/addScript"
-              component={AddScript}
-            />
-            <AppRoute
-              exact={true}
               path="/app/script/EditScript/:id"
               component={EditScript}
             />
             {/* Trade */}
+            <AppRoute path="/app/trade/allTradeList" component={AllTradeList} />
+            <AppRoute path="/app/trade/addAllTrade" component={AddAllTrade} />
             <AppRoute
-              exact={true}
-              path="/app/trade/allTradeList"
-              component={AllTradeList}
-            />
-            <AppRoute
-              exact={true}
-              path="/app/trade/addAllTrade"
-              component={AddAllTrade}
-            />
-            <AppRoute
-              exact={true}
               path="/app/trade/editAllTrade/:id"
               component={EditAllTrade}
             />
             <AppRoute
-              exact={true}
               path="/app/trade/equityCashList"
-              component={EquirtyCashList}
+              component={EquityCashList}
             />
             <AppRoute
-              exact={true}
-              path="/app/trade/addEquirtyCash"
-              component={AddEquirtyCash}
+              path="/app/trade/addEquityCash"
+              component={AddEquityCash}
             />
             <AppRoute
-              exact={true}
-              path="/app/trade/editEquirtyCash"
-              component={EditEquirtyCash}
+              path="/app/trade/editEquityCash/:id"
+              component={EditEquityCash}
             />
             <AppRoute
-              exact={true}
               path="/app/trade/fnoEquityList"
               component={FnoEquityList}
             />
+            <AppRoute path="/app/trade/addFnoEquity" component={AddFnoEquity} />
             <AppRoute
-              exact={true}
-              path="/app/trade/addFnoEquity"
-              component={AddFnoEquity}
-            />
-            <AppRoute
-              exact={true}
-              path="/app/trade/editFnoEquity"
+              path="/app/trade/editFnoEquity/:id"
               component={EditFnoEquity}
             />
+            <AppRoute path="/app/trade/fnoIndexList" component={FnoIndexList} />
             <AppRoute
-              exact={true}
-              path="/app/trade/fnoIndexList"
-              component={FnoIndexList}
-            />
-            <AppRoute
-              exact={true}
-              path="/app/trade/editFnoIndex"
+              path="/app/trade/editFnoIndex/:id"
               component={EditFnoIndex}
             />
+            <AppRoute path="/app/trade/addFnoIndex" component={AddFnoIndex} />
             <AppRoute
-              exact={true}
-              path="/app/trade/addFnoIndex"
-              component={AddFnoIndex}
-            />
-            <AppRoute
-              exact={true}
               path="/app/trade/bankNiftyList"
               component={BankNiftyList}
             />
-            <AppRoute
-              exact={true}
-              path="/app/trade/niftyList"
-              component={NiftyList}
-            />
+            <AppRoute path="/app/trade/niftyList" component={NiftyList} />
             {/* setting */}
+            <AppRoute path="/app/setting/enquiryForm" component={enquiryForm} />
             <AppRoute
-              exact={true}
-              path="/app/setting/enquiryForm"
-              component={enquiryForm}
-            />
-            <AppRoute
-              exact={true}
               path="/email"
               component={() => <Redirect to="/email/inbox" />}
             />
             {/* Appreciation */}
             <AppRoute
-              exact={true}
               path="/app/showAppre/addShowAppreciation"
               component={AddShowAppreciation}
             />
             <AppRoute
-              exact={true}
               path="/app/showAppre/editShowAppreciation"
               component={EditShowAppreciation}
             />
             <AppRoute
-              exact={true}
               path="/app/showAppre/showAppreciation"
               component={ShowAppreciation}
             />
             <AppRoute
-              exact={true}
               path="/app/showAppre/userAppreciation"
               component={UserAppreciation}
             />
             {/* DiscountCode */}
             <AppRoute
-              exact={true}
               path="/app/discount/discountCode"
               component={DiscountCode}
             />
             <AppRoute
-              exact={true}
               path="/app/discount/discountList"
               component={DiscountList}
             />
             {/*userNotification*/}
             <AppRoute
-              exact={true}
               path="/app/userNotif/userNotification"
               component={UserNotification}
             />
             {/* Explore */}
             <AppRoute
-              exact={true}
               path="/app/explore/Trupee/trupeeUnivercity"
               component={TrupeeUnivercity}
             />
             <AppRoute
-              exact={true}
               path="/app/explore/Trupee/editTruUni/:id"
               component={EditTruUni}
             />
+            <AppRoute path="/app/explore/Trupee/startUp" component={StartUp} />
             <AppRoute
-              exact={true}
-              path="/app/explore/Trupee/startUp"
-              component={StartUp}
-            />
-            <AppRoute
-              exact={true}
               path="/app/explore/Trupee/addStratUp"
               component={AddStartUp}
             />
             <AppRoute
-              exact={true}
               path="/app/explore/Trupee/editStartUp/:id"
               component={EditStartUp}
             />
             <AppRoute
-              exact={true}
               path="/app/explore/Trupee/viewStratUp/:id"
               component={ViewStartUp}
             />
             <AppRoute
-              exact={true}
               path="/app/explore/Trupee/performance"
               component={Performance}
             />
             <AppRoute
-              exact={true}
               path="/app/explore/Trupee/refferEarn"
               component={RefferEarn}
             />
+            <AppRoute path="/app/explore/Trupee/addTVC" component={AddTVC} />
             <AppRoute
-              exact={true}
-              path="/app/explore/Trupee/addTVC"
-              component={AddTVC}
-            />
-            <AppRoute
-              exact={true}
               path="/app/explore/Trupee/opportunity"
               component={Opportunity}
             />
             <AppRoute
-              exact={true}
               path="/app/explore/Trupee/tradingViewCharts"
               component={TradingViewCharts}
             />
             <AppRoute
-              exact={true}
               path="/app/explore/Trupee/performanceSheet"
               component={PerformanceSheet}
             />
             {/* my componet */}
             <AppRoute
-              exact={true}
               path="/app/subplan/subplanvideos"
               component={subplanvideos}
             />
+            <AppRoute path="/app/subplan/addPlan" component={addPlan} />
             <AppRoute
-              exact={true}
-              path="/app/subplan/addPlan"
-              component={addPlan}
-            />
-            <AppRoute
-              exact={true}
               path="/app/subplan/editSubplanvideos/:id"
               component={editSubplanvideos}
             />
             <AppRoute
-              exact={true}
               path="/todo"
               component={() => <Redirect to="/todo/all" />}
             />
-            <AppRoute exact={true} path="/ecommerce/shop" component={shop} />
+            <AppRoute path="/ecommerce/shop" component={shop} />
             <AppRoute
-              exact={true}
               path="/ecommerce/product-detail"
               component={productDetail}
             />
             {/* pageSetUp */}
+            <AppRoute path="/app/pageSetUp/about/aboutUs" component={aboutUs} />
             <AppRoute
-              exact={true}
-              path="/app/pageSetUp/about/aboutUs"
-              component={aboutUs}
-            />
-            <AppRoute
-              exact={true}
               path="/app/pageSetUp/about/AllaboutUs"
               component={AllaboutUs}
             />
             <AppRoute
-              exact={true}
               path="/app/pageSetUp/about/EditAboutUs/:id"
               component={EditAboutUs}
             />
             <AppRoute
-              exact={true}
               path="/app/pageSetUp/termscondition/AddTermsCondition"
               component={AddTermsCondition}
             />
             <AppRoute
-              exact={true}
               path="/app/pageSetUp/termscondition/EditTermCondition/:id"
               component={EditTermCondition}
             />
             <AppRoute
-              exact={true}
               path="/app/pageSetUp/termscondition/TermConditionList"
               component={TermConditionList}
             />
+            <AppRoute path="/app/pageSetUp/helpUs/HelpUs" component={helpUs} />
             <AppRoute
-              exact={true}
-              path="/app/pageSetUp/helpUs/HelpUs"
-              component={helpUs}
-            />
-            <AppRoute
-              exact={true}
               path="/app/pageSetUp/helpUs/EdithelpusForm/:id"
               component={EdithelpusForm}
             />
             <AppRoute
-              exact={true}
               path="/app/pageSetUp/helpUs/ViewHelpUs/:id"
               component={ViewHelpUs}
             />
             <AppRoute
-              exact={true}
               path="/app/membership/MembershipList"
               component={membershipList}
             />
             <AppRoute
-              exact={true}
               path="/app/membership/EditMembership/:id"
               component={editMembership}
             />
             <AppRoute
-              exact={true}
               path="/app/notification/NotificationList"
               component={notificationList}
             />
             <AppRoute
-              exact={true}
               path="/app/notification/AddNotification"
               component={addNotification}
             />
             <AppRoute
-              exact={true}
               path="/ecommerce/checkout"
               component={checkout}
               permission="admin"
             />
+            <AppRoute path="/data-list/list-view" component={listView} />
+            <AppRoute path="/data-list/thumb-view" component={thumbView} />
+            <AppRoute path="/ui-element/grid" component={grid} />
+            <AppRoute path="/ui-element/typography" component={typography} />
             <AppRoute
-              exact={true}
-              path="/data-list/list-view"
-              component={listView}
-            />
-            <AppRoute
-              exact={true}
-              path="/data-list/thumb-view"
-              component={thumbView}
-            />
-            <AppRoute exact={true} path="/ui-element/grid" component={grid} />
-            <AppRoute
-              exact={true}
-              path="/ui-element/typography"
-              component={typography}
-            />
-            <AppRoute
-              exact={true}
               path="/ui-element/textutilities"
               component={textutilities}
             />
             <AppRoute
-              exact={true}
               path="/ui-element/syntaxhighlighter"
               component={syntaxhighlighter}
             />
-            <AppRoute exact={true} path="/colors/colors" component={colors} />
-            <AppRoute
-              exact={true}
-              path="/icons/reactfeather"
-              component={reactfeather}
-            />
+            <AppRoute path="/colors/colors" component={colors} />
+            <AppRoute path="/icons/reactfeather" component={reactfeather} />
             <AppRoute exact={true} path="/cards/basic" component={basicCards} />
             <AppRoute
               exact={true}

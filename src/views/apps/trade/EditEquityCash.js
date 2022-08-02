@@ -2,23 +2,22 @@ import React, { Component } from "react";
 import {
   Card,
   CardBody,
-  Col,
-  Form,
   Row,
-  Input,
-  Label,
-  Button,
-  // FormGroup,
+  Col,
+  //FormGroup,
   CustomInput,
+  Form,
+  Label,
+  Input,
+  Button,
 } from "reactstrap";
-import { Route } from "react-router-dom";
-import Select from "react-select";
-// import { history } from "../../../history";
-// import axiosConfig from "../../../../axiosConfig";
-import swal from "sweetalert";
 import axiosConfig from "../../../axiosConfig";
+import swal from "sweetalert";
+import { Route } from "react-router-dom";
+import Breadcrumbs from "../../../components/@vuexy/breadCrumbs/BreadCrumb";
+// import Textarea from "../../../forms/form-elements/textarea/Textarea";
 
-export class AddFnoEquity extends Component {
+class EditEquityCash extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -41,8 +40,36 @@ export class AddFnoEquity extends Component {
       scriptN: [],
     };
   }
-  //Script//
   async componentDidMount() {
+    let { id } = this.props.match.params;
+    axiosConfig
+      .get(`/getone_equityCash/${id}`, {
+        // headers: {
+        //   "auth-adtoken": localStorage.getItem("auth-adtoken"),
+        // },
+      })
+      .then((response) => {
+        console.log(response);
+        this.setState({
+          equity_script: response.data.data.equity_script,
+          script_type: response.data.data.script_type,
+          script_name: response.data.data.script_name,
+          call_type: response.data.data.call_type,
+          active_value: response.data.data.active_value,
+          SL: response.data.data.SL,
+          T1: response.data.data.T1,
+          T2: response.data.data.T2,
+          T3: response.data.data.T3,
+          T4: response.data.data.T4,
+          qty: response.data.data.qty,
+          investment_amt: response.data.data.investment_amt,
+          no_of_lots: response.data.data.no_of_lots,
+        });
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+    //Script//
     axiosConfig
       .get("/getScript")
       .then((response) => {
@@ -56,40 +83,44 @@ export class AddFnoEquity extends Component {
         console.log(error);
       });
   }
+  changeHandler1 = (e) => {
+    this.setState({ status: e.target.value });
+  };
+
   changeHandler = (e) => {
     this.setState({ [e.target.name]: e.target.value });
   };
   submitHandler = (e) => {
     e.preventDefault();
-
+    let { id } = this.props.match.params;
     axiosConfig
-      .post(
-        "/add_fnoEquity",
-        this.state
-        // {
-        //   headers: {
-        //     "auth-adtoken": localStorage.getItem("auth-adtoken"),
-        //   },
-        // }
-      )
+      .post(`/edit_equityCash/${id}`, this.state, {
+        // headers: {
+        //   "auth-adtoken": localStorage.getItem("auth-adtoken"),
+        // },
+      })
       .then((response) => {
         console.log(response);
         swal("Success!", "Submitted SuccessFull!", "success");
-        this.props.history.push("/app/trade/fnoEquityList");
+        this.props.history.push("/app/trade/equityCashList");
       })
       .catch((error) => {
         console.log(error);
       });
   };
-
   render() {
     return (
       <div>
+        <Breadcrumbs
+          breadCrumbTitle="Equity Cash"
+          breadCrumbParent="Home"
+          breadCrumbActive="Edit Equity Cash"
+        />
         <Card>
           <Row className="m-2">
             <Col>
               <h1 col-sm-6 className="float-left">
-                Add FNO Equity
+                Edit Equity Cash
               </h1>
             </Col>
             <Col>
@@ -97,7 +128,7 @@ export class AddFnoEquity extends Component {
                 render={({ history }) => (
                   <Button
                     className=" btn btn-danger float-right"
-                    onClick={() => history.push("app/trade/FnoEquityList")}
+                    onClick={() => history.push("/app/trade/equityCashList")}
                   >
                     Back
                   </Button>
@@ -124,9 +155,9 @@ export class AddFnoEquity extends Component {
                     value={this.state.script_type}
                     onChange={this.changeHandler}
                   >
-                    {this.state.scriptT.map((allScript) => (
-                      <option value={allScript._id} key={allScript._id}>
-                        {allScript.script_type}
+                    {this.state.scriptT?.map((allScript) => (
+                      <option value={allScript?._id} key={allScript?._id}>
+                        {allScript?.script_type}
                       </option>
                     ))}
                   </CustomInput>
@@ -139,9 +170,9 @@ export class AddFnoEquity extends Component {
                     value={this.state.script_name}
                     onChange={this.changeHandler}
                   >
-                    {this.state.scriptN.map((allScript) => (
-                      <option value={allScript._id} key={allScript._id}>
-                        {allScript.script_name}
+                    {this.state.scriptN?.map((allScript) => (
+                      <option value={allScript?._id} key={allScript?._id}>
+                        {allScript?.script_name}
                       </option>
                     ))}
                   </CustomInput>
@@ -282,14 +313,17 @@ export class AddFnoEquity extends Component {
                   />
                 </Col>
               </Row>
+
               <Row>
-                <Button.Ripple
-                  className="mr-1 mb-1"
-                  type="submit"
-                  color="primary"
-                >
-                  Add FNO Equity
-                </Button.Ripple>
+                <Col lg="6" md="6" sm="6" className="mb-2">
+                  <Button.Ripple
+                    color="primary"
+                    type="submit"
+                    className="mr-1 mb-1"
+                  >
+                    Update Equity Cash
+                  </Button.Ripple>
+                </Col>
               </Row>
             </Form>
           </CardBody>
@@ -298,4 +332,5 @@ export class AddFnoEquity extends Component {
     );
   }
 }
-export default AddFnoEquity;
+
+export default EditEquityCash;

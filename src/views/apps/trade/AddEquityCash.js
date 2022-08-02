@@ -18,7 +18,7 @@ import Select from "react-select";
 import swal from "sweetalert";
 import axiosConfig from "../../../axiosConfig";
 
-export class AddFnoEquity extends Component {
+export class AddEquityCash extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -56,6 +56,13 @@ export class AddFnoEquity extends Component {
         console.log(error);
       });
   }
+
+  // handleChange = (dealer) => {
+  //   this.setState({ dealer }, () =>
+  //     console.log(`Option selected:`, this.state.dealer)
+  //   );
+  // };
+
   changeHandler = (e) => {
     this.setState({ [e.target.name]: e.target.value });
   };
@@ -64,7 +71,7 @@ export class AddFnoEquity extends Component {
 
     axiosConfig
       .post(
-        "/add_fnoEquity",
+        "/add_equityCash",
         this.state
         // {
         //   headers: {
@@ -75,13 +82,12 @@ export class AddFnoEquity extends Component {
       .then((response) => {
         console.log(response);
         swal("Success!", "Submitted SuccessFull!", "success");
-        this.props.history.push("/app/trade/fnoEquityList");
+        this.props.history.push("/app/trade/equityCashList");
       })
       .catch((error) => {
         console.log(error);
       });
   };
-
   render() {
     return (
       <div>
@@ -89,7 +95,7 @@ export class AddFnoEquity extends Component {
           <Row className="m-2">
             <Col>
               <h1 col-sm-6 className="float-left">
-                Add FNO Equity
+                Add Equity Cash
               </h1>
             </Col>
             <Col>
@@ -97,7 +103,7 @@ export class AddFnoEquity extends Component {
                 render={({ history }) => (
                   <Button
                     className=" btn btn-danger float-right"
-                    onClick={() => history.push("app/trade/FnoEquityList")}
+                    onClick={() => history.push("/app/trade/equityCashList")}
                   >
                     Back
                   </Button>
@@ -288,7 +294,7 @@ export class AddFnoEquity extends Component {
                   type="submit"
                   color="primary"
                 >
-                  Add FNO Equity
+                  Add Equity Cash
                 </Button.Ripple>
               </Row>
             </Form>
@@ -298,4 +304,4 @@ export class AddFnoEquity extends Component {
     );
   }
 }
-export default AddFnoEquity;
+export default AddEquityCash;
