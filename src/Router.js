@@ -175,8 +175,13 @@ const Opportunity = lazy(() =>
 const AddTVC = lazy(() => import("./views/apps/explore/Trupee/AddTVC"));
 // const RefferEarn = lazy(() => import("./views/apps/explore/Trupee/RefferEarn"));
 
-// Paid//
-const PaidServeice = lazy(() => import("./views/apps/paid/PaidService"));
+// MemberShipContent//
+const MemberShipContent = lazy(() =>
+  import("./views/apps/membercontent/MemberShipContent")
+);
+const EditMemContent = lazy(() =>
+  import("./views/apps/membercontent/EditMemContent")
+);
 // setting
 
 const enquiryForm = lazy(() => import("./views/apps/setting/EnquiryForm"));
@@ -412,8 +417,15 @@ class AppRouter extends React.Component {
               path="/ecommerce-dashboard"
               component={ecommerceDashboard}
             />
-            {/* paid */}
-            <AppRoute path="/app/paid/paidServeice" component={PaidServeice} />
+            {/* MemberShipContent */}
+            <AppRoute
+              path="/app/membercontent/memberShipContent"
+              component={MemberShipContent}
+            />
+            <AppRoute
+              path="/app/membercontent/editMemContent/:id"
+              component={EditMemContent}
+            />
             {/* user */}
             <AppRoute path="/app/users/usersList" component={UsersList} />
             <AppRoute path="/app/users/addUsers" component={AddUsers} />

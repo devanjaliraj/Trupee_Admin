@@ -118,12 +118,12 @@ const navigationConfig = [
   //   navLink: "/app/premium/paidServeiceList",
   // },
   {
-    id: "paidServeice",
+    id: "memberShipContent",
     title: "Membership Content",
     type: "item",
     icon: <Icon.User size={20} />,
     permissions: ["admin", "editor"],
-    navLink: "/app/paid/paidServeice",
+    navLink: "/app/membercontent/memberShipContent",
   },
   {
     id: "faqList",

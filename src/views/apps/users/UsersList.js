@@ -183,18 +183,18 @@ class UsersList extends React.Component {
                   />
                 )}
               />
-              {/* <Route
+              <Route
                 render={({ history }) => (
                   <Edit
                     className="mr-50"
-                    size="25px"
-                    color="green"
+                    size="20px"
+                    color="blue"
                     onClick={() =>
                       history.push(`/app/users/editUsers/${params.data._id}`)
                     }
                   />
                 )}
-              /> */}
+              />
 
               <Trash2
                 className="mr-50"

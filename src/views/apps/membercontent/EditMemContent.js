@@ -1,72 +1,71 @@
 import React, { Component } from "react";
 import {
   Card,
+  CardHeader,
+  CardTitle,
   CardBody,
   Row,
   Col,
   Form,
   Label,
   Input,
+  CustomInput,
   Button,
   Breadcrumb,
   BreadcrumbItem,
 } from "reactstrap";
 import axiosConfig from "../../../axiosConfig";
-// import { history } from "../../../history";
-// import { data } from "jquery";
-// import swal from "sweetalert";
+import { history } from "../../../history";
+import swal from "sweetalert";
 import { Route } from "react-router-dom";
-
-export default class EditSubplanvideos extends Component {
+export default class EditMemContent extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      _id: "",
-      video_link: "",
-      associated_plan: "",
+      sizeName: "",
+      status: "",
     };
   }
+
   componentDidMount() {
     let { id } = this.props.match.params;
     axiosConfig
-      .get(`/admin/viewoneplan/${id}`)
+      .get(`/getone_content/${id}`, {
+        // headers: {
+        //   "auth-adtoken": localStorage.getItem("auth-adtoken"),
+        // },
+      })
       .then((response) => {
-        console.log(response.data.data.desc);
+        console.log(response);
         this.setState({
-          _id: response.data.data._id,
-
-          video_link: response.data.data.video_link,
-          associated_plan: response.data.data.associated_plan,
+          title: response.data.data.title,
+          desc: response.data.data.desc,
         });
       })
       .catch((error) => {
-        console.log(error.response);
+        console.log(error);
       });
   }
   changeHandler1 = (e) => {
     this.setState({ status: e.target.value });
   };
+
   changeHandler = (e) => {
     this.setState({ [e.target.name]: e.target.value });
   };
   submitHandler = (e) => {
     e.preventDefault();
     let { id } = this.props.match.params;
-
     axiosConfig
-      .post(
-        `/admin/Editplan/${id}`,
-        this.state
-        // {
-        //   headers: {
-        //     "auth-adtoken": localStorage.getItem("auth-adtoken"),
-        //   },
-        // }
-      )
+      .post(`/edit_content/${id}`, this.state, {
+        // headers: {
+        //   "auth-adtoken": localStorage.getItem("auth-adtoken"),
+        // },
+      })
       .then((response) => {
         console.log(response);
-        // swal("Success!", "Submitted SuccessFull!", "success");
-        this.props.history.push("/app/subPlan/SubPlanVideos");
+        swal("Success!", "Submitted SuccessFull!", "success");
+        this.props.history.push("/app/membercontent/memberShipContent");
       })
       .catch((error) => {
         console.log(error);
@@ -79,13 +78,16 @@ export default class EditSubplanvideos extends Component {
           <Col sm="12">
             <div>
               <Breadcrumb listTag="div">
-                <BreadcrumbItem href="/" tag="a">
+                <BreadcrumbItem href="/analyticsDashboard" tag="a">
                   Home
                 </BreadcrumbItem>
-                {/* <BreadcrumbItem href="/app/material/materialList" tag="a">
-                    Material List
-                </BreadcrumbItem> */}
-                <BreadcrumbItem active>Edit Traning Video</BreadcrumbItem>
+                <BreadcrumbItem
+                  href="/app/membercontent/memberShipContent"
+                  tag="a"
+                >
+                  MemberShip Content List
+                </BreadcrumbItem>
+                <BreadcrumbItem active>Edit MemberShip Content</BreadcrumbItem>
               </Breadcrumb>
             </div>
           </Col>
@@ -94,7 +96,7 @@ export default class EditSubplanvideos extends Component {
           <Row className="m-2">
             <Col>
               <h1 col-sm-6 className="float-left">
-                Edit Plan Video
+                Edit MemberShip Content
               </h1>
             </Col>
             <Col>
@@ -102,7 +104,9 @@ export default class EditSubplanvideos extends Component {
                 render={({ history }) => (
                   <Button
                     className=" btn btn-danger float-right"
-                    onClick={() => history.push("/app/subplan/SubPlanVideos")}
+                    onClick={() =>
+                      history.push("/app/membercontent/memberShipContent")
+                    }
                   >
                     Back
                   </Button>
@@ -112,36 +116,28 @@ export default class EditSubplanvideos extends Component {
           </Row>
           <CardBody>
             <Form className="m-1" onSubmit={this.submitHandler}>
-              <Row className="m-2">
-                <Col lg="6" md="6" className="mb-2">
-                  <Label>Video Link </Label>
+              <Row>
+                <Col lg="6" md="6" sm="6" className="mb-2">
+                  <Label>Title</Label>
                   <Input
                     type="text"
-                    name="video_link"
-                    value={this.state.video_link}
+                    name="title"
+                    value={this.state.title}
                     onChange={this.changeHandler}
-                  />
+                  ></Input>
                 </Col>
-
-                <Col lg="6" md="6" className="mb-2">
-                  <Label>Associated Plan </Label>
+                <Col lg="6" md="6" sm="6" className="mb-2">
+                  <Label>Description</Label>
                   <Input
-                    readOnly
                     type="text"
-                    name="associated_plan"
-                    value={this.state.associated_plan}
+                    name="desc"
+                    value={this.state.desc}
                     onChange={this.changeHandler}
-                  />
+                  ></Input>
                 </Col>
               </Row>
               <Row>
-                <Col
-                  lg="6"
-                  md="6"
-                  sm="6"
-                  className="mb-2"
-                  style={{ marginLeft: "15px" }}
-                >
+                <Col lg="6" md="6" sm="6" className="mb-2">
                   <Button.Ripple
                     color="primary"
                     type="submit"
