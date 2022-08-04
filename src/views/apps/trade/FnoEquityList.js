@@ -202,6 +202,91 @@ class FnoEquityList extends React.Component {
         },
       },
       {
+        headerName: "SL Type",
+        field: "sl_type",
+        filter: true,
+        width: 150,
+        cellRendererFramework: (params) => {
+          return params.value === "true" ? (
+            <div className="badge badge-pill badge-success">
+              {params.data.sl_type}
+            </div>
+          ) : params.value === "False" ? (
+            <div className="badge badge-pill badge-warning">
+              {params.data.sl_type}
+            </div>
+          ) : null;
+        },
+      },
+      {
+        headerName: "T1 Type",
+        field: "t1_type",
+        filter: true,
+        width: 150,
+        cellRendererFramework: (params) => {
+          return params.value === "true" ? (
+            <div className="badge badge-pill badge-success">
+              {params.data.t1_type}
+            </div>
+          ) : params.value === "Inactive" ? (
+            <div className="badge badge-pill badge-warning">
+              {params.data.t1_type}
+            </div>
+          ) : null;
+        },
+      },
+      {
+        headerName: "T2 Type",
+        field: "t2_type",
+        filter: true,
+        width: 150,
+        cellRendererFramework: (params) => {
+          return params.value === "true" ? (
+            <div className="badge badge-pill badge-success">
+              {params.data.t2_type}
+            </div>
+          ) : params.value === "Inactive" ? (
+            <div className="badge badge-pill badge-warning">
+              {params.data.t2_type}
+            </div>
+          ) : null;
+        },
+      },
+      {
+        headerName: "T3 Type",
+        field: "t3_type",
+        filter: true,
+        width: 150,
+        cellRendererFramework: (params) => {
+          return params.value === "true" ? (
+            <div className="badge badge-pill badge-success">
+              {params.data.t3_type}
+            </div>
+          ) : params.value === "Inactive" ? (
+            <div className="badge badge-pill badge-warning">
+              {params.data.t3_type}
+            </div>
+          ) : null;
+        },
+      },
+      {
+        headerName: "T4 Type",
+        field: "t4_type",
+        filter: true,
+        width: 150,
+        cellRendererFramework: (params) => {
+          return params.value === "true" ? (
+            <div className="badge badge-pill badge-success">
+              {params.data.t4_type}
+            </div>
+          ) : params.value === "Inactive" ? (
+            <div className="badge badge-pill badge-warning">
+              {params.data.t4_type}
+            </div>
+          ) : null;
+        },
+      },
+      {
         headerName: "Actions",
         field: "sortorder",
         // field: "transactions",

@@ -29,7 +29,7 @@ export default class EditPackagePlan extends Component {
       // date: "",
       // expdate: "",
       // transaction_id: "",
-      staus: "",
+      status: "",
       // membershipData: {},
     };
     // this.state = {
@@ -70,7 +70,7 @@ export default class EditPackagePlan extends Component {
         this.setState({
           pack_name: response.data.data.pack_name,
           mrp_price: response.data.data.mrp_price,
-
+          status: response.data.data.status,
           des_price: response.data.data.des_price,
           desc: response.data.data.desc,
         });
@@ -202,6 +202,30 @@ export default class EditPackagePlan extends Component {
                     onChange={this.changeHandler}
                   />
                 </Col>{" "}
+                <Col lg="6" md="6" sm="6" className="mb-2 mt-1">
+                  <Label className="mb-1">Status</Label>
+                  <div
+                    className="form-label-group"
+                    onChange={this.changeHandler}
+                  >
+                    <input
+                      style={{ marginRight: "3px" }}
+                      type="radio"
+                      name="status"
+                      value="Confirm"
+                    />
+                    <span style={{ marginRight: "20px" }}>Active</span>
+
+                    {/* <input
+                      style={{ marginRight: "3px" }}
+                      type="radio"
+                      name="status"
+                      value="Pending"
+                    />
+
+                    <span style={{ marginRight: "3px" }}>Inactive</span> */}
+                  </div>
+                </Col>
               </Row>
 
               <Row>

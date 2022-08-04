@@ -22,7 +22,7 @@ class EditFnoEquity extends React.Component {
     super(props);
     this.state = {
       equity_script: "",
-      script_type: "",
+      // script_type: "",
       script_name: "",
       call_type: "",
       active_value: "",
@@ -34,9 +34,14 @@ class EditFnoEquity extends React.Component {
       qty: "",
       investment_amt: "",
       no_of_lots: "",
+      sl_type: "",
+      t1_type: "",
+      t2_type: "",
+      t3_type: "",
+      t4_type: "",
     };
     this.state = {
-      scriptT: [],
+      // scriptT: [],
       scriptN: [],
     };
   }
@@ -52,7 +57,7 @@ class EditFnoEquity extends React.Component {
         console.log(response);
         this.setState({
           equity_script: response.data.data.equity_script,
-          script_type: response.data.data.script_type,
+          // script_type: response.data.data.script_type,
           script_name: response.data.data.script_name,
           call_type: response.data.data.call_type,
           active_value: response.data.data.active_value,
@@ -64,6 +69,11 @@ class EditFnoEquity extends React.Component {
           qty: response.data.data.qty,
           investment_amt: response.data.data.investment_amt,
           no_of_lots: response.data.data.no_of_lots,
+          sl_type: response.data.data.sl_type,
+          t1_type: response.data.data.t1_type,
+          t2_type: response.data.data.t2_type,
+          t3_type: response.data.data.t3_type,
+          t4_type: response.data.data.t4_type,
         });
       })
       .catch((error) => {
@@ -75,7 +85,7 @@ class EditFnoEquity extends React.Component {
       .then((response) => {
         console.log(response);
         this.setState({
-          scriptT: response.data.data,
+          // scriptT: response.data.data,
           scriptN: response.data.data,
         });
       })
@@ -83,8 +93,23 @@ class EditFnoEquity extends React.Component {
         console.log(error);
       });
   }
+  // changeHandler1 = (e) => {
+  //   this.setState({ status: e.target.value });
+  // };
   changeHandler1 = (e) => {
-    this.setState({ status: e.target.value });
+    this.setState({ sl_type: e.target.value });
+  };
+  changeHandler2 = (e) => {
+    this.setState({ t1_type: e.target.value });
+  };
+  changeHandler3 = (e) => {
+    this.setState({ t2_type: e.target.value });
+  };
+  changeHandler4 = (e) => {
+    this.setState({ t3_type: e.target.value });
+  };
+  changeHandler5 = (e) => {
+    this.setState({ t4_type: e.target.value });
   };
 
   changeHandler = (e) => {
@@ -147,7 +172,7 @@ class EditFnoEquity extends React.Component {
                   <Label>Time</Label>
                   <Input type="time" placeholder="Enter User Id" />
                 </Col>
-                <Col lg="6" md="6" sm="6" className="mb-2">
+                {/* <Col lg="6" md="6" sm="6" className="mb-2">
                   <Label>Script</Label>
                   <CustomInput
                     type="select"
@@ -161,16 +186,16 @@ class EditFnoEquity extends React.Component {
                       </option>
                     ))}
                   </CustomInput>
-                </Col>
+                </Col> */}
                 <Col lg="6" md="6" sm="6" className="mb-2">
-                  <Label>Script</Label>
+                  <Label>Script Name</Label>
                   <CustomInput
                     type="select"
                     name="script_name"
                     value={this.state.script_name}
                     onChange={this.changeHandler}
                   >
-                    {this.state.scriptN.map((allScript) => (
+                    {this.state.scriptN?.map((allScript) => (
                       <option value={allScript._id} key={allScript._id}>
                         {allScript.script_name}
                       </option>
@@ -313,7 +338,123 @@ class EditFnoEquity extends React.Component {
                   />
                 </Col>
               </Row>
+              <Col lg="3" md="3" sm="3" className="mb-3 mt-1">
+                <Label className="mb-1">SL</Label>
+                <div
+                  className="form-label-group"
+                  onChange={(e) => this.changeHandler1(e)}
+                >
+                  <input
+                    style={{ marginRight: "3px" }}
+                    type="radio"
+                    name="sl_type"
+                    value="true"
+                  />
+                  <span style={{ marginRight: "20px" }}>True</span>
+                  <input
+                    style={{ marginRight: "3px" }}
+                    type="radio"
+                    name="sl_type"
+                    value="false"
+                  />
 
+                  <span style={{ marginRight: "3px" }}>False</span>
+                </div>
+              </Col>
+              <Row className="mb-2">
+                <Col lg="3" md="3" sm="3" className="mb-3 mt-1">
+                  <Label className="mb-1">T1</Label>
+                  <div
+                    className="form-label-group"
+                    onChange={(e) => this.changeHandler2(e)}
+                  >
+                    <input
+                      style={{ marginRight: "3px" }}
+                      type="radio"
+                      name="t1_type"
+                      value="true"
+                    />
+                    <span style={{ marginRight: "20px" }}>True</span>
+                    <input
+                      style={{ marginRight: "3px" }}
+                      type="radio"
+                      name="t1_type"
+                      value="false"
+                    />
+
+                    <span style={{ marginRight: "3px" }}>False</span>
+                  </div>
+                </Col>
+                <Col lg="3" md="3" sm="3" className="mb-3 mt-1">
+                  <Label className="mb-1">T2</Label>
+                  <div
+                    className="form-label-group"
+                    onChange={(e) => this.changeHandler3(e)}
+                  >
+                    <input
+                      style={{ marginRight: "3px" }}
+                      type="radio"
+                      name="t2_type"
+                      value="true"
+                    />
+                    <span style={{ marginRight: "20px" }}>True</span>
+                    <input
+                      style={{ marginRight: "3px" }}
+                      type="radio"
+                      name="t2_type"
+                      value="false"
+                    />
+
+                    <span style={{ marginRight: "3px" }}>False</span>
+                  </div>
+                </Col>
+                <Col lg="3" md="3" sm="3" className="mb-3 mt-1">
+                  <Label className="mb-1">T3</Label>
+                  <div
+                    className="form-label-group"
+                    onChange={(e) => this.changeHandler4(e)}
+                  >
+                    <input
+                      style={{ marginRight: "3px" }}
+                      type="radio"
+                      name="t3_type"
+                      value="true"
+                    />
+                    <span style={{ marginRight: "20px" }}>True</span>
+                    <input
+                      style={{ marginRight: "3px" }}
+                      type="radio"
+                      name="t3_type"
+                      value="false"
+                    />
+
+                    <span style={{ marginRight: "3px" }}>False</span>
+                  </div>
+                </Col>
+                <Col lg="3" md="3" sm="3" className="mb-3 mt-1">
+                  <Label className="mb-1">T4</Label>
+                  <div
+                    className="form-label-group"
+                    onChange={(e) => this.changeHandler5(e)}
+                  >
+                    <input
+                      style={{ marginRight: "3px" }}
+                      type="radio"
+                      name="t4_type"
+                      value="true"
+                    />
+                    <span style={{ marginRight: "20px" }}>True</span>
+                    <input
+                      style={{ marginRight: "3px" }}
+                      type="radio"
+                      name="t4_type"
+                      value="false"
+                    />
+
+                    <span style={{ marginRight: "3px" }}>False</span>
+                  </div>
+                </Col>
+              </Row>
               <Row>
                 <Col lg="6" md="6" sm="6" className="mb-2">
                   <Button.Ripple

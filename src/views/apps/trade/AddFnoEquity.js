@@ -23,7 +23,7 @@ export class AddFnoEquity extends Component {
     super(props);
     this.state = {
       equity_script: "",
-      script_type: "",
+      // script_type: "",
       script_name: "",
       call_type: "",
       active_value: "",
@@ -35,9 +35,11 @@ export class AddFnoEquity extends Component {
       qty: "",
       investment_amt: "",
       no_of_lots: "",
+      date: "",
+      time: "",
     };
     this.state = {
-      scriptT: [],
+      // scriptT: [],
       scriptN: [],
     };
   }
@@ -48,7 +50,7 @@ export class AddFnoEquity extends Component {
       .then((response) => {
         console.log(response);
         this.setState({
-          scriptT: response.data.data,
+          // scriptT: response.data.data,
           scriptN: response.data.data,
         });
       })
@@ -97,7 +99,7 @@ export class AddFnoEquity extends Component {
                 render={({ history }) => (
                   <Button
                     className=" btn btn-danger float-right"
-                    onClick={() => history.push("app/trade/FnoEquityList")}
+                    onClick={() => history.push("/app/trade/fnoEquityList")}
                   >
                     Back
                   </Button>
@@ -110,13 +112,25 @@ export class AddFnoEquity extends Component {
               <Row className="mb-2">
                 <Col lg="6" md="6" className="mb-2">
                   <Label>Date</Label>
-                  <Input type="date" placeholder="Enter User Id" />
+                  <Input
+                    type="date"
+                    placeholder="Enter User Id"
+                    name="date"
+                    value={this.state.date}
+                    onChange={this.changeHandler}
+                  />
                 </Col>
                 <Col lg="6" md="6" className="mb-2">
                   <Label>Time</Label>
-                  <Input type="time" placeholder="Enter User Id" />
+                  <Input
+                    type="time"
+                    placeholder="Enter User Id"
+                    name="time"
+                    value={this.state.time}
+                    onChange={this.changeHandler}
+                  />
                 </Col>
-                <Col lg="6" md="6" sm="6" className="mb-2">
+                {/* <Col lg="6" md="6" sm="6" className="mb-2">
                   <Label>Script</Label>
                   <CustomInput
                     type="select"
@@ -130,9 +144,9 @@ export class AddFnoEquity extends Component {
                       </option>
                     ))}
                   </CustomInput>
-                </Col>
+                </Col> */}
                 <Col lg="6" md="6" sm="6" className="mb-2">
-                  <Label>Script</Label>
+                  <Label>Script Name</Label>
                   <CustomInput
                     type="select"
                     name="script_name"

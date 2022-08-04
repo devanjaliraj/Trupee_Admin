@@ -35,10 +35,12 @@ export class AddEquityCash extends Component {
       qty: "",
       investment_amt: "",
       no_of_lots: "",
+      date: "",
+      time: "",
     };
     this.state = {
       scriptT: [],
-      scriptN: [],
+      // scriptN: [],
     };
   }
   //Script//
@@ -49,7 +51,7 @@ export class AddEquityCash extends Component {
         console.log(response);
         this.setState({
           scriptT: response.data.data,
-          scriptN: response.data.data,
+          // scriptN: response.data.data,
         });
       })
       .catch((error) => {
@@ -122,8 +124,8 @@ export class AddEquityCash extends Component {
                   <Label>Time</Label>
                   <Input type="time" placeholder="Enter User Id" />
                 </Col>
-                <Col lg="6" md="6" sm="6" className="mb-2">
-                  <Label>Script</Label>
+                {/* <Col lg="6" md="6" sm="6" className="mb-2">
+                  <Label>Script </Label>
                   <CustomInput
                     type="select"
                     name="script_type"
@@ -136,9 +138,9 @@ export class AddEquityCash extends Component {
                       </option>
                     ))}
                   </CustomInput>
-                </Col>
+                </Col> */}
                 <Col lg="6" md="6" sm="6" className="mb-2">
-                  <Label>Script</Label>
+                  <Label>Script Name</Label>
                   <CustomInput
                     type="select"
                     name="script_name"

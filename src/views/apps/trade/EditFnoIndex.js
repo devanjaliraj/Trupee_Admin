@@ -163,7 +163,7 @@ class EditFnoIndex extends React.Component {
                   </CustomInput>
                 </Col>
                 <Col lg="6" md="6" sm="6" className="mb-2">
-                  <Label>Script</Label>
+                  <Label>Script Name</Label>
                   <CustomInput
                     type="select"
                     name="script_name"

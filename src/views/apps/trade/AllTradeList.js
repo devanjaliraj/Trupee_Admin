@@ -67,7 +67,7 @@ class AllTradeList extends React.Component {
         cellRendererFramework: (params) => {
           return (
             <div className="d-flex  align-items-center cursor-pointer">
-              <span>{params.data.script_name.script_type}</span>
+              <span>{params.data.script_name?.script_type}</span>
             </div>
           );
         },
@@ -79,7 +79,7 @@ class AllTradeList extends React.Component {
         cellRendererFramework: (params) => {
           return (
             <div className="d-flex align-items-center cursor-pointer">
-              <span>{params.data.script_name.script_name}</span>
+              <span>{params.data.script_name?.script_name}</span>
             </div>
           );
         },
@@ -218,7 +218,91 @@ class AllTradeList extends React.Component {
           );
         },
       },
-
+      {
+        headerName: "SL Type",
+        field: "sl_type",
+        filter: true,
+        width: 150,
+        cellRendererFramework: (params) => {
+          return params.value === "true" ? (
+            <div className="badge badge-pill badge-success">
+              {params.data.sl_type}
+            </div>
+          ) : params.value === "False" ? (
+            <div className="badge badge-pill badge-warning">
+              {params.data.sl_type}
+            </div>
+          ) : null;
+        },
+      },
+      {
+        headerName: "T1 Type",
+        field: "t1_type",
+        filter: true,
+        width: 150,
+        cellRendererFramework: (params) => {
+          return params.value === "true" ? (
+            <div className="badge badge-pill badge-success">
+              {params.data.t1_type}
+            </div>
+          ) : params.value === "Inactive" ? (
+            <div className="badge badge-pill badge-warning">
+              {params.data.t1_type}
+            </div>
+          ) : null;
+        },
+      },
+      {
+        headerName: "T2 Type",
+        field: "t2_type",
+        filter: true,
+        width: 150,
+        cellRendererFramework: (params) => {
+          return params.value === "true" ? (
+            <div className="badge badge-pill badge-success">
+              {params.data.t2_type}
+            </div>
+          ) : params.value === "Inactive" ? (
+            <div className="badge badge-pill badge-warning">
+              {params.data.t2_type}
+            </div>
+          ) : null;
+        },
+      },
+      {
+        headerName: "T3 Type",
+        field: "t3_type",
+        filter: true,
+        width: 150,
+        cellRendererFramework: (params) => {
+          return params.value === "true" ? (
+            <div className="badge badge-pill badge-success">
+              {params.data.t3_type}
+            </div>
+          ) : params.value === "Inactive" ? (
+            <div className="badge badge-pill badge-warning">
+              {params.data.t3_type}
+            </div>
+          ) : null;
+        },
+      },
+      {
+        headerName: "T4 Type",
+        field: "t4_type",
+        filter: true,
+        width: 150,
+        cellRendererFramework: (params) => {
+          return params.value === "true" ? (
+            <div className="badge badge-pill badge-success">
+              {params.data.t4_type}
+            </div>
+          ) : params.value === "Inactive" ? (
+            <div className="badge badge-pill badge-warning">
+              {params.data.t4_type}
+            </div>
+          ) : null;
+        },
+      },
       {
         headerName: "Actions",
         field: "sortorder",
@@ -237,7 +321,7 @@ class AllTradeList extends React.Component {
                   history.push(`/app/size/viewSize/${params.data._id}`)
                 }
               /> */}
-              <Route
+              {/* <Route
                 render={({ history }) => (
                   <Edit
                     className="mr-50"
@@ -248,7 +332,7 @@ class AllTradeList extends React.Component {
                     }
                   />
                 )}
-              />
+              /> */}
 
               <Trash2
                 size={20}
@@ -323,7 +407,7 @@ class AllTradeList extends React.Component {
                     All Trade List
                   </h1>
                 </Col>
-                <Col className="pt-4">
+                {/* <Col className="pt-4">
                   <Route
                     render={({ history }) => (
                       <Button
@@ -334,7 +418,7 @@ class AllTradeList extends React.Component {
                       </Button>
                     )}
                   />
-                </Col>
+                </Col> */}
               </Row>
               <CardBody>
                 {this.state.rowData === null ? null : (

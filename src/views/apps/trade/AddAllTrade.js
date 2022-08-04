@@ -35,9 +35,11 @@ export class AddAllTrade extends Component {
       qty: "",
       investment_amt: "",
       no_of_lots: "",
+      date: "",
+      time: "",
     };
     this.state = {
-      scriptT: [],
+      // scriptT: [],
       scriptN: [],
     };
   }
@@ -48,7 +50,7 @@ export class AddAllTrade extends Component {
       .then((response) => {
         console.log(response);
         this.setState({
-          scriptT: response.data.data,
+          // scriptT: response.data.data,
           scriptN: response.data.data,
         });
       })
@@ -116,14 +118,26 @@ export class AddAllTrade extends Component {
               <Row className="mb-2">
                 <Col lg="6" md="6" className="mb-2">
                   <Label>Date</Label>
-                  <Input type="date" placeholder="Enter User Id" />
+                  <Input
+                    type="date"
+                    placeholder="Enter User Id"
+                    name="date"
+                    value={this.state.date}
+                    onChange={this.changeHandler}
+                  />
                 </Col>
                 <Col lg="6" md="6" className="mb-2">
                   <Label>Time</Label>
-                  <Input type="time" placeholder="Enter User Id" />
+                  <Input
+                    type="time"
+                    placeholder="Enter User Id"
+                    name="time"
+                    value={this.state.time}
+                    onChange={this.changeHandler}
+                  />
                 </Col>
-                <Col lg="6" md="6" sm="6" className="mb-2">
-                  <Label>Script</Label>
+                {/* <Col lg="6" md="6" sm="6" className="mb-2">
+                  <Label>Script </Label>
                   <CustomInput
                     type="select"
                     name="script_type"
@@ -136,9 +150,9 @@ export class AddAllTrade extends Component {
                       </option>
                     ))}
                   </CustomInput>
-                </Col>
+                </Col> */}
                 <Col lg="6" md="6" sm="6" className="mb-2">
-                  <Label>Script</Label>
+                  <Label>Script Name</Label>
                   <CustomInput
                     type="select"
                     name="script_name"
