@@ -1,44 +1,41 @@
-import React, { useState, useEffect } from "react"
-import { Navbar } from "reactstrap"
-import { connect } from "react-redux"
-import classnames from "classnames"
-import { useAuth0 } from "../../../authServices/auth0/auth0Service"
+import React, { useState, useEffect } from "react";
+import { Navbar } from "reactstrap";
+import { connect } from "react-redux";
+import classnames from "classnames";
+import { useAuth0 } from "../../../authServices/auth0/auth0Service";
 import {
   logoutWithJWT,
-  logoutWithFirebase
-} from "../../../redux/actions/auth/loginActions"
-import NavbarBookmarks from "./NavbarBookmarks"
-import NavbarUser from "./NavbarUser"
-import userImg from "../../../assets/img/portrait/small/avatar-s-11.jpg"
+  logoutWithFirebase,
+} from "../../../redux/actions/auth/loginActions";
+import NavbarBookmarks from "./NavbarBookmarks";
+import NavbarUser from "./NavbarUser";
+import userImg from "../../../assets/img/portrait/small/avatar-s-11.jpg";
 import axiosConfig from "../../../axiosConfig";
+import "../../../assets/scss/pages/users.scss";
 
-const UserName =  props => {
-  let username = ""
+const UserName = (props) => {
+  let username = "";
   if (props.userdata !== undefined) {
-    username = props.userdata.name
+    username = props.userdata.name;
   } else if (props.user.login.values !== undefined) {
-    username = props.user.login.values.name
+    username = props.user.login.values.name;
     if (
       props.user.login.values.loggedInWith !== undefined &&
       props.user.login.values.loggedInWith === "jwt"
     ) {
-      username = props.user.login.values.loggedInUser.name
+      username = props.user.login.values.loggedInUser.name;
     }
-   
   } else {
-    username = "john"
-    return username
-    
+    username = "john";
+    return username;
   }
+};
+const ThemeNavbar = (props) => {
+  const { user } = useAuth0();
+  const colorsArr = ["primary", "danger", "success", "info", "warning", "dark"];
+  const navbarTypes = ["floating", "static", "sticky", "hidden"];
 
-  
-}
-const ThemeNavbar = props => {
-  const { user } = useAuth0()
-  const colorsArr = [ "primary", "danger", "success", "info", "warning", "dark"]
-  const navbarTypes = ["floating" , "static" , "sticky" , "hidden"]
-
-  const [userData, setUserData] = useState('')
+  const [userData, setUserData] = useState("");
 
   // useEffect(() => {
   //   console.log('mount it!')
@@ -53,7 +50,7 @@ const ThemeNavbar = props => {
   //     .catch((error) => {
   //       console.log(error.response);
   //     });
-   
+
   // }, [])
 
   return (
@@ -64,7 +61,9 @@ const ThemeNavbar = props => {
         className={classnames(
           "header-navbar navbar-expand-lg navbar navbar-with-menu navbar-shadow",
           {
-            "navbar-light": props.navbarColor === "default" || !colorsArr.includes(props.navbarColor),
+            "navbar-light":
+              props.navbarColor === "default" ||
+              !colorsArr.includes(props.navbarColor),
             "navbar-dark": colorsArr.includes(props.navbarColor),
             "bg-primary":
               props.navbarColor === "primary" && props.navbarType !== "static",
@@ -80,17 +79,17 @@ const ThemeNavbar = props => {
               props.navbarColor === "dark" && props.navbarType !== "static",
             "d-none": props.navbarType === "hidden" && !props.horizontal,
             "floating-nav":
-              (props.navbarType === "floating" && !props.horizontal) || (!navbarTypes.includes(props.navbarType) && !props.horizontal),
+              (props.navbarType === "floating" && !props.horizontal) ||
+              (!navbarTypes.includes(props.navbarType) && !props.horizontal),
             "navbar-static-top":
               props.navbarType === "static" && !props.horizontal,
             "fixed-top": props.navbarType === "sticky" || props.horizontal,
-            "scrolling": props.horizontal && props.scrolling
-
+            scrolling: props.horizontal && props.scrolling,
           }
         )}
       >
         <div className="navbar-wrapper">
-          <div className="navbar-container content">
+          <div className="navbar-container content st-color">
             <div
               className="navbar-collapse d-flex justify-content-between align-items-center"
               id="navbar-mobile"
@@ -115,8 +114,9 @@ const ThemeNavbar = props => {
                   props.user.login.values !== undefined &&
                   props.user.login.values.loggedInWith !== "jwt" &&
                   props.user.login.values.photoUrl
-                    ? props.user.login.values.photoUrl 
-                    : user !== undefined && user.picture ? user.picture
+                    ? props.user.login.values.photoUrl
+                    : user !== undefined && user.picture
+                    ? user.picture
                     : userImg
                 }
                 loggedInWith={
@@ -133,17 +133,17 @@ const ThemeNavbar = props => {
         </div>
       </Navbar>
     </React.Fragment>
-  )
-}
+  );
+};
 
-const mapStateToProps = state => {
+const mapStateToProps = (state) => {
   return {
-    user: state.auth
-  }
-}
+    user: state.auth,
+  };
+};
 
 export default connect(mapStateToProps, {
   logoutWithJWT,
   logoutWithFirebase,
-  useAuth0
-})(ThemeNavbar)
+  useAuth0,
+})(ThemeNavbar);

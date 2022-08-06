@@ -14,12 +14,12 @@ import {
 import axiosConfig from "../../../axiosConfig";
 import { ContextLayout } from "../../../utility/context/Layout";
 import { AgGridReact } from "ag-grid-react";
-import { Edit, Trash2, ChevronDown } from "react-feather";
+import { Eye, Edit, Trash2, ChevronDown } from "react-feather";
 import "../../../assets/scss/plugins/tables/_agGridStyleOverride.scss";
 import "../../../assets/scss/pages/users.scss";
 import { Route } from "react-router-dom";
 
-class FnoEquityList extends React.Component {
+class FnoOptionList extends React.Component {
   state = {
     rowData: [],
     paginationPageSize: 20,
@@ -37,7 +37,7 @@ class FnoEquityList extends React.Component {
         headerName: "S.No",
         valueGetter: "node.rowIndex + 1",
         field: "node.rowIndex + 1",
-        width: 100,
+        width: 200,
         filter: true,
         // checkboxSelection: true,
         // headerCheckboxSelectionFilteredOnly: true,
@@ -45,33 +45,9 @@ class FnoEquityList extends React.Component {
       },
 
       {
-        headerName: "Equity Script",
-        field: "equity_script",
-        width: 140,
-        cellRendererFramework: (params) => {
-          return (
-            <div className="d-flex  align-items-center cursor-pointer">
-              <span>{params.data.equity_script}</span>
-            </div>
-          );
-        },
-      },
-      // {
-      //   headerName: "Script",
-      //   field: "script_type",
-      //   width: 140,
-      //   cellRendererFramework: (params) => {
-      //     return (
-      //       <div className="d-flex  align-items-center cursor-pointer">
-      //         <span>{params.data.script_name?.script_type}</span>
-      //       </div>
-      //     );
-      //   },
-      // },
-      {
         headerName: "Script Name",
         field: "script_name",
-        width: 140,
+        width: 300,
         cellRendererFramework: (params) => {
           return (
             <div className="d-flex align-items-center cursor-pointer">
@@ -80,218 +56,30 @@ class FnoEquityList extends React.Component {
           );
         },
       },
+      //
       {
-        headerName: "Call Type",
-        field: "call_type",
-        width: 140,
+        headerName: "Status",
+        field: "status",
+        // filter: true,
+        width: 300,
         cellRendererFramework: (params) => {
-          return (
-            <div className="d-flex align-items-center cursor-pointer">
-              <span>{params.data.call_type}</span>
+          return params.value === "Confirm" ? (
+            <div className="badge badge-pill badge-success">
+              {params.data.status}
             </div>
-          );
-        },
-      },
-      {
-        headerName: "Active Value",
-        field: "active_value",
-        width: 140,
-        cellRendererFramework: (params) => {
-          return (
-            <div className="d-flex align-items-center cursor-pointer">
-              <span>{params.data.active_value}</span>
+          ) : params.value === "Pending" ? (
+            <div className="badge badge-pill badge-warning">
+              {params.data.status}
             </div>
-          );
-        },
-      },
-      {
-        headerName: " SL",
-        field: "SL",
-        width: 140,
-        cellRendererFramework: (params) => {
-          return (
-            <div className="d-flex align-items-center cursor-pointer">
-              <span>{params.data.SL}</span>
-            </div>
-          );
-        },
-      },
-      {
-        headerName: "T₹ 1",
-        field: "T1",
-        width: 140,
-        cellRendererFramework: (params) => {
-          return (
-            <div className="d-flex align-items-center cursor-pointer">
-              <span>{params.data.T1}</span>
-            </div>
-          );
-        },
-      },
-      {
-        headerName: "T₹ 2",
-        field: "T2",
-        width: 140,
-        cellRendererFramework: (params) => {
-          return (
-            <div className="d-flex align-items-center cursor-pointer">
-              <span>{params.data.T2}</span>
-            </div>
-          );
-        },
-      },
-      {
-        headerName: "T₹ 3",
-        field: "T3",
-        width: 140,
-        cellRendererFramework: (params) => {
-          return (
-            <div className="d-flex align-items-center cursor-pointer">
-              <span>{params.data.T3}</span>
-            </div>
-          );
-        },
-      },
-      {
-        headerName: "T₹ 4",
-        field: "T4",
-        width: 140,
-        cellRendererFramework: (params) => {
-          return (
-            <div className="d-flex align-items-center cursor-pointer">
-              <span>{params.data.T4}</span>
-            </div>
-          );
+          ) : null;
         },
       },
 
       {
-        headerName: "Quantity",
-        field: "qty",
-        width: 140,
-        cellRendererFramework: (params) => {
-          return (
-            <div className="d-flex align-items-center cursor-pointer">
-              <span>{params.data.qty}</span>
-            </div>
-          );
-        },
-      },
-      {
-        headerName: "Investment Amount",
-        field: "investment_amt",
-        width: 140,
-        cellRendererFramework: (params) => {
-          return (
-            <div className="d-flex align-items-center cursor-pointer">
-              <span>{params.data.investment_amt}</span>
-            </div>
-          );
-        },
-      },
-      {
-        headerName: "Number Of Lots",
-        field: "no_of_lots",
-        width: 140,
-        cellRendererFramework: (params) => {
-          return (
-            <div className="d-flex align-items-center cursor-pointer">
-              <span>{params.data.no_of_lots}</span>
-            </div>
-          );
-        },
-      },
-      {
-        headerName: "SL Type",
-        field: "sl_type",
-        filter: true,
-        width: 150,
-        cellRendererFramework: (params) => {
-          return params.value === "true" ? (
-            <div className="badge badge-pill badge-success">
-              {params.data.sl_type}
-            </div>
-          ) : params.value === "False" ? (
-            <div className="badge badge-pill badge-warning">
-              {params.data.sl_type}
-            </div>
-          ) : null;
-        },
-      },
-      {
-        headerName: "T1 Type",
-        field: "t1_type",
-        filter: true,
-        width: 150,
-        cellRendererFramework: (params) => {
-          return params.value === "true" ? (
-            <div className="badge badge-pill badge-success">
-              {params.data.t1_type}
-            </div>
-          ) : params.value === "Inactive" ? (
-            <div className="badge badge-pill badge-warning">
-              {params.data.t1_type}
-            </div>
-          ) : null;
-        },
-      },
-      {
-        headerName: "T2 Type",
-        field: "t2_type",
-        filter: true,
-        width: 150,
-        cellRendererFramework: (params) => {
-          return params.value === "true" ? (
-            <div className="badge badge-pill badge-success">
-              {params.data.t2_type}
-            </div>
-          ) : params.value === "Inactive" ? (
-            <div className="badge badge-pill badge-warning">
-              {params.data.t2_type}
-            </div>
-          ) : null;
-        },
-      },
-      {
-        headerName: "T3 Type",
-        field: "t3_type",
-        filter: true,
-        width: 150,
-        cellRendererFramework: (params) => {
-          return params.value === "true" ? (
-            <div className="badge badge-pill badge-success">
-              {params.data.t3_type}
-            </div>
-          ) : params.value === "Inactive" ? (
-            <div className="badge badge-pill badge-warning">
-              {params.data.t3_type}
-            </div>
-          ) : null;
-        },
-      },
-      {
-        headerName: "T4 Type",
-        field: "t4_type",
-        filter: true,
-        width: 150,
-        cellRendererFramework: (params) => {
-          return params.value === "true" ? (
-            <div className="badge badge-pill badge-success">
-              {params.data.t4_type}
-            </div>
-          ) : params.value === "Inactive" ? (
-            <div className="badge badge-pill badge-warning">
-              {params.data.t4_type}
-            </div>
-          ) : null;
-        },
-      },
-      {
         headerName: "Actions",
         field: "sortorder",
-        // field: "transactions",
-        width: 150,
-        pinned: window.innerWidth > 992 ? "right" : false,
+        width: 200,
+        // pinned: window.innerWidth > 992 ? "right" : false,
         cellRendererFramework: (params) => {
           return (
             <div className="actions cursor-pointer">
@@ -310,9 +98,7 @@ class FnoEquityList extends React.Component {
                     size="25px"
                     color="blue"
                     onClick={() =>
-                      history.push(
-                        `/app/trade/editFnoEquity/${params.data._id}`
-                      )
+                      history.push(`/app/trade/editFnoIndex/${params.data._id}`)
                     }
                   />
                 )}
@@ -335,7 +121,7 @@ class FnoEquityList extends React.Component {
   };
 
   async componentDidMount() {
-    await axiosConfig.get(`/fnoEquity_list`).then((response) => {
+    await axiosConfig.get(`/fnoIndexlist`).then((response) => {
       const rowData = response.data.data;
       console.log(rowData);
       this.setState({ rowData });
@@ -343,7 +129,7 @@ class FnoEquityList extends React.Component {
   }
   async runthisfunction(id) {
     console.log(id);
-    await axiosConfig.get(`/dlt_fnoEquity/${id}`).then(
+    await axiosConfig.get(`/dlt_fnoIndex/${id}`).then(
       (response) => {
         console.log(response);
       },
@@ -388,7 +174,7 @@ class FnoEquityList extends React.Component {
               <Row className="m-2">
                 <Col>
                   <h1 sm="6" className="float-left">
-                    Fno Equity List
+                    FNO Option List
                   </h1>
                 </Col>
                 <Col className="pt-4">
@@ -396,9 +182,9 @@ class FnoEquityList extends React.Component {
                     render={({ history }) => (
                       <Button
                         className=" btn btn-success float-right"
-                        onClick={() => history.push("/app/trade/AddFnoEquity")}
+                        onClick={() => history.push("/app/trade/AddFnoIndex")}
                       >
-                        Add Fno Equity
+                        Add FNO Option
                       </Button>
                     )}
                   />
@@ -503,4 +289,4 @@ class FnoEquityList extends React.Component {
     );
   }
 }
-export default FnoEquityList;
+export default FnoOptionList;

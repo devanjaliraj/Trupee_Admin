@@ -407,7 +407,7 @@ class AllTradeList extends React.Component {
                     All Trade List
                   </h1>
                 </Col>
-                {/* <Col className="pt-4">
+                <Col className="pt-4">
                   <Route
                     render={({ history }) => (
                       <Button
@@ -418,7 +418,7 @@ class AllTradeList extends React.Component {
                       </Button>
                     )}
                   />
-                </Col> */}
+                </Col>
               </Row>
               <CardBody>
                 {this.state.rowData === null ? null : (

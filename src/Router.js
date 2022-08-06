@@ -85,6 +85,10 @@ const ViewUsers = lazy(() => import("./views/apps/users/ViewUsers"));
 const UserNotification = lazy(() =>
   import("./views/apps/userNotif/UserNotification")
 );
+// scripts//
+const FnoIndex = lazy(() => import("./views/apps/scripts/FnoIndex"));
+const FnoOption = lazy(() => import("./views/apps/scripts/FnoOption"));
+const CashEquity = lazy(() => import("./views/apps/scripts/CashEquity"));
 
 // script//
 const ScriptList = lazy(() => import("./views/apps/script/ScriptList"));
@@ -184,7 +188,7 @@ const EditMemContent = lazy(() =>
 );
 // setting
 
-const enquiryForm = lazy(() => import("./views/apps/setting/EnquiryForm"));
+const EnquiryForm = lazy(() => import("./views/apps/setting/EnquiryForm"));
 const grid = lazy(() => import("./views/ui-elements/grid/Grid"));
 const typography = lazy(() =>
   import("./views/ui-elements/typography/Typography")
@@ -461,6 +465,10 @@ class AppRouter extends React.Component {
               path="/app/premium/addPaidServeice"
               component={AddPaidServeice}
             />
+            {/* scripts */}
+            <AppRoute path="/app/scripts/fnoIndex" component={FnoIndex} />
+            <AppRoute path="/app/scripts/fnoOption" component={FnoOption} />
+            <AppRoute path="/app/scripts/cashEquity" component={CashEquity} />
             {/* script */}
             <AppRoute path="/app/script/scriptList" component={ScriptList} />
             <AppRoute path="/app/script/addScript" component={AddScript} />
@@ -508,7 +516,7 @@ class AppRouter extends React.Component {
             />
             <AppRoute path="/app/trade/niftyList" component={NiftyList} />
             {/* setting */}
-            <AppRoute path="/app/setting/enquiryForm" component={enquiryForm} />
+            <AppRoute path="/app/setting/enquiryForm" component={EnquiryForm} />
             <AppRoute
               path="/email"
               component={() => <Redirect to="/email/inbox" />}

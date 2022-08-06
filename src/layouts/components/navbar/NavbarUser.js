@@ -40,8 +40,10 @@ const NavbarUser = () => {
       <UncontrolledDropdown tag="li" className="dropdown-user nav-item">
         <DropdownToggle tag="a" className="nav-link dropdown-user-link">
           <div className="user-nav d-sm-flex d-none">
-            <span className="user-name text-bold-600">{adminimg.name}</span>
-            <span className="user-status">Available</span>
+            <span className="user-name text-bold-600" color="#fff">
+              {adminimg.name}
+            </span>
+            {/* <span className="user-status">Available</span> */}
           </div>
           <span data-tour="user">
             <img

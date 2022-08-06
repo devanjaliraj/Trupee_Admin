@@ -69,3 +69,14 @@ li.hp-list-1 p{
   font-weight: 600;
   font-size: 16px;
 }
+
+
+// header color css
+
+.navbar-container.content.st-color {
+  background: linear-gradient(to left, #cb6068 0%, #68b16c 100%) !important;
+}
+.header-navbar .navbar-container ul.nav li > .nav-link {
+  color: #fff !important;
+  font-size: 18px !important;
+}

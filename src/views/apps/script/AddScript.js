@@ -101,12 +101,12 @@ export default class AddScript extends Component {
                     onChange={this.changeHandler}
                   >
                     <option>Select Script</option>
-                    <option>All TRADES</option>
+                    {/* <option>All TRADES</option> */}
                     <option>FNO INDEX</option>
                     <option>FNO EQUITY</option>
                     <option>CASH EQUITY</option>
-                    <option>BANK NIFTY</option>
-                    <option>NIFTY </option>
+                    {/* <option>BANK NIFTY</option>
+                    <option>NIFTY </option> */}
                   </Input>
                 </Col>
                 <Col lg="6" md="6" sm="6" className="mb-2">
