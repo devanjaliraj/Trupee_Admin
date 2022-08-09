@@ -43,7 +43,7 @@ export default class AddScript extends Component {
       .then((response) => {
         console.log(response);
         swal("Success!", "Submitted SuccessFull!", "success");
-        this.props.history.push("/app/script/scriptList");
+        this.props.history.push("/app/scripts/cashEquity");
       })
       .catch((error) => {
         console.log(error);
@@ -60,10 +60,10 @@ export default class AddScript extends Component {
                 <BreadcrumbItem href="/analyticsDashboard" tag="a">
                   Home
                 </BreadcrumbItem>
-                <BreadcrumbItem href="/app/script/scriptList" tag="a">
-                  Script List
+                <BreadcrumbItem href="/app/scripts/cashEquity" tag="a">
+                Cash Equtiy List
                 </BreadcrumbItem>
-                <BreadcrumbItem active>Add Script</BreadcrumbItem>
+                <BreadcrumbItem active>Add Cash Equtiy</BreadcrumbItem>
               </Breadcrumb>
             </div>
           </Col>
@@ -72,7 +72,7 @@ export default class AddScript extends Component {
           <Row className="m-2">
             <Col>
               <h1 col-sm-6 className="float-left">
-                Add Script
+                Add Cash Equtiy
               </h1>
             </Col>
             <Col>
@@ -80,7 +80,7 @@ export default class AddScript extends Component {
                 render={({ history }) => (
                   <Button
                     className=" btn btn-danger float-right"
-                    onClick={() => history.push("/app/script/scriptList")}
+                    onClick={() => history.push("/app/scripts/cashEquity")}
                   >
                     Back
                   </Button>
@@ -91,7 +91,7 @@ export default class AddScript extends Component {
           <CardBody>
             <Form className="m-1" onSubmit={this.submitHandler}>
               <Row>
-                <Col lg="6" md="6" className="mb-2">
+                {/* <Col lg="6" md="6" className="mb-2">
                   <Label for="exampleSelect">Entry Script</Label>
                   <Input
                     id="exampleSelect"
@@ -101,14 +101,13 @@ export default class AddScript extends Component {
                     onChange={this.changeHandler}
                   >
                     <option>Select Script</option>
-                    {/* <option>All TRADES</option> */}
+                   
                     <option>FNO INDEX</option>
-                    <option>FNO EQUITY</option>
+                    <option>FNO OPTIONS</option>
                     <option>CASH EQUITY</option>
-                    {/* <option>BANK NIFTY</option>
-                    <option>NIFTY </option> */}
+                 
                   </Input>
-                </Col>
+                </Col> */}
                 <Col lg="6" md="6" sm="6" className="mb-2">
                   <Label>Script Name</Label>
                   <Input
@@ -120,6 +119,29 @@ export default class AddScript extends Component {
                     onChange={this.changeHandler}
                   ></Input>
                 </Col>
+                    <Col lg="6" md="6" sm="6" className="mb-2">
+                  <Label className="mb-1">Status</Label>
+                  <div
+                    className="form-label-group"
+                    onChange={(e) => this.changeHandler1(e)}
+                  >
+                    <input
+                      style={{ marginRight: "3px" }}
+                      type="radio"
+                      name="status"
+                      value="Active"
+                    />
+                    <span style={{ marginRight: "20px" }}>Active</span>
+
+                    <input
+                      style={{ marginRight: "3px" }}
+                      type="radio"
+                      name="status"
+                      value="Inactive"
+                    />
+                    <span style={{ marginRight: "3px" }}>Inactive</span>
+                  </div>
+                </Col>  
               </Row>
               <Row>
                 <Col lg="6" md="6" sm="6" className="mb-2">

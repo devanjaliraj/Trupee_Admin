@@ -511,7 +511,7 @@ export default class EditSize extends Component {
                     type="text"
                     name="status"
                     value={this.state.status}
-                    onChange={this.changeHandler}
+                    onChange={this.changeHandler1}
                   ></Input>
                 </Col>
               </Row>

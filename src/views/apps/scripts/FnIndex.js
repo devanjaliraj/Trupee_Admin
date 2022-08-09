@@ -19,7 +19,7 @@ import "../../../assets/scss/plugins/tables/_agGridStyleOverride.scss";
 import "../../../assets/scss/pages/users.scss";
 import { Route } from "react-router-dom";
 
-class FnoIndex extends React.Component {
+class FnIndex extends React.Component {
   state = {
     rowData: [],
     paginationPageSize: 20,
@@ -61,7 +61,7 @@ class FnoIndex extends React.Component {
         headerName: "Status",
         field: "status",
         // filter: true,
-        width: 300,
+        width: 200,
         cellRendererFramework: (params) => {
           return params.value === "Confirm" ? (
             <div className="badge badge-pill badge-success">
@@ -182,7 +182,7 @@ class FnoIndex extends React.Component {
                     render={({ history }) => (
                       <Button
                         className=" btn btn-success float-right"
-                        onClick={() => history.push("/app/trade/AddFnoIndex")}
+                        onClick={() => history.push("/app/scripts/addFnIndex")}
                       >
                         Add FNO Index List
                       </Button>
@@ -289,4 +289,4 @@ class FnoIndex extends React.Component {
     );
   }
 }
-export default FnoIndex;
+export default FnIndex;

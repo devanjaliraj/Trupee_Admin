@@ -1,6 +1,3 @@
-
-
-
 import React, { Component } from "react";
 import {
   Card,
@@ -18,17 +15,27 @@ import {
   BreadcrumbItem,
 } from "reactstrap";
 import axiosConfig from "../../../axiosConfig";
-import { history } from "../../../history";
+// import { history } from "../../../../history";
 import swal from "sweetalert";
+import { Route } from "react-router-dom";
 
-export default class AddSize extends Component {
+export default class AddStartUp extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      sizeName: "",
-      status: "",
+      title: "",
+      desc: "",
+      image: "",
+      video_link: "",
+      selectedName: "",
+      selectedFile: null,
     };
   }
+  onChangeHandler = (event) => {
+    this.setState({ selectedFile: event.target.files[0] });
+    this.setState({ selectedName: event.target.files[0].name });
+    console.log(event.target.files[0]);
+  };
   changeHandler1 = (e) => {
     this.setState({ status: e.target.value });
   };
@@ -38,17 +45,29 @@ export default class AddSize extends Component {
   };
   submitHandler = (e) => {
     e.preventDefault();
+    console.log(this.state);
 
+    const data = new FormData();
+    data.append("title", this.state.title);
+    data.append("desc", this.state.desc);
+    data.append("video_link", this.state.video_link);
+    data.append("image", this.state.selectedFile, this.state.selectedName);
+
+    for (var value of data.values()) {
+      console.log(value);
+    }
+
+    for (var key of data.keys()) {
+      console.log(key);
+    }
     axiosConfig
-      .post("/addsize", this.state, {
-        // headers: {
-        //   "auth-adtoken": localStorage.getItem("auth-adtoken"),
-        // },
-      })
+      .post("/addStartup", data)
+
       .then((response) => {
-        console.log(response);
+        console.log(response.data);
+
         swal("Success!", "Submitted SuccessFull!", "success");
-        this.props.history.push("/app/trade/allTradeList");
+        this.props.history.push("/app/trade/generalNotifList");
       })
       .catch((error) => {
         console.log(error);
@@ -65,10 +84,10 @@ export default class AddSize extends Component {
                 <BreadcrumbItem href="/analyticsDashboard" tag="a">
                   Home
                 </BreadcrumbItem>
-                <BreadcrumbItem href="/app/trade/allTradeList" tag="a">
-                 Trade Notification List
+                <BreadcrumbItem href="/app/trade/generalNotifList" tag="a">
+                General Notification  List
                 </BreadcrumbItem>
-                <BreadcrumbItem active>Add Trade Notification</BreadcrumbItem>
+                <BreadcrumbItem active>Add General Notification</BreadcrumbItem>
               </Breadcrumb>
             </div>
           </Col>
@@ -77,62 +96,59 @@ export default class AddSize extends Component {
           <Row className="m-2">
             <Col>
               <h1 col-sm-6 className="float-left">
-                Add Trade Notification
+                Add General Notification
               </h1>
             </Col>
             <Col>
-              <Button
-                className=" btn btn-danger float-right"
-                onClick={() => history.push("/app/trade/allTradeList")}
-              >
-                Back
-              </Button>
+              <Route
+                render={({ history }) => (
+                  <Button
+                    className=" btn btn-danger float-right"
+                    onClick={() => history.push("/app/trade/generalNotifList")}
+                  >
+                    Back
+                  </Button>
+                )}
+              />
             </Col>
           </Row>
           <CardBody>
             <Form className="m-1" onSubmit={this.submitHandler}>
-              <Row>      <Col lg="6" md="6" className="mb-2">
-              <Label>Type Of Scripts</Label>
-                  <Input
-                    id="exampleSelect"
-                    name="script_type"
-                    type="select"
-                    // value={this.state.script_type}
-                    // onChange={this.changeHandler}
-                  >
-                    <option>Select Script</option>
-                    {/* <option>All TRADES</option> */}
-                    <option>FNO INDEX</option>
-                    <option>FNO OPTIONS</option>
-                    <option>CASH EQUITY</option>
-                    {/* <option>BANK NIFTY</option>
-                    <option>NIFTY </option> */}
-                  </Input>
-                </Col>
+              <Row>
                 <Col lg="6" md="6" sm="6" className="mb-2">
-                  <Label>Date/Time</Label>
+                  <Label>Title</Label>
                   <Input
                     required
                     type="text"
-                    name="sizeName"
+                    name="title"
                     placeholder=""
-                    // value={this.state.sizeName}
-                    // onChange={this.changeHandler}
-                  ></Input>
-                </Col>
-              <Col lg="6" md="6" sm="6" className="mb-2">
-                  <Label>Trade</Label>
-                  <Input
-                    required
-                    type="number"
-                    name="value"
-                    placeholder=""
-                    value={this.state.value}
+                    value={this.state.title}
                     onChange={this.changeHandler}
                   ></Input>
                 </Col>
-                   <Col lg="6" md="6" sm="6" className="mb-2">
-                  <Label>Message</Label>
+                {/* <Col lg="6" md="6" sm="6" className="mb-2">
+                  <Label>Image</Label>
+                  <Input
+                    // required
+                    type="text"
+                    name="image"
+                    placeholder=""
+                    value={this.state.image}
+                    onChange={this.changeHandler}
+                  ></Input>
+                </Col> */}
+                <Col lg="6" md="6" sm="6" className="mb-2">
+                  <Label>Image</Label>
+                  <Input
+                    required
+                    type="file"
+                    name="image"
+                    onChange={this.onChangeHandler}
+                  />
+                </Col>
+              
+                <Col lg="6" md="6" sm="6" className="mb-2">
+                  <Label>Descripition</Label>
                   <Input
                     required
                     type="textarea"
@@ -141,7 +157,7 @@ export default class AddSize extends Component {
                     value={this.state.desc}
                     onChange={this.changeHandler}
                   ></Input>
-                </Col> 
+                </Col>
 
                 {/* <Col lg="6" md="6" sm="6" className="mb-2">
                   <Label className="mb-1">Status</Label>

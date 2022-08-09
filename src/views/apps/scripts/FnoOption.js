@@ -61,7 +61,7 @@ class FnoOptionList extends React.Component {
         headerName: "Status",
         field: "status",
         // filter: true,
-        width: 300,
+        width: 200,
         cellRendererFramework: (params) => {
           return params.value === "Confirm" ? (
             <div className="badge badge-pill badge-success">
@@ -182,7 +182,7 @@ class FnoOptionList extends React.Component {
                     render={({ history }) => (
                       <Button
                         className=" btn btn-success float-right"
-                        onClick={() => history.push("/app/trade/AddFnoIndex")}
+                        onClick={() => history.push("/app/scripts/addFnoOption")}
                       >
                         Add FNO Option
                       </Button>

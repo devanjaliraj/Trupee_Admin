@@ -122,7 +122,7 @@ export default class EditScript extends Component {
                     onChange={this.changeHandler}
                   >
                     <option>Select Script</option>
-                    <option>All TRADES</option>
+                    {/* <option>All TRADES</option> */}
                     <option>FNO INDEX</option>
                     <option>FNO EQUITY</option>
                     <option>CASH EQUITY</option>

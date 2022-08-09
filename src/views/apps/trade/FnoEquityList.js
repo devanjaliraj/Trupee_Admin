@@ -164,6 +164,18 @@ class FnoEquityList extends React.Component {
           );
         },
       },
+      {
+        headerName: "IS Range",
+        field: "T4",
+        width: 140,
+        cellRendererFramework: (params) => {
+          return (
+            <div className="d-flex align-items-center cursor-pointer">
+              {/* <span>{params.data.T4}</span> */}
+            </div>
+          );
+        },
+      },
 
       {
         headerName: "Quantity",

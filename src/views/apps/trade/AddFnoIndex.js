@@ -111,7 +111,7 @@ export class AddFnoIndex extends Component {
             <Form className="m-1" onSubmit={this.submitHandler}>
               <Row className="mb-2">
                 <Col lg="6" md="6" className="mb-2">
-                  <Label>Date</Label>
+                  <Label>Exp. Date</Label>
                   <Input
                     type="date"
                     placeholder="Enter User Id"
@@ -120,16 +120,7 @@ export class AddFnoIndex extends Component {
                     onChange={this.changeHandler}
                   />
                 </Col>
-                <Col lg="6" md="6" className="mb-2">
-                  <Label>Time</Label>
-                  <Input
-                    type="time"
-                    placeholder="Enter User Id"
-                    name="time"
-                    value={this.state.time}
-                    onChange={this.changeHandler}
-                  />
-                </Col>
+             
                 {/* <Col lg="6" md="6" sm="6" className="mb-2">
                   <Label>Script</Label>
                   <CustomInput
@@ -296,6 +287,16 @@ export class AddFnoIndex extends Component {
                     onChange={this.changeHandler}
                   />
                 </Col>{" "} */}
+                   <Col lg="6" md="6" className="mb-2">
+                  <Label>IS Range</Label>
+                  <Input
+                    type="time"
+                    placeholder="Enter User Id"
+                    name="time"
+                    value={this.state.time}
+                    onChange={this.changeHandler}
+                  />
+                </Col>
                 <Col lg="6" md="6" className="mb-2">
                   <Label>Quantity</Label>
                   <Input

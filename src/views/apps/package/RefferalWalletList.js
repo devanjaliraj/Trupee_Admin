@@ -1,25 +1,28 @@
 import React from "react";
 import {
-  Col,
   Row,
   Card,
   CardBody,
   Input,
   Button,
+  Col,
   UncontrolledDropdown,
   DropdownMenu,
   DropdownItem,
   DropdownToggle,
 } from "reactstrap";
-import axios from "axios";
-import { history } from "../../../history";
+// import axios from "axios";
+import axiosConfig from "../../../axiosConfig";
+// import { history } from "../../../history";
 import { AgGridReact } from "ag-grid-react";
-import { ChevronDown, Trash2, Eye, Edit } from "react-feather";
 import { ContextLayout } from "../../../utility/context/Layout";
+import { ChevronDown, Trash2, Edit } from "react-feather";
 import "../../../assets/scss/plugins/tables/_agGridStyleOverride.scss";
 // import Breadcrumbs from "../../../components/@vuexy/breadCrumbs/BreadCrumb";
 import { Route } from "react-router-dom";
-class BankNiftyList extends React.Component {
+import moment from "moment";
+
+class RefferalWalletList extends React.Component {
   state = {
     rowData: [],
     paginationPageSize: 20,
@@ -33,196 +36,90 @@ class BankNiftyList extends React.Component {
     },
     columnDefs: [
       {
-        headerName: "Script Name",
+        headerName: "S.No",
+        valueGetter: "node.rowIndex + 1",
+        field: "node.rowIndex + 1",
+        width: 100,
+        filter: true,
+        // checkboxSelection: true,
+        // headerCheckboxSelectionFilteredOnly: true,
+        // headerCheckboxSelection: true,
+      },
+      {
+        headerName: "Refferal Code",
         field: "script_name",
-        width: 140,
-        pinned: window.innerWidth > 992 ? "left" : false,
+        width: 220,
         cellRendererFramework: (params) => {
           return (
             <div className="d-flex align-items-center cursor-pointer">
-              <span>{params.data.script_name}</span>
+              {/* <span>{params.data.script_name}</span> */}
             </div>
           );
         },
       },
       {
-        headerName: "Call Type",
-        field: "mobile",
-        width: 140,
+        headerName: "MemberShip Plan",
+        field: "script_type",
+        width: 220,
         cellRendererFramework: (params) => {
           return (
             <div className="d-flex align-items-center cursor-pointer">
-              <span>{params.data.mobile}</span>
+              {/* <span>{params.data.script_type}</span> */}
             </div>
           );
         },
       },
       {
-        headerName: "Active Value",
-        field: "",
-        width: 140,
+        headerName: "Refferal Amount",
+        field: "script_type",
+        width: 220,
         cellRendererFramework: (params) => {
           return (
             <div className="d-flex align-items-center cursor-pointer">
-              <span>{params.data.email}</span>
-            </div>
-          );
-        },
-      },
-      //   {
-      //     headerName: "Enter SL",
-      //     field: "master_oil_company",
-      //     width: 140,
-      //     cellRendererFramework: (params) => {
-      //       return (
-      //         <div className="d-flex align-items-center cursor-pointer">
-      //           <span>{params.data.master_oil_company}</span>
-      //         </div>
-      //       );
-      //     },
-      //   },
-      //   {
-      //     headerName: "Target ",
-      //     field: "location",
-      //     width: 140,
-      //     cellRendererFramework: (params) => {
-      //       return (
-      //         <div className="d-flex align-items-center cursor-pointer">
-      //           <span>{params.data.location}</span>
-      //         </div>
-      //       );
-      //     },
-      //   },
-      // {
-      //   headerName: "Target 2",
-      //   field: "location",
-      //   width: 140,
-      //   cellRendererFramework: (params) => {
-      //     return (
-      //       <div className="d-flex align-items-center cursor-pointer">
-      //         <span>{params.data.location}</span>
-      //       </div>
-      //     );
-      //   },
-      // },
-      // {
-      //   headerName: "Target 3",
-      //   field: "location",
-      //   width: 140,
-      //   cellRendererFramework: (params) => {
-      //     return (
-      //       <div className="d-flex align-items-center cursor-pointer">
-      //         <span>{params.data.location}</span>
-      //       </div>
-      //     );
-      //   },
-      // },
-      {
-        headerName: "IS Range",
-        field: "location",
-        width: 140,
-        cellRendererFramework: (params) => {
-          return (
-            <div className="d-flex align-items-center cursor-pointer">
-              {/* <span>{params.data.location}</span> */}
-            </div>
-          );
-        },
-      },
-      {
-        headerName: "Lots",
-        field: "state",
-        width: 140,
-        cellRendererFramework: (params) => {
-          return (
-            <div className="d-flex align-items-center cursor-pointer">
-              <span>{params.data.state}</span>
+              {/* <span>{params.data.script_type}</span> */}
             </div>
           );
         },
       },
 
       {
-        headerName: "Quantity",
-        field: "state",
-        width: 140,
+        headerName: "Status",
+        field: "status",
+        filter: true,
+        width: 220,
         cellRendererFramework: (params) => {
-          return (
-            <div className="d-flex align-items-center cursor-pointer">
-              <span>{params.data.state}</span>
+          return params.value === "Active" ? (
+            <div className="badge badge-pill badge-success">
+              {params.data.status}
             </div>
-          );
-        },
-      },
-      {
-        headerName: "Investment Amount",
-        field: "state",
-        width: 140,
-        cellRendererFramework: (params) => {
-          return (
-            <div className="d-flex align-items-center cursor-pointer">
-              <span>{params.data.state}</span>
+          ) : params.value === "Deactive" ? (
+            <div className="badge badge-pill badge-warning">
+              {params.data.status}
             </div>
-          );
-        },
-      },
-      {
-        headerName: "Lots Price",
-        field: "district",
-        width: 140,
-        cellRendererFramework: (params) => {
-          return (
-            <div className="d-flex align-items-center cursor-pointer">
-              <span>{params.data.district}</span>
-            </div>
-          );
-        },
-      },
-      {
-        headerName: "Inversment Amount",
-        field: "district",
-        width: 140,
-        cellRendererFramework: (params) => {
-          return (
-            <div className="d-flex align-items-center cursor-pointer">
-              <span>{params.data.district}</span>
-            </div>
-          );
-        },
-      },
-      {
-        headerName: "Lots Price",
-        field: "district",
-        width: 140,
-        cellRendererFramework: (params) => {
-          return (
-            <div className="d-flex align-items-center cursor-pointer">
-              <span>{params.data.district}</span>
-            </div>
-          );
+          ) : null;
         },
       },
       {
         headerName: "Actions",
         field: "sortorder",
-        width: 140,
+        width: 200,
+        // pinned: window.innerWidth > 992 ? "right" : false,
         cellRendererFramework: (params) => {
           return (
             <div className="actions cursor-pointer">
-              {/* <Eye
-                className="mr-50"
-                size="25px"
-                color="green"
-                onClick={() =>
-                  history.push(`/app/dealer/viewDealer/${params.data._id}`)
-                }
-              /> */}
-              <Edit
-                className="mr-50"
-                size="25px"
-                color="blue"
-                onClick={() => history.push(`/app/trade/editBankNifty`)}
+              <Route
+                render={({ history }) => (
+                  <Edit
+                    className="mr-50"
+                    size="25px"
+                    color="blue"
+                    onClick={() =>
+                      history.push(`/app/script/editScript/${params.data._id}`)
+                    }
+                  />
+                )}
               />
+
               <Trash2
                 className="mr-50"
                 size="25px"
@@ -240,22 +137,18 @@ class BankNiftyList extends React.Component {
     ],
   };
   async componentDidMount() {
-    await axios
-      .get("http://3.108.185.7/nodejs/api/dealer/alldealers")
-      .then((response) => {
-        const rowData = response.data.data;
-        console.log(rowData);
-        this.setState({ rowData });
-      });
+    await axiosConfig.get("/getScript").then((response) => {
+      let rowData = response.data.data;
+      this.setState({ rowData });
+    });
   }
   async runthisfunction(id) {
     console.log(id);
-    await axios
-      .get(`http://3.108.185.7/nodejs/api/dealer/deletedealershipform/${id}`)
-      .then((response) => {
-        console.log(response);
-      });
+    await axiosConfig.get(`/deletescript/${id}`).then((response) => {
+      console.log(response);
+    });
   }
+
   onGridReady = (params) => {
     this.gridApi = params.api;
     this.gridColumnApi = params.columnApi;
@@ -290,7 +183,7 @@ class BankNiftyList extends React.Component {
             <Row className="m-2">
               <Col>
                 <h1 col-sm-6 className="float-left">
-                  Bank Nifty List
+                 Refferal Wallet List
                 </h1>
               </Col>
             </Row>
@@ -299,14 +192,13 @@ class BankNiftyList extends React.Component {
                 render={({ history }) => (
                   <Button
                     className=" btn btn-success float-right"
-                    onClick={() => history.push("/app/trade/AddBankNifty")}
+                    onClick={() => history.push("/app/package/addRefferalWallet")}
                   >
-                    Add Bank Nifty
+                    Add Refferal Wallet
                   </Button>
                 )}
               />
             </Col>
-
             <CardBody className="py-0">
               {this.state.rowData === null ? null : (
                 <div className="ag-theme-material w-100 my-2 ag-grid-table">
@@ -386,7 +278,7 @@ class BankNiftyList extends React.Component {
                         onGridReady={this.onGridReady}
                         colResizeDefault={"shift"}
                         animateRows={true}
-                        floatingFilter={true}
+                        floatingFilter={false}
                         pagination={true}
                         paginationPageSize={this.state.paginationPageSize}
                         pivotPanelShow="always"
@@ -403,4 +295,4 @@ class BankNiftyList extends React.Component {
     );
   }
 }
-export default BankNiftyList;
+export default RefferalWalletList;

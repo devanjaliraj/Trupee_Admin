@@ -168,7 +168,7 @@ class AnalyticsDashboard extends React.Component {
             >
               <CardTitle className="mb-1" tag="h4" style={{ color: "black" }}>
                 {/* <h6 class="card-title text-uppercase text-muted mb-0"> Drivers registered</h6> */}
-                ALL TRADE
+                Total No. FNO Options
               </CardTitle>
 
               <CardText tag="h3" style={{ color: "black" }}>
@@ -184,7 +184,7 @@ class AnalyticsDashboard extends React.Component {
               style={{ borderColor: "black" }}
             >
               <CardTitle className="mb-1" tag="h4" style={{ color: "black" }}>
-                FNO INDEX
+               Total No. FNO INDEX Trade
               </CardTitle>
 
               <CardText tag="h3" style={{ color: "black" }}>
@@ -200,7 +200,7 @@ class AnalyticsDashboard extends React.Component {
               style={{ borderColor: "black" }}
             >
               <CardTitle className="mb-1" tag="h4" style={{ color: "black" }}>
-                FNO OPTIONS
+                Total No. Cash Equity
               </CardTitle>
 
               <CardText tag="h3" style={{ color: "black" }}>
@@ -216,14 +216,29 @@ class AnalyticsDashboard extends React.Component {
               style={{ borderColor: "black" }}
             >
               <CardTitle className="mb-1" tag="h4" style={{ color: "black" }}>
-                CASH QUITY
+                Total No. Of Active Users
               </CardTitle>
               <CardText tag="h3" style={{ color: "black" }}>
                 {this.state.day7planearnig.Earning}
               </CardText>
             </Card>
           </Col>
-          {/* <Col lg="3" md="12">
+          <Col lg="3" md="12">
+            <Card
+              // className="bg-danger"
+              body
+              inverse
+              style={{ borderColor: "black" }}
+            >
+              <CardTitle className="mb-1" tag="h4" style={{ color: "black" }}>
+                Total No. Of Inactive Users
+              </CardTitle>
+              <CardText tag="h3" style={{ color: "black" }}>
+                {this.state.day7planearnig.Earning}
+              </CardText>
+            </Card>
+          </Col>
+          <Col lg="3" md="12">
             <Card
               className="bg-secondary"
               body
@@ -231,7 +246,8 @@ class AnalyticsDashboard extends React.Component {
               style={{ borderColor: "white" }}
             >
               <CardTitle className="mb-1" tag="h4" style={{ color: "white" }}>
-                Total Basic plan earring
+                Total No. Of Paid Subscriber
+
               </CardTitle>
 
               <CardText tag="h3" style={{ color: "white" }}>
@@ -247,7 +263,7 @@ class AnalyticsDashboard extends React.Component {
               style={{ borderColor: "white" }}
             >
               <CardTitle className="mb-1" tag="h4" style={{ color: "white" }}>
-                Total end to end earring
+              Total No. Of Free Subscriber
               </CardTitle>
 
               <CardText tag="h3" style={{ color: "white" }}>
@@ -255,7 +271,7 @@ class AnalyticsDashboard extends React.Component {
               </CardText>
             </Card>
           </Col>
-        </Row>
+       {/*  </Row>
         <h3>Staff Enrollment</h3>
         <Row className="match-height">
           <Col lg="3" md="12">
@@ -309,9 +325,9 @@ class AnalyticsDashboard extends React.Component {
         </Row>
 
         <Row>
-          <Col sm="12">
+          {/* <Col sm="12">
             <DispatchedOrders />
-          </Col>
+          </Col> */}
           <Col sm="12">
             <Notification />
           </Col>

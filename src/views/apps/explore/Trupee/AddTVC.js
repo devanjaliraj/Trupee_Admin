@@ -94,7 +94,7 @@ export class AddTVC extends Component {
                   <Button
                     className=" btn btn-danger float-right"
                     onClick={() =>
-                      history.push("app/explore/Trupee/TradingViewCharts")
+                      history.push("/app/explore/Trupee/TradingViewCharts")
                     }
                   >
                     Back
@@ -136,6 +136,15 @@ export class AddTVC extends Component {
                     <option>Stock Chart</option>
                     <option>Index Chart</option>
                   </Input>
+                </Col>
+                <Col lg="6" md="6" sm="6" className="mb-2">
+                  <Label>Image</Label>
+                  <Input
+                    required
+                    type="file"
+                    name="image"
+                    onChange={this.onChangeHandler}
+                  />
                 </Col>
               </Row>
               <Row>

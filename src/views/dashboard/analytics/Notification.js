@@ -22,7 +22,11 @@ const Notification = () => {
   return (
     <Card>
       <CardHeader>
-        <CardTitle>NOTIFICATION</CardTitle>
+      <CardTitle>Currnet Trade P&L</CardTitle>
+        <CardTitle>Today's Total P&L 
+        <n> Rs._____</n>
+        </CardTitle>
+    
       </CardHeader>
       <Table
         responsive
@@ -30,10 +34,17 @@ const Notification = () => {
       >
         <thead>
           <tr>
-            <th>DESCRIPTION</th>
+            {/* <th>DESCRIPTION</th>
            
             <th>Created Time</th>
-            <th>Updated Time</th>
+            <th>Updated Time</th> */}
+            <th>SNo.</th>
+           
+            <th>Trade</th>
+            <th>Subscriber</th>
+            <th>P&L</th>
+            {/* <th>Subscriber</th> */}
+
           </tr>
         </thead>
 

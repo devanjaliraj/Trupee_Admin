@@ -21,62 +21,54 @@ const DispatchedOrders = () => {
   }, []);
 
   return (
-    <Card>
-      <CardHeader>
-        <CardTitle>Notified SOS</CardTitle>
-      </CardHeader>
-      <Table
-        responsive
-        className="dashboard-table table-hover-animation mb-0 mt-1"
-      >
-        <thead>
-          <tr>
-            <th>DEALER NAME</th>
-            <th>EMAIL</th>
-            <th>MOBILE NO</th>
-            <th>DISTRICT</th>
-            <th>STATE</th>
-            <th>CREATE DATE</th>
-            <th>UPDATE DATE</th>
-          </tr>
-        </thead>
+    <div></div>
+    // <Card>
+    //   <CardHeader>
+    //     <CardTitle>Notified SOS</CardTitle>
+    //   </CardHeader>
+    //   <Table
+    //     responsive
+    //     className="dashboard-table table-hover-animation mb-0 mt-1"
+    //   >
+    //     <thead>
+    //       <tr>
+    //         <th>DEALER NAME</th>
+    //         <th>EMAIL</th>
+    //         <th>MOBILE NO</th>
+    //         <th>DISTRICT</th>
+    //         <th>STATE</th>
+    //         <th>CREATE DATE</th>
+    //         <th>UPDATE DATE</th>
+    //       </tr>
+    //     </thead>
 
-        <tbody>
-          {dealerTable.map((dealer, i) => {
-            return (
-              <tr key={i}>
-                <td>{dealer.dealer_name}</td>
-                <td>
-                  {/* <div
-                  className="bg-success"
-                  style={{
-                    height: "10px",
-                    width: "10px",
-                    borderRadius: "50%",
-                    display: "inline-block",
-                    marginRight: "5px",
-                  }}
-                /> */}
-                  <span>{dealer.email}</span>
-                </td>
-                <td className="p-1">
-                  <ul className="list-unstyled users-list m-0 d-flex">
-                    {dealer.mobile}
-                  </ul>
-                </td>
-                <td>{dealer.district}</td>
-                <td>
-                  <span>{dealer.location}</span>
-                </td>
+    //     <tbody>
+    //       {dealerTable.map((dealer, i) => {
+    //         return (
+    //           <tr key={i}>
+    //             <td>{dealer.dealer_name}</td>
+    //             <td>
+               
+    //               <span>{dealer.email}</span>
+    //             </td>
+    //             <td className="p-1">
+    //               <ul className="list-unstyled users-list m-0 d-flex">
+    //                 {dealer.mobile}
+    //               </ul>
+    //             </td>
+    //             <td>{dealer.district}</td>
+    //             <td>
+    //               <span>{dealer.location}</span>
+    //             </td>
 
-                <td>{moment(dealer.createdAt).format("ll")} </td>
-                <td>{moment(dealer.updatedAt).format("ll")} </td>
-              </tr>
-            );
-          })}
-        </tbody>
-      </Table>
-    </Card>
+    //             <td>{moment(dealer.createdAt).format("ll")} </td>
+    //             <td>{moment(dealer.updatedAt).format("ll")} </td>
+    //           </tr>
+    //         );
+    //       })}
+    //     </tbody>
+    //   </Table>
+    // </Card>
   );
 };
 

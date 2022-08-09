@@ -19,7 +19,7 @@ import axiosConfig from "../../../../axiosConfig";
 import "../../../../assets/scss/plugins/tables/_agGridStyleOverride.scss";
 // import Breadcrumbs from "../../../components/@vuexy/breadCrumbs/BreadCrumb";
 
-class PerformanceSheet extends React.Component {
+class UserPerformanceSheet extends React.Component {
   state = {
     rowData: [],
     paginationPageSize: 20,
@@ -34,10 +34,10 @@ class PerformanceSheet extends React.Component {
 
     columnDefs: [
       {
-        headerName: "Month",
+        headerName: "User Name",
         field: "desc",
         // filter: true,
-        width: 250,
+        width: 180,
         // pinned: window.innerWidth > 992 ? "left" : false,
         cellRendererFramework: (params) => {
           return (
@@ -48,10 +48,10 @@ class PerformanceSheet extends React.Component {
         },
       },
       {
-        headerName: "Year",
+        headerName: "Email ",
         field: "desc",
         // filter: true,
-        width: 250,
+        width: 180,
         // pinned: window.innerWidth > 992 ? "left" : false,
         cellRendererFramework: (params) => {
           return (
@@ -62,87 +62,87 @@ class PerformanceSheet extends React.Component {
         },
       },
       {
-        headerName: "Plan Price",
+        headerName: "Performance Sheet Choose",
         field: "desc",
         // filter: true,
-        width: 250,
-        // pinned: window.innerWidth > 992 ? "left" : false,
-        cellRendererFramework: (params) => {
-          return (
-            <div className="d-flex align-items-center cursor-pointer">
-              <span>{params.data.desc}</span>
-            </div>
-          );
-        },
-      },
-      {
-        headerName: "Free Paid",
-        field: "desc",
-        // filter: true,
-        width: 250,
-        // pinned: window.innerWidth > 992 ? "left" : false,
-        cellRendererFramework: (params) => {
-          return (
-            <div className="d-flex align-items-center cursor-pointer">
-              <span>{params.data.desc}</span>
-            </div>
-          );
-        },
-      },
-      // {
-      //   headerName: "Start Date",
-      //   field: "desc",
-      //   // filter: true,
-      //   width: 250,
-      //   // pinned: window.innerWidth > 992 ? "left" : false,
-      //   cellRendererFramework: (params) => {
-      //     return (
-      //       <div className="d-flex align-items-center cursor-pointer">
-      //         <span>{params.data.desc}</span>
-      //       </div>
-      //     );
-      //   },
-      // },
-      // {
-      //   headerName: "Expiry Date",
-      //   field: "desc",
-      //   // filter: true,
-      //   width: 250,
-      //   // pinned: window.innerWidth > 992 ? "left" : false,
-      //   cellRendererFramework: (params) => {
-      //     return (
-      //       <div className="d-flex align-items-center cursor-pointer">
-      //         <span>{params.data.desc}</span>
-      //       </div>
-      //     );
-      //   },
-      // },
-      {
-        headerName: "Status",
-        field: "completed",
-        // filter: completed,
         width: 200,
+        // pinned: window.innerWidth > 992 ? "left" : false,
         cellRendererFramework: (params) => {
-          return params.value === "Active" ? (
-            <div className="badge badge-pill badge-success">
-              {params.data.completed}
+          return (
+            <div className="d-flex align-items-center cursor-pointer">
+              <span>{params.data.desc}</span>
             </div>
-          ) : params.value === "Inactive" ? (
-            <div className="badge badge-pill badge-warning">
-              {params.data.completed}
-            </div>
-          ) : null;
+          );
         },
       },
+      {
+        headerName: "Date",
+        field: "desc",
+        // filter: true,
+        width: 180,
+        // pinned: window.innerWidth > 992 ? "left" : false,
+        cellRendererFramework: (params) => {
+          return (
+            <div className="d-flex align-items-center cursor-pointer">
+              <span>{params.data.desc}</span>
+            </div>
+          );
+        },
+      },
+    //   {
+    //     headerName: "Start Date",
+    //     field: "desc",
+    //     // filter: true,
+    //     width: 200,
+    //     // pinned: window.innerWidth > 992 ? "left" : false,
+    //     cellRendererFramework: (params) => {
+    //       return (
+    //         <div className="d-flex align-items-center cursor-pointer">
+    //           <span>{params.data.desc}</span>
+    //         </div>
+    //       );
+    //     },
+    //   },
+    //   {
+    //     headerName: "Expiry Date",
+    //     field: "desc",
+    //     // filter: true,
+    //     width: 200,
+    //     // pinned: window.innerWidth > 992 ? "left" : false,
+    //     cellRendererFramework: (params) => {
+    //       return (
+    //         <div className="d-flex align-items-center cursor-pointer">
+    //           <span>{params.data.desc}</span>
+    //         </div>
+    //       );
+    //     },
+    //   },
+    //   {
+    //     headerName: "Status",
+    //     field: "completed",
+    //     // filter: completed,
+    //     width: 200,
+    //     cellRendererFramework: (params) => {
+    //       return params.value === "Active" ? (
+    //         <div className="badge badge-pill badge-success">
+    //           {params.data.completed}
+    //         </div>
+    //       ) : params.value === "Inactive" ? (
+    //         <div className="badge badge-pill badge-warning">
+    //           {params.data.completed}
+    //         </div>
+    //       ) : null;
+    //     },
+    //   },
       {
         headerName: "Actions",
         field: "sortorder",
-        width: 250,
+        width: 200,
         // pinned: window.innerWidth > 992 ? "right" : false,
         cellRendererFramework: (params) => {
           return (
             <div className="actions cursor-pointer">
-              <Route
+              {/* <Route
                 render={({ history }) => (
                   <Edit
                     className="mr-50"
@@ -156,7 +156,7 @@ class PerformanceSheet extends React.Component {
                     }
                   />
                 )}
-              />
+              /> */}
 
               <Trash2
                 className="mr-50"
@@ -231,7 +231,7 @@ class PerformanceSheet extends React.Component {
           <Row className="m-2">
             <Col>
               <h1 sm="6" className="float-left">
-                Performance Sheet List
+               User Performance Sheet List
               </h1>
             </Col>
             {/* <Col>
@@ -342,4 +342,4 @@ class PerformanceSheet extends React.Component {
     );
   }
 }
-export default PerformanceSheet;
+export default UserPerformanceSheet;

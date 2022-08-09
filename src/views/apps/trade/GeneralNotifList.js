@@ -14,12 +14,13 @@ import {
 import axiosConfig from "../../../axiosConfig";
 import { ContextLayout } from "../../../utility/context/Layout";
 import { AgGridReact } from "ag-grid-react";
-import {  Edit, Trash2, ChevronDown } from "react-feather";
+import { Eye, Edit, Trash2, ChevronDown } from "react-feather";
+//import classnames from "classnames";
+import { history } from "../../../history";
 import "../../../assets/scss/plugins/tables/_agGridStyleOverride.scss";
 import "../../../assets/scss/pages/users.scss";
 import { Route } from "react-router-dom";
-
-class CashEquityList extends React.Component {
+class GeneralNotifList extends React.Component {
   state = {
     rowData: [],
     paginationPageSize: 20,
@@ -37,78 +38,71 @@ class CashEquityList extends React.Component {
         headerName: "S.No",
         valueGetter: "node.rowIndex + 1",
         field: "node.rowIndex + 1",
-        width: 100,
+        width: 150,
         filter: true,
         // checkboxSelection: true,
         // headerCheckboxSelectionFilteredOnly: true,
         // headerCheckboxSelection: true,
       },
       {
-        headerName: "Script Name",
-        field: "script_name",
-        width: 220,
-        cellRendererFramework: (params) => {
-          return (
-            <div className="d-flex align-items-center cursor-pointer">
-              <span>{params.data.script_name}</span>
-            </div>
-          );
-        },
-      },
-      {
-        headerName: "Entry Script",
-        field: "script_type",
-        width: 220,
-        cellRendererFramework: (params) => {
-          return (
-            <div className="d-flex align-items-center cursor-pointer">
-              <span>{params.data.script_type}</span>
-            </div>
-          );
-        },
-      },
-
-      {
-        headerName: "Status",
-        field: "status",
+        headerName: "Title ",
+        field: "sizeName",
         filter: true,
         width: 200,
         cellRendererFramework: (params) => {
-          return params.value === "Active" ? (
-            <div className="badge badge-pill badge-success">
-              {params.data.status}
+          return (
+            <div>
+              {/* <span>{params.data.sizeName}</span> */}
             </div>
-          ) : params.value === "Deactive" ? (
-            <div className="badge badge-pill badge-warning">
-              {params.data.status}
-            </div>
-          ) : null;
+          );
         },
       },
       {
+        headerName: "Description ",
+        field: "sizeName",
+        filter: true,
+        width: 200,
+        cellRendererFramework: (params) => {
+          return (
+            <div>
+              {/* <span>{params.data.sizeName}</span> */}
+            </div>
+          );
+        },
+      },
+      {
+        headerName: "Upload Image",
+        field: "image",
+        // filter: true,
+        width: 200,
+        // pinned: window.innerWidth > 992 ? "left" : false,
+        cellRendererFramework: (params) => {
+          return (
+            <div className="d-flex align-items-center cursor-pointer">
+              <span>{params.data.image}</span>
+            </div>
+          );
+        },
+      },
+
+      {
         headerName: "Actions",
         field: "sortorder",
-        width: 200,
-        // pinned: window.innerWidth > 992 ? "right" : false,
+        // field: "transactions",
+        width: 150,
         cellRendererFramework: (params) => {
           return (
             <div className="actions cursor-pointer">
-              <Route
-                render={({ history }) => (
-                  <Edit
-                    className="mr-50"
-                    size="25px"
-                    color="blue"
-                    onClick={() =>
-                      history.push(`/app/script/editScript/${params.data._id}`)
-                    }
-                  />
-                )}
-              />
-
-              <Trash2
+              <Edit
                 className="mr-50"
-                size="25px"
+                color="blue"
+                size={20}
+                onClick={() =>
+                  history.push(`/app/size/editSize/${params.data._id}`)
+                }
+              />
+              <Trash2
+                size={20}
                 color="red"
                 onClick={() => {
                   let selectedData = this.gridApi.getSelectedRows();
@@ -122,17 +116,30 @@ class CashEquityList extends React.Component {
       },
     ],
   };
+
   async componentDidMount() {
-    await axiosConfig.get("/getScript").then((response) => {
-      let rowData = response.data.data;
-      this.setState({ rowData });
-    });
+    await axiosConfig
+      .get("/getsizebyseller", {
+        // headers: {
+        //   "auth-adtoken": localStorage.getItem("auth-adtoken"),
+        // },
+      })
+      .then((response) => {
+        const rowData = response.data.data;
+        console.log(rowData);
+        this.setState({ rowData });
+      });
   }
   async runthisfunction(id) {
     console.log(id);
-    await axiosConfig.get(`/deletescript/${id}`).then((response) => {
-      console.log(response);
-    });
+    await axiosConfig.get(`/deleteSize/${id}`).then(
+      (response) => {
+        console.log(response);
+      },
+      (error) => {
+        console.log(error);
+      }
+    );
   }
   onGridReady = (params) => {
     this.gridApi = params.api;
@@ -170,21 +177,19 @@ class CashEquityList extends React.Component {
               <Row className="m-2">
                 <Col>
                   <h1 sm="6" className="float-left">
-                    Cash Equity List
-                  </h1>
+                    General Notification List</h1>
                 </Col>
-                <Col className="pt-4">
+                <Col>
                 <Route
-                render={({ history }) => (
+                    render={({ history }) => (
                   <Button
-                    className=" btn btn-success float-right"
-                    onClick={() => history.push("/app/scripts/addCashEquity")}
+                    className=" btn btn-danger float-right"
+                    onClick={() => history.push("/app/trade/addGeneralNotif")}
                   >
-                    Add Cash Equity
-                  </Button>
-                )}
-              />
-                       
+                    Add General Notification
+                    </Button>
+                    )}
+                  />
                 </Col>
               </Row>
               <CardBody>
@@ -286,4 +291,4 @@ class CashEquityList extends React.Component {
     );
   }
 }
-export default CashEquityList;
+export default GeneralNotifList;
