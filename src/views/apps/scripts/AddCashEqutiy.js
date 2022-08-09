@@ -16,7 +16,7 @@ import { history } from "../../../history";
 import swal from "sweetalert";
 import { Route } from "react-router-dom";
 
-export default class AddScript extends Component {
+export default class AddCashEqutiy extends Component {
   constructor(props) {
     super(props);
     this.state = {

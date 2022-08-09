@@ -43,7 +43,7 @@ export default class AddFnoOption extends Component {
       .then((response) => {
         console.log(response);
         swal("Success!", "Submitted SuccessFull!", "success");
-        this.props.history.push("/app/scripts/fnoOption");
+        this.props.history.push("/app/scripts/cashEquity");
       })
       .catch((error) => {
         console.log(error);
@@ -63,7 +63,7 @@ export default class AddFnoOption extends Component {
                 <BreadcrumbItem href="/app/scripts/fnoOption" tag="a">
                 FNO Option List
                 </BreadcrumbItem>
-                <BreadcrumbItem active>Add FNO Option</BreadcrumbItem>
+                <BreadcrumbItem active>Add  FNO Option</BreadcrumbItem>
               </Breadcrumb>
             </div>
           </Col>
@@ -101,11 +101,11 @@ export default class AddFnoOption extends Component {
                     onChange={this.changeHandler}
                   >
                     <option>Select Script</option>
-                  
+                   
                     <option>FNO INDEX</option>
-                    <option>FNO OPTION</option>
+                    <option>FNO OPTIONS</option>
                     <option>CASH EQUITY</option>
-                    
+                 
                   </Input>
                 </Col> */}
                 <Col lg="6" md="6" sm="6" className="mb-2">
@@ -119,7 +119,7 @@ export default class AddFnoOption extends Component {
                     onChange={this.changeHandler}
                   ></Input>
                 </Col>
-                  <Col lg="6" md="6" sm="6" className="mb-2">
+                    <Col lg="6" md="6" sm="6" className="mb-2">
                   <Label className="mb-1">Status</Label>
                   <div
                     className="form-label-group"

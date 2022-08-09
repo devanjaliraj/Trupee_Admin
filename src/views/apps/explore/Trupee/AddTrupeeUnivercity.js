@@ -1,27 +1,29 @@
 import React, { Component } from "react";
 import {
   Card,
+  CardHeader,
+  CardTitle,
   CardBody,
   Row,
   Col,
   Form,
   Label,
   Input,
+  CustomInput,
   Button,
   Breadcrumb,
   BreadcrumbItem,
 } from "reactstrap";
-import axiosConfig from "../../../axiosConfig";
-import { history } from "../../../history";
+import axiosConfig from "../../../../axiosConfig";
+import { history } from "../../../../history";
 import swal from "sweetalert";
-import { Route } from "react-router-dom";
 
-export default class AddFnIndex extends Component {
+export default class AddSize extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      script_type: "",
-      script_name: "",
+      sizeName: "",
+      status: "",
     };
   }
   changeHandler1 = (e) => {
@@ -35,15 +37,15 @@ export default class AddFnIndex extends Component {
     e.preventDefault();
 
     axiosConfig
-      .post("/addScript", this.state, {
-        // headers: {
-        //   "auth-adtoken": localStorage.getItem("auth-adtoken"),
-        // },
+      .post("/addsize", this.state, {
+        headers: {
+          "auth-adtoken": localStorage.getItem("auth-adtoken"),
+        },
       })
       .then((response) => {
         console.log(response);
         swal("Success!", "Submitted SuccessFull!", "success");
-        this.props.history.push("/app/scripts/cashEquity");
+        this.props.history.push("/app/size/sizeList");
       })
       .catch((error) => {
         console.log(error);
@@ -60,10 +62,10 @@ export default class AddFnIndex extends Component {
                 <BreadcrumbItem href="/analyticsDashboard" tag="a">
                   Home
                 </BreadcrumbItem>
-                <BreadcrumbItem href="/app/scripts/fnIndex" tag="a">
-              FNO INDEX List
+                <BreadcrumbItem href="/app/size/sizeList" tag="a">
+                  Size List
                 </BreadcrumbItem>
-                <BreadcrumbItem active>Add FNO INDEX</BreadcrumbItem>
+                <BreadcrumbItem active>Add Size</BreadcrumbItem>
               </Breadcrumb>
             </div>
           </Col>
@@ -72,54 +74,56 @@ export default class AddFnIndex extends Component {
           <Row className="m-2">
             <Col>
               <h1 col-sm-6 className="float-left">
-                Add FNO INDEX
+                Add Size
               </h1>
             </Col>
             <Col>
-              <Route
-                render={({ history }) => (
-                  <Button
-                    className=" btn btn-danger float-right"
-                    onClick={() => history.push("/app/scripts/fnIndex")}
-                  >
-                    Back
-                  </Button>
-                )}
-              />
+              <Button
+                className=" btn btn-danger float-right"
+                onClick={() => history.push("/app/size/sizeList")}
+              >
+                Back
+              </Button>
             </Col>
           </Row>
           <CardBody>
             <Form className="m-1" onSubmit={this.submitHandler}>
               <Row>
-                {/* <Col lg="6" md="6" className="mb-2">
-                  <Label for="exampleSelect">Entry Script</Label>
-                  <Input
-                    id="exampleSelect"
-                    name="script_type"
-                    type="select"
-                    value={this.state.script_type}
-                    onChange={this.changeHandler}
-                  >
-                    <option>Select Script</option>
-                   
-                    <option>FNO INDEX</option>
-                    <option>FNO OPTIONS</option>
-                    <option>CASH EQUITY</option>
-                 
-                  </Input>
-                </Col> */}
                 <Col lg="6" md="6" sm="6" className="mb-2">
-                  <Label>Script Name</Label>
+                  <Label>Size</Label>
                   <Input
                     required
                     type="text"
-                    name="script_name"
+                    name="sizeName"
                     placeholder=""
-                    value={this.state.script_name}
+                    value={this.state.sizeName}
                     onChange={this.changeHandler}
                   ></Input>
                 </Col>
-                    <Col lg="6" md="6" sm="6" className="mb-2">
+                {/* <Col lg="6" md="6" sm="6" className="mb-2">
+                  <Label>Value</Label>
+                  <Input
+                    required
+                    type="number"
+                    name="value"
+                    placeholder=""
+                    value={this.state.value}
+                    onChange={this.changeHandler}
+                  ></Input>
+                </Col>
+                <Col lg="6" md="6" sm="6" className="mb-2">
+                  <Label>Descripition</Label>
+                  <Input
+                    required
+                    type="textarea"
+                    name="desc"
+                    placeholder=""
+                    value={this.state.desc}
+                    onChange={this.changeHandler}
+                  ></Input>
+                </Col> */}
+
+                {/* <Col lg="6" md="6" sm="6" className="mb-2">
                   <Label className="mb-1">Status</Label>
                   <div
                     className="form-label-group"
@@ -141,7 +145,7 @@ export default class AddFnIndex extends Component {
                     />
                     <span style={{ marginRight: "3px" }}>Inactive</span>
                   </div>
-                </Col>  
+                </Col>  */}
               </Row>
               <Row>
                 <Col lg="6" md="6" sm="6" className="mb-2">

@@ -51,23 +51,24 @@ class FnIndex extends React.Component {
         cellRendererFramework: (params) => {
           return (
             <div className="d-flex align-items-center cursor-pointer">
-              <span>{params.data.script_name?.script_name}</span>
+              <span>{params.data.script_name}</span>
             </div>
           );
         },
       },
-      //
+      
+
       {
         headerName: "Status",
         field: "status",
-        // filter: true,
+        filter: true,
         width: 200,
         cellRendererFramework: (params) => {
-          return params.value === "Confirm" ? (
+          return params.value === "Active" ? (
             <div className="badge badge-pill badge-success">
               {params.data.status}
             </div>
-          ) : params.value === "Pending" ? (
+          ) : params.value === "Deactive" ? (
             <div className="badge badge-pill badge-warning">
               {params.data.status}
             </div>
@@ -121,7 +122,7 @@ class FnIndex extends React.Component {
   };
 
   async componentDidMount() {
-    await axiosConfig.get(`/fnoIndexlist`).then((response) => {
+    await axiosConfig.get(`/getScript`).then((response) => {
       const rowData = response.data.data;
       console.log(rowData);
       this.setState({ rowData });
@@ -184,7 +185,7 @@ class FnIndex extends React.Component {
                         className=" btn btn-success float-right"
                         onClick={() => history.push("/app/scripts/addFnIndex")}
                       >
-                        Add FNO Index List
+                        Add FNO Index 
                       </Button>
                     )}
                   />

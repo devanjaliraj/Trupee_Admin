@@ -55,18 +55,18 @@ class CashEquityList extends React.Component {
           );
         },
       },
-      {
-        headerName: "Entry Script",
-        field: "script_type",
-        width: 220,
-        cellRendererFramework: (params) => {
-          return (
-            <div className="d-flex align-items-center cursor-pointer">
-              <span>{params.data.script_type}</span>
-            </div>
-          );
-        },
-      },
+      // {
+      //   headerName: "Entry Script",
+      //   field: "script_type",
+      //   width: 220,
+      //   cellRendererFramework: (params) => {
+      //     return (
+      //       <div className="d-flex align-items-center cursor-pointer">
+      //         <span>{params.data.script_type}</span>
+      //       </div>
+      //     );
+      //   },
+      // },
 
       {
         headerName: "Status",

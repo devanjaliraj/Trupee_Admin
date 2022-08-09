@@ -32,6 +32,7 @@ class FnoIndexList extends React.Component {
       suppressMenu: true,
     },
 
+  
     columnDefs: [
       {
         headerName: "S.No",
@@ -43,31 +44,7 @@ class FnoIndexList extends React.Component {
         // headerCheckboxSelectionFilteredOnly: true,
         // headerCheckboxSelection: true,
       },
-
-      {
-        headerName: "Equity Script",
-        field: "equity_script",
-        width: 140,
-        cellRendererFramework: (params) => {
-          return (
-            <div className="d-flex  align-items-center cursor-pointer">
-              <span>{params.data.equity_script}</span>
-            </div>
-          );
-        },
-      },
-      {
-        headerName: "Script",
-        field: "script_type",
-        width: 140,
-        cellRendererFramework: (params) => {
-          return (
-            <div className="d-flex  align-items-center cursor-pointer">
-              <span>{params.data.script_name?.script_type}</span>
-            </div>
-          );
-        },
-      },
+    
       {
         headerName: "Script Name",
         field: "script_name",
@@ -75,11 +52,37 @@ class FnoIndexList extends React.Component {
         cellRendererFramework: (params) => {
           return (
             <div className="d-flex align-items-center cursor-pointer">
-              <span>{params.data.script_name?.script_name}</span>
+              <span>{params.data.script_name}</span>
             </div>
           );
         },
       },
+
+      {
+        headerName: "Equity Script",
+        field: "script_type",
+        width: 140,
+        cellRendererFramework: (params) => {
+          return (
+            <div className="d-flex  align-items-center cursor-pointer">
+              <span>{params.data.script_type}</span>
+            </div>
+          );
+        },
+      },
+      {
+        headerName: "Trade Type ",
+        field: "trade_type",
+        width: 140,
+        cellRendererFramework: (params) => {
+          return (
+            <div className="d-flex  align-items-center cursor-pointer">
+              <span>{params.data.trade_type}</span>
+            </div>
+          );
+        },
+      },
+  
       {
         headerName: "Call Type",
         field: "call_type",
@@ -100,6 +103,18 @@ class FnoIndexList extends React.Component {
           return (
             <div className="d-flex align-items-center cursor-pointer">
               <span>{params.data.active_value}</span>
+            </div>
+          );
+        },
+      },
+      {
+        headerName: "Active Value",
+        field: "active_value2",
+        width: 140,
+        cellRendererFramework: (params) => {
+          return (
+            <div className="d-flex align-items-center cursor-pointer">
+              <span>{params.data.active_value2}</span>
             </div>
           );
         },
@@ -165,13 +180,25 @@ class FnoIndexList extends React.Component {
         },
       },
       {
-        headerName: "IS Range",
-        field: "T4",
+        headerName: "T₹ 5",
+        field: "t5",
         width: 140,
         cellRendererFramework: (params) => {
           return (
             <div className="d-flex align-items-center cursor-pointer">
-              {/* <span>{params.data.T4}</span> */}
+            <span>{params.data.t5}</span> 
+            </div>
+          );
+        },
+      },
+      {
+        headerName: "P&L ",
+        field: "profit_loss_amt",
+        width: 140,
+        cellRendererFramework: (params) => {
+          return (
+            <div className="d-flex align-items-center cursor-pointer">
+              <span>{params.data.profit_loss_amt}</span> 
             </div>
           );
         },
@@ -208,6 +235,18 @@ class FnoIndexList extends React.Component {
           return (
             <div className="d-flex align-items-center cursor-pointer">
               <span>{params.data.no_of_lots}</span>
+            </div>
+          );
+        },
+      },
+      {
+        headerName: "EXpiry Date ",
+        field: "expiryDate",
+        width: 140,
+        cellRendererFramework: (params) => {
+          return (
+            <div className="d-flex align-items-center cursor-pointer">
+              <span>{params.data.expiryDate}</span>
             </div>
           );
         },
@@ -297,7 +336,23 @@ class FnoIndexList extends React.Component {
           ) : null;
         },
       },
-
+      {
+        headerName: "T5 Type",
+        field: "t5_type",
+        filter: true,
+        width: 150,
+        cellRendererFramework: (params) => {
+          return params.value === "true" ? (
+            <div className="badge badge-pill badge-success">
+              {params.data.t5_type}
+            </div>
+          ) : params.value === "Inactive" ? (
+            <div className="badge badge-pill badge-warning">
+              {params.data.t5_type}
+            </div>
+          ) : null;
+        },
+      },
       {
         headerName: "Actions",
         field: "sortorder",

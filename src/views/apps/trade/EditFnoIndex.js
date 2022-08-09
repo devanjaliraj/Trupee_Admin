@@ -287,9 +287,9 @@ class EditFnoIndex extends React.Component {
                   <Input
                     type="text"
                     placeholder="Enter Target 2"
-                    name="T4"
-                    // value={this.state.T4}
-                    // onChange={this.changeHandler}
+                    name="T5"
+                    value={this.state.T5}
+                    onChange={this.changeHandler}
                   />
                 </Col>
                 <Col lg="6" md="6" className="mb-2">
@@ -323,7 +323,123 @@ class EditFnoIndex extends React.Component {
                   />
                 </Col>
               </Row>
+              <Col lg="3" md="3" sm="3" className="mb-3 mt-1">
+                <Label className="mb-1">SL</Label>
+                <div
+                  className="form-label-group"
+                  onChange={(e) => this.changeHandler1(e)}
+                >
+                  <input
+                    style={{ marginRight: "3px" }}
+                    type="radio"
+                    name="sl_type"
+                    value="true"
+                  />
+                  <span style={{ marginRight: "20px" }}>True</span>
+                  <input
+                    style={{ marginRight: "3px" }}
+                    type="radio"
+                    name="sl_type"
+                    value="false"
+                  />
 
+                  <span style={{ marginRight: "3px" }}>False</span>
+                </div>
+              </Col>
+              <Row className="mb-2">
+                <Col lg="3" md="3" sm="3" className="mb-3 mt-1">
+                  <Label className="mb-1">T1</Label>
+                  <div
+                    className="form-label-group"
+                    onChange={(e) => this.changeHandler2(e)}
+                  >
+                    <input
+                      style={{ marginRight: "3px" }}
+                      type="radio"
+                      name="t1_type"
+                      value="true"
+                    />
+                    <span style={{ marginRight: "20px" }}>True</span>
+                    <input
+                      style={{ marginRight: "3px" }}
+                      type="radio"
+                      name="t1_type"
+                      value="false"
+                    />
+
+                    <span style={{ marginRight: "3px" }}>False</span>
+                  </div>
+                </Col>
+                <Col lg="3" md="3" sm="3" className="mb-3 mt-1">
+                  <Label className="mb-1">T2</Label>
+                  <div
+                    className="form-label-group"
+                    onChange={(e) => this.changeHandler3(e)}
+                  >
+                    <input
+                      style={{ marginRight: "3px" }}
+                      type="radio"
+                      name="t2_type"
+                      value="true"
+                    />
+                    <span style={{ marginRight: "20px" }}>True</span>
+                    <input
+                      style={{ marginRight: "3px" }}
+                      type="radio"
+                      name="t2_type"
+                      value="false"
+                    />
+
+                    <span style={{ marginRight: "3px" }}>False</span>
+                  </div>
+                </Col>
+                <Col lg="3" md="3" sm="3" className="mb-3 mt-1">
+                  <Label className="mb-1">T3</Label>
+                  <div
+                    className="form-label-group"
+                    onChange={(e) => this.changeHandler4(e)}
+                  >
+                    <input
+                      style={{ marginRight: "3px" }}
+                      type="radio"
+                      name="t3_type"
+                      value="true"
+                    />
+                    <span style={{ marginRight: "20px" }}>True</span>
+                    <input
+                      style={{ marginRight: "3px" }}
+                      type="radio"
+                      name="t3_type"
+                      value="false"
+                    />
+
+                    <span style={{ marginRight: "3px" }}>False</span>
+                  </div>
+                </Col>
+                <Col lg="3" md="3" sm="3" className="mb-3 mt-1">
+                  <Label className="mb-1">T4</Label>
+                  <div
+                    className="form-label-group"
+                    onChange={(e) => this.changeHandler5(e)}
+                  >
+                    <input
+                      style={{ marginRight: "3px" }}
+                      type="radio"
+                      name="t4_type"
+                      value="true"
+                    />
+                    <span style={{ marginRight: "20px" }}>True</span>
+                    <input
+                      style={{ marginRight: "3px" }}
+                      type="radio"
+                      name="t4_type"
+                      value="false"
+                    />
+
+                    <span style={{ marginRight: "3px" }}>False</span>
+                  </div>
+                </Col>
+              </Row>
               <Row>
                 <Col lg="6" md="6" sm="6" className="mb-2">
                   <Button.Ripple

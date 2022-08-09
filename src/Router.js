@@ -165,6 +165,9 @@ const UserAppreciation = lazy(() =>
 const TrupeeUnivercity = lazy(() =>
   import("./views/apps/explore/Trupee/TrupeeUnivercity")
 );
+const AddTrupeeUnivercity = lazy(() =>
+  import("./views/apps/explore/Trupee/AddTrupeeUnivercity")
+);
 const EditTruUni = lazy(() => import("./views/apps/explore/Trupee/EditTruUni"));
 
 const StartUp = lazy(() => import("./views/apps/explore/Trupee/StartUp"));
@@ -587,6 +590,10 @@ class AppRouter extends React.Component {
             <AppRoute
               path="/app/explore/Trupee/trupeeUnivercity"
               component={TrupeeUnivercity}
+            />
+             <AppRoute
+              path="/app/explore/Trupee/addTrupeeUnivercity"
+              component={AddTrupeeUnivercity}
             />
             <AppRoute
               path="/app/explore/Trupee/editTruUni/:id"
