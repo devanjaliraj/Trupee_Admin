@@ -20,8 +20,8 @@ export default class AddFnoOption extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      script_type: "",
-      script_name: "",
+      scriptName: "",
+      status: "",
     };
   }
   changeHandler1 = (e) => {
@@ -35,7 +35,7 @@ export default class AddFnoOption extends Component {
     e.preventDefault();
 
     axiosConfig
-      .post("/addScript", this.state, {
+      .post("/addEquityScript", this.state, {
         // headers: {
         //   "auth-adtoken": localStorage.getItem("auth-adtoken"),
         // },
@@ -43,7 +43,7 @@ export default class AddFnoOption extends Component {
       .then((response) => {
         console.log(response);
         swal("Success!", "Submitted SuccessFull!", "success");
-        this.props.history.push("/app/scripts/cashEquity");
+        this.props.history.push("/app/scripts/fnoOption");
       })
       .catch((error) => {
         console.log(error);
@@ -108,14 +108,14 @@ export default class AddFnoOption extends Component {
                  
                   </Input>
                 </Col> */}
-                <Col lg="6" md="6" sm="6" className="mb-2">
+               <Col lg="6" md="6" sm="6" className="mb-2">
                   <Label>Script Name</Label>
                   <Input
                     required
                     type="text"
-                    name="script_name"
+                    name="scriptName"
                     placeholder=""
-                    value={this.state.script_name}
+                    value={this.state.scriptName}
                     onChange={this.changeHandler}
                   ></Input>
                 </Col>
@@ -141,7 +141,7 @@ export default class AddFnoOption extends Component {
                     />
                     <span style={{ marginRight: "3px" }}>Inactive</span>
                   </div>
-                </Col>  
+                </Col>
               </Row>
               <Row>
                 <Col lg="6" md="6" sm="6" className="mb-2">

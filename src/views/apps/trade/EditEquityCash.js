@@ -22,8 +22,8 @@ class EditEquityCash extends React.Component {
     super(props);
     this.state = {
       equity_script: "",
-      // script_type: "",
-      script_name: "",
+       profit_loss_amt: "",
+      scriptName: "",
       call_type: "",
       active_value: "",
       SL: "",
@@ -31,6 +31,7 @@ class EditEquityCash extends React.Component {
       T2: "",
       T3: "",
       T4: "",
+      t5:"",
       qty: "",
       investment_amt: "",
       no_of_lots: "",
@@ -39,6 +40,8 @@ class EditEquityCash extends React.Component {
       t2_type: "",
       t3_type: "",
       t4_type: "",
+      expiryDate: "",
+
     };
     this.state = {
       // scriptT: [],
@@ -57,8 +60,8 @@ class EditEquityCash extends React.Component {
         console.log(response);
         this.setState({
           equity_script: response.data.data.equity_script,
-          // script_type: response.data.data.script_type,
-          script_name: response.data.data.script_name,
+          expiryDate: response.data.data.expiryDate,
+          scriptName: response.data.data.scriptName,
           call_type: response.data.data.call_type,
           active_value: response.data.data.active_value,
           SL: response.data.data.SL,
@@ -66,6 +69,7 @@ class EditEquityCash extends React.Component {
           T2: response.data.data.T2,
           T3: response.data.data.T3,
           T4: response.data.data.T4,
+           t5: response.data.data.t5,
           qty: response.data.data.qty,
           investment_amt: response.data.data.investment_amt,
           no_of_lots: response.data.data.no_of_lots,
@@ -74,6 +78,7 @@ class EditEquityCash extends React.Component {
           t2_type: response.data.data.t2_type,
           t3_type: response.data.data.t3_type,
           t4_type: response.data.data.t4_type,
+          profit_loss_amt: response.data.data.profit_loss_amt
         });
       })
       .catch((error) => {
@@ -81,7 +86,7 @@ class EditEquityCash extends React.Component {
       });
     //Script//
     axiosConfig
-      .get("/getScript")
+      .get("/getCashScript")
       .then((response) => {
         console.log(response);
         this.setState({
@@ -191,13 +196,13 @@ class EditEquityCash extends React.Component {
                   <Label>Script Name</Label>
                   <CustomInput
                     type="select"
-                    name="script_name"
-                    value={this.state.script_name}
+                    name="scriptName"
+                    value={this.state.scriptName}
                     onChange={this.changeHandler}
                   >
                     {this.state.scriptN?.map((allScript) => (
                       <option value={allScript?._id} key={allScript?._id}>
-                        {allScript?.script_name}
+                        {allScript?.scriptName}
                       </option>
                     ))}
                   </CustomInput>
@@ -246,6 +251,27 @@ class EditEquityCash extends React.Component {
                     <option>Intraday (Re-entry- Trailed)</option>
                     <option>Intraday (Hero-Zero)</option>
                   </Input>
+                </Col>
+                <Col lg="6" md="6" className="mb-2">
+                  <div>
+                    <Label>P&L</Label>
+                    <Input
+                      type="select"
+                      name="pl_type"
+                      value={this.state.pl_type}
+                      onChange={this.changeHandler}
+                    >
+                      <option value="Option 1">Select Option</option>
+                      <option value="Option 2">Profit</option>
+                      <option value="Option 3">Loss</option>
+                    </Input>
+                    <Input
+                      type="text"
+                      name="profit_loss"
+                      value={this.state.profit_loss}
+                      onChange={this.changeHandler}
+                    />
+                  </div>
                 </Col>
                 <Col lg="6" md="6" className="mb-2">
                   <Label>Active Value</Label>
@@ -308,13 +334,13 @@ class EditEquityCash extends React.Component {
                   />
                 </Col>
                 <Col lg="6" md="6" className="mb-2">
-                  <Label>IS Range</Label>
+                  <Label>T₹5</Label>
                   <Input
                     type="text"
-                    placeholder="Enter Target 2"
-                    name="T4"
-                    // value={this.state.T4}
-                    // onChange={this.changeHandler}
+                    placeholder="Enter Target 5"
+                    name="t5"
+                    value={this.state.t5}
+                    onChange={this.changeHandler}
                   />
                 </Col>
                 <Col lg="6" md="6" className="mb-2">

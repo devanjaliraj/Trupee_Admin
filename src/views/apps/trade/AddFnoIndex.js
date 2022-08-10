@@ -23,8 +23,7 @@ export class AddFnoIndex extends Component {
     super(props);
     this.state = {
       equity_script: "",
-      // script_type: "",
-      script_name: "",
+      scriptName: "",
       call_type: "",
       active_value: "",
       SL: "",
@@ -35,8 +34,12 @@ export class AddFnoIndex extends Component {
       qty: "",
       investment_amt: "",
       no_of_lots: "",
-      date: "",
-      time: "",
+      expiryDate: "",
+      pl_type:"",
+      profit_loss_amt:"",
+      trade_type:"",
+      t5:"",
+   
     };
     this.state = {
       // scriptT: [],
@@ -46,7 +49,7 @@ export class AddFnoIndex extends Component {
   //Script//
   async componentDidMount() {
     axiosConfig
-      .get("/getScript")
+      .get("/getFnoScript")
       .then((response) => {
         console.log(response);
         this.setState({
@@ -140,13 +143,13 @@ export class AddFnoIndex extends Component {
                   <Label>Script Name</Label>
                   <CustomInput
                     type="select"
-                    name="script_name"
-                    value={this.state.script_name}
+                    name="scriptName"
+                    value={this.state.scriptName}
                     onChange={this.changeHandler}
                   >
-                    {this.state.scriptN.map((allScript) => (
-                      <option value={allScript._id} key={allScript._id}>
-                        {allScript.script_name}
+                    {this.state.scriptN?.map((allScript) => (
+                      <option value={allScript?._id} key={allScript?._id}>
+                        {allScript?.scriptName}
                       </option>
                     ))}
                   </CustomInput>
@@ -171,37 +174,17 @@ export class AddFnoIndex extends Component {
                   <Label for="exampleSelect">Trade Type</Label>
                   <Input
                     id="exampleSelect"
-                    // name="equity_script"
+                     name="trade_type"
                     type="select"
-                    // value={this.state.equity_script}
-                    // onChange={this.changeHandler}
+                    value={this.state.trade_type}
+                    onChange={this.changeHandler}
                   >
                     <option>Select Trade</option>
                     <option>BANK NIFTY</option>
                     <option>NIFTY</option>
                   </Input>
                 </Col>
-                <Col lg="6" md="6" className="mb-2">
-                  <div>
-                    <Label>P&L</Label>
-                    <Input
-                      type="select"
-                      name="pl_type"
-                      value={this.state.pl_type}
-                      onChange={this.changeHandler}
-                    >
-                      <option value="Option 1">Select Option</option>
-                      <option value="Option 2">Profit</option>
-                      <option value="Option 3">Loss</option>
-                    </Input>
-                    <Input
-                      type="text"
-                      name="profit_loss"
-                      value={this.state.profit_loss}
-                      onChange={this.changeHandler}
-                    />
-                  </div>
-                </Col>
+              
                 {/* <Col lg="6" md="6" className="mb-2">
                   <Label>Tip</Label>
                   <Input type="text" placeholder="Enter Tip" />
@@ -228,6 +211,27 @@ export class AddFnoIndex extends Component {
                   </Input>
                 </Col>
                 <Col lg="6" md="6" className="mb-2">
+                  <div>
+                    <Label>P&L</Label>
+                    <Input
+                      type="select"
+                      name="pl_type"
+                      value={this.state.pl_type}
+                      onChange={this.changeHandler}
+                    >
+                      <option value="Option 1">Select Option</option>
+                      <option value="Option 2">Profit</option>
+                      <option value="Option 3">Loss</option>
+                    </Input>
+                    <Input
+                      type="text"
+                      name="profit_loss"
+                      value={this.state.profit_loss}
+                      onChange={this.changeHandler}
+                    />
+                  </div>
+                </Col>
+                <Col lg="6" md="6" className="mb-2">
                   <Label>Active Value</Label>
                   <Input
                     type="number"
@@ -237,17 +241,17 @@ export class AddFnoIndex extends Component {
                     onChange={this.changeHandler}
                   />
                 </Col>
-                {/* <Col lg="6" md="6" className="mb-2">
-                  <Label>SL</Label>
+                 <Col lg="6" md="6" className="mb-2">
+                  <Label>T5</Label>
                   <Input
-                    name="SL"
+                    name="t5"
                     type="number"
-                    placeholder="Enter Stop Loss"
-                    value={this.state.SL}
+                    // placeholder="Enter Stop Loss"
+                    value={this.state.t5}
                     onChange={this.changeHandler}
                   />
                 </Col>
-                <Col lg="6" md="6" className="mb-2">
+              {/*  <Col lg="6" md="6" className="mb-2">
                   <Label>TRIAL</Label>
                   <Input
                     type="number"

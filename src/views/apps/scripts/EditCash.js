@@ -1,29 +1,49 @@
 import React, { Component } from "react";
 import {
   Card,
+
   CardBody,
   Row,
   Col,
   Form,
   Label,
   Input,
+  
   Button,
   Breadcrumb,
   BreadcrumbItem,
 } from "reactstrap";
 import axiosConfig from "../../../axiosConfig";
-import { history } from "../../../history";
-import swal from "sweetalert";
+// import { history } from "../../../history";
 import { Route } from "react-router-dom";
-
-export default class AddFnIndex extends Component {
+import swal from "sweetalert";
+export default class EditCash extends Component {
   constructor(props) {
     super(props);
     this.state = {
+        status: "",
       scriptName: "",
-      status: "",
-     
     };
+  }
+
+  componentDidMount() {
+    let { id } = this.props.match.params;
+    axiosConfig
+      .get(`/getoneCashScript/${id}`, {
+        // headers: {
+        //   "auth-adtoken": localStorage.getItem("auth-adtoken"),
+        // },
+      })
+      .then((response) => {
+        console.log(response);
+        this.setState({
+          status: response.data.data.status,
+          scriptName: response.data.data.scriptName,
+        });
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   }
   changeHandler1 = (e) => {
     this.setState({ status: e.target.value });
@@ -34,9 +54,9 @@ export default class AddFnIndex extends Component {
   };
   submitHandler = (e) => {
     e.preventDefault();
-
+    let { id } = this.props.match.params;
     axiosConfig
-      .post("/addFnoScript", this.state, {
+      .post(`/editCashScript/${id}`, this.state, {
         // headers: {
         //   "auth-adtoken": localStorage.getItem("auth-adtoken"),
         // },
@@ -44,13 +64,12 @@ export default class AddFnIndex extends Component {
       .then((response) => {
         console.log(response);
         swal("Success!", "Submitted SuccessFull!", "success");
-        this.props.history.push("/app/scripts/fnIndex");
+        this.props.history.push("/app/scripts/cashEquity");
       })
       .catch((error) => {
         console.log(error);
       });
   };
-
   render() {
     return (
       <div>
@@ -61,10 +80,10 @@ export default class AddFnIndex extends Component {
                 <BreadcrumbItem href="/analyticsDashboard" tag="a">
                   Home
                 </BreadcrumbItem>
-                <BreadcrumbItem href="/app/scripts/fnIndex" tag="a">
-                 FNO INDEX List
+                <BreadcrumbItem href="/app/scripts/cashEquity" tag="a">
+                  Equity Cash List
                 </BreadcrumbItem>
-                <BreadcrumbItem active>Add FNO INDEX</BreadcrumbItem>
+                <BreadcrumbItem active>Edit Equity Cash</BreadcrumbItem>
               </Breadcrumb>
             </div>
           </Col>
@@ -73,7 +92,7 @@ export default class AddFnIndex extends Component {
           <Row className="m-2">
             <Col>
               <h1 col-sm-6 className="float-left">
-                Add FNO INDEX
+                Edit Equity Cash
               </h1>
             </Col>
             <Col>
@@ -81,7 +100,7 @@ export default class AddFnIndex extends Component {
                 render={({ history }) => (
                   <Button
                     className=" btn btn-danger float-right"
-                    onClick={() => history.push("/app/scripts/fnIndex")}
+                    onClick={() => history.push("/app/scripts/cashEquity")}
                   >
                     Back
                   </Button>
@@ -92,7 +111,7 @@ export default class AddFnIndex extends Component {
           <CardBody>
             <Form className="m-1" onSubmit={this.submitHandler}>
               <Row>
-        
+               
                 <Col lg="6" md="6" sm="6" className="mb-2">
                   <Label>Script Name</Label>
                   <Input
@@ -104,7 +123,7 @@ export default class AddFnIndex extends Component {
                     onChange={this.changeHandler}
                   ></Input>
                 </Col>
-                    <Col lg="6" md="6" sm="6" className="mb-2">
+                <Col lg="6" md="6" sm="6" className="mb-2">
                   <Label className="mb-1">Status</Label>
                   <div
                     className="form-label-group"
@@ -135,7 +154,7 @@ export default class AddFnIndex extends Component {
                     type="submit"
                     className="mr-1 mb-1"
                   >
-                    Add
+                    Update
                   </Button.Ripple>
                 </Col>
               </Row>

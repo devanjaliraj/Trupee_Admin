@@ -47,12 +47,12 @@ class FnoIndexList extends React.Component {
     
       {
         headerName: "Script Name",
-        field: "script_name",
+        field: "scriptName",
         width: 140,
         cellRendererFramework: (params) => {
           return (
             <div className="d-flex align-items-center cursor-pointer">
-              <span>{params.data.script_name}</span>
+              <span>{params.data.script_name?.scriptName}</span>
             </div>
           );
         },
@@ -251,40 +251,40 @@ class FnoIndexList extends React.Component {
           );
         },
       },
-      {
-        headerName: "SL Type",
-        field: "sl_type",
-        filter: true,
-        width: 150,
-        cellRendererFramework: (params) => {
-          return params.value === "true" ? (
-            <div className="badge badge-pill badge-success">
-              {params.data.sl_type}
-            </div>
-          ) : params.value === "False" ? (
-            <div className="badge badge-pill badge-warning">
-              {params.data.sl_type}
-            </div>
-          ) : null;
-        },
-      },
-      {
-        headerName: "Trl Type",
-        field: "trl_type",
-        filter: true,
-        width: 150,
-        cellRendererFramework: (params) => {
-          return params.value === "true" ? (
-            <div className="badge badge-pill badge-success">
-              {params.data.trl_type}
-            </div>
-          ) : params.value === "Inactive" ? (
-            <div className="badge badge-pill badge-warning">
-              {params.data.trl_type}
-            </div>
-          ) : null;
-        },
-      },
+      // {
+      //   headerName: "SL Type",
+      //   field: "sl_type",
+      //   filter: true,
+      //   width: 150,
+      //   cellRendererFramework: (params) => {
+      //     return params.value === "true" ? (
+      //       <div className="badge badge-pill badge-success">
+      //         {params.data.sl_type}
+      //       </div>
+      //     ) : params.value === "false" ? (
+      //       <div className="badge badge-pill badge-warning">
+      //         {params.data.sl_type}
+      //       </div>
+      //     ) : null;
+      //   },
+      // },
+      // {
+      //   headerName: "Trl Type",
+      //   field: "trl_type",
+      //   filter: true,
+      //   width: 150,
+      //   cellRendererFramework: (params) => {
+      //     return params.value === "true" ? (
+      //       <div className="badge badge-pill badge-success">
+      //         {params.data.trl_type}
+      //       </div>
+      //     ) : params.value === "false" ? (
+      //       <div className="badge badge-pill badge-warning">
+      //         {params.data.trl_type}
+      //       </div>
+      //     ) : null;
+      //   },
+      // },
       {
         headerName: "T1 Type",
         field: "t1_type",
@@ -295,7 +295,7 @@ class FnoIndexList extends React.Component {
             <div className="badge badge-pill badge-success">
               {params.data.t1_type}
             </div>
-          ) : params.value === "Inactive" ? (
+          ) : params.value === "false" ? (
             <div className="badge badge-pill badge-warning">
               {params.data.t1_type}
             </div>
@@ -312,7 +312,7 @@ class FnoIndexList extends React.Component {
             <div className="badge badge-pill badge-success">
               {params.data.t2_type}
             </div>
-          ) : params.value === "Inactive" ? (
+          ) : params.value === "false" ? (
             <div className="badge badge-pill badge-warning">
               {params.data.t2_type}
             </div>
@@ -329,7 +329,7 @@ class FnoIndexList extends React.Component {
             <div className="badge badge-pill badge-success">
               {params.data.t3_type}
             </div>
-          ) : params.value === "Inactive" ? (
+          ) : params.value === "false" ? (
             <div className="badge badge-pill badge-warning">
               {params.data.t3_type}
             </div>
@@ -346,7 +346,7 @@ class FnoIndexList extends React.Component {
             <div className="badge badge-pill badge-success">
               {params.data.t5_type}
             </div>
-          ) : params.value === "Inactive" ? (
+          ) : params.value === "false" ? (
             <div className="badge badge-pill badge-warning">
               {params.data.t5_type}
             </div>

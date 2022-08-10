@@ -45,28 +45,17 @@ class CashEquityList extends React.Component {
       },
       {
         headerName: "Script Name",
-        field: "script_name",
+        field: "scriptName",
         width: 220,
         cellRendererFramework: (params) => {
           return (
             <div className="d-flex align-items-center cursor-pointer">
-              <span>{params.data.script_name}</span>
+              <span>{params.data.scriptName}</span>
             </div>
           );
         },
       },
-      // {
-      //   headerName: "Entry Script",
-      //   field: "script_type",
-      //   width: 220,
-      //   cellRendererFramework: (params) => {
-      //     return (
-      //       <div className="d-flex align-items-center cursor-pointer">
-      //         <span>{params.data.script_type}</span>
-      //       </div>
-      //     );
-      //   },
-      // },
+   
 
       {
         headerName: "Status",
@@ -100,7 +89,7 @@ class CashEquityList extends React.Component {
                     size="25px"
                     color="blue"
                     onClick={() =>
-                      history.push(`/app/script/editScript/${params.data._id}`)
+                      history.push(`/app/scripts/editCash/${params.data._id}`)
                     }
                   />
                 )}
@@ -123,14 +112,14 @@ class CashEquityList extends React.Component {
     ],
   };
   async componentDidMount() {
-    await axiosConfig.get("/getScript").then((response) => {
+    await axiosConfig.get("/getCashScript").then((response) => {
       let rowData = response.data.data;
       this.setState({ rowData });
     });
   }
   async runthisfunction(id) {
     console.log(id);
-    await axiosConfig.get(`/deletescript/${id}`).then((response) => {
+    await axiosConfig.get(`/dltCashScript/${id}`).then((response) => {
       console.log(response);
     });
   }

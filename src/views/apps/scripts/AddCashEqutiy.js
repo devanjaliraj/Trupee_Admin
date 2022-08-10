@@ -20,8 +20,8 @@ export default class AddCashEqutiy extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      script_type: "",
-      script_name: "",
+      scriptName: "",
+      status: "",
     };
   }
   changeHandler1 = (e) => {
@@ -35,7 +35,7 @@ export default class AddCashEqutiy extends Component {
     e.preventDefault();
 
     axiosConfig
-      .post("/addScript", this.state, {
+      .post("/addCashScript", this.state, {
         // headers: {
         //   "auth-adtoken": localStorage.getItem("auth-adtoken"),
         // },
@@ -91,31 +91,15 @@ export default class AddCashEqutiy extends Component {
           <CardBody>
             <Form className="m-1" onSubmit={this.submitHandler}>
               <Row>
-                {/* <Col lg="6" md="6" className="mb-2">
-                  <Label for="exampleSelect">Entry Script</Label>
-                  <Input
-                    id="exampleSelect"
-                    name="script_type"
-                    type="select"
-                    value={this.state.script_type}
-                    onChange={this.changeHandler}
-                  >
-                    <option>Select Script</option>
-                   
-                    <option>FNO INDEX</option>
-                    <option>FNO OPTIONS</option>
-                    <option>CASH EQUITY</option>
-                 
-                  </Input>
-                </Col> */}
-                <Col lg="6" md="6" sm="6" className="mb-2">
+           
+                 <Col lg="6" md="6" sm="6" className="mb-2">
                   <Label>Script Name</Label>
                   <Input
                     required
                     type="text"
-                    name="script_name"
+                    name="scriptName"
                     placeholder=""
-                    value={this.state.script_name}
+                    value={this.state.scriptName}
                     onChange={this.changeHandler}
                   ></Input>
                 </Col>

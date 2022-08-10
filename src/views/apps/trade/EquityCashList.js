@@ -47,17 +47,16 @@ class EquityCashList extends React.Component {
       },
       {
         headerName: "Script Name",
-        field: "script_name",
+        field: "scriptName",
         width: 140,
         cellRendererFramework: (params) => {
           return (
             <div className="d-flex align-items-center cursor-pointer">
-              <span>{params.data.script_name}</span>
+              <span>{params.data.script_name?.scriptName}</span>
             </div>
           );
         },
       },
-
       {
         headerName: "Equity Script",
         field: "script_type",
@@ -70,6 +69,7 @@ class EquityCashList extends React.Component {
           );
         },
       },
+    
       {
         headerName: "Call Type",
         field: "call_type",
@@ -95,7 +95,7 @@ class EquityCashList extends React.Component {
         },
       },
       {
-        headerName: "Active Value",
+        headerName: "Active Value 2",
         field: "active_value2",
         width: 140,
         cellRendererFramework: (params) => {
@@ -248,7 +248,7 @@ class EquityCashList extends React.Component {
             <div className="badge badge-pill badge-success">
               {params.data.sl_type}
             </div>
-          ) : params.value === "False" ? (
+          ) : params.value === "false" ? (
             <div className="badge badge-pill badge-warning">
               {params.data.sl_type}
             </div>
@@ -265,7 +265,7 @@ class EquityCashList extends React.Component {
             <div className="badge badge-pill badge-success">
               {params.data.t1_type}
             </div>
-          ) : params.value === "Inactive" ? (
+          ) : params.value === "false" ? (
             <div className="badge badge-pill badge-warning">
               {params.data.t1_type}
             </div>
@@ -282,7 +282,7 @@ class EquityCashList extends React.Component {
             <div className="badge badge-pill badge-success">
               {params.data.t2_type}
             </div>
-          ) : params.value === "Inactive" ? (
+          ) : params.value === "false" ? (
             <div className="badge badge-pill badge-warning">
               {params.data.t2_type}
             </div>
@@ -299,7 +299,7 @@ class EquityCashList extends React.Component {
             <div className="badge badge-pill badge-success">
               {params.data.t3_type}
             </div>
-          ) : params.value === "Inactive" ? (
+          ) : params.value === "false" ? (
             <div className="badge badge-pill badge-warning">
               {params.data.t3_type}
             </div>
@@ -316,7 +316,7 @@ class EquityCashList extends React.Component {
             <div className="badge badge-pill badge-success">
               {params.data.t4_type}
             </div>
-          ) : params.value === "Inactive" ? (
+          ) : params.value === "false" ? (
             <div className="badge badge-pill badge-warning">
               {params.data.t4_type}
             </div>
@@ -333,7 +333,7 @@ class EquityCashList extends React.Component {
             <div className="badge badge-pill badge-success">
               {params.data.t5_type}
             </div>
-          ) : params.value === "Inactive" ? (
+          ) : params.value === "false" ? (
             <div className="badge badge-pill badge-warning">
               {params.data.t5_type}
             </div>

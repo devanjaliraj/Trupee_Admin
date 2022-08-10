@@ -22,21 +22,25 @@ class EditFnoIndex extends React.Component {
     super(props);
     this.state = {
       equity_script: "",
-      script_type: "",
-      script_name: "",
+      
+      scriptName: "",
       call_type: "",
       active_value: "",
       SL: "",
       T1: "",
       T2: "",
       T3: "",
+      t5:"",
       trl: "",
       qty: "",
       investment_amt: "",
       no_of_lots: "",
+      expiryDate:"",
+      trade_type:"",
+      profit_loss_amt:"",
     };
     this.state = {
-      scriptT: [],
+     
       scriptN: [],
     };
   }
@@ -53,17 +57,21 @@ class EditFnoIndex extends React.Component {
         this.setState({
           equity_script: response.data.data.equity_script,
           script_type: response.data.data.script_type,
-          script_name: response.data.data.script_name,
+          scriptName: response.data.data.scriptName,
           call_type: response.data.data.call_type,
           active_value: response.data.data.active_value,
           SL: response.data.data.SL,
           T1: response.data.data.T1,
           T2: response.data.data.T2,
           T3: response.data.data.T3,
+          t5: response.data.data.t5,
           trl: response.data.data.trl,
           qty: response.data.data.qty,
           investment_amt: response.data.data.investment_amt,
           no_of_lots: response.data.data.no_of_lots,
+          trade_type: response.data.data.trade_type,
+          expiryDate: response.data.data.expiryDate,
+          profit_loss_amt: response.data.data.profit_loss_amt,
         });
       })
       .catch((error) => {
@@ -71,11 +79,11 @@ class EditFnoIndex extends React.Component {
       });
     //Script//
     axiosConfig
-      .get("/getScript")
+      .get("/getFnoScript")
       .then((response) => {
         console.log(response);
         this.setState({
-          scriptT: response.data.data,
+         
           scriptN: response.data.data,
         });
       })
@@ -141,42 +149,28 @@ class EditFnoIndex extends React.Component {
               <Row className="mb-2">
                 <Col lg="6" md="6" className="mb-2">
                   <Label>Exp. Date</Label>
-                  <Input type="date" placeholder="Enter User Id" />
+                  <Input type="date" name="expiryDate" 
+                    value={this.state.expiryDate}
+                    onChange={this.changeHandler}/>
                 </Col>
-                <Col lg="6" md="6" className="mb-2">
-                  <Label>Time</Label>
-                  <Input type="time" placeholder="Enter User Id" />
-                </Col>
-                <Col lg="6" md="6" sm="6" className="mb-2">
-                  <Label>Script</Label>
-                  <CustomInput
-                    type="select"
-                    name="script_type"
-                    value={this.state.script_type}
-                    onChange={this.changeHandler}
-                  >
-                    {this.state.scriptT?.map((allScript) => (
-                      <option value={allScript?._id} key={allScript?._id}>
-                        {allScript?.script_type}
-                      </option>
-                    ))}
-                  </CustomInput>
-                </Col>
+               
+             
                 <Col lg="6" md="6" sm="6" className="mb-2">
                   <Label>Script Name</Label>
                   <CustomInput
                     type="select"
-                    name="script_name"
-                    value={this.state.script_name}
+                    name="scriptName"
+                    value={this.state.scriptName}
                     onChange={this.changeHandler}
                   >
-                    {this.state.scriptN.map((allScript) => (
-                      <option value={allScript._id} key={allScript._id}>
-                        {allScript.script_name}
+                    {this.state.scriptN?.map((allScript) => (
+                      <option value={allScript?._id} key={allScript?._id}>
+                        {allScript?.scriptName}
                       </option>
                     ))}
                   </CustomInput>
                 </Col>
+               
                 <Col lg="6" md="6" className="mb-2">
                   <Label for="exampleSelect">Equity Script</Label>
                   <Input
@@ -193,14 +187,7 @@ class EditFnoIndex extends React.Component {
                     <option>SELL</option>
                   </Input>
                 </Col>
-                {/* <Col lg="6" md="6" className="mb-2">
-                  <Label>Script Name</Label>
-                  <Input type="text" placeholder="Enter Script Name" />
-                </Col> */}
-                {/* <Col lg="6" md="6" className="mb-2">
-                  <Label>Tip</Label>
-                  <Input type="text" placeholder="Enter Tip" />
-                </Col> */}
+              
                 <Col lg="6" md="6" className="mb-2">
                   <Label for="exampleSelect">Call Type</Label>
                   <Input
@@ -220,6 +207,41 @@ class EditFnoIndex extends React.Component {
                     <option>Intraday (Re-entry)</option>
                     <option>Intraday (Re-entry- Trailed)</option>
                     <option>Intraday (Hero-Zero)</option>
+                  </Input>
+                </Col>
+                <Col lg="6" md="6" className="mb-2">
+                  <div>
+                    <Label>P&L</Label>
+                    <Input
+                      type="select"
+                      name="pl_type"
+                      value={this.state.pl_type}
+                      onChange={this.changeHandler}
+                    >
+                      <option value="Option 1">Select Option</option>
+                      <option value="Option 2">Profit</option>
+                      <option value="Option 3">Loss</option>
+                    </Input>
+                    <Input
+                      type="text"
+                      name="profit_loss_amt"
+                      value={this.state.profit_loss_amt}
+                      onChange={this.changeHandler}
+                    />
+                  </div>
+                </Col>
+                <Col lg="6" md="6" className="mb-2">
+                  <Label for="exampleSelect">Trade Type</Label>
+                  <Input
+                    id="exampleSelect"
+                     name="trade_type"
+                    type="select"
+                    value={this.state.trade_type}
+                    onChange={this.changeHandler}
+                  >
+                    <option>Select Trade</option>
+                    <option>BANK NIFTY</option>
+                    <option>NIFTY</option>
                   </Input>
                 </Col>
                 <Col lg="6" md="6" className="mb-2">
@@ -283,12 +305,12 @@ class EditFnoIndex extends React.Component {
                   />
                 </Col>{" "}
                 <Col lg="6" md="6" className="mb-2">
-                  <Label>IS Range</Label>
+                  <Label>T₹ 5</Label>
                   <Input
                     type="text"
-                    placeholder="Enter Target 2"
-                    name="T5"
-                    value={this.state.T5}
+                    placeholder="Enter Target 5"
+                    name="t5"
+                    value={this.state.t5}
                     onChange={this.changeHandler}
                   />
                 </Col>

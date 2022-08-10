@@ -45,29 +45,29 @@ class FnoEquityList extends React.Component {
       },
       {
         headerName: "Script Name",
-        field: "script_name",
+        field: "scriptName",
         width: 140,
         cellRendererFramework: (params) => {
           return (
             <div className="d-flex align-items-center cursor-pointer">
-              <span>{params.data.script_name}</span>
+              <span>{params.data.script_name?.scriptName}</span>
             </div>
           );
         },
       },
-
       {
-        headerName: "Equity Script",
-        field: "script_type",
-        width: 140,
-        cellRendererFramework: (params) => {
-          return (
-            <div className="d-flex  align-items-center cursor-pointer">
-              <span>{params.data.script_type}</span>
-            </div>
-          );
-        },
+      headerName: "Equity Script",
+      field: "script_type",
+      width: 140,
+      cellRendererFramework: (params) => {
+        return (
+          <div className="d-flex  align-items-center cursor-pointer">
+            <span>{params.data.script_type}</span>
+          </div>
+        );
       },
+    },
+   
       {
         headerName: "Call Type",
         field: "call_type",
@@ -246,7 +246,7 @@ class FnoEquityList extends React.Component {
             <div className="badge badge-pill badge-success">
               {params.data.sl_type}
             </div>
-          ) : params.value === "False" ? (
+          ) : params.value === "false" ? (
             <div className="badge badge-pill badge-warning">
               {params.data.sl_type}
             </div>
@@ -263,7 +263,7 @@ class FnoEquityList extends React.Component {
             <div className="badge badge-pill badge-success">
               {params.data.t1_type}
             </div>
-          ) : params.value === "Inactive" ? (
+          ) : params.value === "false" ? (
             <div className="badge badge-pill badge-warning">
               {params.data.t1_type}
             </div>
@@ -280,7 +280,7 @@ class FnoEquityList extends React.Component {
             <div className="badge badge-pill badge-success">
               {params.data.t2_type}
             </div>
-          ) : params.value === "Inactive" ? (
+          ) : params.value === "false" ? (
             <div className="badge badge-pill badge-warning">
               {params.data.t2_type}
             </div>
@@ -297,7 +297,7 @@ class FnoEquityList extends React.Component {
             <div className="badge badge-pill badge-success">
               {params.data.t3_type}
             </div>
-          ) : params.value === "Inactive" ? (
+          ) : params.value === "false" ? (
             <div className="badge badge-pill badge-warning">
               {params.data.t3_type}
             </div>
@@ -314,7 +314,7 @@ class FnoEquityList extends React.Component {
             <div className="badge badge-pill badge-success">
               {params.data.t4_type}
             </div>
-          ) : params.value === "Inactive" ? (
+          ) : params.value === "false" ? (
             <div className="badge badge-pill badge-warning">
               {params.data.t4_type}
             </div>
@@ -331,7 +331,7 @@ class FnoEquityList extends React.Component {
             <div className="badge badge-pill badge-success">
               {params.data.t5_type}
             </div>
-          ) : params.value === "Inactive" ? (
+          ) : params.value === "false" ? (
             <div className="badge badge-pill badge-warning">
               {params.data.t5_type}
             </div>

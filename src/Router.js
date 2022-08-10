@@ -88,10 +88,15 @@ const UserNotification = lazy(() =>
 // scripts//
 const FnIndex = lazy(() => import("./views/apps/scripts/FnIndex"));
 const AddFnIndex = lazy(() => import("./views/apps/scripts/AddFnIndex"));
+const EditFnIndex = lazy(() => import("./views/apps/scripts/EditFnIndex"));
+
 const FnoOption = lazy(() => import("./views/apps/scripts/FnoOption"));
 const AddFnoOption = lazy(() => import("./views/apps/scripts/AddFnoOption"));
+const EditOption = lazy(() => import("./views/apps/scripts/EditOption"));
+
 const CashEquity = lazy(() => import("./views/apps/scripts/CashEquity"));
 const AddCashEquity = lazy(() => import("./views/apps/scripts/AddCashEqutiy"));
+const EditCash = lazy(() => import("./views/apps/scripts/EditCash"));
 
 // script//
 const ScriptList = lazy(() => import("./views/apps/script/ScriptList"));
@@ -191,6 +196,9 @@ const UserPerformanceSheet = lazy(() =>
 );
 const Opportunity = lazy(() =>
   import("./views/apps/explore/Trupee/Opportunity")
+);
+const AddOppor = lazy(() =>
+  import("./views/apps/explore/Trupee/AddOppor")
 );
 const AddTVC = lazy(() => import("./views/apps/explore/Trupee/AddTVC"));
 const EditTVC = lazy(() => import("./views/apps/explore/Trupee/EditTVC"));
@@ -494,10 +502,15 @@ class AppRouter extends React.Component {
             {/* scripts */}
             <AppRoute path="/app/scripts/fnIndex" component={FnIndex} />
             <AppRoute path="/app/scripts/addFnIndex" component={AddFnIndex} />
+            <AppRoute path="/app/scripts/editFnIndex/:id" component={EditFnIndex} />
+
             <AppRoute path="/app/scripts/fnoOption" component={FnoOption} />
             <AppRoute path="/app/scripts/addfnoOption" component={AddFnoOption} />
+            <AppRoute path="/app/scripts/editOption/:id" component={EditOption} />
+            
             <AppRoute path="/app/scripts/cashEquity" component={CashEquity} />
             <AppRoute path="/app/scripts/addCashEquity" component={AddCashEquity} />
+             <AppRoute path="/app/scripts/editCash/:id" component={EditCash} />
 
 
             {/* script */}
@@ -625,6 +638,10 @@ class AppRouter extends React.Component {
             <AppRoute
               path="/app/explore/Trupee/opportunity"
               component={Opportunity}
+            />
+             <AppRoute
+              path="/app/explore/Trupee/addOppor"
+              component={AddOppor}
             />
             <AppRoute
               path="/app/explore/Trupee/tradingViewCharts"

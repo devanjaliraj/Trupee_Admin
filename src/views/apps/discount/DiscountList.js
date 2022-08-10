@@ -44,7 +44,6 @@ class DiscountList extends React.Component {
         // headerCheckboxSelectionFilteredOnly: true,
         // headerCheckboxSelection: true,
       },
-
       {
         headerName: "Title",
         field: "title",
@@ -59,34 +58,64 @@ class DiscountList extends React.Component {
           );
         },
       },
+
       {
-        headerName: "FLAT",
-        field: "flat_price",
+        headerName: "User Name",
+        field: "firstname",
         // filter: true,
         width: 150,
         // pinned: window.innerWidth > 992 ? "left" : false,
         cellRendererFramework: (params) => {
           return (
             <div className="d-flex align-items-center cursor-pointer">
-              <span>{params.data.flat_price}</span>
+              <span>{params.data.userid?.firstname}</span>
             </div>
           );
         },
       },
       {
-        headerName: "Percentage",
-        field: "percentage",
+        headerName: "FLAT/Percentage",
+        field: "dis_type",
         // filter: true,
         width: 150,
         // pinned: window.innerWidth > 992 ? "left" : false,
         cellRendererFramework: (params) => {
           return (
             <div className="d-flex align-items-center cursor-pointer">
-              <span>{params.data.percentage}</span>
+              <span>{params.data.dis_type}</span>
             </div>
           );
         },
       },
+      {
+        headerName: "Discount Amount",
+        field: "dis_amt",
+        // filter: true,
+        width: 150,
+        // pinned: window.innerWidth > 992 ? "left" : false,
+        cellRendererFramework: (params) => {
+          return (
+            <div className="d-flex align-items-center cursor-pointer">
+              <span>{params.data.dis_amt}</span>
+            </div>
+          );
+        },
+      },
+      {
+        headerName: "Membership Plan",
+        field: "pack_name",
+        // filter: true,
+        width: 150,
+        // pinned: window.innerWidth > 992 ? "left" : false,
+        cellRendererFramework: (params) => {
+          return (
+            <div className="d-flex align-items-center cursor-pointer">
+              <span>{params.data.plan?.pack_name}</span>
+            </div>
+          );
+        },
+      },
+      
       {
         headerName: "Discount Code",
         field: "code",

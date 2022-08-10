@@ -43,15 +43,15 @@ class FnIndex extends React.Component {
         // headerCheckboxSelectionFilteredOnly: true,
         // headerCheckboxSelection: true,
       },
-
+      
       {
         headerName: "Script Name",
-        field: "script_name",
+        field: "scriptName",
         width: 300,
         cellRendererFramework: (params) => {
           return (
             <div className="d-flex align-items-center cursor-pointer">
-              <span>{params.data.script_name}</span>
+              <span>{params.data.scriptName}</span>
             </div>
           );
         },
@@ -99,7 +99,7 @@ class FnIndex extends React.Component {
                     size="25px"
                     color="blue"
                     onClick={() =>
-                      history.push(`/app/trade/editFnoIndex/${params.data._id}`)
+                      history.push(`/app/scripts/editFnIndex/${params.data._id}`)
                     }
                   />
                 )}
@@ -122,7 +122,7 @@ class FnIndex extends React.Component {
   };
 
   async componentDidMount() {
-    await axiosConfig.get(`/getScript`).then((response) => {
+    await axiosConfig.get(`/getFnoScript`).then((response) => {
       const rowData = response.data.data;
       console.log(rowData);
       this.setState({ rowData });
@@ -130,7 +130,7 @@ class FnIndex extends React.Component {
   }
   async runthisfunction(id) {
     console.log(id);
-    await axiosConfig.get(`/dlt_fnoIndex/${id}`).then(
+    await axiosConfig.get(`/dltFnoScript/${id}`).then(
       (response) => {
         console.log(response);
       },

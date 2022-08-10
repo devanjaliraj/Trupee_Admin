@@ -24,7 +24,7 @@ export class AddEquityCash extends Component {
     this.state = {
       equity_script: "",
       script_type: "",
-      script_name: "",
+      scriptName: "",
       call_type: "",
       active_value: "",
       SL: "",
@@ -46,7 +46,7 @@ export class AddEquityCash extends Component {
   //Script//
   async componentDidMount() {
     axiosConfig
-      .get("/getScript")
+      .get("/getCashScript")
       .then((response) => {
         console.log(response);
         this.setState({
@@ -143,13 +143,13 @@ export class AddEquityCash extends Component {
                   <Label>Script Name</Label>
                   <CustomInput
                     type="select"
-                    name="script_name"
-                    value={this.state.script_name}
+                    name="scriptName"
+                    value={this.state.scriptName}
                     onChange={this.changeHandler}
                   >
-                    {this.state.scriptN.map((allScript) => (
-                      <option value={allScript._id} key={allScript._id}>
-                        {allScript.script_name}
+                    {this.state.scriptN?.map((allScript) => (
+                      <option value={allScript?._id} key={allScript?._id}>
+                        {allScript?.scriptName}
                       </option>
                     ))}
                   </CustomInput>
@@ -198,6 +198,27 @@ export class AddEquityCash extends Component {
                     <option>Intraday (Re-entry- Trailed)</option>
                     <option>Intraday (Hero-Zero)</option>
                   </Input>
+                </Col>
+                <Col lg="6" md="6" className="mb-2">
+                  <div>
+                    <Label>P&L</Label>
+                    <Input
+                      type="select"
+                      name="pl_type"
+                      value={this.state.pl_type}
+                      onChange={this.changeHandler}
+                    >
+                      <option value="Option 1">Select Option</option>
+                      <option value="Option 2">Profit</option>
+                      <option value="Option 3">Loss</option>
+                    </Input>
+                    <Input
+                      type="text"
+                      name="profit_loss"
+                      value={this.state.profit_loss}
+                      onChange={this.changeHandler}
+                    />
+                  </div>
                 </Col>
                 <Col lg="6" md="6" className="mb-2">
                   <Label>Active Value</Label>
@@ -260,12 +281,12 @@ export class AddEquityCash extends Component {
                   />
                 </Col>
                 <Col lg="6" md="6" className="mb-2">
-                  <Label>IS Range</Label>
+                  <Label>T₹ 5</Label>
                   <Input
-                    type="time"
-                    placeholder="Enter User Id"
-                    name="time"
-                    value={this.state.time}
+                    type="text"
+                    placeholder="Enter Target 5"
+                    name="t5"
+                    value={this.state.t5}
                     onChange={this.changeHandler}
                   />
                 </Col>

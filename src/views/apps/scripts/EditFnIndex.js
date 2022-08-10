@@ -1,29 +1,49 @@
 import React, { Component } from "react";
 import {
   Card,
+  
   CardBody,
   Row,
   Col,
   Form,
   Label,
   Input,
+  
   Button,
   Breadcrumb,
   BreadcrumbItem,
 } from "reactstrap";
 import axiosConfig from "../../../axiosConfig";
-import { history } from "../../../history";
-import swal from "sweetalert";
+// import { history } from "../../../history";
 import { Route } from "react-router-dom";
-
-export default class AddFnIndex extends Component {
+import swal from "sweetalert";
+export default class EditFnIndex extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      scriptName: "",
       status: "",
-     
+      scriptName: "",
     };
+  }
+
+  componentDidMount() {
+    let { id } = this.props.match.params;
+    axiosConfig
+      .get(`/getoneFnoScript/${id}`, {
+        // headers: {
+        //   "auth-adtoken": localStorage.getItem("auth-adtoken"),
+        // },
+      })
+      .then((response) => {
+        console.log(response);
+        this.setState({
+          status: response.data.data.status,
+          scriptName: response.data.data.scriptName,
+        });
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   }
   changeHandler1 = (e) => {
     this.setState({ status: e.target.value });
@@ -34,9 +54,9 @@ export default class AddFnIndex extends Component {
   };
   submitHandler = (e) => {
     e.preventDefault();
-
+    let { id } = this.props.match.params;
     axiosConfig
-      .post("/addFnoScript", this.state, {
+      .post(`/editFnoScript/${id}`, this.state, {
         // headers: {
         //   "auth-adtoken": localStorage.getItem("auth-adtoken"),
         // },
@@ -50,7 +70,6 @@ export default class AddFnIndex extends Component {
         console.log(error);
       });
   };
-
   render() {
     return (
       <div>
@@ -62,9 +81,9 @@ export default class AddFnIndex extends Component {
                   Home
                 </BreadcrumbItem>
                 <BreadcrumbItem href="/app/scripts/fnIndex" tag="a">
-                 FNO INDEX List
+                FNO Index List
                 </BreadcrumbItem>
-                <BreadcrumbItem active>Add FNO INDEX</BreadcrumbItem>
+                <BreadcrumbItem active>Edit FNO Index</BreadcrumbItem>
               </Breadcrumb>
             </div>
           </Col>
@@ -73,7 +92,7 @@ export default class AddFnIndex extends Component {
           <Row className="m-2">
             <Col>
               <h1 col-sm-6 className="float-left">
-                Add FNO INDEX
+                Edit FNO Index
               </h1>
             </Col>
             <Col>
@@ -92,7 +111,7 @@ export default class AddFnIndex extends Component {
           <CardBody>
             <Form className="m-1" onSubmit={this.submitHandler}>
               <Row>
-        
+              
                 <Col lg="6" md="6" sm="6" className="mb-2">
                   <Label>Script Name</Label>
                   <Input
@@ -104,7 +123,7 @@ export default class AddFnIndex extends Component {
                     onChange={this.changeHandler}
                   ></Input>
                 </Col>
-                    <Col lg="6" md="6" sm="6" className="mb-2">
+                <Col lg="6" md="6" sm="6" className="mb-2">
                   <Label className="mb-1">Status</Label>
                   <div
                     className="form-label-group"
@@ -135,7 +154,7 @@ export default class AddFnIndex extends Component {
                     type="submit"
                     className="mr-1 mb-1"
                   >
-                    Add
+                    Update
                   </Button.Ripple>
                 </Col>
               </Row>

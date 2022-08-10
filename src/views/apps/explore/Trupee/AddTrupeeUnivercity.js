@@ -38,9 +38,9 @@ export default class AddSize extends Component {
 
     axiosConfig
       .post("/addsize", this.state, {
-        headers: {
-          "auth-adtoken": localStorage.getItem("auth-adtoken"),
-        },
+        // headers: {
+        //   "auth-adtoken": localStorage.getItem("auth-adtoken"),
+        // },
       })
       .then((response) => {
         console.log(response);
