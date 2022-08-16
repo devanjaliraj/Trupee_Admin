@@ -427,13 +427,14 @@ const AppRoute = connect(mapStateToProps)(RouteConfig);
 
 class AppRouter extends React.Component {
   componentDidMount() {
-    let data = localStorage.getItem("auth");
+    let data = localStorage.getItem("ad-token");
+    console.log('token data',data)
     sessionStorage.clear();
     if (data === undefined || data === null) {
       //history.push("/#/pages/login")
-      window.location.replace("/#/");
+      //window.location.replace("/#/");
 
-      // window.location.replace("/#/pages/login");
+       window.location.replace("/#/pages/login");
     }
   }
   render() {
@@ -443,8 +444,8 @@ class AppRouter extends React.Component {
       <Router history={history}>
         <HashRouter>
           <Switch>
-            {/*<AppRoute exact={true} path="/" component={home} fullLayout /> */}
-            <AppRoute exact={true} path="/" component={analyticsDashboard} />
+            <AppRoute exact={true} path="/" component={analyticsDashboard}  />
+            {/* <AppRoute exact={true} path="/" component={analyticsDashboard} /> */}
             <AppRoute
               exact={true}
               path="/ecommerce-dashboard"

@@ -78,6 +78,7 @@ class LoginJWT extends React.Component {
           this.setState({ ad_token: response.data.token });
           swal(response.data.msg);
           localStorage.setItem("ad-token", response.data.token);
+          localStorage.setItem("userId", response.data.data._id);
           window.location.replace("/#/");
         } else if (response.data.status === 204) {
           swal(response.data.msg);

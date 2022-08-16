@@ -10,6 +10,7 @@ import {
 import axios from "axios";
 import * as Icon from "react-feather";
 import { Route } from "react-router-dom";
+import axiosConfig from "../../../axiosConfig";
 
 const handleNavigation = (e, path) => {
   e.preventDefault();
@@ -20,11 +21,24 @@ const handleNavigation = (e, path) => {
 const NavbarUser = () => {
   const [adminimg, setAdminimg] = useState([]);
   // console.log(notifications);
+
+  const tokenVerify = () => {
+    let data = localStorage.getItem("ad-token");
+    console.log('token data',data)
+    sessionStorage.clear();
+    if (data === undefined || data === null) {
+       window.location.replace("/#/pages/login");
+    }
+  }
+
   useEffect(() => {
+    tokenVerify();
     async function getNotifications() {
       try {
-        const data = await axios.get(
-          "http://65.0.183.149:8000/admin/viewoneadmin/62e125db337df218d9c152f9"
+        //axiosConfig.get(`/dlt_startup/${id}`)
+        let userId = localStorage.getItem("userId");
+        const data = await axiosConfig.get(
+          `/viewoneadmin/${userId}`  
         );
         console.log(data.data.data);
         setAdminimg(data.data.data);
@@ -72,7 +86,7 @@ const NavbarUser = () => {
               <DropdownItem
                 tag="a"
                 onClick={(e) => {
-                  localStorage.removeItem("auth");
+                  localStorage.removeItem("ad-token");
                   window.location.replace("/#/pages/login");
                 }}
               >

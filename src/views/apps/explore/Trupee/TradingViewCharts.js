@@ -35,6 +35,16 @@ class TradingViewCharts extends React.Component {
 
     columnDefs: [
       {
+        headerName: "S.No",
+        valueGetter: "node.rowIndex + 1",
+        field: "node.rowIndex + 1",
+        width: 150,
+        // filter: true,
+        // checkboxSelection: true,
+        // headerCheckboxSelectionFilteredOnly: true,
+        // headerCheckboxSelection: true,
+      },
+      {
         headerName: "Charts",
         field: "chart_type",
         // filter: true,
