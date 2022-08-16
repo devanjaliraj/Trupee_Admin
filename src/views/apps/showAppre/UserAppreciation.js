@@ -43,15 +43,17 @@ class UserAppreciation extends React.Component {
         // headerCheckboxSelectionFilteredOnly: true,
         // headerCheckboxSelection: true,
       },
-      {
+     
+          {
         headerName: "User Name",
-        field: "fullname",
-        width: 180,
+        field: "firstname",
+        // filter: true,
+        width: 120,
         // pinned: window.innerWidth > 992 ? "left" : false,
         cellRendererFramework: (params) => {
           return (
             <div className="d-flex align-items-center cursor-pointer">
-              <span>{params.data.userid.fullname}</span>
+              <span>{params.data.userid?.firstname}</span>
             </div>
           );
         },
@@ -63,7 +65,7 @@ class UserAppreciation extends React.Component {
         cellRendererFramework: (params) => {
           return (
             <div className="d-flex align-items-center cursor-pointer">
-              <span>{params.data.userid.mobile}</span>
+              <span>{params.data.userid?.mobile}</span>
             </div>
           );
         },

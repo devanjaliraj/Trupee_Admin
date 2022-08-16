@@ -46,7 +46,7 @@ class CashEquityList extends React.Component {
       {
         headerName: "Script Name",
         field: "scriptName",
-        width: 220,
+        width: 200,
         cellRendererFramework: (params) => {
           return (
             <div className="d-flex align-items-center cursor-pointer">

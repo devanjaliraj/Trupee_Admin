@@ -14,7 +14,7 @@ import {
 import axiosConfig from "../../../axiosConfig";
 import { ContextLayout } from "../../../utility/context/Layout";
 import { AgGridReact } from "ag-grid-react";
-import { Eye, Edit, Trash2, ChevronDown } from "react-feather";
+import {  Edit, Trash2, ChevronDown } from "react-feather";
 import "../../../assets/scss/plugins/tables/_agGridStyleOverride.scss";
 import "../../../assets/scss/pages/users.scss";
 import { Route } from "react-router-dom";
@@ -37,17 +37,16 @@ class FnoOptionList extends React.Component {
         headerName: "S.No",
         valueGetter: "node.rowIndex + 1",
         field: "node.rowIndex + 1",
-        width: 200,
+        width: 100,
         filter: true,
         // checkboxSelection: true,
         // headerCheckboxSelectionFilteredOnly: true,
         // headerCheckboxSelection: true,
       },
-
       {
         headerName: "Script Name",
         field: "scriptName",
-        width: 300,
+        width: 200,
         cellRendererFramework: (params) => {
           return (
             <div className="d-flex align-items-center cursor-pointer">
@@ -56,8 +55,6 @@ class FnoOptionList extends React.Component {
           );
         },
       },
-      
-     
       {
         headerName: "Status",
         field: "status",
@@ -75,7 +72,6 @@ class FnoOptionList extends React.Component {
           ) : null;
         },
       },
-
       {
         headerName: "Actions",
         field: "sortorder",

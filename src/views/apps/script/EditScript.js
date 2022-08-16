@@ -1,21 +1,18 @@
 import React, { Component } from "react";
 import {
   Card,
-  CardHeader,
-  CardTitle,
   CardBody,
   Row,
   Col,
   Form,
   Label,
   Input,
-  CustomInput,
   Button,
   Breadcrumb,
   BreadcrumbItem,
 } from "reactstrap";
 import axiosConfig from "../../../axiosConfig";
-import { history } from "../../../history";
+// import { history } from "../../../history";
 import { Route } from "react-router-dom";
 import swal from "sweetalert";
 export default class EditScript extends Component {

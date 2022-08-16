@@ -43,121 +43,58 @@ class ShowAppreciation extends React.Component {
         // headerCheckboxSelectionFilteredOnly: true,
         // headerCheckboxSelection: true,
       },
-      {
-        headerName: "Title",
-        field: "dealer_name",
-        width: 180,
-        // pinned: window.innerWidth > 992 ? "left" : false,
-        cellRendererFramework: (params) => {
-          return (
-            <div className="d-flex align-items-center cursor-pointer">
-              <span>{params.data.dealer_name}</span>
-            </div>
-          );
-        },
-      },
-      {
-        headerName: "Descriprion",
-        field: "mobile",
-        width: 180,
-        cellRendererFramework: (params) => {
-          return (
-            <div className="d-flex align-items-center cursor-pointer">
-              <span>{params.data.mobile}</span>
-            </div>
-          );
-        },
-      },
-      //   {
-      //     headerName: "Date/Time",
-      //     field: "first_name",
-      //     width: 180,
-      //     cellRendererFramework: (params) => {
-      //       return (
-      //         <div className="d-flex align-items-center cursor-pointer">
-      //           <span>{params.data.master_oil_company?.name}</span>
-      //         </div>
-      //       );
-      //     },
+      // {
+      //   headerName: "User Name",
+      //   field: "firstname",
+      //   // filter: true,
+      //   width: 120,
+      //   // pinned: window.innerWidth > 992 ? "left" : false,
+      //   cellRendererFramework: (params) => {
+      //     return (
+      //       <div className="d-flex align-items-center cursor-pointer">
+      //         <span>{params.data.userid?.firstname}</span>
+      //       </div>
+      //     );
       //   },
-      //   {
-      //     headerName: "Email",
-      //     field: "email",
-      //     width: 180,
-      //     cellRendererFramework: (params) => {
-      //       return (
-      //         <div className="d-flex align-items-center cursor-pointer">
-      //           <span>{params.data.email}</span>
-      //         </div>
-      //       );
-      //     },
+      // },
+      // {
+      //   headerName: "Mobile",
+      //   field: "mobile",
+      //   width: 180,
+      //   cellRendererFramework: (params) => {
+      //     return (
+      //       <div className="d-flex align-items-center cursor-pointer">
+      //         <span>{params.data.userid?.mobile}</span>
+      //       </div>
+      //     );
       //   },
+      // },
+        {
+          headerName: "Date/Time",
+          field: "createdAt",
+          width: 180,
+          cellRendererFramework: (params) => {
+            return (
+              <div className="d-flex align-items-center cursor-pointer">
+                <span>{params.data.createdAt}</span>
+              </div>
+            );
+          },
+        },
 
-      {
-        headerName: "Image",
-        field: "state",
-        width: 180,
-        cellRendererFramework: (params) => {
-          return (
-            <div className="d-flex align-items-center cursor-pointer">
-              <span>{params.data.state}</span>
-            </div>
-          );
+        {
+          headerName: "Donate",
+          field: "amt",
+          width: 180,
+          cellRendererFramework: (params) => {
+            return (
+              <div className="d-flex align-items-center cursor-pointer">
+                <span>{params.data.amt}</span>
+              </div>
+            );
+          },
         },
-      },
-      //   {
-      //     headerName: "City",
-      //     field: "district",
-      //     width: 180,
-      //     cellRendererFramework: (params) => {
-      //       return (
-      //         <div className="d-flex align-items-center cursor-pointer">
-      //           <span>{params.data.district}</span>
-      //         </div>
-      //       );
-      //     },
-      //   },
-      //   {
-      //     headerName: "Start Date",
-      //     field: "district",
-      //     width: 180,
-      //     cellRendererFramework: (params) => {
-      //       return (
-      //         <div className="d-flex align-items-center cursor-pointer">
-      //           <span>{params.data.district}</span>
-      //         </div>
-      //       );
-      //     },
-      //   },
-      //   {
-      //     headerName: "Expiry Date",
-      //     field: "district",
-      //     width: 180,
-      //     cellRendererFramework: (params) => {
-      //       return (
-      //         <div className="d-flex align-items-center cursor-pointer">
-      //           <span>{params.data.district}</span>
-      //         </div>
-      //       );
-      //     },
-      //   },
-      //   // {
-      //   //   headerName: "Status",
-      //   //   field: "userverified",
-      //   //   // filter: true,
-      //   //   width: 150,
-      //   //   cellRendererFramework: (params) => {
-      //   //     return params.value === "Active" ? (
-      //   //       <div className="badge badge-pill badge-success">
-      //   //         {params.data.userverified}
-      //   //       </div>
-      //   //     ) : params.value === "Inactive" ? (
-      //   //       <div className="badge badge-pill badge-warning">
-      //   //         {params.data.userverified}
-      //   //       </div>
-      //   //     ) : null;
-      //   //   },
-      //   // },
+
       {
         headerName: "Actions",
         field: "sortorder",
@@ -196,15 +133,15 @@ class ShowAppreciation extends React.Component {
     ],
   };
   async componentDidMount() {
-    await axios.get("api/users/list").then((response) => {
-      let rowData = response.data;
+    await axiosConfig.get("/appriciation_list").then((response) => {
+      let rowData = response.data.data;
       this.setState({ rowData });
     });
   }
   async runthisfunction(id) {
     console.log(id);
     await axiosConfig
-      .get(`/dealer/deletedealershipform/${id}`)
+      .get(`/dlt_appriciation/${id}`)
       .then((response) => {
         console.log(response);
       });

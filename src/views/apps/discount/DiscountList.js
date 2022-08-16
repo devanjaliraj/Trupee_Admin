@@ -38,7 +38,7 @@ class DiscountList extends React.Component {
         headerName: "S.No",
         valueGetter: "node.rowIndex + 1",
         field: "node.rowIndex + 1",
-        width: 150,
+        width: 120,
         filter: true,
         // checkboxSelection: true,
         // headerCheckboxSelectionFilteredOnly: true,
@@ -48,7 +48,7 @@ class DiscountList extends React.Component {
         headerName: "Title",
         field: "title",
         // filter: true,
-        width: 150,
+        width: 120,
         // pinned: window.innerWidth > 992 ? "left" : false,
         cellRendererFramework: (params) => {
           return (
@@ -63,7 +63,7 @@ class DiscountList extends React.Component {
         headerName: "User Name",
         field: "firstname",
         // filter: true,
-        width: 150,
+        width: 120,
         // pinned: window.innerWidth > 992 ? "left" : false,
         cellRendererFramework: (params) => {
           return (
@@ -77,7 +77,7 @@ class DiscountList extends React.Component {
         headerName: "FLAT/Percentage",
         field: "dis_type",
         // filter: true,
-        width: 150,
+        width: 120,
         // pinned: window.innerWidth > 992 ? "left" : false,
         cellRendererFramework: (params) => {
           return (
@@ -91,7 +91,7 @@ class DiscountList extends React.Component {
         headerName: "Discount Amount",
         field: "dis_amt",
         // filter: true,
-        width: 150,
+        width: 120,
         // pinned: window.innerWidth > 992 ? "left" : false,
         cellRendererFramework: (params) => {
           return (
@@ -105,7 +105,7 @@ class DiscountList extends React.Component {
         headerName: "Membership Plan",
         field: "pack_name",
         // filter: true,
-        width: 150,
+        width: 120,
         // pinned: window.innerWidth > 992 ? "left" : false,
         cellRendererFramework: (params) => {
           return (
@@ -120,7 +120,7 @@ class DiscountList extends React.Component {
         headerName: "Discount Code",
         field: "code",
         // filter: true,
-        width: 200,
+        width: 120,
         // pinned: window.innerWidth > 992 ? "left" : false,
         cellRendererFramework: (params) => {
           return (
@@ -134,7 +134,7 @@ class DiscountList extends React.Component {
         headerName: "Start Date",
         field: "startdate",
         // filter: true,
-        width: 200,
+        width: 120,
         // pinned: window.innerWidth > 992 ? "left" : false,
         cellRendererFramework: (params) => {
           return (
@@ -148,7 +148,7 @@ class DiscountList extends React.Component {
         headerName: "Exp. Date",
         field: "expdate",
         // filter: true,
-        width: 200,
+        width: 120,
         // pinned: window.innerWidth > 992 ? "left" : false,
         cellRendererFramework: (params) => {
           return (
@@ -162,7 +162,7 @@ class DiscountList extends React.Component {
       {
         headerName: "Actions",
         field: "sortorder",
-        width: 200,
+        width: 120,
         // pinned: window.innerWidth > 992 ? "right" : false,
         cellRendererFramework: (params) => {
           return (

@@ -37,7 +37,7 @@ class FnIndex extends React.Component {
         headerName: "S.No",
         valueGetter: "node.rowIndex + 1",
         field: "node.rowIndex + 1",
-        width: 200,
+        width: 100,
         filter: true,
         // checkboxSelection: true,
         // headerCheckboxSelectionFilteredOnly: true,
@@ -47,7 +47,7 @@ class FnIndex extends React.Component {
       {
         headerName: "Script Name",
         field: "scriptName",
-        width: 300,
+        width: 200,
         cellRendererFramework: (params) => {
           return (
             <div className="d-flex align-items-center cursor-pointer">

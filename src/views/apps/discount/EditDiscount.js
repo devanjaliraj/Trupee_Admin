@@ -4,7 +4,6 @@ import {
   CardBody,
   Row,
   Col,
-  //FormGroup,
   CustomInput,
   Form,
   Label,
@@ -66,7 +65,7 @@ class EditDiscount extends React.Component {
         console.log(response);
         this.setState({
           // scriptT: response.data.data,
-          planN: response.data.planN,
+          planN: response.data.data,
         });
       })
       .catch((error) => {
@@ -75,7 +74,7 @@ class EditDiscount extends React.Component {
   
      //User//
      axiosConfig
-     .get("/getCashScript")
+     .get("/getuser")
      .then((response) => {
        console.log(response);
        this.setState({
@@ -87,24 +86,10 @@ class EditDiscount extends React.Component {
        console.log(error);
      });
  }
-  // changeHandler1 = (e) => {
-  //   this.setState({ status: e.target.value });
-  // };
   changeHandler1 = (e) => {
-    this.setState({ sl_type: e.target.value });
+    this.setState({ status: e.target.value });
   };
-  changeHandler2 = (e) => {
-    this.setState({ t1_type: e.target.value });
-  };
-  changeHandler3 = (e) => {
-    this.setState({ t2_type: e.target.value });
-  };
-  changeHandler4 = (e) => {
-    this.setState({ t3_type: e.target.value });
-  };
-  changeHandler5 = (e) => {
-    this.setState({ t4_type: e.target.value });
-  };
+
 
   changeHandler = (e) => {
     this.setState({ [e.target.name]: e.target.value });
@@ -234,16 +219,16 @@ class EditDiscount extends React.Component {
                   </CustomInput>
                 </Col> */}
                 <Col lg="6" md="6" sm="6" className="mb-2">
-                  <Label>Script Name</Label>
+                  <Label>User Name</Label>
                   <CustomInput
                     type="select"
-                    name="scriptName"
-                    value={this.state.scriptName}
+                    name="userid"
+                    value={this.state.userid}
                     onChange={this.changeHandler}
                   >
-                    {this.state.scriptN?.map((allScript) => (
-                      <option value={allScript?._id} key={allScript?._id}>
-                        {allScript?.scriptName}
+                    {this.state.userN?.map((allUser) => (
+                      <option value={allUser?._id} key={allUser?._id}>
+                        {allUser?.firstname}
                       </option>
                     ))}
                   </CustomInput>
