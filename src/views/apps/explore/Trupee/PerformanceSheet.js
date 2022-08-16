@@ -35,60 +35,60 @@ class PerformanceSheet extends React.Component {
     columnDefs: [
       {
         headerName: "Month",
-        field: "desc",
+        field: "month",
         // filter: true,
         width: 250,
         // pinned: window.innerWidth > 992 ? "left" : false,
         cellRendererFramework: (params) => {
           return (
             <div className="d-flex align-items-center cursor-pointer">
-              <span>{params.data.desc}</span>
+              <span>{params.data.month}</span>
             </div>
           );
         },
       },
       {
         headerName: "Year",
-        field: "desc",
+        field: "year",
         // filter: true,
         width: 250,
         // pinned: window.innerWidth > 992 ? "left" : false,
         cellRendererFramework: (params) => {
           return (
             <div className="d-flex align-items-center cursor-pointer">
-              <span>{params.data.desc}</span>
+              <span>{params.data.year}</span>
             </div>
           );
         },
       },
       {
         headerName: "Plan Price",
-        field: "desc",
+        field: "plan_price",
         // filter: true,
         width: 250,
         // pinned: window.innerWidth > 992 ? "left" : false,
         cellRendererFramework: (params) => {
           return (
             <div className="d-flex align-items-center cursor-pointer">
-              <span>{params.data.desc}</span>
+              <span>{params.data.plan_price}</span>
             </div>
           );
         },
       },
-      {
-        headerName: "Free Paid",
-        field: "desc",
-        // filter: true,
-        width: 250,
-        // pinned: window.innerWidth > 992 ? "left" : false,
-        cellRendererFramework: (params) => {
-          return (
-            <div className="d-flex align-items-center cursor-pointer">
-              <span>{params.data.desc}</span>
-            </div>
-          );
-        },
-      },
+      // {
+      //   headerName: "Free Paid",
+      //   field: "desc",
+      //   // filter: true,
+      //   width: 250,
+      //   // pinned: window.innerWidth > 992 ? "left" : false,
+      //   cellRendererFramework: (params) => {
+      //     return (
+      //       <div className="d-flex align-items-center cursor-pointer">
+      //         <span>{params.data.desc}</span>
+      //       </div>
+      //     );
+      //   },
+      // },
       // {
       //   headerName: "Start Date",
       //   field: "desc",
@@ -117,23 +117,23 @@ class PerformanceSheet extends React.Component {
       //     );
       //   },
       // },
-      {
-        headerName: "Status",
-        field: "completed",
-        // filter: completed,
-        width: 200,
-        cellRendererFramework: (params) => {
-          return params.value === "Active" ? (
-            <div className="badge badge-pill badge-success">
-              {params.data.completed}
-            </div>
-          ) : params.value === "Inactive" ? (
-            <div className="badge badge-pill badge-warning">
-              {params.data.completed}
-            </div>
-          ) : null;
-        },
-      },
+      // {
+      //   headerName: "Status",
+      //   field: "completed",
+      //   // filter: completed,
+      //   width: 200,
+      //   cellRendererFramework: (params) => {
+      //     return params.value === "Active" ? (
+      //       <div className="badge badge-pill badge-success">
+      //         {params.data.completed}
+      //       </div>
+      //     ) : params.value === "Inactive" ? (
+      //       <div className="badge badge-pill badge-warning">
+      //         {params.data.completed}
+      //       </div>
+      //     ) : null;
+      //   },
+      // },
       {
         headerName: "Actions",
         field: "sortorder",
@@ -149,10 +149,7 @@ class PerformanceSheet extends React.Component {
                     size="25px"
                     color="blue"
                     onClick={() =>
-                      history.push(
-                        
-                        `/app/about/EditAboutUs/${params.data._id}`
-                      )
+                      history.push(`/app/about/EditAboutUs/${params.data._id}`)
                     }
                   />
                 )}
@@ -176,7 +173,7 @@ class PerformanceSheet extends React.Component {
   };
   componentDidMount() {
     axiosConfig
-      .get(`/admin/allnotification`)
+      .get(`/getPerSheet`)
       .then((response) => {
         let rowData = response.data.data;
         JSON.stringify(rowData);
@@ -188,11 +185,9 @@ class PerformanceSheet extends React.Component {
   }
   async runthisfunction(id) {
     console.log(id);
-    await axiosConfig
-      .get(`/admin/deletenotification/${id}`)
-      .then((response) => {
-        console.log(response);
-      });
+    await axiosConfig.get(`/dltPerSheet/${id}`).then((response) => {
+      console.log(response);
+    });
   }
 
   onGridReady = (params) => {
@@ -234,20 +229,18 @@ class PerformanceSheet extends React.Component {
                 Performance Sheet List
               </h1>
             </Col>
-            {/* <Col>
+            <Col>
               <Route
                 render={({ history }) => (
                   <Button
                     className=" btn btn-danger float-right"
-                    onClick={() =>
-                      history.push("/app/notification/Addnotification")
-                    }
+                    onClick={() => history.push("/app/explore/Trupee/addPS")}
                   >
-                    Add Notification
+                    Add
                   </Button>
                 )}
               />
-            </Col> */}
+            </Col>
           </Row>
           <CardBody className="py-0">
             {this.state.rowData === null ? null : (

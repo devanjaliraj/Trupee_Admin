@@ -68,7 +68,9 @@ class DiscountList extends React.Component {
         cellRendererFramework: (params) => {
           return (
             <div className="d-flex align-items-center cursor-pointer">
-              <span>{params.data.userid?.firstname}</span>
+              <span>
+                {params.data.userid?.firstname} {params.data.userid?.lastname}
+              </span>
             </div>
           );
         },
@@ -115,7 +117,7 @@ class DiscountList extends React.Component {
           );
         },
       },
-      
+
       {
         headerName: "Discount Code",
         field: "code",

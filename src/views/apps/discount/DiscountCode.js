@@ -20,17 +20,15 @@ class EditDiscount extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-        title: "",
-        dis_type: "",
-        dis_amt: "",
-        plan: "",
-        userid: "",
-        startdate: "",
-        expdate:""
-
+      title: "",
+      dis_type: "",
+      dis_amt: "",
+      plan: "",
+      userid: "",
+      startdate: "",
+      expdate: "",
     };
     this.state = {
-      
       planN: [],
       userN: [],
     };
@@ -60,7 +58,7 @@ class EditDiscount extends React.Component {
     //   });
     //plan//
     axiosConfig
-      .get("/allmembership")
+      .get("/plan_list")
       .then((response) => {
         console.log(response);
         this.setState({
@@ -71,25 +69,24 @@ class EditDiscount extends React.Component {
       .catch((error) => {
         console.log(error);
       });
-  
-     //User//
-     axiosConfig
-     .get("/getuser")
-     .then((response) => {
-       console.log(response);
-       this.setState({
-         // scriptT: response.data.data, pack_name
-         userN: response.data.data,
-       });
-     })
-     .catch((error) => {
-       console.log(error);
-     });
- }
+
+    //User//
+    axiosConfig
+      .get("/getuser")
+      .then((response) => {
+        console.log(response);
+        this.setState({
+          // scriptT: response.data.data, pack_name
+          userN: response.data.data,
+        });
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }
   changeHandler1 = (e) => {
     this.setState({ status: e.target.value });
   };
-
 
   changeHandler = (e) => {
     this.setState({ [e.target.name]: e.target.value });
@@ -116,15 +113,15 @@ class EditDiscount extends React.Component {
     return (
       <div>
         <Breadcrumbs
-          breadCrumbTitle="Equity Cash"
+          breadCrumbTitle="Discount Code"
           breadCrumbParent="Home"
-          breadCrumbActive="Edit Equity Cash"
+          breadCrumbActive="Add Discount Code"
         />
         <Card>
           <Row className="m-2">
             <Col>
               <h1 col-sm-6 className="float-left">
-                Edit Equity Cash
+                Add Discount Code
               </h1>
             </Col>
             <Col>
@@ -132,7 +129,7 @@ class EditDiscount extends React.Component {
                 render={({ history }) => (
                   <Button
                     className=" btn btn-danger float-right"
-                    onClick={() => history.push("/app/trade/equityCashList")}
+                    onClick={() => history.push("/app/discount/discountList")}
                   >
                     Back
                   </Button>
@@ -143,8 +140,6 @@ class EditDiscount extends React.Component {
           <CardBody>
             <Form className="m-1" onSubmit={this.submitHandler}>
               <Row className="mb-2">
-             
-               
                 <Col lg="6" md="6" className="mb-2">
                   <Label>Title</Label>
                   <Input
@@ -154,6 +149,36 @@ class EditDiscount extends React.Component {
                     value={this.state.title}
                     onChange={this.changeHandler}
                   />
+                </Col>
+                <Col lg="6" md="6" sm="6" className="mb-2">
+                  <Label>User Name</Label>
+                  <CustomInput
+                    type="select"
+                    name="userid"
+                    value={this.state.userid}
+                    onChange={this.changeHandler}
+                  >
+                    {this.state.userN?.map((allUser) => (
+                      <option value={allUser?._id} key={allUser?._id}>
+                        {allUser?.firstname}
+                      </option>
+                    ))}
+                  </CustomInput>
+                </Col>
+                <Col lg="6" md="6" sm="6" className="mb-2">
+                  <Label>Membership Plan</Label>
+                  <CustomInput
+                    type="select"
+                    name="pack_name"
+                    value={this.state.pack_name}
+                    onChange={this.changeHandler}
+                  >
+                    {this.state.planN?.map((allPlan) => (
+                      <option value={allPlan?._id} key={allPlan?._id}>
+                        {allPlan?.pack_name}
+                      </option>
+                    ))}
+                  </CustomInput>
                 </Col>
                 <Col lg="6" md="6" className="mb-2">
                   <div>
@@ -176,6 +201,7 @@ class EditDiscount extends React.Component {
                     />
                   </div>
                 </Col>
+
                 {/* <Col lg="6" md="6" className="mb-2">
                   <Label>Discount Code</Label>
                   <Input readOnly type="text" placeholder="code" />
@@ -200,112 +226,6 @@ class EditDiscount extends React.Component {
                     onChange={this.changeHandler}
                   />
                 </Col>
-            
-              
-          
-                {/* <Col lg="6" md="6" sm="6" className="mb-2">
-                  <Label>Script</Label>
-                  <CustomInput
-                    type="select"
-                    name="script_type"
-                    value={this.state.script_type}
-                    onChange={this.changeHandler}
-                  >
-                    {this.state.scriptT?.map((allScript) => (
-                      <option value={allScript?._id} key={allScript?._id}>
-                        {allScript?.script_type}
-                      </option>
-                    ))}
-                  </CustomInput>
-                </Col> */}
-                <Col lg="6" md="6" sm="6" className="mb-2">
-                  <Label>User Name</Label>
-                  <CustomInput
-                    type="select"
-                    name="userid"
-                    value={this.state.userid}
-                    onChange={this.changeHandler}
-                  >
-                    {this.state.userN?.map((allUser) => (
-                      <option value={allUser?._id} key={allUser?._id}>
-                        {allUser?.firstname}
-                      </option>
-                    ))}
-                  </CustomInput>
-                </Col>
-                {/* <Col lg="6" md="6" className="mb-2">
-                  <Label for="exampleSelect">Equity Script</Label>
-                  <Input
-                    id="exampleSelect"
-                    name="equity_script"
-                    type="select"
-                    value={this.state.equity_script}
-                    onChange={this.changeHandler}
-                  >
-                    <option>Select Script</option>
-                    <option>CE</option>
-                    <option>PF</option>
-                    <option>BUY</option>
-                    <option>SELL</option>
-                  </Input>
-                </Col>
-              
-                
-                <Col lg="6" md="6" className="mb-2">
-                  <div>
-                    <Label>P&L</Label>
-                    <Input
-                      type="select"
-                      name="pl_type"
-                      value={this.state.pl_type}
-                      onChange={this.changeHandler}
-                    >
-                      <option value="Option 1">Select Option</option>
-                      <option value="Option 2">Profit</option>
-                      <option value="Option 3">Loss</option>
-                    </Input>
-                    <Input
-                      type="text"
-                      name="profit_loss"
-                      value={this.state.profit_loss}
-                      onChange={this.changeHandler}
-                    />
-                  </div>
-                </Col>
-                <Col lg="6" md="6" className="mb-2">
-                  <Label>Active Value</Label>
-                  <Input
-                    type="text"
-                    placeholder="Enter Active Value"
-                    name="active_value"
-                    value={this.state.active_value}
-                    onChange={this.changeHandler}
-                  />
-                </Col>
-        
-                <Col lg="3" md="3" sm="3" className="mb-3 mt-1">
-                  <Label className="mb-1">T4</Label>
-                  <div
-                    className="form-label-group"
-                    onChange={(e) => this.changeHandler5(e)}
-                  >
-                    <input
-                      style={{ marginRight: "3px" }}
-                      type="radio"
-                      name="t4_type"
-                      value="true"
-                    />
-                    <span style={{ marginRight: "20px" }}>True</span>
-                    <input
-                      style={{ marginRight: "3px" }}
-                      type="radio"
-                      name="t4_type"
-                      value="false"
-                    />
-
-                    <span style={{ marginRight: "3px" }}>False</span>
-                  </div>
-                </Col> */}
               </Row>
 
               <Row>
@@ -315,7 +235,7 @@ class EditDiscount extends React.Component {
                     type="submit"
                     className="mr-1 mb-1"
                   >
-                    Update Equity Cash
+                    Add
                   </Button.Ripple>
                 </Col>
               </Row>
@@ -328,223 +248,3 @@ class EditDiscount extends React.Component {
 }
 
 export default EditDiscount;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// import React, { Component } from "react";
-// import {
-//   Card,
-//   CardBody,
-//   Col,
-//   Form,
-//   Row,
-//   Input,
-//   Label,
-//   Button,
-//   AccordionToggle,
-//   // FormGroup,
-//   // CustomInput,
-// } from "reactstrap";
-// import { Route } from "react-router-dom";
-// import Select from "react-select";
-// // import { history } from "../../../history";
-// // import axiosConfig from "../../../../axiosConfig";
-// // import swal from "sweetalert";
-// import axiosConfig from "../../../axiosConfig";
-// import { Accordion } from "react-bootstrap-accordion";
-
-// const dealerName = [];
-
-// export class DiscountCode extends Component {
-//   constructor(props) {
-//     super(props);
-//     this.state = {
-//       title: "",
-//       flat_price: "",
-//       percentage: "",
-//       startdate: "",
-//       expdate: "",
-//     };
-//   }
-
-//   async componentDidMount() {
-//     axiosConfig
-//       .get("/dealer/alldealers")
-//       .then((response) => {
-//         console.log(response);
-//         //this.setState({ dealerN: response.data.data });
-
-//         // eslint-disable-next-line no-unused-expressions
-//         response.data?.data?.map((dealerp) => {
-//           let obj = {
-//             label: dealerp.dealer_name,
-//             value: dealerp._id,
-//           };
-//           dealerName.push(obj);
-//         });
-//       })
-//       .catch((error) => {
-//         console.log(error);
-//       });
-//   }
-
-//   handleChange = (dealer) => {
-//     this.setState({ dealer }, () =>
-//       console.log(`Option selected:`, this.state.dealer)
-//     );
-//   };
-
-//   changeHandler = (e) => {
-//     this.setState({ [e.target.name]: e.target.value });
-//   };
-//   submitHandler = (e) => {
-//     e.preventDefault();
-
-//     axiosConfig
-//       .post(
-//         "/add_discount",
-//         this.state
-//         // {
-//         //   headers: {
-//         //     "auth-adtoken": localStorage.getItem("auth-adtoken"),
-//         //   },
-//         // }
-//       )
-//       .then((response) => {
-//         console.log(response);
-//         // swal("Success!", "Submitted SuccessFull!", "success");
-//         this.props.history.push("/app/discount/discountList");
-//       })
-//       .catch((error) => {
-//         console.log(error);
-//       });
-//   };
-//   render() {
-//     return (
-//       <div>
-//         <Card>
-//           <Row className="m-2">
-//             <Col>
-//               <h1 col-sm-6 className="float-left">
-//                 Add Discount Code
-//               </h1>
-//             </Col>
-//             <Col>
-//               <Route
-//                 render={({ history }) => (
-//                   <Button
-//                     className=" btn btn-danger float-right"
-//                     onClick={() => history.push("app/discount/discountList")}
-//                   >
-//                     Back
-//                   </Button>
-//                 )}
-//               />
-//             </Col>
-//           </Row>
-//           <CardBody>
-//             <Form className="m-1" onSubmit={this.submitHandler}>
-//               <Row className="mb-2">
-//                 {/* <Col lg="6" md="6" className="mb-2">
-//                   <Label>User ID</Label>
-//                   <Input
-//                     type="text"
-//                     placeholder="Enter User Id"
-//                     // name="desc"
-//                     // value={this.state.desc}
-//                     // onChange={this.changeHandler}
-//                   />
-//                 </Col> */}
-
-//                 {/* <Col lg="6" md="6" className="mb-2">
-//                   <Label for="exampleSelect">Code</Label>
-//                   <Input id="exampleSelect" name="select" type="select">
-//                     <option>Select Option</option>
-//                     <option>FALT </option>
-//                     <option>Percentage</option>
-//                   </Input>
-//                 </Col> */}
-//                 <Col lg="6" md="6" className="mb-2">
-//                   <Label>Title</Label>
-//                   <Input
-//                     type="text"
-//                     placeholder="Title"
-//                     name="title"
-//                     value={this.state.title}
-//                     onChange={this.changeHandler}
-//                   />
-//                 </Col>
-//                 <Col lg="6" md="6" className="mb-2">
-//                   <Label>FALT</Label>
-//                   <Input
-//                     type="text"
-//                     placeholder="Enter MRP Price"
-//                     name="flat_price"
-//                     value={this.state.flat_price}
-//                     onChange={this.changeHandler}
-//                   />
-//                 </Col>
-//                 <Col lg="6" md="6" className="mb-2">
-//                   <Label>Percentage</Label>
-//                   <Input
-//                     type="text"
-//                     placeholder="Percentage"
-//                     name="percentage"
-//                     value={this.state.percentage}
-//                     onChange={this.changeHandler}
-//                   />
-//                 </Col>
-//                 {/* <Col lg="6" md="6" className="mb-2">
-//                   <Label>Discount Code</Label>
-//                   <Input readOnly type="text" placeholder="code" />
-//                 </Col> */}
-//                 <Col lg="6" md="6" className="mb-2">
-//                   <Label>Start Date</Label>
-//                   <Input
-//                     type="date"
-//                     placeholder="Enter Discount Price"
-//                     name=" startdate"
-//                     value={this.state.startdate}
-//                     onChange={this.changeHandler}
-//                   />
-//                 </Col>
-//                 <Col lg="6" md="6" className="mb-2">
-//                   <Label>Expiry Date</Label>
-//                   <Input
-//                     type="date"
-//                     placeholder="Enter Discount Price"
-//                     name=" expdate"
-//                     value={this.state.expdate}
-//                     onChange={this.changeHandler}
-//                   />
-//                 </Col>
-//               </Row>
-//               <Row>
-//                 <Button.Ripple
-//                   className="mr-1 mb-1"
-//                   type="submit"
-//                   color="primary"
-//                 >
-//                   Add Discount Code
-//                 </Button.Ripple>
-//               </Row>
-//             </Form>
-//           </CardBody>
-//         </Card>
-//       </div>
-//     );
-//   }
-// }
-// export default DiscountCode;

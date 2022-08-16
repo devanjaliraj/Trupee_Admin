@@ -39,20 +39,22 @@ class UsersList extends React.Component {
         headerName: "S.No",
         valueGetter: "node.rowIndex + 1",
         field: "node.rowIndex + 1",
-        width: 100,
+        width: 80,
         filter: true,
         // checkboxSelection: true,
         // headerCheckboxSelectionFilteredOnly: true,
         // headerCheckboxSelection: true,
       },
       {
-        headerName: "First Name",
-        field: "fullname",
-        width: 120,
+        headerName: "Name",
+        field: "firstname",
+        width: 140,
         cellRendererFramework: (params) => {
           return (
             <div className="d-flex align-items-center cursor-pointer">
-              <span>{params.data.userid.fullname}</span>
+              <span>
+                {params.data.firstname} {params.data.lastname}
+              </span>
             </div>
           );
         },
@@ -64,7 +66,7 @@ class UsersList extends React.Component {
         cellRendererFramework: (params) => {
           return (
             <div className="d-flex align-items-center cursor-pointer">
-              <span>{params.data.userid.mobile}</span>
+              <span>{params.data.mobile}</span>
             </div>
           );
         },
@@ -77,32 +79,32 @@ class UsersList extends React.Component {
         cellRendererFramework: (params) => {
           return (
             <div className="d-flex align-items-center cursor-pointer">
-              <span>{params.data.userid.email}</span>
+              <span>{params.data.email}</span>
             </div>
           );
         },
       },
 
       {
-        headerName: "Address",
-        field: "address",
+        headerName: "Gender",
+        field: "gender",
         width: 120,
         cellRendererFramework: (params) => {
           return (
             <div className="d-flex align-items-center cursor-pointer">
-              <span>{params.data.userid.address}</span>
+              <span>{params.data.gender}</span>
             </div>
           );
         },
       },
       {
-        headerName: "City",
-        field: "city",
+        headerName: "Date Of Birth",
+        field: "dob",
         width: 120,
         cellRendererFramework: (params) => {
           return (
             <div className="d-flex align-items-center cursor-pointer">
-              <span>{params.data.userid.city}</span>
+              <span>{params.data.dob}</span>
             </div>
           );
         },
@@ -114,7 +116,7 @@ class UsersList extends React.Component {
         cellRendererFramework: (params) => {
           return (
             <div className="d-flex align-items-center cursor-pointer">
-              <span>{params.data.planId.pack_name}</span>
+              <span>{params.data.planId?.pack_name}</span>
             </div>
           );
         },
@@ -213,14 +215,14 @@ class UsersList extends React.Component {
     ],
   };
   async componentDidMount() {
-    await axiosConfig.get("/allmembership").then((response) => {
+    await axiosConfig.get("/getuser").then((response) => {
       let rowData = response.data.data;
       this.setState({ rowData });
     });
   }
   async runthisfunction(id) {
     console.log(id);
-    await axiosConfig.get(`/dlt_membership/${id}`).then((response) => {
+    await axiosConfig.get(`/deletuser/${id}`).then((response) => {
       console.log(response);
     });
   }

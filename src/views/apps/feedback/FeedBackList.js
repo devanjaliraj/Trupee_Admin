@@ -334,29 +334,29 @@ class FeedBackList extends React.Component {
 
     columnDefs: [
       {
-        headerName: "Descripiton",
-        field: "desc",
-
-        width: 220,
-        // pinned: window.innerWidth > 992 ? "left" : false,
-        cellRendererFramework: (params) => {
-          return (
-            <div className="d-flex align-items-center cursor-pointer">
-              <span>{params.data.desc}</span>
-            </div>
-          );
-        },
+        headerName: "S.No",
+        valueGetter: "node.rowIndex + 1",
+        field: "node.rowIndex + 1",
+        width: 80,
+        filter: true,
+        // checkboxSelection: true,
+        // headerCheckboxSelectionFilteredOnly: true,
+        // headerCheckboxSelection: true,
       },
+
       {
         headerName: "User Name",
-        field: "fullname",
+        field: "firstname",
 
         width: 220,
 
         cellRendererFramework: (params) => {
           return (
             <div className="d-flex align-items-center cursor-pointer">
-              <span>{params.data.userid.fullname}</span>
+              <span>
+                {" "}
+                {params.data.userid?.firstname} {params.data.userid?.lastname}
+              </span>
             </div>
           );
         },
@@ -370,7 +370,7 @@ class FeedBackList extends React.Component {
         cellRendererFramework: (params) => {
           return (
             <div className="d-flex align-items-center cursor-pointer">
-              <span>{params.data.userid.mobile}</span>
+              <span>{params.data.userid?.mobile}</span>
             </div>
           );
         },
@@ -384,7 +384,21 @@ class FeedBackList extends React.Component {
         cellRendererFramework: (params) => {
           return (
             <div className="d-flex align-items-center cursor-pointer">
-              <span>{params.data.script_type.script_type}</span>
+              <span>{params.data.script_type?.script_type}</span>
+            </div>
+          );
+        },
+      },
+      {
+        headerName: "Descripiton",
+        field: "desc",
+
+        width: 220,
+        // pinned: window.innerWidth > 992 ? "left" : false,
+        cellRendererFramework: (params) => {
+          return (
+            <div className="d-flex align-items-center cursor-pointer">
+              <span>{params.data.desc}</span>
             </div>
           );
         },
@@ -433,9 +447,9 @@ class FeedBackList extends React.Component {
   async componentDidMount() {
     await axiosConfig
       .get("/getFeedback", {
-        headers: {
-          "auth-adtoken": localStorage.getItem("auth-adtoken"),
-        },
+        // headers: {
+        //   "auth-adtoken": localStorage.getItem("auth-adtoken"),
+        // },
       })
       .then((response) => {
         const rowData = response.data.data;

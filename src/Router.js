@@ -123,8 +123,12 @@ const EditFnoIndex = lazy(() => import("./views/apps/trade/EditFnoIndex"));
 const BankNiftyList = lazy(() => import("./views/apps/trade/BankNiftyList"));
 
 const NiftyList = lazy(() => import("./views/apps/trade/NiftyList"));
-const GeneralNotifList = lazy(() => import("./views/apps/trade/GeneralNotifList"));
-const AddGeneralNotif = lazy(() => import("./views/apps/trade/AddGeneralNotif"));
+const GeneralNotifList = lazy(() =>
+  import("./views/apps/trade/GeneralNotifList")
+);
+const AddGeneralNotif = lazy(() =>
+  import("./views/apps/trade/AddGeneralNotif")
+);
 //package//
 const PackagePlanList = lazy(() =>
   import("./views/apps/package/PackagePlanList")
@@ -191,15 +195,14 @@ const TradingViewCharts = lazy(() =>
 const PerformanceSheet = lazy(() =>
   import("./views/apps/explore/Trupee/PerformanceSheet")
 );
+const AddPS = lazy(() => import("./views/apps/explore/Trupee/AddPS"));
 const UserPerformanceSheet = lazy(() =>
   import("./views/apps/explore/Trupee/UserPerformanceSheet")
 );
 const Opportunity = lazy(() =>
   import("./views/apps/explore/Trupee/Opportunity")
 );
-const AddOppor = lazy(() =>
-  import("./views/apps/explore/Trupee/AddOppor")
-);
+const AddOppor = lazy(() => import("./views/apps/explore/Trupee/AddOppor"));
 const AddTVC = lazy(() => import("./views/apps/explore/Trupee/AddTVC"));
 const EditTVC = lazy(() => import("./views/apps/explore/Trupee/EditTVC"));
 
@@ -474,11 +477,11 @@ class AppRouter extends React.Component {
               path="/app/package/editPackagePlan/:id"
               component={EditPackagePlan}
             />
-             <AppRoute
+            <AppRoute
               path="/app/package/refferalWalletList"
               component={RefferalWalletList}
             />
-             <AppRoute
+            <AppRoute
               path="/app/package/addRefferalWallet"
               component={AddRefferalWallet}
             />
@@ -502,17 +505,25 @@ class AppRouter extends React.Component {
             {/* scripts */}
             <AppRoute path="/app/scripts/fnIndex" component={FnIndex} />
             <AppRoute path="/app/scripts/addFnIndex" component={AddFnIndex} />
-            <AppRoute path="/app/scripts/editFnIndex/:id" component={EditFnIndex} />
-
+            <AppRoute
+              path="/app/scripts/editFnIndex/:id"
+              component={EditFnIndex}
+            />
             <AppRoute path="/app/scripts/fnoOption" component={FnoOption} />
-            <AppRoute path="/app/scripts/addfnoOption" component={AddFnoOption} />
-            <AppRoute path="/app/scripts/editOption/:id" component={EditOption} />
-            
+            <AppRoute
+              path="/app/scripts/addfnoOption"
+              component={AddFnoOption}
+            />
+            <AppRoute
+              path="/app/scripts/editOption/:id"
+              component={EditOption}
+            />
             <AppRoute path="/app/scripts/cashEquity" component={CashEquity} />
-            <AppRoute path="/app/scripts/addCashEquity" component={AddCashEquity} />
-             <AppRoute path="/app/scripts/editCash/:id" component={EditCash} />
-
-
+            <AppRoute
+              path="/app/scripts/addCashEquity"
+              component={AddCashEquity}
+            />
+            <AppRoute path="/app/scripts/editCash/:id" component={EditCash} />
             {/* script */}
             <AppRoute path="/app/script/scriptList" component={ScriptList} />
             <AppRoute path="/app/script/addScript" component={AddScript} />
@@ -559,9 +570,14 @@ class AppRouter extends React.Component {
               component={BankNiftyList}
             />
             <AppRoute path="/app/trade/niftyList" component={NiftyList} />
-            <AppRoute path="/app/trade/generalNotifList" component={GeneralNotifList} /> 
-            <AppRoute path="/app/trade/addGeneralNotif" component={  AddGeneralNotif} />
-          
+            <AppRoute
+              path="/app/trade/generalNotifList"
+              component={GeneralNotifList}
+            />
+            <AppRoute
+              path="/app/trade/addGeneralNotif"
+              component={AddGeneralNotif}
+            />
             {/* setting */}
             <AppRoute path="/app/setting/enquiryForm" component={EnquiryForm} />
             <AppRoute
@@ -604,7 +620,7 @@ class AppRouter extends React.Component {
               path="/app/explore/Trupee/trupeeUnivercity"
               component={TrupeeUnivercity}
             />
-             <AppRoute
+            <AppRoute
               path="/app/explore/Trupee/addTrupeeUnivercity"
               component={AddTrupeeUnivercity}
             />
@@ -634,12 +650,15 @@ class AppRouter extends React.Component {
               component={RefferEarn}
             />
             <AppRoute path="/app/explore/Trupee/addTVC" component={AddTVC} />
-            <AppRoute path="/app/explore/Trupee/editTVC/:id" component={EditTVC} />
+            <AppRoute
+              path="/app/explore/Trupee/editTVC/:id"
+              component={EditTVC}
+            />
             <AppRoute
               path="/app/explore/Trupee/opportunity"
               component={Opportunity}
             />
-             <AppRoute
+            <AppRoute
               path="/app/explore/Trupee/addOppor"
               component={AddOppor}
             />
@@ -651,7 +670,8 @@ class AppRouter extends React.Component {
               path="/app/explore/Trupee/performanceSheet"
               component={PerformanceSheet}
             />
-             <AppRoute
+            <AppRoute path="/app/explore/Trupee/addPS" component={AddPS} />
+            <AppRoute
               path="/app/explore/Trupee/userPerformanceSheet"
               component={UserPerformanceSheet}
             />

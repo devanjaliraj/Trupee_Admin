@@ -107,7 +107,6 @@ class TradingViewCharts extends React.Component {
                     color="blue"
                     onClick={() =>
                       history.push(
-                        
                         `/app/explore/Trupee/EditTVC/${params.data._id}`
                       )
                     }
@@ -145,11 +144,9 @@ class TradingViewCharts extends React.Component {
   }
   async runthisfunction(id) {
     console.log(id);
-    await axiosConfig
-      .get(`/dlt_Chart/${id}`)
-      .then((response) => {
-        console.log(response);
-      });
+    await axiosConfig.get(`/dlt_Chart/${id}`).then((response) => {
+      console.log(response);
+    });
   }
 
   onGridReady = (params) => {
@@ -188,7 +185,7 @@ class TradingViewCharts extends React.Component {
               <Row className="m-2">
                 <Col>
                   <h1 sm="6" className="float-left">
-                    StartUp List
+                    Trading View Charts List
                   </h1>
                 </Col>
                 <Col>
@@ -200,7 +197,7 @@ class TradingViewCharts extends React.Component {
                           history.push("/app/explore/Trupee/addStratUp")
                         }
                       >
-                        Add StartUp
+                        Add
                       </Button>
                     )}
                   />

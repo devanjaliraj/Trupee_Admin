@@ -85,8 +85,20 @@ class ViewUsers extends React.Component {
                         Users Name
                       </div>
                       <div className="text-truncate">
-                        <span>{this.state.data.userid?.fullname}</span>
+                        <span>
+                          {this.state.data.userid?.firstname}{" "}
+                          {this.state.data.userid?.lastname}
+                        </span>
                       </div>
+
+                      {/* </div>
+                    <div className="d-flex user-info">
+                      <div className="user-info-title font-weight-bold">
+                       Last Name
+                      </div>
+                      <div className="text-truncate">
+                        <span>{this.state.data.userid?.lastname}</span>
+                      </div> */}
                     </div>
                     <div className="d-flex user-info">
                       <div className="user-info-title font-weight-bold">
@@ -106,18 +118,18 @@ class ViewUsers extends React.Component {
                     </div>
                     <div className="d-flex user-info">
                       <div className="user-info-title font-weight-bold">
-                        City
+                        Date Of Birth
                       </div>
                       <div className="text-truncate">
-                        <span>{this.state.data.userid?.city}</span>
+                        <span>{this.state.data.userid?.dob}</span>
                       </div>
                     </div>
                     <div className="d-flex user-info">
                       <div className="user-info-title font-weight-bold">
-                        Address
+                        Gender
                       </div>
                       <div className="text-truncate">
-                        <span>{this.state.data.userid?.address}</span>
+                        <span>{this.state.data.userid?.gender}</span>
                       </div>
                     </div>
                     <div className="d-flex user-info">
