@@ -50,24 +50,24 @@ class FnoEquityList extends React.Component {
         cellRendererFramework: (params) => {
           return (
             <div className="d-flex align-items-center cursor-pointer">
-              <span>{params.data.script_name?.scriptName}</span>
+              <span>{params.data.fnoequty_scrpt_name?.scriptName}</span>
             </div>
           );
         },
       },
       {
-      headerName: "Equity Script",
-      field: "script_type",
-      width: 140,
-      cellRendererFramework: (params) => {
-        return (
-          <div className="d-flex  align-items-center cursor-pointer">
-            <span>{params.data.script_type}</span>
-          </div>
-        );
+        headerName: "Equity Script",
+        field: "script_type",
+        width: 140,
+        cellRendererFramework: (params) => {
+          return (
+            <div className="d-flex  align-items-center cursor-pointer">
+              <span>{params.data.script_type}</span>
+            </div>
+          );
+        },
       },
-    },
-   
+
       {
         headerName: "Call Type",
         field: "call_type",
@@ -171,7 +171,7 @@ class FnoEquityList extends React.Component {
         cellRendererFramework: (params) => {
           return (
             <div className="d-flex align-items-center cursor-pointer">
-            <span>{params.data.t5}</span> 
+              <span>{params.data.t5}</span>
             </div>
           );
         },
@@ -183,7 +183,7 @@ class FnoEquityList extends React.Component {
         cellRendererFramework: (params) => {
           return (
             <div className="d-flex align-items-center cursor-pointer">
-              <span>{params.data.profit_loss_amt}</span> 
+              <span>{params.data.profit_loss_amt}</span>
             </div>
           );
         },

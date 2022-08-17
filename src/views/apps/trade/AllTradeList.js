@@ -48,273 +48,300 @@ class AllTradeList extends React.Component {
 
       {
         headerName: "Type Of Script",
-        field: "equity_script",
-        width: 140,
-        // pinned: window.innerWidth > 992 ? "left" : false,
-        cellRendererFramework: (params) => {
-          return (
-            <div className="d-flex  align-items-center cursor-pointer">
-              {/* <span>{params.data.equity_script}</span> */}
-            </div>
-          );
-        },
-      },
-      {
-        headerName: "Date/Time",
         field: "script_type",
         width: 140,
         // pinned: window.innerWidth > 992 ? "left" : false,
         cellRendererFramework: (params) => {
           return (
             <div className="d-flex  align-items-center cursor-pointer">
-              {/* <span>{params.data.script_name?.script_type}</span> */}
+              <span>{params.data.script_type}</span>
+            </div>
+          );
+        },
+      },
+
+      {
+        headerName: "Script Name",
+        field: "scriptName",
+        width: 140,
+        // pinned: window.innerWidth > 992 ? "left" : false,
+        cellRendererFramework: (params) => {
+          return (
+            <div className="d-flex  align-items-center cursor-pointer">
+              <span>{params.data.cash_scrpt_name?.scriptName}</span>
+            </div>
+          );
+        },
+      },
+
+      {
+        headerName: "Expiry Date",
+        field: "expiryDate",
+        width: 140,
+        // pinned: window.innerWidth > 992 ? "left" : false,
+        cellRendererFramework: (params) => {
+          return (
+            <div className="d-flex  align-items-center cursor-pointer">
+              <span>{params.data.expiryDate}</span>
             </div>
           );
         },
       },
       {
-        headerName: "Trade",
-        field: "script_name",
+        headerName: "Trade Type",
+        field: "type",
         width: 140,
         cellRendererFramework: (params) => {
           return (
             <div className="d-flex align-items-center cursor-pointer">
-              {/* <span>{params.data.script_name?.script_name}</span> */}
+              <span>{params.data.type}</span>
             </div>
           );
         },
       },
       {
-        headerName: "Message",
+        headerName: "Call Type",
         field: "call_type",
         width: 140,
         cellRendererFramework: (params) => {
           return (
             <div className="d-flex align-items-center cursor-pointer">
-              {/* <span>{params.data.call_type}</span> */}
+              <span>{params.data.call_type}</span>
             </div>
           );
         },
       },
-      // {
-      //   headerName: "Active Value",
-      //   field: "active_value",
-      //   width: 140,
-      //   cellRendererFramework: (params) => {
-      //     return (
-      //       <div className="d-flex align-items-center cursor-pointer">
-      //         <span>{params.data.active_value}</span>
-      //       </div>
-      //     );
-      //   },
-      // },
-      // {
-      //   headerName: " SL",
-      //   field: "SL",
-      //   width: 140,
-      //   cellRendererFramework: (params) => {
-      //     return (
-      //       <div className="d-flex align-items-center cursor-pointer">
-      //         <span>{params.data.SL}</span>
-      //       </div>
-      //     );
-      //   },
-      // },
-      // {
-      //   headerName: "T₹ 1",
-      //   field: "T1",
-      //   width: 140,
-      //   cellRendererFramework: (params) => {
-      //     return (
-      //       <div className="d-flex align-items-center cursor-pointer">
-      //         <span>{params.data.T1}</span>
-      //       </div>
-      //     );
-      //   },
-      // },
-      // {
-      //   headerName: "T₹ 2",
-      //   field: "T2",
-      //   width: 140,
-      //   cellRendererFramework: (params) => {
-      //     return (
-      //       <div className="d-flex align-items-center cursor-pointer">
-      //         <span>{params.data.T2}</span>
-      //       </div>
-      //     );
-      //   },
-      // },
-      // {
-      //   headerName: "T₹ 3",
-      //   field: "T3",
-      //   width: 140,
-      //   cellRendererFramework: (params) => {
-      //     return (
-      //       <div className="d-flex align-items-center cursor-pointer">
-      //         <span>{params.data.T3}</span>
-      //       </div>
-      //     );
-      //   },
-      // },
-      // {
-      //   headerName: "T₹ 4",
-      //   field: "T4",
-      //   width: 140,
-      //   cellRendererFramework: (params) => {
-      //     return (
-      //       <div className="d-flex align-items-center cursor-pointer">
-      //         <span>{params.data.T4}</span>
-      //       </div>
-      //     );
-      //   },
-      // },
-      // {
-      //   headerName: "IS Range",
-      //   field: "T4",
-      //   width: 140,
-      //   cellRendererFramework: (params) => {
-      //     return (
-      //       <div className="d-flex align-items-center cursor-pointer">
-      //         {/* <span>{params.data.T4}</span> */}
-      //       </div>
-      //     );
-      //   },
-      // },
+      {
+        headerName: "Active Value",
+        field: "active_value",
+        width: 140,
+        cellRendererFramework: (params) => {
+          return (
+            <div className="d-flex align-items-center cursor-pointer">
+              <span>{params.data.active_value}</span>
+            </div>
+          );
+        },
+      },
+      {
+        headerName: "Active Value 2",
+        field: "active_value2",
+        width: 140,
+        cellRendererFramework: (params) => {
+          return (
+            <div className="d-flex align-items-center cursor-pointer">
+              <span>{params.data.active_value2}</span>
+            </div>
+          );
+        },
+      },
+      {
+        headerName: " SL",
+        field: "SL",
+        width: 140,
+        cellRendererFramework: (params) => {
+          return (
+            <div className="d-flex align-items-center cursor-pointer">
+              <span>{params.data.SL}</span>
+            </div>
+          );
+        },
+      },
+      {
+        headerName: "T₹ 1",
+        field: "T1",
+        width: 140,
+        cellRendererFramework: (params) => {
+          return (
+            <div className="d-flex align-items-center cursor-pointer">
+              <span>{params.data.T1}</span>
+            </div>
+          );
+        },
+      },
+      {
+        headerName: "T₹ 2",
+        field: "T2",
+        width: 140,
+        cellRendererFramework: (params) => {
+          return (
+            <div className="d-flex align-items-center cursor-pointer">
+              <span>{params.data.T2}</span>
+            </div>
+          );
+        },
+      },
+      {
+        headerName: "T₹ 3",
+        field: "T3",
+        width: 140,
+        cellRendererFramework: (params) => {
+          return (
+            <div className="d-flex align-items-center cursor-pointer">
+              <span>{params.data.T3}</span>
+            </div>
+          );
+        },
+      },
+      {
+        headerName: "T₹ 4",
+        field: "T4",
+        width: 140,
+        cellRendererFramework: (params) => {
+          return (
+            <div className="d-flex align-items-center cursor-pointer">
+              <span>{params.data.T4}</span>
+            </div>
+          );
+        },
+      },
+      {
+        headerName: "IS Range",
+        field: "t5",
+        width: 140,
+        cellRendererFramework: (params) => {
+          return (
+            <div className="d-flex align-items-center cursor-pointer">
+              <span>{params.data.t5}</span>
+            </div>
+          );
+        },
+      },
 
-      // {
-      //   headerName: "Quantity",
-      //   field: "qty",
-      //   width: 140,
-      //   cellRendererFramework: (params) => {
-      //     return (
-      //       <div className="d-flex align-items-center cursor-pointer">
-      //         <span>{params.data.qty}</span>
-      //       </div>
-      //     );
-      //   },
-      // },
-      // {
-      //   headerName: "Investment Amount",
-      //   field: "investment_amt",
-      //   width: 140,
-      //   cellRendererFramework: (params) => {
-      //     return (
-      //       <div className="d-flex align-items-center cursor-pointer">
-      //         <span>{params.data.investment_amt}</span>
-      //       </div>
-      //     );
-      //   },
-      // },
-      // {
-      //   headerName: "Intraday",
-      //   field: "intraday",
-      //   width: 140,
-      //   cellRendererFramework: (params) => {
-      //     return (
-      //       <div className="d-flex align-items-center cursor-pointer">
-      //         <span>{params.data.intraday}</span>
-      //       </div>
-      //     );
-      //   },
-      // },
+      {
+        headerName: "Quantity",
+        field: "qty",
+        width: 140,
+        cellRendererFramework: (params) => {
+          return (
+            <div className="d-flex align-items-center cursor-pointer">
+              <span>{params.data.qty}</span>
+            </div>
+          );
+        },
+      },
+      {
+        headerName: "Investment Amount",
+        field: "investment_amt",
+        width: 140,
+        cellRendererFramework: (params) => {
+          return (
+            <div className="d-flex align-items-center cursor-pointer">
+              <span>{params.data.investment_amt}</span>
+            </div>
+          );
+        },
+      },
+      {
+        headerName: "Profit/Loss",
+        field: "profit_loss_amt",
+        width: 140,
+        cellRendererFramework: (params) => {
+          return (
+            <div className="d-flex align-items-center cursor-pointer">
+              <span>{params.data.profit_loss_amt}</span>
+            </div>
+          );
+        },
+      },
 
-      // {
-      //   headerName: "Number Of Lots",
-      //   field: "no_of_lots",
-      //   width: 140,
-      //   cellRendererFramework: (params) => {
-      //     return (
-      //       <div className="d-flex align-items-center cursor-pointer">
-      //         <span>{params.data.no_of_lots}</span>
-      //       </div>
-      //     );
-      //   },
-      // },
-      // {
-      //   headerName: "SL Type",
-      //   field: "sl_type",
-      //   filter: true,
-      //   width: 150,
-      //   cellRendererFramework: (params) => {
-      //     return params.value === "true" ? (
-      //       <div className="badge badge-pill badge-success">
-      //         {params.data.sl_type}
-      //       </div>
-      //     ) : params.value === "False" ? (
-      //       <div className="badge badge-pill badge-warning">
-      //         {params.data.sl_type}
-      //       </div>
-      //     ) : null;
-      //   },
-      // },
-      // {
-      //   headerName: "T1 Type",
-      //   field: "t1_type",
-      //   filter: true,
-      //   width: 150,
-      //   cellRendererFramework: (params) => {
-      //     return params.value === "true" ? (
-      //       <div className="badge badge-pill badge-success">
-      //         {params.data.t1_type}
-      //       </div>
-      //     ) : params.value === "Inactive" ? (
-      //       <div className="badge badge-pill badge-warning">
-      //         {params.data.t1_type}
-      //       </div>
-      //     ) : null;
-      //   },
-      // },
-      // {
-      //   headerName: "T2 Type",
-      //   field: "t2_type",
-      //   filter: true,
-      //   width: 150,
-      //   cellRendererFramework: (params) => {
-      //     return params.value === "true" ? (
-      //       <div className="badge badge-pill badge-success">
-      //         {params.data.t2_type}
-      //       </div>
-      //     ) : params.value === "Inactive" ? (
-      //       <div className="badge badge-pill badge-warning">
-      //         {params.data.t2_type}
-      //       </div>
-      //     ) : null;
-      //   },
-      // },
-      // {
-      //   headerName: "T3 Type",
-      //   field: "t3_type",
-      //   filter: true,
-      //   width: 150,
-      //   cellRendererFramework: (params) => {
-      //     return params.value === "true" ? (
-      //       <div className="badge badge-pill badge-success">
-      //         {params.data.t3_type}
-      //       </div>
-      //     ) : params.value === "Inactive" ? (
-      //       <div className="badge badge-pill badge-warning">
-      //         {params.data.t3_type}
-      //       </div>
-      //     ) : null;
-      //   },
-      // },
-      // {
-      //   headerName: "T4 Type",
-      //   field: "t4_type",
-      //   filter: true,
-      //   width: 150,
-      //   cellRendererFramework: (params) => {
-      //     return params.value === "true" ? (
-      //       <div className="badge badge-pill badge-success">
-      //         {params.data.t4_type}
-      //       </div>
-      //     ) : params.value === "Inactive" ? (
-      //       <div className="badge badge-pill badge-warning">
-      //         {params.data.t4_type}
-      //       </div>
-      //     ) : null;
-      //   },
-      // },
+      {
+        headerName: "Number Of Lots",
+        field: "no_of_lots",
+        width: 140,
+        cellRendererFramework: (params) => {
+          return (
+            <div className="d-flex align-items-center cursor-pointer">
+              <span>{params.data.no_of_lots}</span>
+            </div>
+          );
+        },
+      },
+      {
+        headerName: "SL Type",
+        field: "sl_type",
+        filter: true,
+        width: 150,
+        cellRendererFramework: (params) => {
+          return params.value === "true" ? (
+            <div className="badge badge-pill badge-success">
+              {params.data.sl_type}
+            </div>
+          ) : params.value === "False" ? (
+            <div className="badge badge-pill badge-warning">
+              {params.data.sl_type}
+            </div>
+          ) : null;
+        },
+      },
+      {
+        headerName: "T1 Type",
+        field: "t1_type",
+        filter: true,
+        width: 150,
+        cellRendererFramework: (params) => {
+          return params.value === "true" ? (
+            <div className="badge badge-pill badge-success">
+              {params.data.t1_type}
+            </div>
+          ) : params.value === "Inactive" ? (
+            <div className="badge badge-pill badge-warning">
+              {params.data.t1_type}
+            </div>
+          ) : null;
+        },
+      },
+      {
+        headerName: "T2 Type",
+        field: "t2_type",
+        filter: true,
+        width: 150,
+        cellRendererFramework: (params) => {
+          return params.value === "true" ? (
+            <div className="badge badge-pill badge-success">
+              {params.data.t2_type}
+            </div>
+          ) : params.value === "Inactive" ? (
+            <div className="badge badge-pill badge-warning">
+              {params.data.t2_type}
+            </div>
+          ) : null;
+        },
+      },
+      {
+        headerName: "T3 Type",
+        field: "t3_type",
+        filter: true,
+        width: 150,
+        cellRendererFramework: (params) => {
+          return params.value === "true" ? (
+            <div className="badge badge-pill badge-success">
+              {params.data.t3_type}
+            </div>
+          ) : params.value === "Inactive" ? (
+            <div className="badge badge-pill badge-warning">
+              {params.data.t3_type}
+            </div>
+          ) : null;
+        },
+      },
+      {
+        headerName: "T4 Type",
+        field: "t5_type",
+        filter: true,
+        width: 150,
+        cellRendererFramework: (params) => {
+          return params.value === "true" ? (
+            <div className="badge badge-pill badge-success">
+              {params.data.t5_type}
+            </div>
+          ) : params.value === "Inactive" ? (
+            <div className="badge badge-pill badge-warning">
+              {params.data.t5_type}
+            </div>
+          ) : null;
+        },
+      },
       {
         headerName: "Actions",
         field: "sortorder",
@@ -333,7 +360,7 @@ class AllTradeList extends React.Component {
                   history.push(`/app/size/viewSize/${params.data._id}`)
                 }
               /> */}
-               <Route
+              <Route
                 render={({ history }) => (
                   <Edit
                     className="mr-50"
@@ -344,7 +371,7 @@ class AllTradeList extends React.Component {
                     }
                   />
                 )}
-              /> 
+              />
 
               <Trash2
                 size={20}
@@ -416,7 +443,7 @@ class AllTradeList extends React.Component {
               <Row className="m-2">
                 <Col>
                   <h1 sm="6" className="float-left">
-                   Trade Notification List
+                    Trade Notification List
                   </h1>
                 </Col>
                 <Col className="pt-4">

@@ -32,7 +32,6 @@ class FnoIndexList extends React.Component {
       suppressMenu: true,
     },
 
-  
     columnDefs: [
       {
         headerName: "S.No",
@@ -44,7 +43,7 @@ class FnoIndexList extends React.Component {
         // headerCheckboxSelectionFilteredOnly: true,
         // headerCheckboxSelection: true,
       },
-    
+
       {
         headerName: "Script Name",
         field: "scriptName",
@@ -52,7 +51,7 @@ class FnoIndexList extends React.Component {
         cellRendererFramework: (params) => {
           return (
             <div className="d-flex align-items-center cursor-pointer">
-              <span>{params.data.script_name?.scriptName}</span>
+              <span>{params.data.fnoindex_scrpt_name?.scriptName}</span>
             </div>
           );
         },
@@ -82,7 +81,7 @@ class FnoIndexList extends React.Component {
           );
         },
       },
-  
+
       {
         headerName: "Call Type",
         field: "call_type",
@@ -186,7 +185,7 @@ class FnoIndexList extends React.Component {
         cellRendererFramework: (params) => {
           return (
             <div className="d-flex align-items-center cursor-pointer">
-            <span>{params.data.t5}</span> 
+              <span>{params.data.t5}</span>
             </div>
           );
         },
@@ -198,7 +197,7 @@ class FnoIndexList extends React.Component {
         cellRendererFramework: (params) => {
           return (
             <div className="d-flex align-items-center cursor-pointer">
-              <span>{params.data.profit_loss_amt}</span> 
+              <span>{params.data.profit_loss_amt}</span>
             </div>
           );
         },

@@ -52,7 +52,7 @@ class EquityCashList extends React.Component {
         cellRendererFramework: (params) => {
           return (
             <div className="d-flex align-items-center cursor-pointer">
-              <span>{params.data.script_name?.scriptName}</span>
+              <span>{params.data.cash_scrpt_name?.scriptName}</span>
             </div>
           );
         },
@@ -69,7 +69,7 @@ class EquityCashList extends React.Component {
           );
         },
       },
-    
+
       {
         headerName: "Call Type",
         field: "call_type",
@@ -107,7 +107,7 @@ class EquityCashList extends React.Component {
         },
       },
       {
-        headerName: " SL",
+        headerName: "SL",
         field: "SL",
         width: 140,
         cellRendererFramework: (params) => {
@@ -173,7 +173,7 @@ class EquityCashList extends React.Component {
         cellRendererFramework: (params) => {
           return (
             <div className="d-flex align-items-center cursor-pointer">
-            <span>{params.data.t5}</span> 
+              <span>{params.data.t5}</span>
             </div>
           );
         },
@@ -185,7 +185,7 @@ class EquityCashList extends React.Component {
         cellRendererFramework: (params) => {
           return (
             <div className="d-flex align-items-center cursor-pointer">
-              <span>{params.data.profit_loss_amt}</span> 
+              <span>{params.data.profit_loss_amt}</span>
             </div>
           );
         },

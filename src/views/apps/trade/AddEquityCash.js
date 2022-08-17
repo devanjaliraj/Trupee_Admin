@@ -22,25 +22,33 @@ export class AddEquityCash extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      equity_script: "",
       script_type: "",
-      scriptName: "",
-      call_type: "",
+      cash_scrpt_name: "",
       active_value: "",
+      active_value2: "",
+      call_type: "",
       SL: "",
+      sl_type: false,
       T1: "",
+      t1_type: false,
       T2: "",
+      t2_type: false,
       T3: "",
+      t3_type: false,
       T4: "",
+      t4_type: false,
+      t5: "",
+      t5_type: false,
       qty: "",
       investment_amt: "",
       no_of_lots: "",
-      date: "",
-      time: "",
+      pl_type: "",
+      profit_loss_amt: "",
+      expiryDate: "",
+      type: "Cash",
     };
     this.state = {
-      scriptT: [],
-      // scriptN: [],
+      scriptN: [],
     };
   }
   //Script//
@@ -50,8 +58,8 @@ export class AddEquityCash extends Component {
       .then((response) => {
         console.log(response);
         this.setState({
-          scriptT: response.data.data,
-          // scriptN: response.data.data,
+          // scriptT: response.data.data,
+          scriptN: response.data.data,
         });
       })
       .catch((error) => {
@@ -118,35 +126,23 @@ export class AddEquityCash extends Component {
               <Row className="mb-2">
                 <Col lg="6" md="6" className="mb-2">
                   <Label> Exp. Date</Label>
-                  <Input type="date" placeholder="Enter User Id" />
-                </Col>
-                {/* <Col lg="6" md="6" className="mb-2">
-                  <Label>Time</Label>
-                  <Input type="time" placeholder="Enter User Id" />
-                </Col> */}
-                {/* <Col lg="6" md="6" sm="6" className="mb-2">
-                  <Label>Script </Label>
-                  <CustomInput
-                    type="select"
-                    name="script_type"
-                    value={this.state.script_type}
+                  <Input
+                    type="date"
+                    placeholder="Enter User Id"
+                    name="expiryDate"
+                    value={this.state.expiryDate}
                     onChange={this.changeHandler}
-                  >
-                    {this.state.scriptT.map((allScript) => (
-                      <option value={allScript._id} key={allScript._id}>
-                        {allScript.script_type}
-                      </option>
-                    ))}
-                  </CustomInput>
-                </Col> */}
+                  />
+                </Col>
                 <Col lg="6" md="6" sm="6" className="mb-2">
                   <Label>Script Name</Label>
                   <CustomInput
                     type="select"
-                    name="scriptName"
+                    name="cash_scrpt_name"
                     value={this.state.scriptName}
                     onChange={this.changeHandler}
                   >
+                    <option>select script</option>
                     {this.state.scriptN?.map((allScript) => (
                       <option value={allScript?._id} key={allScript?._id}>
                         {allScript?.scriptName}
@@ -158,9 +154,9 @@ export class AddEquityCash extends Component {
                   <Label for="exampleSelect">Equity Script</Label>
                   <Input
                     id="exampleSelect"
-                    name="equity_script"
+                    name="script_type"
                     type="select"
-                    value={this.state.equity_script}
+                    value={this.state.script_type}
                     onChange={this.changeHandler}
                   >
                     <option>Select Script</option>
@@ -170,14 +166,6 @@ export class AddEquityCash extends Component {
                     <option>SELL</option>
                   </Input>
                 </Col>
-                {/* <Col lg="6" md="6" className="mb-2">
-                  <Label>Script Name</Label>
-                  <Input type="text" placeholder="Enter Script Name" />
-                </Col> */}
-                {/* <Col lg="6" md="6" className="mb-2">
-                  <Label>Tip</Label>
-                  <Input type="text" placeholder="Enter Tip" />
-                </Col> */}
                 <Col lg="6" md="6" className="mb-2">
                   <Label for="exampleSelect">Call Type</Label>
                   <Input
@@ -213,9 +201,9 @@ export class AddEquityCash extends Component {
                       <option value="Option 3">Loss</option>
                     </Input>
                     <Input
-                      type="text"
-                      name="profit_loss"
-                      value={this.state.profit_loss}
+                      type="number"
+                      name="profit_loss_amt"
+                      value={this.state.profit_loss_amt}
                       onChange={this.changeHandler}
                     />
                   </div>
@@ -223,7 +211,7 @@ export class AddEquityCash extends Component {
                 <Col lg="6" md="6" className="mb-2">
                   <Label>Active Value</Label>
                   <Input
-                    type="text"
+                    type="number"
                     placeholder="Enter Active Value"
                     name="active_value"
                     value={this.state.active_value}
@@ -231,10 +219,20 @@ export class AddEquityCash extends Component {
                   />
                 </Col>
                 <Col lg="6" md="6" className="mb-2">
+                  <Label>Active Value 2</Label>
+                  <Input
+                    type="number"
+                    placeholder="Enter Active Value 2"
+                    name="active_value2"
+                    value={this.state.active_value2}
+                    onChange={this.changeHandler}
+                  />
+                </Col>
+                <Col lg="6" md="6" className="mb-2">
                   <Label>SL</Label>
                   <Input
                     name="SL"
-                    type="text"
+                    type="number"
                     placeholder="Enter Stop Loss"
                     value={this.state.SL}
                     onChange={this.changeHandler}
@@ -243,7 +241,7 @@ export class AddEquityCash extends Component {
                 <Col lg="6" md="6" className="mb-2">
                   <Label>T₹ 1 </Label>
                   <Input
-                    type="text"
+                    type="number"
                     placeholder="Enter Target 1"
                     name="T1"
                     value={this.state.T1}
@@ -253,7 +251,7 @@ export class AddEquityCash extends Component {
                 <Col lg="6" md="6" className="mb-2">
                   <Label>T₹ 2</Label>
                   <Input
-                    type="text"
+                    type="number"
                     placeholder="Enter Target 2"
                     name="T2"
                     value={this.state.T2}
@@ -263,7 +261,7 @@ export class AddEquityCash extends Component {
                 <Col lg="6" md="6" className="mb-2">
                   <Label>T₹ 3</Label>
                   <Input
-                    type="text"
+                    type="number"
                     placeholder="Enter Target 3"
                     name="T3"
                     value={this.state.T3}
@@ -273,17 +271,17 @@ export class AddEquityCash extends Component {
                 <Col lg="6" md="6" className="mb-2">
                   <Label>T₹ 4</Label>
                   <Input
-                    type="text"
+                    type="number"
                     placeholder="Enter Target 4"
                     name="T4"
                     value={this.state.T4}
                     onChange={this.changeHandler}
                   />
-                </Col>
+                </Col>{" "}
                 <Col lg="6" md="6" className="mb-2">
                   <Label>T₹ 5</Label>
                   <Input
-                    type="text"
+                    type="number"
                     placeholder="Enter Target 5"
                     name="t5"
                     value={this.state.t5}
@@ -293,7 +291,7 @@ export class AddEquityCash extends Component {
                 <Col lg="6" md="6" className="mb-2">
                   <Label>Quantity</Label>
                   <Input
-                    type="text"
+                    type="number"
                     name="qty"
                     placeholder="Enter Quantity"
                     value={this.state.qty}
@@ -304,7 +302,7 @@ export class AddEquityCash extends Component {
                   <Label>Investment Amount</Label>
                   <Input
                     name="investment_amt"
-                    type="text"
+                    type="number"
                     placeholder="Enter Investment Amount"
                     value={this.state.investment_amt}
                     onChange={this.changeHandler}
@@ -313,10 +311,20 @@ export class AddEquityCash extends Component {
                 <Col lg="6" md="6" className="mb-2">
                   <Label>Number Of Lots</Label>
                   <Input
-                    type="text"
+                    type="number"
                     name="no_of_lots"
                     placeholder="Enter Lots Price"
                     value={this.state.no_of_lots}
+                    onChange={this.changeHandler}
+                  />
+                </Col>{" "}
+                <Col lg="6" md="6" className="mb-2">
+                  <Label>Type</Label>
+                  <Input
+                    type="text"
+                    name="type"
+                    placeholder="Enter Type "
+                    value={this.state.type}
                     onChange={this.changeHandler}
                   />
                 </Col>

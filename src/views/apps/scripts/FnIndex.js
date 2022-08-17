@@ -43,7 +43,7 @@ class FnIndex extends React.Component {
         // headerCheckboxSelectionFilteredOnly: true,
         // headerCheckboxSelection: true,
       },
-      
+
       {
         headerName: "Script Name",
         field: "scriptName",
@@ -56,7 +56,6 @@ class FnIndex extends React.Component {
           );
         },
       },
-      
 
       {
         headerName: "Status",
@@ -99,7 +98,9 @@ class FnIndex extends React.Component {
                     size="25px"
                     color="blue"
                     onClick={() =>
-                      history.push(`/app/scripts/editFnIndex/${params.data._id}`)
+                      history.push(
+                        `/app/scripts/editFnIndex/${params.data._id}`
+                      )
                     }
                   />
                 )}
@@ -185,7 +186,7 @@ class FnIndex extends React.Component {
                         className=" btn btn-success float-right"
                         onClick={() => history.push("/app/scripts/addFnIndex")}
                       >
-                        Add FNO Index 
+                        Add FNO Index
                       </Button>
                     )}
                   />
