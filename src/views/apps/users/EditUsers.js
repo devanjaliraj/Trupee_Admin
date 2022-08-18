@@ -33,20 +33,20 @@ export default class EditSize extends Component {
       date: "",
       expdate: "",
       status: "",
-      firstnameU: [],
-      mobileU: [],
-      emailU: [],
-      lastnameU: [],
-      dobU: [],
-      genderU: [],
-      pack_nameM: [],
+      // firstnameU: [],
+      // mobileU: [],
+      // emailU: [],
+      // lastnameU: [],
+      // dobU: [],
+      // genderU: [],
+      // pack_nameM: [],
     };
   }
 
   componentDidMount() {
     let { id } = this.props.match.params;
     axiosConfig
-      .get(`/viewonemembership/${id}`, {
+      .get(`/getoneuser/${id}`, {
         // headers: {
         //   "auth-adtoken": localStorage.getItem("auth-adtoken"),
         // },
@@ -86,18 +86,18 @@ export default class EditSize extends Component {
     //   .catch((error) => {
     //     console.log(error);
     //   });
-    //plan//
-    axiosConfig
-      .get("/plan_list")
-      .then((response) => {
-        console.log(response);
-        this.setState({
-          pack_nameM: response.data.data,
-        });
-      })
-      .catch((error) => {
-        console.log(error);
-      });
+    //   //plan//
+    //   axiosConfig
+    //     .get("/plan_list")
+    //     .then((response) => {
+    //       console.log(response);
+    //       this.setState({
+    //         pack_nameM: response.data.data,
+    //       });
+    //     })
+    //     .catch((error) => {
+    //       console.log(error);
+    //     });
   }
 
   changeHandler1 = (e) => {
@@ -177,12 +177,12 @@ export default class EditSize extends Component {
                 </Col>
                 <Col lg="6" md="6" sm="6" className="mb-2">
                   <Label>Mobile</Label>
-                  <CustomInput
+                  <Input
                     type="number"
                     name="mobile"
                     value={this.state.mobile}
                     onChange={this.changeHandler}
-                  ></CustomInput>
+                  ></Input>
                 </Col>
                 <Col lg="6" md="6" sm="6" className="mb-2">
                   <Label>Email Id</Label>
@@ -210,7 +210,7 @@ export default class EditSize extends Component {
                 <Col lg="6" md="6" sm="6" className="mb-2">
                   <Label>Date Of Birth</Label>
                   <Input
-                    type="text"
+                    type="date"
                     name="dob"
                     value={this.state.dob}
                     onChange={this.changeHandler}
@@ -260,14 +260,14 @@ export default class EditSize extends Component {
                         style={{ marginRight: "3px" }}
                         type="radio"
                         name="status"
-                        value="Active"
+                        value="true"
                       />
                       <span style={{ marginRight: "20px" }}>Active</span>
 
                       <input
                         style={{ marginRight: "3px" }}
                         type="radio"
-                        name="status"
+                        name="false"
                         value="Deactive"
                       />
 

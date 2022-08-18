@@ -398,7 +398,7 @@ class EquityCashList extends React.Component {
   }
   async runthisfunction(id) {
     console.log(id);
-    await axiosConfig.get(`/dlt_equityCash/${id}`).then(
+    await axiosConfig.get(`/dlt_alltrade/${id}`).then(
       (response) => {
         console.log(response);
       },

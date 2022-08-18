@@ -267,23 +267,23 @@ class FnoIndexList extends React.Component {
       //     ) : null;
       //   },
       // },
-      // {
-      //   headerName: "Trl Type",
-      //   field: "trl_type",
-      //   filter: true,
-      //   width: 150,
-      //   cellRendererFramework: (params) => {
-      //     return params.value === "true" ? (
-      //       <div className="badge badge-pill badge-success">
-      //         {params.data.trl_type}
-      //       </div>
-      //     ) : params.value === "false" ? (
-      //       <div className="badge badge-pill badge-warning">
-      //         {params.data.trl_type}
-      //       </div>
-      //     ) : null;
-      //   },
-      // },
+      {
+        headerName: "Trial Type",
+        field: "trl_type",
+        filter: true,
+        width: 150,
+        cellRendererFramework: (params) => {
+          return params.value === "true" ? (
+            <div className="badge badge-pill badge-success">
+              {params.data.trl_type}
+            </div>
+          ) : params.value === "false" ? (
+            <div className="badge badge-pill badge-warning">
+              {params.data.trl_type}
+            </div>
+          ) : null;
+        },
+      },
       {
         headerName: "T1 Type",
         field: "t1_type",
@@ -406,7 +406,7 @@ class FnoIndexList extends React.Component {
   }
   async runthisfunction(id) {
     console.log(id);
-    await axiosConfig.get(`/dlt_fnoIndex/${id}`).then(
+    await axiosConfig.get(`/dlt_alltrade/${id}`).then(
       (response) => {
         console.log(response);
       },

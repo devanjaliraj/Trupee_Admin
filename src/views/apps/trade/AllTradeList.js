@@ -68,6 +68,8 @@ class AllTradeList extends React.Component {
         cellRendererFramework: (params) => {
           return (
             <div className="d-flex  align-items-center cursor-pointer">
+              <span>{params.data.fnoindex_scrpt_name?.scriptName}</span>
+              <span>{params.data.fnoequty_scrpt_name?.scriptName}</span>
               <span>{params.data.cash_scrpt_name?.scriptName}</span>
             </div>
           );
@@ -148,6 +150,18 @@ class AllTradeList extends React.Component {
         },
       },
       {
+        headerName: "Trial",
+        field: "trl",
+        width: 140,
+        cellRendererFramework: (params) => {
+          return (
+            <div className="d-flex align-items-center cursor-pointer">
+              <span>{params.data.trl}</span>
+            </div>
+          );
+        },
+      },
+      {
         headerName: "T₹ 1",
         field: "T1",
         width: 140,
@@ -196,7 +210,7 @@ class AllTradeList extends React.Component {
         },
       },
       {
-        headerName: "IS Range",
+        headerName: "T5",
         field: "t5",
         width: 140,
         cellRendererFramework: (params) => {
@@ -267,9 +281,26 @@ class AllTradeList extends React.Component {
             <div className="badge badge-pill badge-success">
               {params.data.sl_type}
             </div>
-          ) : params.value === "False" ? (
+          ) : params.value === "false" ? (
             <div className="badge badge-pill badge-warning">
               {params.data.sl_type}
+            </div>
+          ) : null;
+        },
+      },
+      {
+        headerName: "Trial Type",
+        field: "trl_type",
+        filter: true,
+        width: 150,
+        cellRendererFramework: (params) => {
+          return params.value === "true" ? (
+            <div className="badge badge-pill badge-success">
+              {params.data.trl_type}
+            </div>
+          ) : params.value === "false" ? (
+            <div className="badge badge-pill badge-warning">
+              {params.data.trl_type}
             </div>
           ) : null;
         },
@@ -284,7 +315,7 @@ class AllTradeList extends React.Component {
             <div className="badge badge-pill badge-success">
               {params.data.t1_type}
             </div>
-          ) : params.value === "Inactive" ? (
+          ) : params.value === "false" ? (
             <div className="badge badge-pill badge-warning">
               {params.data.t1_type}
             </div>
@@ -301,7 +332,7 @@ class AllTradeList extends React.Component {
             <div className="badge badge-pill badge-success">
               {params.data.t2_type}
             </div>
-          ) : params.value === "Inactive" ? (
+          ) : params.value === "false" ? (
             <div className="badge badge-pill badge-warning">
               {params.data.t2_type}
             </div>
@@ -318,7 +349,7 @@ class AllTradeList extends React.Component {
             <div className="badge badge-pill badge-success">
               {params.data.t3_type}
             </div>
-          ) : params.value === "Inactive" ? (
+          ) : params.value === "false" ? (
             <div className="badge badge-pill badge-warning">
               {params.data.t3_type}
             </div>
@@ -327,17 +358,17 @@ class AllTradeList extends React.Component {
       },
       {
         headerName: "T4 Type",
-        field: "t5_type",
+        field: "t4_type",
         filter: true,
         width: 150,
         cellRendererFramework: (params) => {
           return params.value === "true" ? (
             <div className="badge badge-pill badge-success">
-              {params.data.t5_type}
+              {params.data.t4_type}
             </div>
-          ) : params.value === "Inactive" ? (
+          ) : params.value === "false" ? (
             <div className="badge badge-pill badge-warning">
-              {params.data.t5_type}
+              {params.data.t4_type}
             </div>
           ) : null;
         },
@@ -398,7 +429,7 @@ class AllTradeList extends React.Component {
   }
   async runthisfunction(id) {
     console.log(id);
-    await axiosConfig.get(`/dlt_trade/${id}`).then(
+    await axiosConfig.get(`/dlt_alltrade/${id}`).then(
       (response) => {
         console.log(response);
       },

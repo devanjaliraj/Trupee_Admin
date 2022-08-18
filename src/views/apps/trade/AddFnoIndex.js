@@ -22,24 +22,21 @@ export class AddFnoIndex extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      equity_script: "",
-      scriptName: "",
-      call_type: "",
+      expiryDate: "",
+      script_type: "",
+      fnoindex_scrpt_name: "",
       active_value: "",
-      SL: "",
-      trl: "",
-      T1: "",
-      T2: "",
-      T3: "",
+      call_type: "",
       qty: "",
       investment_amt: "",
       no_of_lots: "",
-      expiryDate: "",
-      pl_type:"",
-      profit_loss_amt:"",
-      trade_type:"",
-      t5:"",
-   
+      pl_type: "",
+      profit_loss_amt: "",
+      trade_type: "",
+      t5: "",
+      type: "Index",
+
+      trl: "",
     };
     this.state = {
       // scriptT: [],
@@ -117,36 +114,21 @@ export class AddFnoIndex extends Component {
                   <Label>Exp. Date</Label>
                   <Input
                     type="date"
-                    placeholder="Enter User Id"
-                    name="date"
-                    value={this.state.date}
+                    name="expiryDate"
+                    value={this.state.expiryDate}
                     onChange={this.changeHandler}
                   />
                 </Col>
-             
-                {/* <Col lg="6" md="6" sm="6" className="mb-2">
-                  <Label>Script</Label>
-                  <CustomInput
-                    type="select"
-                    name="script_type"
-                    value={this.state.script_type}
-                    onChange={this.changeHandler}
-                  >
-                    {this.state.scriptT.map((allScript) => (
-                      <option value={allScript._id} key={allScript._id}>
-                        {allScript.script_type}
-                      </option>
-                    ))}
-                  </CustomInput>
-                </Col> */}
+
                 <Col lg="6" md="6" sm="6" className="mb-2">
                   <Label>Script Name</Label>
                   <CustomInput
                     type="select"
-                    name="scriptName"
+                    name="fnoindex_scrpt_name"
                     value={this.state.scriptName}
                     onChange={this.changeHandler}
                   >
+                    <option>select script</option>
                     {this.state.scriptN?.map((allScript) => (
                       <option value={allScript?._id} key={allScript?._id}>
                         {allScript?.scriptName}
@@ -158,9 +140,9 @@ export class AddFnoIndex extends Component {
                   <Label for="exampleSelect">Equity Script</Label>
                   <Input
                     id="exampleSelect"
-                    name="equity_script"
+                    name="script_type"
                     type="select"
-                    value={this.state.equity_script}
+                    value={this.state.script_type}
                     onChange={this.changeHandler}
                   >
                     <option>Select Script</option>
@@ -174,7 +156,7 @@ export class AddFnoIndex extends Component {
                   <Label for="exampleSelect">Trade Type</Label>
                   <Input
                     id="exampleSelect"
-                     name="trade_type"
+                    name="trade_type"
                     type="select"
                     value={this.state.trade_type}
                     onChange={this.changeHandler}
@@ -184,11 +166,7 @@ export class AddFnoIndex extends Component {
                     <option>NIFTY</option>
                   </Input>
                 </Col>
-              
-                {/* <Col lg="6" md="6" className="mb-2">
-                  <Label>Tip</Label>
-                  <Input type="text" placeholder="Enter Tip" />
-                </Col> */}
+
                 <Col lg="6" md="6" className="mb-2">
                   <Label for="exampleSelect">Call Type</Label>
                   <Input
@@ -224,9 +202,9 @@ export class AddFnoIndex extends Component {
                       <option value="Option 3">Loss</option>
                     </Input>
                     <Input
-                      type="text"
-                      name="profit_loss"
-                      value={this.state.profit_loss}
+                      type="number"
+                      name="profit_loss_amt"
+                      value={this.state.profit_loss_amt}
                       onChange={this.changeHandler}
                     />
                   </div>
@@ -241,7 +219,17 @@ export class AddFnoIndex extends Component {
                     onChange={this.changeHandler}
                   />
                 </Col>
-                 <Col lg="6" md="6" className="mb-2">
+                <Col lg="6" md="6" className="mb-2">
+                  <Label>TRAIL</Label>
+                  <Input
+                    name="trl"
+                    type="number"
+                    // placeholder="Enter Stop Loss"
+                    value={this.state.trl}
+                    onChange={this.changeHandler}
+                  />
+                </Col>
+                <Col lg="6" md="6" className="mb-2">
                   <Label>T5</Label>
                   <Input
                     name="t5"
@@ -251,60 +239,11 @@ export class AddFnoIndex extends Component {
                     onChange={this.changeHandler}
                   />
                 </Col>
-              {/*  <Col lg="6" md="6" className="mb-2">
-                  <Label>TRIAL</Label>
-                  <Input
-                    type="number"
-                    placeholder="Enter Target 4"
-                    name="trl"
-                    value={this.state.trl}
-                    onChange={this.changeHandler}
-                  />
-                </Col>
-                <Col lg="6" md="6" className="mb-2">
-                  <Label>T₹ 1 </Label>
-                  <Input
-                    type="number"
-                    placeholder="Enter Target 1"
-                    name="T1"
-                    value={this.state.T1}
-                    onChange={this.changeHandler}
-                  />
-                </Col>{" "}
-                <Col lg="6" md="6" className="mb-2">
-                  <Label>T₹ 2</Label>
-                  <Input
-                    type="number"
-                    placeholder="Enter Target 2"
-                    name="T2"
-                    value={this.state.T2}
-                    onChange={this.changeHandler}
-                  />
-                </Col>{" "}
-                <Col lg="6" md="6" className="mb-2">
-                  <Label>T₹ 3</Label>
-                  <Input
-                    type="number"
-                    placeholder="Enter Target 3"
-                    name="T3"
-                    value={this.state.T3}
-                    onChange={this.changeHandler}
-                  />
-                </Col>{" "} */}
-                   <Col lg="6" md="6" className="mb-2">
-                  <Label>IS Range</Label>
-                  <Input
-                    type="time"
-                    placeholder="Enter User Id"
-                    name="time"
-                    value={this.state.time}
-                    onChange={this.changeHandler}
-                  />
-                </Col>
+
                 <Col lg="6" md="6" className="mb-2">
                   <Label>Quantity</Label>
                   <Input
-                    type="text"
+                    type="number"
                     name="qty"
                     placeholder="Enter Quantity"
                     value={this.state.qty}
@@ -315,7 +254,7 @@ export class AddFnoIndex extends Component {
                   <Label>Investment Amount</Label>
                   <Input
                     name="investment_amt"
-                    type="text"
+                    type="numder"
                     placeholder="Enter Investment Amount"
                     value={this.state.investment_amt}
                     onChange={this.changeHandler}
@@ -324,10 +263,20 @@ export class AddFnoIndex extends Component {
                 <Col lg="6" md="6" className="mb-2">
                   <Label>Number Of Lots</Label>
                   <Input
-                    type="text"
+                    type="number"
                     name="no_of_lots"
                     placeholder="Enter Lots Price"
                     value={this.state.no_of_lots}
+                    onChange={this.changeHandler}
+                  />
+                </Col>
+                <Col lg="6" md="6" className="mb-2">
+                  <Label> Type </Label>
+                  <Input
+                    type="text"
+                    name="type"
+                    placeholder="Enter Trade Type"
+                    value={this.state.type}
                     onChange={this.changeHandler}
                   />
                 </Col>

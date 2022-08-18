@@ -93,7 +93,7 @@ class FnoEquityList extends React.Component {
         },
       },
       {
-        headerName: "Active Value",
+        headerName: "Active Value 2",
         field: "active_value2",
         width: 140,
         cellRendererFramework: (params) => {
@@ -395,7 +395,7 @@ class FnoEquityList extends React.Component {
   }
   async runthisfunction(id) {
     console.log(id);
-    await axiosConfig.get(`/dlt_fnoEquity/${id}`).then(
+    await axiosConfig.get(`/dlt_alltrade/${id}`).then(
       (response) => {
         console.log(response);
       },

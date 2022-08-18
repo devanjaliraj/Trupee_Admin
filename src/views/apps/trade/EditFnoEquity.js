@@ -21,26 +21,30 @@ class EditFnoEquity extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      equity_script: "",
       script_type: "",
-      scriptName: "",
-      call_type: "",
+      fnoequty_scrpt_name: "",
       active_value: "",
+      active_value2: "",
+      call_type: "",
       SL: "",
+      sl_type: false,
       T1: "",
+      t1_type: false,
       T2: "",
+      t2_type: false,
       T3: "",
+      t3_type: false,
       T4: "",
+      t4_type: false,
+      t5: "",
+      t5_type: false,
       qty: "",
       investment_amt: "",
       no_of_lots: "",
-      sl_type: "",
-      t1_type: "",
-      t2_type: "",
-      t3_type: "",
-      t4_type: "",
-      t5:"",
-      profit_loss_amt:"",
+      pl_type: "",
+      profit_loss_amt: "",
+      expiryDate: "",
+      type: "Equity",
     };
     this.state = {
       // scriptT: [],
@@ -50,7 +54,7 @@ class EditFnoEquity extends React.Component {
   async componentDidMount() {
     let { id } = this.props.match.params;
     axiosConfig
-      .get(`/getone_fnoEquity/${id}`, {
+      .get(`/viewonetrades/${id}`, {
         // headers: {
         //   "auth-adtoken": localStorage.getItem("auth-adtoken"),
         // },
@@ -60,7 +64,7 @@ class EditFnoEquity extends React.Component {
         this.setState({
           equity_script: response.data.data.equity_script,
           profit_loss_amt: response.data.data.profit_loss_amt,
-          scriptName: response.data.data.scriptName,
+          fnoequty_scrpt_name: response.data.data.fnoequty_scrpt_name,
           call_type: response.data.data.call_type,
           active_value: response.data.data.active_value,
           SL: response.data.data.SL,
@@ -77,14 +81,16 @@ class EditFnoEquity extends React.Component {
           t2_type: response.data.data.t2_type,
           t3_type: response.data.data.t3_type,
           t4_type: response.data.data.t4_type,
+          type: response.data.data.type,
         });
       })
       .catch((error) => {
         console.log(error);
       });
+
     //Script//
     axiosConfig
-      .get("/getEquityScript")
+      .get("/getCashScript")
       .then((response) => {
         console.log(response);
         this.setState({
@@ -122,7 +128,7 @@ class EditFnoEquity extends React.Component {
     e.preventDefault();
     let { id } = this.props.match.params;
     axiosConfig
-      .post(`/edit_fnoEquity/${id}`, this.state, {
+      .post(`/editalltrade/${id}`, this.state, {
         // headers: {
         //   "auth-adtoken": localStorage.getItem("auth-adtoken"),
         // },
@@ -168,13 +174,14 @@ class EditFnoEquity extends React.Component {
             <Form className="m-1" onSubmit={this.submitHandler}>
               <Row className="mb-2">
                 <Col lg="6" md="6" className="mb-2">
-                  <Label>Exp. Date</Label>
-                  <Input type="date" placeholder="Enter User Id" />
+                  <Label>Exp Date</Label>
+                  <Input
+                    type="date"
+                    name="expiryDate"
+                    value={this.state.expiryDate}
+                    onChange={this.changeHandler}
+                  />
                 </Col>
-                {/* <Col lg="6" md="6" className="mb-2">
-                  <Label>Time</Label>
-                  <Input type="time" placeholder="Enter User Id" />
-                </Col> */}
                 {/* <Col lg="6" md="6" sm="6" className="mb-2">
                   <Label>Script</Label>
                   <CustomInput
@@ -194,10 +201,11 @@ class EditFnoEquity extends React.Component {
                   <Label>Script Name</Label>
                   <CustomInput
                     type="select"
-                    name="scriptName"
+                    name="fnoequty_scrpt_name"
                     value={this.state.scriptName}
                     onChange={this.changeHandler}
                   >
+                    <option>select script</option>
                     {this.state.scriptN?.map((allScript) => (
                       <option value={allScript?._id} key={allScript?._id}>
                         {allScript?.scriptName}
@@ -209,9 +217,9 @@ class EditFnoEquity extends React.Component {
                   <Label for="exampleSelect">Equity Script</Label>
                   <Input
                     id="exampleSelect"
-                    name="equity_script"
+                    name="script_type"
                     type="select"
-                    value={this.state.equity_script}
+                    value={this.state.script_type}
                     onChange={this.changeHandler}
                   >
                     <option>Select Script</option>
@@ -221,14 +229,6 @@ class EditFnoEquity extends React.Component {
                     <option>SELL</option>
                   </Input>
                 </Col>
-                {/* <Col lg="6" md="6" className="mb-2">
-                  <Label>Script Name</Label>
-                  <Input type="text" placeholder="Enter Script Name" />
-                </Col> */}
-                {/* <Col lg="6" md="6" className="mb-2">
-                  <Label>Tip</Label>
-                  <Input type="text" placeholder="Enter Tip" />
-                </Col> */}
                 <Col lg="6" md="6" className="mb-2">
                   <Label for="exampleSelect">Call Type</Label>
                   <Input
@@ -264,9 +264,9 @@ class EditFnoEquity extends React.Component {
                       <option value="Option 3">Loss</option>
                     </Input>
                     <Input
-                      type="text"
-                      name="profit_loss"
-                      value={this.state.profit_loss}
+                      type="number"
+                      name="profit_loss_amt"
+                      value={this.state.profit_loss_amt}
                       onChange={this.changeHandler}
                     />
                   </div>
@@ -278,6 +278,16 @@ class EditFnoEquity extends React.Component {
                     placeholder="Enter Active Value"
                     name="active_value"
                     value={this.state.active_value}
+                    onChange={this.changeHandler}
+                  />
+                </Col>
+                <Col lg="6" md="6" className="mb-2">
+                  <Label>Active Value 2</Label>
+                  <Input
+                    type="text"
+                    placeholder="Enter Active Value"
+                    name="active_value2"
+                    value={this.state.active_value2}
                     onChange={this.changeHandler}
                   />
                 </Col>
@@ -368,6 +378,16 @@ class EditFnoEquity extends React.Component {
                     name="no_of_lots"
                     placeholder="Enter Lots Price"
                     value={this.state.no_of_lots}
+                    onChange={this.changeHandler}
+                  />
+                </Col>
+                <Col lg="6" md="6" className="mb-2">
+                  <Label>Trade Type</Label>
+                  <Input
+                    type="text"
+                    name="type"
+                    placeholder="Enter Trade Type"
+                    value={this.state.type}
                     onChange={this.changeHandler}
                   />
                 </Col>

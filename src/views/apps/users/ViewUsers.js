@@ -25,7 +25,7 @@ class ViewUsers extends React.Component {
   componentDidMount() {
     let { id } = this.props.match.params;
     axiosConfig
-      .get(`/viewonemembership/${id}`)
+      .get(`/getoneuser/${id}`)
 
       .then((response) => {
         // console.log(response.data);
@@ -86,8 +86,7 @@ class ViewUsers extends React.Component {
                       </div>
                       <div className="text-truncate">
                         <span>
-                          {this.state.data.userid?.firstname}{" "}
-                          {this.state.data.userid?.lastname}
+                          {this.state.data.firstname} {this.state.data.lastname}
                         </span>
                       </div>
 
@@ -105,7 +104,7 @@ class ViewUsers extends React.Component {
                         Mobile
                       </div>
                       <div className="text-truncate">
-                        <span>{this.state.data.userid?.mobile}</span>
+                        <span>{this.state.data.mobile}</span>
                       </div>
                     </div>
                     <div className="d-flex user-info">
@@ -113,7 +112,7 @@ class ViewUsers extends React.Component {
                         Email
                       </div>
                       <div className="text-truncate">
-                        <span>{this.state.data.userid?.email}</span>
+                        <span>{this.state.data.email}</span>
                       </div>
                     </div>
                     <div className="d-flex user-info">
@@ -121,7 +120,7 @@ class ViewUsers extends React.Component {
                         Date Of Birth
                       </div>
                       <div className="text-truncate">
-                        <span>{this.state.data.userid?.dob}</span>
+                        <span>{this.state.data.dob}</span>
                       </div>
                     </div>
                     <div className="d-flex user-info">
@@ -129,10 +128,10 @@ class ViewUsers extends React.Component {
                         Gender
                       </div>
                       <div className="text-truncate">
-                        <span>{this.state.data.userid?.gender}</span>
+                        <span>{this.state.data.gender}</span>
                       </div>
                     </div>
-                    <div className="d-flex user-info">
+                    {/* <div className="d-flex user-info">
                       <div className="user-info-title font-weight-bold">
                         Membership Plan
                       </div>
@@ -155,7 +154,7 @@ class ViewUsers extends React.Component {
                       <div className="text-truncate">
                         <span>{this.state.data.expdate}</span>
                       </div>
-                    </div>
+                    </div> */}
                     <div className="d-flex user-info">
                       <div className="user-info-title font-weight-bold">
                         Status

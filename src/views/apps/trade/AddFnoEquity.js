@@ -22,21 +22,30 @@ export class AddFnoEquity extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      equity_script: "",
       script_type: "",
-      scriptName: "",
-      call_type: "",
+      fnoequty_scrpt_name: "",
       active_value: "",
+      active_value2: "",
+      call_type: "",
       SL: "",
+      sl_type: false,
       T1: "",
+      t1_type: false,
       T2: "",
+      t2_type: false,
       T3: "",
+      t3_type: false,
       T4: "",
+      t4_type: false,
+      t5: "",
+      t5_type: false,
       qty: "",
       investment_amt: "",
       no_of_lots: "",
-      date: "",
-      time: "",
+      pl_type: "",
+      profit_loss_amt: "",
+      expiryDate: "",
+      type: "Equity",
     };
     this.state = {
       // scriptT: [],
@@ -114,39 +123,23 @@ export class AddFnoEquity extends Component {
                   <Label>Exp Date</Label>
                   <Input
                     type="date"
-                    placeholder="Enter User Id"
-                    name="date"
-                    value={this.state.date}
+                    name="expiryDate"
+                    value={this.state.expiryDate}
                     onChange={this.changeHandler}
                   />
                 </Col>
-             
-                {/* <Col lg="6" md="6" sm="6" className="mb-2">
-                  <Label>Script</Label>
-                  <CustomInput
-                    type="select"
-                    name="script_type"
-                    value={this.state.script_type}
-                    onChange={this.changeHandler}
-                  >
-                    {this.state.scriptT.map((allScript) => (
-                      <option value={allScript._id} key={allScript._id}>
-                        {allScript.script_type}
-                      </option>
-                    ))}
-                  </CustomInput>
-                </Col> */}
                 <Col lg="6" md="6" sm="6" className="mb-2">
                   <Label>Script Name</Label>
                   <CustomInput
                     type="select"
-                    name="scriptName"
+                    name="fnoequty_scrpt_name"
                     value={this.state.scriptName}
                     onChange={this.changeHandler}
                   >
-                    {this.state.scriptN.map((allScript) => (
-                      <option value={allScript._id} key={allScript._id}>
-                        {allScript.scriptName}
+                    <option>select script</option>
+                    {this.state.scriptN?.map((allScript) => (
+                      <option value={allScript?._id} key={allScript?._id}>
+                        {allScript?.scriptName}
                       </option>
                     ))}
                   </CustomInput>
@@ -155,9 +148,9 @@ export class AddFnoEquity extends Component {
                   <Label for="exampleSelect">Equity Script</Label>
                   <Input
                     id="exampleSelect"
-                    name="equity_script"
+                    name="script_type"
                     type="select"
-                    value={this.state.equity_script}
+                    value={this.state.script_type}
                     onChange={this.changeHandler}
                   >
                     <option>Select Script</option>
@@ -167,7 +160,6 @@ export class AddFnoEquity extends Component {
                     <option>SELL</option>
                   </Input>
                 </Col>
-              
                 <Col lg="6" md="6" className="mb-2">
                   <Label for="exampleSelect">Call Type</Label>
                   <Input
@@ -203,9 +195,9 @@ export class AddFnoEquity extends Component {
                       <option value="Option 3">Loss</option>
                     </Input>
                     <Input
-                      type="text"
-                      name="profit_loss"
-                      value={this.state.profit_loss}
+                      type="number"
+                      name="profit_loss_amt"
+                      value={this.state.profit_loss_amt}
                       onChange={this.changeHandler}
                     />
                   </div>
@@ -217,6 +209,16 @@ export class AddFnoEquity extends Component {
                     placeholder="Enter Active Value"
                     name="active_value"
                     value={this.state.active_value}
+                    onChange={this.changeHandler}
+                  />
+                </Col>
+                <Col lg="6" md="6" className="mb-2">
+                  <Label>Active Value 2</Label>
+                  <Input
+                    type="number"
+                    placeholder="Enter Active Value"
+                    name="active_value2"
+                    value={this.state.active_value2}
                     onChange={this.changeHandler}
                   />
                 </Col>
@@ -307,6 +309,16 @@ export class AddFnoEquity extends Component {
                     name="no_of_lots"
                     placeholder="Enter Lots Price"
                     value={this.state.no_of_lots}
+                    onChange={this.changeHandler}
+                  />
+                </Col>
+                <Col lg="6" md="6" className="mb-2">
+                  <Label>Trade Type</Label>
+                  <Input
+                    type="text"
+                    name="type"
+                    placeholder="Enter Trade Type"
+                    value={this.state.type}
                     onChange={this.changeHandler}
                   />
                 </Col>

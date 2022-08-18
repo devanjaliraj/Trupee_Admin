@@ -34,28 +34,26 @@ class MembershipList extends React.Component {
       suppressMenu: true,
     },
     columnDefs: [
-      // {
-      //   headerName: "Email",
-      //   field: "email",
-      //   width: 100,
-      //   pinned: window.innerWidth > 992 ? "left" : false,
-      //   cellRendererFramework: (params) => {
-      //     return (
-      //       <div className="d-flex align-items-center cursor-pointer">
-      //         <span>{params.data?.dealer_id?.email}</span>
-      //       </div>
-      //     );
-      //   },
-      // },
       {
-        headerName: "Dealer Name",
-        field: "dealer_name",
+        headerName: "S.No",
+        valueGetter: "node.rowIndex + 1",
+        field: "node.rowIndex + 1",
+        width: 80,
+        // filter: true,
+        // checkboxSelection: true,
+        // headerCheckboxSelectionFilteredOnly: true,
+        // headerCheckboxSelection: true,
+      },
+      {
+        headerName: "User Name",
+        field: "firstname",
         width: 120,
-        pinned: window.innerWidth > 992 ? "left" : false,
         cellRendererFramework: (params) => {
           return (
             <div className="d-flex align-items-center cursor-pointer">
-              <span>{params.data.dealer_id?.dealer_name}</span>
+              <span>
+                {params.data.userid?.firstname} {params.data.userid?.lastname}
+              </span>
             </div>
           );
         },
@@ -64,36 +62,72 @@ class MembershipList extends React.Component {
         headerName: "Mobile",
         field: "mobile",
         width: 120,
-        pinned: window.innerWidth > 992 ? "left" : false,
+        // pinned: window.innerWidth > 992 ? "left" : false,
         cellRendererFramework: (params) => {
           return (
             <div className="d-flex align-items-center cursor-pointer">
-              <span>{params.data.dealer_id?.mobile}</span>
+              <span>{params.data.userid?.mobile}</span>
             </div>
           );
         },
       },
 
       {
-        headerName: "Transaction ID",
-        field: "transaction_id",
+        headerName: "Email",
+        field: "email",
         width: 120,
+        // pinned: window.innerWidth > 992 ? "left" : false,
         cellRendererFramework: (params) => {
           return (
             <div className="d-flex align-items-center cursor-pointer">
-              <span>{params.data.transaction_id}</span>
+              <span>{params.data.userid?.email}</span>
             </div>
           );
         },
       },
       {
-        headerName: "Date",
+        headerName: "Date Of Birth",
+        field: "dob",
+        width: 120,
+        cellRendererFramework: (params) => {
+          return (
+            <div className="d-flex align-items-center cursor-pointer">
+              <span>{params.data.userid?.dob}</span>
+            </div>
+          );
+        },
+      },
+      {
+        headerName: "Gender",
+        field: "gender",
+        width: 120,
+        cellRendererFramework: (params) => {
+          return (
+            <div className="d-flex align-items-center cursor-pointer">
+              <span>{params.data.userid?.gender}</span>
+            </div>
+          );
+        },
+      },
+      {
+        headerName: "Membership",
+        field: "pack_name",
+        width: 120,
+        cellRendererFramework: (params) => {
+          return (
+            <div className="d-flex align-items-center cursor-pointer">
+              <span>{params.data.planId?.pack_name}</span>
+            </div>
+          );
+        },
+      },
+      {
+        headerName: "Start Date",
         field: "date",
         width: 120,
         cellRendererFramework: (params) => {
           return (
             <div className="d-flex align-items-center cursor-pointer">
-              {/* <span>{moment(this.state.data?.date).format("DD-MM-YYYY")}</span> */}
               <span>{params.data.date}</span>
             </div>
           );
@@ -112,30 +146,6 @@ class MembershipList extends React.Component {
           );
         },
       },
-      {
-        headerName: "Amount",
-        field: "amount",
-        width: 120,
-        cellRendererFramework: (params) => {
-          return (
-            <div className="d-flex align-items-center cursor-pointer">
-              <span>{params.data.amount}</span>
-            </div>
-          );
-        },
-      },
-      {
-        headerName: "Plan Id",
-        field: "planId.associated_plan",
-        width: 120,
-        cellRendererFramework: (params) => {
-          return (
-            <div className="d-flex align-items-center cursor-pointer">
-              <span>{params.data.planId?.associated_plan}</span>
-            </div>
-          );
-        },
-      },
 
       {
         headerName: "Status",
@@ -143,11 +153,11 @@ class MembershipList extends React.Component {
         // filter: true,
         width: 130,
         cellRendererFramework: (params) => {
-          return params.value === "Confirm" ? (
+          return params.value === "Active" ? (
             <div className="badge badge-pill badge-success">
               {params.data.status}
             </div>
-          ) : params.value === "Pending" ? (
+          ) : params.value === "Deactive" ? (
             <div className="badge badge-pill badge-warning">
               {params.data.status}
             </div>
@@ -194,7 +204,7 @@ class MembershipList extends React.Component {
     ],
   };
   async componentDidMount() {
-    await axiosConfig.get("/dealer/allmembershipplan").then((response) => {
+    await axiosConfig.get("/allmembership").then((response) => {
       const rowData = response.data.data;
       console.log(rowData);
       this.setState({ rowData });
@@ -202,7 +212,7 @@ class MembershipList extends React.Component {
   }
   async runthisfunction(id) {
     console.log(id);
-    await axiosConfig.get(`/dealer/deletemembership/${id}`).then((response) => {
+    await axiosConfig.get(`/dlt_membership/${id}`).then((response) => {
       console.log(response);
     });
   }

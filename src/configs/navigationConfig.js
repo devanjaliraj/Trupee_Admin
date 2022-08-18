@@ -103,6 +103,14 @@ const navigationConfig = [
     navLink: "/app/users/usersList",
   },
   {
+    id: "membershipList",
+    title: "Membership List",
+    type: "item",
+    icon: <Icon.ArrowRight size={12} />,
+    permissions: ["admin", "editor"],
+    navLink: "/app/membership/membershipList",
+  },
+  {
     type: "groupHeader",
     groupTitle: "UPDATE",
   },
@@ -120,8 +128,7 @@ const navigationConfig = [
     type: "item",
     icon: <Icon.ArrowRight size={12} />,
     permissions: ["admin", "editor"],
-     navLink: "/app/trade/generalNotifList",
-  
+    navLink: "/app/trade/generalNotifList",
   },
   // {
   //   id: "generalNotif",
@@ -159,7 +166,7 @@ const navigationConfig = [
     icon: <Icon.ArrowRight size={12} />,
     permissions: ["admin", "editor"],
     // navLink: "/app/package/nonActivePlanList",
-    navLink:"/",
+    navLink: "/",
   },
   {
     id: "faqList",
@@ -170,7 +177,7 @@ const navigationConfig = [
     navLink: "/app/faq/faqList",
   },
   {
-      id: "refferalWalletList",
+    id: "refferalWalletList",
     title: "Refferal Wallet ",
     type: "item",
     icon: <Icon.ArrowRight size={12} />,
@@ -191,63 +198,63 @@ const navigationConfig = [
     groupTitle: "Explore",
   },
 
-      {
-        id: "startUp",
-        title: "StartUp List ",
-        type: "item",
-        icon: <Icon.ArrowRight size={12} />,
-        permissions: ["admin", "editor"],
-        navLink: "/app/explore/Trupee/startUp",
-      },
-      {
-        id: "trupeeUnivercity",
-        title: "Trupee Univercity List ",
-        type: "item",
-        icon: <Icon.ArrowRight size={12} />,
-        permissions: ["admin", "editor"],
-        navLink: "/app/explore/Trupee/trupeeUnivercity",
-      },
-      {
-        id: "performanceSheet",
-        title: "Performance Sheet List ",
-        type: "item",
-        icon: <Icon.ArrowRight size={12} />,
-        permissions: ["admin", "editor"],
-        navLink: "/app/explore/Trupee/performanceSheet",
-      },
-      {
-        id: "userPerformanceSheet",
-        title: "User Performance Sheet List ",
-        type: "item",
-        icon: <Icon.ArrowRight size={12} />,
-        permissions: ["admin", "editor"],
-        navLink: "/app/explore/Trupee/userPerformanceSheet",
-      },
-      {
-        id: "refferEarn",
-        title: "Reffer Earn List ",
-        type: "item",
-        icon: <Icon.ArrowRight size={12} />,
-        permissions: ["admin", "editor"],
-        navLink: "/app/explore/Trupee/refferEarn",
-      },
-      {
-        id: "opportunity",
-        title: "Opportunity List ",
-        type: "item",
-        icon: <Icon.ArrowRight size={12} />,
-        permissions: ["admin", "editor"],
-        navLink: "/app/explore/Trupee/opportunity",
-      },
-      {
-        id: "tradingViewCharts",
-        title: "Trading View Charts List ",
-        type: "item",
-        icon: <Icon.ArrowRight size={12} />,
-        permissions: ["admin", "editor"],
-        navLink: "/app/explore/Trupee/tradingViewCharts",
-      },
- 
+  {
+    id: "startUp",
+    title: "StartUp List ",
+    type: "item",
+    icon: <Icon.ArrowRight size={12} />,
+    permissions: ["admin", "editor"],
+    navLink: "/app/explore/Trupee/startUp",
+  },
+  {
+    id: "trupeeUnivercity",
+    title: "Trupee Univercity List ",
+    type: "item",
+    icon: <Icon.ArrowRight size={12} />,
+    permissions: ["admin", "editor"],
+    navLink: "/app/explore/Trupee/trupeeUnivercity",
+  },
+  {
+    id: "performanceSheet",
+    title: "Performance Sheet List ",
+    type: "item",
+    icon: <Icon.ArrowRight size={12} />,
+    permissions: ["admin", "editor"],
+    navLink: "/app/explore/Trupee/performanceSheet",
+  },
+  {
+    id: "userPerformanceSheet",
+    title: "User Performance Sheet List ",
+    type: "item",
+    icon: <Icon.ArrowRight size={12} />,
+    permissions: ["admin", "editor"],
+    navLink: "/app/explore/Trupee/userPerformanceSheet",
+  },
+  {
+    id: "refferEarn",
+    title: "Reffer Earn List ",
+    type: "item",
+    icon: <Icon.ArrowRight size={12} />,
+    permissions: ["admin", "editor"],
+    navLink: "/app/explore/Trupee/refferEarn",
+  },
+  {
+    id: "opportunity",
+    title: "Opportunity List ",
+    type: "item",
+    icon: <Icon.ArrowRight size={12} />,
+    permissions: ["admin", "editor"],
+    navLink: "/app/explore/Trupee/opportunity",
+  },
+  {
+    id: "tradingViewCharts",
+    title: "Trading View Charts List ",
+    type: "item",
+    icon: <Icon.ArrowRight size={12} />,
+    permissions: ["admin", "editor"],
+    navLink: "/app/explore/Trupee/tradingViewCharts",
+  },
+
   {
     type: "groupHeader",
     groupTitle: "Profile Page",
@@ -259,9 +266,8 @@ const navigationConfig = [
     icon: <Icon.ArrowRight size={12} />,
     permissions: ["admin", "editor"],
     // navLink: "/app/package/nonActivePlanList",
-    navLink:"/pages/profile",
+    navLink: "/pages/profile",
   },
-
 
   {
     id: "nonActivePlanList",
@@ -270,7 +276,7 @@ const navigationConfig = [
     icon: <Icon.ArrowRight size={12} />,
     permissions: ["admin", "editor"],
     // navLink: "/app/package/nonActivePlanList",
-    navLink:"/",
+    navLink: "/",
   },
   {
     id: "feedbackList",
@@ -305,7 +311,7 @@ const navigationConfig = [
   //   permissions: ["admin", "editor"],
   //   navLink: "/app/package/packagePlanList",
   // },
- 
+
   // {
   //   id: "packagePlanList",
   //   title: "Active Members ",
@@ -314,7 +320,6 @@ const navigationConfig = [
   //   permissions: ["admin", "editor"],
   //   navLink: "/app/package/packagePlanList",
   // },
-
 
   // {
   //   type: "groupHeader",
@@ -390,22 +395,22 @@ const navigationConfig = [
   //       permissions: ["admin", "editor"],
   //       navLink: "/app/trade/equityCashList",
   //     },
-      // {
-      //   id: "niftyList",
-      //   title: "NIFTY",
-      //   type: "item",
-      //   icon: <Icon.Circle size={12} />,
-      //   permissions: ["admin", "editor"],
-      //   navLink: "/app/trade/niftyList",
-      // },
-      // {
-      //   id: "bankNiftyList",
-      //   title: "BANK NIFTY",
-      //   type: "item",
-      //   icon: <Icon.Circle size={12} />,
-      //   permissions: ["admin", "editor"],
-      //   navLink: "/app/trade/bankNiftyList",
-      // },
+  // {
+  //   id: "niftyList",
+  //   title: "NIFTY",
+  //   type: "item",
+  //   icon: <Icon.Circle size={12} />,
+  //   permissions: ["admin", "editor"],
+  //   navLink: "/app/trade/niftyList",
+  // },
+  // {
+  //   id: "bankNiftyList",
+  //   title: "BANK NIFTY",
+  //   type: "item",
+  //   icon: <Icon.Circle size={12} />,
+  //   permissions: ["admin", "editor"],
+  //   navLink: "/app/trade/bankNiftyList",
+  // },
   //   ],
   // },
   // {
@@ -464,7 +469,6 @@ const navigationConfig = [
   //     },
   //   ],
   // },
-  
 
   // {
   //   id: "subplan",
@@ -546,7 +550,7 @@ const navigationConfig = [
   //       permissions: ["admin", "editor"],
   //       navLink: "/app/pageSetUP/termscondition/TermConditionList",
   //     },
-  
+
   //   ],
   // },
 ];

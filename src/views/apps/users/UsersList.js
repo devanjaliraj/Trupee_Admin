@@ -109,45 +109,45 @@ class UsersList extends React.Component {
           );
         },
       },
-      {
-        headerName: "Membership plan",
-        field: "pack_name",
-        width: 120,
-        cellRendererFramework: (params) => {
-          return (
-            <div className="d-flex align-items-center cursor-pointer">
-              <span>{params.data.planId?.pack_name}</span>
-            </div>
-          );
-        },
-      },
-      {
-        headerName: "Start Date",
-        field: "date",
-        width: 120,
-        cellRendererFramework: (params) => {
-          return (
-            <div className="d-flex align-items-center cursor-pointer">
-              {/* <span>{moment(params.data.createdAt).format("ll")} </span> */}
-              <span>{params.data.date}</span>
-            </div>
-          );
-        },
-      },
+      // {
+      //   headerName: "Membership plan",
+      //   field: "pack_name",
+      //   width: 120,
+      //   cellRendererFramework: (params) => {
+      //     return (
+      //       <div className="d-flex align-items-center cursor-pointer">
+      //         <span>{params.data.planId?.pack_name}</span>
+      //       </div>
+      //     );
+      //   },
+      // },
+      // {
+      //   headerName: "Start Date",
+      //   field: "date",
+      //   width: 120,
+      //   cellRendererFramework: (params) => {
+      //     return (
+      //       <div className="d-flex align-items-center cursor-pointer">
+      //         {/* <span>{moment(params.data.createdAt).format("ll")} </span> */}
+      //         <span>{params.data.date}</span>
+      //       </div>
+      //     );
+      //   },
+      // },
 
-      {
-        headerName: "Expiry Date",
-        field: "expdate",
-        width: 120,
-        cellRendererFramework: (params) => {
-          return (
-            <div className="d-flex align-items-center cursor-pointer">
-              <span>{params.data.expdate}</span>
-              {/* <span>{moment(params.data.updatedAt).format("ll")} </span> */}
-            </div>
-          );
-        },
-      },
+      // {
+      //   headerName: "Expiry Date",
+      //   field: "expdate",
+      //   width: 120,
+      //   cellRendererFramework: (params) => {
+      //     return (
+      //       <div className="d-flex align-items-center cursor-pointer">
+      //         <span>{params.data.expdate}</span>
+      //         {/* <span>{moment(params.data.updatedAt).format("ll")} </span> */}
+      //       </div>
+      //     );
+      //   },
+      // },
       {
         headerName: "Status",
         field: "status",
