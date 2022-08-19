@@ -38,7 +38,7 @@ class TradingViewCharts extends React.Component {
         headerName: "S.No",
         valueGetter: "node.rowIndex + 1",
         field: "node.rowIndex + 1",
-        width: 150,
+        width: 100,
         // filter: true,
         // checkboxSelection: true,
         // headerCheckboxSelectionFilteredOnly: true,
@@ -48,7 +48,7 @@ class TradingViewCharts extends React.Component {
         headerName: "Charts",
         field: "chart_type",
         // filter: true,
-        width: 250,
+        width: 150,
         // pinned: window.innerWidth > 992 ? "left" : false,
         cellRendererFramework: (params) => {
           return (
@@ -62,7 +62,7 @@ class TradingViewCharts extends React.Component {
         headerName: "Title",
         field: "title",
         // filter: true,
-        width: 250,
+        width: 150,
         // pinned: window.innerWidth > 992 ? "left" : false,
         cellRendererFramework: (params) => {
           return (
@@ -76,7 +76,7 @@ class TradingViewCharts extends React.Component {
         headerName: "Descripiton",
         field: "desc",
         // filter: true,
-        width: 250,
+        width: 150,
         // pinned: window.innerWidth > 992 ? "left" : false,
         cellRendererFramework: (params) => {
           return (
@@ -90,7 +90,7 @@ class TradingViewCharts extends React.Component {
         headerName: "Upload Image",
         field: "image",
         // filter: true,
-        width: 200,
+        width: 150,
         // pinned: window.innerWidth > 992 ? "left" : false,
         cellRendererFramework: (params) => {
           return (
@@ -104,7 +104,7 @@ class TradingViewCharts extends React.Component {
       {
         headerName: "Actions",
         field: "sortorder",
-        width: 250,
+        width: 150,
         // pinned: window.innerWidth > 992 ? "right" : false,
         cellRendererFramework: (params) => {
           return (
@@ -142,7 +142,7 @@ class TradingViewCharts extends React.Component {
   };
   componentDidMount() {
     axiosConfig
-      .get(`/trendingchartby_type/Stock`)
+      .get(`/getAllChart`)
       .then((response) => {
         let rowData = response.data.data;
         JSON.stringify(rowData);
@@ -204,7 +204,7 @@ class TradingViewCharts extends React.Component {
                       <Button
                         className="btn btn-success float-right"
                         onClick={() =>
-                          history.push("/app/explore/Trupee/addStratUp")
+                          history.push("/app/explore/Trupee/addTVC")
                         }
                       >
                         Add

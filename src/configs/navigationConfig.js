@@ -169,6 +169,15 @@ const navigationConfig = [
     navLink: "/",
   },
   {
+    id: "userSpreedSheet",
+    title: "User Spreed Sheet ",
+    type: "item",
+    icon: <Icon.ArrowRight size={12} />,
+    permissions: ["admin", "editor"],
+    // navLink: "/app/package/nonActivePlanList",
+    navLink: "/",
+  },
+  {
     id: "faqList",
     title: "FAQ",
     type: "item",

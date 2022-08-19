@@ -20,16 +20,18 @@ import swal from "sweetalert";
 import { Route } from "react-router-dom";
 // import Datetime from "react-datetime";
 // import DatePicker from "react-flatpickr";
-
+import YearPicker from "react-year-picker";
 export default class AddPS extends Component {
   constructor(props) {
     super(props);
+
     this.state = {
       month: "",
       year: "",
       plan_price: "",
     };
   }
+  changeHandler2 = (e) => {};
 
   changeHandler1 = (e) => {
     this.setState({ status: e.target.value });
@@ -166,15 +168,18 @@ export default class AddPS extends Component {
                 </Col>
                 <Col lg="6" md="6" sm="6" className="mb-2">
                   <Label>Year</Label>
-                  <Input
-                    type="month"
+                  <YearPicker
                     name="year"
-                    dateFormat="YYYY"
                     value={this.state.year}
-                    // onChange={(date) => setYear(date.year())}
-                    onChange={this.changeHandler}
+                    onChange={this.changeHandler2}
                   />
 
+                  {/* <YearPicker
+                    changeHandler
+                    name="year"
+                    value={this.state.year}
+                    onChange={this.changeHandler}
+                  /> */}
                   {/* <Label>Year</Label>
                   <Input
                     required

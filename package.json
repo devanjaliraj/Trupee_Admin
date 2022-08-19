@@ -81,6 +81,7 @@
     "react-toastify": "^5.5.0",
     "react-toggle": "~4.1.1",
     "react-treebeard": "~3.2.3",
+    "react-year-picker": "^0.3.7",
     "reactstrap": "^8.10.1",
     "recharts": "~1.8.5",
     "redux": "^4.0.5",

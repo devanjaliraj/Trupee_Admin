@@ -17,40 +17,26 @@ import Select from "react-select";
 // import axiosConfig from "../../../../axiosConfig";
 // import swal from "sweetalert";
 import axiosConfig from "../../../../axiosConfig";
-
-const dealerName = [];
-
+import swal from "sweetalert";
 export class AddTVC extends Component {
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = {
+      title: "",
+      desc: "",
+      image: "",
+      chart_type: "",
+      selectedName: "",
+      selectedFile: null,
+    };
   }
-
-  async componentDidMount() {
-    axiosConfig
-      .get("/dealer/alldealers")
-      .then((response) => {
-        console.log(response);
-        //this.setState({ dealerN: response.data.data });
-
-        // eslint-disable-next-line no-unused-expressions
-        response.data?.data?.map((dealerp) => {
-          let obj = {
-            label: dealerp.dealer_name,
-            value: dealerp._id,
-          };
-          dealerName.push(obj);
-        });
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  }
-
-  handleChange = (dealer) => {
-    this.setState({ dealer }, () =>
-      console.log(`Option selected:`, this.state.dealer)
-    );
+  onChangeHandler = (event) => {
+    this.setState({ selectedFile: event.target.files[0] });
+    this.setState({ selectedName: event.target.files[0].name });
+    console.log(event.target.files[0]);
+  };
+  changeHandler1 = (e) => {
+    this.setState({ status: e.target.value });
   };
 
   changeHandler = (e) => {
@@ -58,26 +44,35 @@ export class AddTVC extends Component {
   };
   submitHandler = (e) => {
     e.preventDefault();
+    console.log(this.state);
+    const data = new FormData();
+    data.append("title", this.state.title);
+    data.append("desc", this.state.desc);
+    data.append("chart_type", this.state.chart_type);
+    data.append("image", this.state.selectedFile, this.state.selectedName);
+    for (var value of data.values()) {
+      console.log(value);
+    }
 
+    for (var key of data.keys()) {
+      console.log(key);
+    }
     axiosConfig
-      .post(
-        "/admin/addnotification",
-        this.state
-        // {
-        //   headers: {
-        //     "auth-adtoken": localStorage.getItem("auth-adtoken"),
-        //   },
-        // }
-      )
+      .post("/addTrending_chart", data)
+      // headers: {
+      //   "auth-adtoken": localStorage.getItem("auth-adtoken"),
+      // },
+
       .then((response) => {
-        console.log(response);
-        // swal("Success!", "Submitted SuccessFull!", "success");
-        this.props.history.push("/app/users/usersList");
+        console.log(response.data);
+        swal("Success!", "Submitted SuccessFull!", "success");
+        this.props.history.push("/app/explore/Trupee/TradingViewCharts");
       })
       .catch((error) => {
         console.log(error);
       });
   };
+
   render() {
     return (
       <div>
@@ -111,10 +106,9 @@ export class AddTVC extends Component {
                   <Input
                     type="text"
                     placeholder="Enter MRP Price"
-
-                    // name="desc"
-                    // value={this.state.desc}
-                    // onChange={this.changeHandler}
+                    name="title"
+                    value={this.state.title}
+                    onChange={this.changeHandler}
                   />
                 </Col>
                 <Col lg="6" md="6" className="mb-2">
@@ -122,19 +116,24 @@ export class AddTVC extends Component {
                   <Input
                     type="text"
                     placeholder="Enter Discount Price"
-
-                    // name="desc"
-                    // value={this.state.desc}
-                    // onChange={this.changeHandler}
+                    name="desc"
+                    value={this.state.desc}
+                    onChange={this.changeHandler}
                   />
                 </Col>
 
                 <Col lg="6" md="6" className="mb-2">
                   <Label for="exampleSelect">Charts</Label>
-                  <Input id="exampleSelect" name="select" type="select">
+                  <Input
+                    id="exampleSelect"
+                    name="chart_type"
+                    type="select"
+                    value={this.state.chart_type}
+                    onChange={this.changeHandler}
+                  >
                     <option>Select Charts</option>
-                    <option>Stock Chart</option>
-                    <option>Index Chart</option>
+                    <option>Stock </option>
+                    <option>Index </option>
                   </Input>
                 </Col>
                 <Col lg="6" md="6" sm="6" className="mb-2">
