@@ -145,17 +145,7 @@ export default class AddStartUp extends Component {
                     onChange={this.changeHandler}
                   ></Input>
                 </Col>
-                {/* <Col lg="6" md="6" sm="6" className="mb-2">
-                  <Label>Image</Label>
-                  <Input
-                    // required
-                    type="text"
-                    name="image"
-                    placeholder=""
-                    value={this.state.image}
-                    onChange={this.changeHandler}
-                  ></Input>
-                </Col> */}
+
                 <Col lg="6" md="6" sm="6" className="mb-2">
                   <Label>Image</Label>
                   <Input

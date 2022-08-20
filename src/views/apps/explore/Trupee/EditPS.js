@@ -19,29 +19,25 @@ import { history } from "../../../../history";
 import swal from "sweetalert";
 import { Route } from "react-router-dom";
 
-export default class EditTruUni extends Component {
+export default class EditTVC extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      title: "",
-      desc: "",
-      //   image: "",
-      video_link: "",
-      //   selectedName: "",
-      //   selectedFile: null,
+      month: "",
+      year: "",
+      plan_price: "",
     };
   }
   componentDidMount() {
     let { id } = this.props.match.params;
     axiosConfig
-      .get(`/getone_Tuniversity/${id}`)
+      .get(`/getonePersheet/${id}`)
       .then((response) => {
         console.log(response);
         this.setState({
-          title: response.data.data.title,
-          desc: response.data.data.desc,
-          //   image: response.data.data.image,
-          video_link: response.data.data.video_link,
+          month: response.data.data.month,
+          year: response.data.data.year,
+          plan_price: response.data.data.plan_price,
         });
       })
       .catch((error) => {
@@ -61,9 +57,9 @@ export default class EditTruUni extends Component {
     console.log(this.state);
 
     const data = new FormData();
-    data.append("title", this.state.title);
-    data.append("desc", this.state.desc);
-    data.append("video_link", this.state.video_link);
+    data.append("month", this.state.month);
+    data.append("year", this.state.year);
+    data.append("plan_price", this.state.plan_price);
 
     for (var value of data.values()) {
       console.log(value);
@@ -75,13 +71,13 @@ export default class EditTruUni extends Component {
     let { id } = this.props.match.params;
     axiosConfig
       // .post(`/editsize/${id}`, this.state)
-      .post(`/edit_Tuniversity/${id}`, this.state)
+      .post(`/editPersheet/${id}`, this.state)
 
       .then((response) => {
         console.log(response.data);
 
         swal("Success!", "Submitted SuccessFull!", "success");
-        this.props.history.push("/app/explore/Trupee/startUp");
+        this.props.history.push("/app/explore/Trupee/performanceSheet");
       })
       .catch((error) => {
         console.log(error);
@@ -98,10 +94,13 @@ export default class EditTruUni extends Component {
                 <BreadcrumbItem href="/analyticsDashboard" tag="a">
                   Home
                 </BreadcrumbItem>
-                <BreadcrumbItem href="/app/explore/Trupee/startUp" tag="a">
-                  Trupee Univercity List
+                <BreadcrumbItem
+                  href="/app/explore/Trupee/performanceSheet"
+                  tag="a"
+                >
+                  Performance Sheet List
                 </BreadcrumbItem>
-                <BreadcrumbItem active>Edit StartUp</BreadcrumbItem>
+                <BreadcrumbItem active>Edit Performance Sheet</BreadcrumbItem>
               </Breadcrumb>
             </div>
           </Col>
@@ -110,7 +109,7 @@ export default class EditTruUni extends Component {
           <Row className="m-2">
             <Col>
               <h1 col-sm-6 className="float-left">
-                Edit Trupee Univercity
+                Edit Performance Sheet
               </h1>
             </Col>
             <Col>
@@ -119,7 +118,7 @@ export default class EditTruUni extends Component {
                   <Button
                     className=" btn btn-danger float-right"
                     onClick={() =>
-                      history.push("/app/explore/Trupee/trupeeUnivercity")
+                      history.push("/app/explore/Trupee/performanceSheet")
                     }
                   >
                     Back
@@ -132,36 +131,74 @@ export default class EditTruUni extends Component {
             <Form className="m-1" onSubmit={this.submitHandler}>
               <Row>
                 <Col lg="6" md="6" sm="6" className="mb-2">
-                  <Label>Title</Label>
+                  <Label>Month</Label>
                   <Input
                     required
-                    type="text"
-                    name="title"
-                    placeholder=""
-                    value={this.state.title}
+                    name="month"
+                    type="select"
+                    value={this.state.month}
                     onChange={this.changeHandler}
-                  ></Input>
-                </Col>
+                  >
+                    <option>Select Month</option>
 
+                    <option name="January" value="Jan">
+                      January
+                    </option>
+                    <option name="February" value="Feb">
+                      February
+                    </option>
+                    <option name="March" value="Mar">
+                      March
+                    </option>
+                    <option name="April" value="Apr">
+                      April
+                    </option>
+                    <option name="May" value="May">
+                      May
+                    </option>
+                    <option name="June" value="Jun">
+                      June
+                    </option>
+                    <option name="July" value="Jul">
+                      July
+                    </option>
+                    <option name="August" value="Aug">
+                      August
+                    </option>
+                    <option name="September" value="Sep">
+                      September
+                    </option>
+                    <option name="October" value="Oct">
+                      October
+                    </option>
+                    <option name="November" value="Nov">
+                      November
+                    </option>
+                    <option name="December" value="Dec">
+                      December
+                    </option>
+                  </Input>
+                </Col>
                 <Col lg="6" md="6" sm="6" className="mb-2">
-                  <Label>Video Link</Label>
+                  <Label>Year</Label>
+                  <Input
+                    type="number"
+                    min="1900"
+                    max="2099"
+                    step="1"
+                    name="year"
+                    value={this.state.year}
+                    onChange={this.changeHandler}
+                  />
+                </Col>
+                <Col lg="6" md="6" sm="6" className="mb-2">
+                  <Label>Plan Price</Label>
                   <Input
                     required
                     type="text"
-                    name="video_link"
+                    name="plan_price"
                     placeholder=""
-                    value={this.state.video_link}
-                    onChange={this.changeHandler}
-                  ></Input>
-                </Col>
-                <Col lg="6" md="6" sm="6" className="mb-2">
-                  <Label>Descripition</Label>
-                  <Input
-                    required
-                    type="textarea"
-                    name="desc"
-                    placeholder=""
-                    value={this.state.desc}
+                    value={this.state.plan_price}
                     onChange={this.changeHandler}
                   ></Input>
                 </Col>

@@ -214,19 +214,21 @@ class TrupeeUnivercity extends React.Component {
                 </Col>
 
                 <Col>
-              <Route
-                render={({ history }) => (
-                  <Button
-                    className=" btn btn-danger float-right"
-                    onClick={() =>
-                      history.push("/app/explore/Trupee/AddTrupeeUnivercity")
-                    }
-                  >
-                    Add 
-                  </Button>
-                )}
-              />
-            </Col>
+                  <Route
+                    render={({ history }) => (
+                      <Button
+                        className=" btn btn-danger float-right"
+                        onClick={() =>
+                          history.push(
+                            "/app/explore/Trupee/addTrupeeUnivercity"
+                          )
+                        }
+                      >
+                        Add
+                      </Button>
+                    )}
+                  />
+                </Col>
               </Row>
               <CardBody>
                 {this.state.rowData === null ? null : (

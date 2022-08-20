@@ -146,8 +146,8 @@ export class AddFnoIndex extends Component {
                     onChange={this.changeHandler}
                   >
                     <option>Select Script</option>
-                    <option>CE</option>
-                    <option>PF</option>
+                    {/* <option>CE</option>
+                    <option>PF</option> */}
                     <option>BUY</option>
                     <option>SELL</option>
                   </Input>
@@ -188,7 +188,7 @@ export class AddFnoIndex extends Component {
                     <option>Intraday (Hero-Zero)</option>
                   </Input>
                 </Col>
-                <Col lg="6" md="6" className="mb-2">
+                {/* <Col lg="6" md="6" className="mb-2">
                   <div>
                     <Label>P&L</Label>
                     <Input
@@ -208,7 +208,7 @@ export class AddFnoIndex extends Component {
                       onChange={this.changeHandler}
                     />
                   </div>
-                </Col>
+                </Col> */}
                 <Col lg="6" md="6" className="mb-2">
                   <Label>Active Value</Label>
                   <Input
@@ -250,7 +250,7 @@ export class AddFnoIndex extends Component {
                     onChange={this.changeHandler}
                   />
                 </Col>
-                <Col lg="6" md="6" className="mb-2">
+                {/* <Col lg="6" md="6" className="mb-2">
                   <Label>Investment Amount</Label>
                   <Input
                     name="investment_amt"
@@ -259,7 +259,7 @@ export class AddFnoIndex extends Component {
                     value={this.state.investment_amt}
                     onChange={this.changeHandler}
                   />
-                </Col>
+                </Col> */}
                 <Col lg="6" md="6" className="mb-2">
                   <Label>Number Of Lots</Label>
                   <Input

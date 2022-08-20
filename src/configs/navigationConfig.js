@@ -92,7 +92,7 @@ const navigationConfig = [
 
   {
     type: "groupHeader",
-    groupTitle: "USERS",
+    groupTitle: "Membership",
   },
   {
     id: "usersList",
@@ -109,6 +109,14 @@ const navigationConfig = [
     icon: <Icon.ArrowRight size={12} />,
     permissions: ["admin", "editor"],
     navLink: "/app/membership/membershipList",
+  },
+  {
+    id: "packagePlanList",
+    title: "Active Members ",
+    type: "item",
+    icon: <Icon.ArrowRight size={12} />,
+    permissions: ["admin", "editor"],
+    navLink: "/app/package/packagePlanList",
   },
   {
     type: "groupHeader",
@@ -151,14 +159,7 @@ const navigationConfig = [
     type: "groupHeader",
     groupTitle: "App Page Setup",
   },
-  {
-    id: "packagePlanList",
-    title: "Active Members ",
-    type: "item",
-    icon: <Icon.ArrowRight size={12} />,
-    permissions: ["admin", "editor"],
-    navLink: "/app/package/packagePlanList",
-  },
+
   {
     id: "nonActivePlanList",
     title: "Premium Service ",

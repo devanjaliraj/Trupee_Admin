@@ -211,8 +211,8 @@ class EditEquityCash extends React.Component {
                     onChange={this.changeHandler}
                   >
                     <option>Select Script</option>
-                    <option>CE</option>
-                    <option>PF</option>
+                    {/* <option>CE</option>
+                    <option>PF</option> */}
                     <option>BUY</option>
                     <option>SELL</option>
                   </Input>
@@ -238,7 +238,7 @@ class EditEquityCash extends React.Component {
                     <option>Intraday (Hero-Zero)</option>
                   </Input>
                 </Col>
-                <Col lg="6" md="6" className="mb-2">
+                {/* <Col lg="6" md="6" className="mb-2">
                   <div>
                     <Label>P&L</Label>
                     <Input
@@ -258,7 +258,7 @@ class EditEquityCash extends React.Component {
                       onChange={this.changeHandler}
                     />
                   </div>
-                </Col>
+                </Col> */}
                 <Col lg="6" md="6" className="mb-2">
                   <Label>Active Value</Label>
                   <Input
@@ -270,10 +270,10 @@ class EditEquityCash extends React.Component {
                   />
                 </Col>
                 <Col lg="6" md="6" className="mb-2">
-                  <Label>Active Value 2</Label>
+                  <Label>Max. Value Price</Label>
                   <Input
                     type="number"
-                    placeholder="Enter Active Value 2"
+                    placeholder="Enter Max. Value Price"
                     name="active_value2"
                     value={this.state.active_value2}
                     onChange={this.changeHandler}
@@ -349,7 +349,7 @@ class EditEquityCash extends React.Component {
                     onChange={this.changeHandler}
                   />
                 </Col>
-                <Col lg="6" md="6" className="mb-2">
+                {/* <Col lg="6" md="6" className="mb-2">
                   <Label>Investment Amount</Label>
                   <Input
                     name="investment_amt"
@@ -358,8 +358,8 @@ class EditEquityCash extends React.Component {
                     value={this.state.investment_amt}
                     onChange={this.changeHandler}
                   />
-                </Col>
-                <Col lg="6" md="6" className="mb-2">
+                </Col> */}
+                {/* <Col lg="6" md="6" className="mb-2">
                   <Label>Number Of Lots</Label>
                   <Input
                     type="number"
@@ -368,7 +368,7 @@ class EditEquityCash extends React.Component {
                     value={this.state.no_of_lots}
                     onChange={this.changeHandler}
                   />
-                </Col>{" "}
+                </Col>{" "} */}
                 <Col lg="6" md="6" className="mb-2">
                   <Label>Type</Label>
                   <Input

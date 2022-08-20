@@ -154,8 +154,8 @@ export class AddFnoEquity extends Component {
                     onChange={this.changeHandler}
                   >
                     <option>Select Script</option>
-                    <option>CE</option>
-                    <option>PF</option>
+                    {/* <option>CE</option>
+                    <option>PF</option> */}
                     <option>BUY</option>
                     <option>SELL</option>
                   </Input>
@@ -181,7 +181,7 @@ export class AddFnoEquity extends Component {
                     <option>Intraday (Hero-Zero)</option>
                   </Input>
                 </Col>
-                <Col lg="6" md="6" className="mb-2">
+                {/* <Col lg="6" md="6" className="mb-2">
                   <div>
                     <Label>P&L</Label>
                     <Input
@@ -201,7 +201,7 @@ export class AddFnoEquity extends Component {
                       onChange={this.changeHandler}
                     />
                   </div>
-                </Col>
+                </Col> */}
                 <Col lg="6" md="6" className="mb-2">
                   <Label>Active Value</Label>
                   <Input
@@ -213,10 +213,10 @@ export class AddFnoEquity extends Component {
                   />
                 </Col>
                 <Col lg="6" md="6" className="mb-2">
-                  <Label>Active Value 2</Label>
+                  <Label>Max. Value Price</Label>
                   <Input
                     type="number"
-                    placeholder="Enter Active Value"
+                    placeholder="Enter Max. Value Price"
                     name="active_value2"
                     value={this.state.active_value2}
                     onChange={this.changeHandler}
@@ -292,7 +292,7 @@ export class AddFnoEquity extends Component {
                     onChange={this.changeHandler}
                   />
                 </Col>
-                <Col lg="6" md="6" className="mb-2">
+                {/* <Col lg="6" md="6" className="mb-2">
                   <Label>Investment Amount</Label>
                   <Input
                     name="investment_amt"
@@ -301,13 +301,13 @@ export class AddFnoEquity extends Component {
                     value={this.state.investment_amt}
                     onChange={this.changeHandler}
                   />
-                </Col>
+                </Col> */}
                 <Col lg="6" md="6" className="mb-2">
-                  <Label>Number Of Lots</Label>
+                  <Label>Per Lot Price</Label>
                   <Input
                     type="text"
                     name="no_of_lots"
-                    placeholder="Enter Lots Price"
+                    placeholder="Enter Per Lots Price"
                     value={this.state.no_of_lots}
                     onChange={this.changeHandler}
                   />

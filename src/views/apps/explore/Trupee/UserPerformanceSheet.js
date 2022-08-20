@@ -37,7 +37,7 @@ class UserPerformanceSheet extends React.Component {
         headerName: "S.No",
         valueGetter: "node.rowIndex + 1",
         field: "node.rowIndex + 1",
-        width: 150,
+        width: 100,
         // filter: true,
         // checkboxSelection: true,
         // headerCheckboxSelectionFilteredOnly: true,
@@ -45,109 +45,111 @@ class UserPerformanceSheet extends React.Component {
       },
       {
         headerName: "User Name",
-        field: "desc",
+        field: "firstname",
         // filter: true,
-        width: 180,
+        width: 150,
         // pinned: window.innerWidth > 992 ? "left" : false,
         cellRendererFramework: (params) => {
           return (
             <div className="d-flex align-items-center cursor-pointer">
-              <span>{params.data.desc}</span>
+              <span>
+                {params.data.userId?.firstname} {params.data.userId?.lastname}
+              </span>
             </div>
           );
         },
       },
       {
         headerName: "Email ",
-        field: "desc",
+        field: "email",
         // filter: true,
         width: 180,
         // pinned: window.innerWidth > 992 ? "left" : false,
         cellRendererFramework: (params) => {
           return (
             <div className="d-flex align-items-center cursor-pointer">
-              <span>{params.data.desc}</span>
+              <span>{params.data.email}</span>
             </div>
           );
         },
       },
       {
         headerName: "Performance Sheet Choose",
-        field: "desc",
-        // filter: true,
-        width: 200,
-        // pinned: window.innerWidth > 992 ? "left" : false,
-        cellRendererFramework: (params) => {
-          return (
-            <div className="d-flex align-items-center cursor-pointer">
-              <span>{params.data.desc}</span>
-            </div>
-          );
-        },
-      },
-      {
-        headerName: "Date",
-        field: "desc",
+        field: "pack_name",
         // filter: true,
         width: 180,
         // pinned: window.innerWidth > 992 ? "left" : false,
         cellRendererFramework: (params) => {
           return (
             <div className="d-flex align-items-center cursor-pointer">
-              <span>{params.data.desc}</span>
+              <span>{params.data.plan?.pack_name}</span>
             </div>
           );
         },
       },
-    //   {
-    //     headerName: "Start Date",
-    //     field: "desc",
-    //     // filter: true,
-    //     width: 200,
-    //     // pinned: window.innerWidth > 992 ? "left" : false,
-    //     cellRendererFramework: (params) => {
-    //       return (
-    //         <div className="d-flex align-items-center cursor-pointer">
-    //           <span>{params.data.desc}</span>
-    //         </div>
-    //       );
-    //     },
-    //   },
-    //   {
-    //     headerName: "Expiry Date",
-    //     field: "desc",
-    //     // filter: true,
-    //     width: 200,
-    //     // pinned: window.innerWidth > 992 ? "left" : false,
-    //     cellRendererFramework: (params) => {
-    //       return (
-    //         <div className="d-flex align-items-center cursor-pointer">
-    //           <span>{params.data.desc}</span>
-    //         </div>
-    //       );
-    //     },
-    //   },
-    //   {
-    //     headerName: "Status",
-    //     field: "completed",
-    //     // filter: completed,
-    //     width: 200,
-    //     cellRendererFramework: (params) => {
-    //       return params.value === "Active" ? (
-    //         <div className="badge badge-pill badge-success">
-    //           {params.data.completed}
-    //         </div>
-    //       ) : params.value === "Inactive" ? (
-    //         <div className="badge badge-pill badge-warning">
-    //           {params.data.completed}
-    //         </div>
-    //       ) : null;
-    //     },
-    //   },
+      {
+        headerName: "Date",
+        field: "createdAt",
+        // filter: true,
+        width: 180,
+        // pinned: window.innerWidth > 992 ? "left" : false,
+        cellRendererFramework: (params) => {
+          return (
+            <div className="d-flex align-items-center cursor-pointer">
+              <span>{params.data.createdAt}</span>
+            </div>
+          );
+        },
+      },
+      //   {
+      //     headerName: "Start Date",
+      //     field: "desc",
+      //     // filter: true,
+      //     width: 200,
+      //     // pinned: window.innerWidth > 992 ? "left" : false,
+      //     cellRendererFramework: (params) => {
+      //       return (
+      //         <div className="d-flex align-items-center cursor-pointer">
+      //           <span>{params.data.desc}</span>
+      //         </div>
+      //       );
+      //     },
+      //   },
+      //   {
+      //     headerName: "Expiry Date",
+      //     field: "desc",
+      //     // filter: true,
+      //     width: 200,
+      //     // pinned: window.innerWidth > 992 ? "left" : false,
+      //     cellRendererFramework: (params) => {
+      //       return (
+      //         <div className="d-flex align-items-center cursor-pointer">
+      //           <span>{params.data.desc}</span>
+      //         </div>
+      //       );
+      //     },
+      //   },
+      //   {
+      //     headerName: "Status",
+      //     field: "completed",
+      //     // filter: completed,
+      //     width: 200,
+      //     cellRendererFramework: (params) => {
+      //       return params.value === "Active" ? (
+      //         <div className="badge badge-pill badge-success">
+      //           {params.data.completed}
+      //         </div>
+      //       ) : params.value === "Inactive" ? (
+      //         <div className="badge badge-pill badge-warning">
+      //           {params.data.completed}
+      //         </div>
+      //       ) : null;
+      //     },
+      //   },
       {
         headerName: "Actions",
         field: "sortorder",
-        width: 200,
+        width: 150,
         // pinned: window.innerWidth > 992 ? "right" : false,
         cellRendererFramework: (params) => {
           return (
@@ -186,7 +188,7 @@ class UserPerformanceSheet extends React.Component {
   };
   componentDidMount() {
     axiosConfig
-      .get(`/admin/allnotification`)
+      .get(`/get_userPerSheet`)
       .then((response) => {
         let rowData = response.data.data;
         JSON.stringify(rowData);
@@ -198,11 +200,9 @@ class UserPerformanceSheet extends React.Component {
   }
   async runthisfunction(id) {
     console.log(id);
-    await axiosConfig
-      .get(`/admin/deletenotification/${id}`)
-      .then((response) => {
-        console.log(response);
-      });
+    await axiosConfig.get(`/dlt_userPerSheet/${id}`).then((response) => {
+      console.log(response);
+    });
   }
 
   onGridReady = (params) => {
@@ -232,19 +232,17 @@ class UserPerformanceSheet extends React.Component {
   render() {
     const { rowData, columnDefs, defaultColDef } = this.state;
     return (
-      <React.Fragment>
-        {/* <Breadcrumbs
-          breadCrumbTitle="Notification"
-          breadCrumbParent="Forms & Tables"
-          breadCrumbActive="Notification List"/> */}
-        <Card className="overflow-hidden agGrid-card">
-          <Row className="m-2">
-            <Col>
-              <h1 sm="6" className="float-left">
-               User Performance Sheet List
-              </h1>
-            </Col>
-            {/* <Col>
+      <Row className="app-user-list">
+        <Col sm="12"></Col>
+        <Col sm="12">
+          <Card className="overflow-hidden agGrid-card">
+            <Row className="m-2">
+              <Col>
+                <h1 sm="6" className="float-left">
+                  User Performance Sheet List
+                </h1>
+              </Col>
+              {/* <Col>
               <Route
                 render={({ history }) => (
                   <Button
@@ -258,97 +256,100 @@ class UserPerformanceSheet extends React.Component {
                 )}
               />
             </Col> */}
-          </Row>
-          <CardBody className="py-0">
-            {this.state.rowData === null ? null : (
-              <div className="ag-theme-material w-100 my-2 ag-grid-table">
-                <div className="d-flex flex-wrap justify-content-between align-items-center">
-                  <div className="mb-1">
-                    <UncontrolledDropdown className="p-1 ag-dropdown">
-                      <DropdownToggle tag="div">
-                        {this.gridApi
-                          ? this.state.currenPageSize
-                          : "" * this.state.getPageSize -
-                            (this.state.getPageSize - 1)}{" "}
-                        -{" "}
-                        {this.state.rowData.length -
-                          this.state.currenPageSize * this.state.getPageSize >
-                        0
-                          ? this.state.currenPageSize * this.state.getPageSize
-                          : this.state.rowData.length}{" "}
-                        of {this.state.rowData.length}
-                        <ChevronDown className="ml-50" size={15} />
-                      </DropdownToggle>
-                      <DropdownMenu right>
-                        <DropdownItem
-                          tag="div"
-                          onClick={() => this.filterSize(20)}
+            </Row>
+            <CardBody>
+              {this.state.rowData === null ? null : (
+                <div className="ag-theme-material w-100 my-2 ag-grid-table">
+                  <div className="d-flex flex-wrap justify-content-between align-items-center">
+                    <div className="mb-1">
+                      <UncontrolledDropdown className="p-1 ag-dropdown">
+                        <DropdownToggle tag="div">
+                          {this.gridApi
+                            ? this.state.currenPageSize
+                            : "" * this.state.getPageSize -
+                              (this.state.getPageSize - 1)}{" "}
+                          -{" "}
+                          {this.state.rowData.length -
+                            this.state.currenPageSize * this.state.getPageSize >
+                          0
+                            ? this.state.currenPageSize * this.state.getPageSize
+                            : this.state.rowData.length}{" "}
+                          of {this.state.rowData.length}
+                          <ChevronDown className="ml-50" size={15} />
+                        </DropdownToggle>
+                        <DropdownMenu right>
+                          <DropdownItem
+                            tag="div"
+                            onClick={() => this.filterSize(20)}
+                          >
+                            20
+                          </DropdownItem>
+                          <DropdownItem
+                            tag="div"
+                            onClick={() => this.filterSize(50)}
+                          >
+                            50
+                          </DropdownItem>
+                          <DropdownItem
+                            tag="div"
+                            onClick={() => this.filterSize(100)}
+                          >
+                            100
+                          </DropdownItem>
+                          <DropdownItem
+                            tag="div"
+                            onClick={() => this.filterSize(134)}
+                          >
+                            134
+                          </DropdownItem>
+                        </DropdownMenu>
+                      </UncontrolledDropdown>
+                    </div>
+                    <div className="d-flex flex-wrap justify-content-between mb-1">
+                      <div className="table-input mr-1">
+                        <Input
+                          placeholder="search..."
+                          onChange={(e) =>
+                            this.updateSearchQuery(e.target.value)
+                          }
+                          value={this.state.value}
+                        />
+                      </div>
+                      <div className="export-btn">
+                        <Button.Ripple
+                          color="primary"
+                          onClick={() => this.gridApi.exportDataAsCsv()}
                         >
-                          20
-                        </DropdownItem>
-                        <DropdownItem
-                          tag="div"
-                          onClick={() => this.filterSize(50)}
-                        >
-                          50
-                        </DropdownItem>
-                        <DropdownItem
-                          tag="div"
-                          onClick={() => this.filterSize(100)}
-                        >
-                          100
-                        </DropdownItem>
-                        <DropdownItem
-                          tag="div"
-                          onClick={() => this.filterSize(134)}
-                        >
-                          134
-                        </DropdownItem>
-                      </DropdownMenu>
-                    </UncontrolledDropdown>
+                          Export as CSV
+                        </Button.Ripple>
+                      </div>
+                    </div>
                   </div>
-                  <div className="d-flex flex-wrap justify-content-between mb-1">
-                    <div className="table-input mr-1">
-                      <Input
-                        placeholder="search..."
-                        onChange={(e) => this.updateSearchQuery(e.target.value)}
-                        value={this.state.value}
+                  <ContextLayout.Consumer>
+                    {(context) => (
+                      <AgGridReact
+                        gridOptions={{}}
+                        rowSelection="multiple"
+                        defaultColDef={defaultColDef}
+                        columnDefs={columnDefs}
+                        rowData={rowData}
+                        onGridReady={this.onGridReady}
+                        colResizeDefault={"shift"}
+                        animateRows={true}
+                        floatingFilter={false}
+                        pagination={true}
+                        paginationPageSize={this.state.paginationPageSize}
+                        pivotPanelShow="always"
+                        enableRtl={context.state.direction === "rtl"}
                       />
-                    </div>
-                    <div className="export-btn">
-                      <Button.Ripple
-                        color="primary"
-                        onClick={() => this.gridApi.exportDataAsCsv()}
-                      >
-                        Export as CSV
-                      </Button.Ripple>
-                    </div>
-                  </div>
+                    )}
+                  </ContextLayout.Consumer>
                 </div>
-                <ContextLayout.Consumer>
-                  {(context) => (
-                    <AgGridReact
-                      gridOptions={{}}
-                      rowSelection="multiple"
-                      defaultColDef={defaultColDef}
-                      columnDefs={columnDefs}
-                      rowData={rowData}
-                      onGridReady={this.onGridReady}
-                      colResizeDefault={"shift"}
-                      animateRows={true}
-                      floatingFilter={true}
-                      pagination={true}
-                      paginationPageSize={this.state.paginationPageSize}
-                      pivotPanelShow="always"
-                      enableRtl={context.state.direction === "rtl"}
-                    />
-                  )}
-                </ContextLayout.Consumer>
-              </div>
-            )}
-          </CardBody>
-        </Card>
-      </React.Fragment>
+              )}
+            </CardBody>
+          </Card>
+        </Col>
+      </Row>
     );
   }
 }

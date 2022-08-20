@@ -17,15 +17,21 @@ import {
 import axiosConfig from "../../../../axiosConfig";
 import { history } from "../../../../history";
 import swal from "sweetalert";
+import { Route } from "react-router-dom";
+// import Datetime from "react-datetime";
+// import DatePicker from "react-flatpickr";
 
-export default class AddSize extends Component {
+export default class AddTU extends Component {
   constructor(props) {
     super(props);
+
     this.state = {
-      sizeName: "",
-      status: "",
+      title: "",
+      desc: "",
+      video_link: "",
     };
   }
+
   changeHandler1 = (e) => {
     this.setState({ status: e.target.value });
   };
@@ -37,7 +43,7 @@ export default class AddSize extends Component {
     e.preventDefault();
 
     axiosConfig
-      .post("/addsize", this.state, {
+      .post("/add_Tuniversity", this.state, {
         // headers: {
         //   "auth-adtoken": localStorage.getItem("auth-adtoken"),
         // },
@@ -45,7 +51,7 @@ export default class AddSize extends Component {
       .then((response) => {
         console.log(response);
         swal("Success!", "Submitted SuccessFull!", "success");
-        this.props.history.push("/app/size/sizeList");
+        this.props.history.push("/app/explore/Trupee/trupeeUnivercity");
       })
       .catch((error) => {
         console.log(error);
@@ -62,10 +68,13 @@ export default class AddSize extends Component {
                 <BreadcrumbItem href="/analyticsDashboard" tag="a">
                   Home
                 </BreadcrumbItem>
-                <BreadcrumbItem href="/app/size/sizeList" tag="a">
-                  Size List
+                <BreadcrumbItem
+                  href="/app/explore/Trupee/trupeeUnivercity"
+                  tag="a"
+                >
+                  Trupee Univercity List
                 </BreadcrumbItem>
-                <BreadcrumbItem active>Add Size</BreadcrumbItem>
+                <BreadcrumbItem active>Add Trupee Univercity</BreadcrumbItem>
               </Breadcrumb>
             </div>
           </Col>
@@ -74,40 +83,66 @@ export default class AddSize extends Component {
           <Row className="m-2">
             <Col>
               <h1 col-sm-6 className="float-left">
-                Add Size
+                Add Trupee Univercity
               </h1>
             </Col>
             <Col>
-              <Button
-                className=" btn btn-danger float-right"
-                onClick={() => history.push("/app/size/sizeList")}
-              >
-                Back
-              </Button>
+              <Route
+                render={({ history }) => (
+                  <Button
+                    className=" btn btn-danger float-right"
+                    onClick={() =>
+                      history.push("/app/explore/Trupee/trupeeUnivercity")
+                    }
+                  >
+                    Back
+                  </Button>
+                )}
+              />
             </Col>
           </Row>
           <CardBody>
             <Form className="m-1" onSubmit={this.submitHandler}>
               <Row>
                 <Col lg="6" md="6" sm="6" className="mb-2">
-                  <Label>Size</Label>
+                  <Label>Title</Label>
                   <Input
                     required
                     type="text"
-                    name="sizeName"
+                    name="title"
                     placeholder=""
-                    value={this.state.sizeName}
+                    value={this.state.title}
                     onChange={this.changeHandler}
                   ></Input>
                 </Col>
                 {/* <Col lg="6" md="6" sm="6" className="mb-2">
-                  <Label>Value</Label>
+                  <Label>Image</Label>
+                  <Input
+                    // required
+                    type="text"
+                    name="image"
+                    placeholder=""
+                    value={this.state.image}
+                    onChange={this.changeHandler}
+                  ></Input>
+                </Col> */}
+                {/* <Col lg="6" md="6" sm="6" className="mb-2">
+                  <Label>Image</Label>
                   <Input
                     required
-                    type="number"
-                    name="value"
+                    type="file"
+                    name="image"
+                    onChange={this.onChangeHandler}
+                  />
+                </Col> */}
+                <Col lg="6" md="6" sm="6" className="mb-2">
+                  <Label>Video Link</Label>
+                  <Input
+                    required
+                    type="text"
+                    name="video_link"
                     placeholder=""
-                    value={this.state.value}
+                    value={this.state.video_link}
                     onChange={this.changeHandler}
                   ></Input>
                 </Col>
@@ -121,7 +156,7 @@ export default class AddSize extends Component {
                     value={this.state.desc}
                     onChange={this.changeHandler}
                   ></Input>
-                </Col> */}
+                </Col>
 
                 {/* <Col lg="6" md="6" sm="6" className="mb-2">
                   <Label className="mb-1">Status</Label>

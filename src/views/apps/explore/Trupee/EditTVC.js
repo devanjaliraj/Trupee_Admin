@@ -103,10 +103,13 @@ export default class EditTVC extends Component {
                 <BreadcrumbItem href="/analyticsDashboard" tag="a">
                   Home
                 </BreadcrumbItem>
-                <BreadcrumbItem href="/app/explore/Trupee/startUp" tag="a">
-                  StartUp List
+                <BreadcrumbItem
+                  href="/app/explore/Trupee/tradingViewCharts"
+                  tag="a"
+                >
+                  Trading View Charts List
                 </BreadcrumbItem>
-                <BreadcrumbItem active>Edit StartUp</BreadcrumbItem>
+                <BreadcrumbItem active>Edit Trading View Charts</BreadcrumbItem>
               </Breadcrumb>
             </div>
           </Col>
@@ -115,7 +118,7 @@ export default class EditTVC extends Component {
           <Row className="m-2">
             <Col>
               <h1 col-sm-6 className="float-left">
-                Edit StartUp
+                Edit Trading View Charts
               </h1>
             </Col>
             <Col>
@@ -123,7 +126,9 @@ export default class EditTVC extends Component {
                 render={({ history }) => (
                   <Button
                     className=" btn btn-danger float-right"
-                    onClick={() => history.push("/app/explore/Trupee/startUp")}
+                    onClick={() =>
+                      history.push("/app/explore/Trupee/tradingViewCharts")
+                    }
                   >
                     Back
                   </Button>
@@ -145,17 +150,7 @@ export default class EditTVC extends Component {
                     onChange={this.changeHandler}
                   ></Input>
                 </Col>
-                {/* <Col lg="6" md="6" sm="6" className="mb-2">
-                  <Label>Image</Label>
-                  <Input
-                    // required
-                    type="text"
-                    name="image"
-                    placeholder=""
-                    value={this.state.image}
-                    onChange={this.changeHandler}
-                  ></Input>
-                </Col> */}
+
                 <Col lg="6" md="6" sm="6" className="mb-2">
                   <Label>Image</Label>
                   <Input
@@ -176,21 +171,10 @@ export default class EditTVC extends Component {
                   >
                     <option>Select Chart</option>
                     <option>INDEX</option>
-                    <option>Stock</option>
-                    \
+                    <option>Stock</option>\
                   </Input>
                 </Col>
-                {/* <Col lg="6" md="6" sm="6" className="mb-2">
-                  <Label>Chart</Label>
-                  <Input
-                    required
-                    type="text"
-                    name="chart_type"
-                    placeholder=""
-                    value={this.state.chart_type}
-                    onChange={this.changeHandler}
-                  ></Input>
-                </Col> */}
+
                 <Col lg="6" md="6" sm="6" className="mb-2">
                   <Label>Descripition</Label>
                   <Input

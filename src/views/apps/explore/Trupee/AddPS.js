@@ -168,10 +168,14 @@ export default class AddPS extends Component {
                 </Col>
                 <Col lg="6" md="6" sm="6" className="mb-2">
                   <Label>Year</Label>
-                  <YearPicker
+                  <Input
+                    type="number"
+                    min="1900"
+                    max="2099"
+                    step="1"
                     name="year"
                     value={this.state.year}
-                    onChange={this.changeHandler2}
+                    onChange={this.changeHandler}
                   />
 
                   {/* <YearPicker

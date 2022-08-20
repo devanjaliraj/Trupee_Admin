@@ -144,43 +144,43 @@ class FnoIndexList extends React.Component {
       },
       {
         headerName: "T₹ 1",
-        field: "T1",
+        field: "FT1",
         width: 140,
         cellRendererFramework: (params) => {
           return (
             <div className="d-flex align-items-center cursor-pointer">
-              <span>{params.data.T1}</span>
+              <span>{params.data.FT1}</span>
             </div>
           );
         },
       },
       {
         headerName: "T₹ 2",
-        field: "T2",
+        field: "FT2",
         width: 140,
         cellRendererFramework: (params) => {
           return (
             <div className="d-flex align-items-center cursor-pointer">
-              <span>{params.data.T2}</span>
+              <span>{params.data.FT2}</span>
             </div>
           );
         },
       },
       {
         headerName: "T₹ 3",
-        field: "T3",
+        field: "FT3",
         width: 140,
         cellRendererFramework: (params) => {
           return (
             <div className="d-flex align-items-center cursor-pointer">
-              <span>{params.data.T3}</span>
+              <span>{params.data.FT3}</span>
             </div>
           );
         },
       },
       {
         headerName: "T₹ 5",
-        field: "t5",
+        field: "FT5",
         width: 140,
         cellRendererFramework: (params) => {
           return (

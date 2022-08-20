@@ -194,8 +194,8 @@ class EditFnoIndex extends React.Component {
                     onChange={this.changeHandler}
                   >
                     <option>Select Script</option>
-                    <option>CE</option>
-                    <option>PF</option>
+                    {/* <option>CE</option>
+                    <option>PF</option> */}
                     <option>BUY</option>
                     <option>SELL</option>
                   </Input>
@@ -236,7 +236,7 @@ class EditFnoIndex extends React.Component {
                     <option>Intraday (Hero-Zero)</option>
                   </Input>
                 </Col>
-                <Col lg="6" md="6" className="mb-2">
+                {/* <Col lg="6" md="6" className="mb-2">
                   <div>
                     <Label>P&L</Label>
                     <Input
@@ -256,7 +256,7 @@ class EditFnoIndex extends React.Component {
                       onChange={this.changeHandler}
                     />
                   </div>
-                </Col>
+                </Col> */}
                 <Col lg="6" md="6" className="mb-2">
                   <Label>Active Value</Label>
                   <Input
@@ -298,7 +298,7 @@ class EditFnoIndex extends React.Component {
                     onChange={this.changeHandler}
                   />
                 </Col>
-                <Col lg="6" md="6" className="mb-2">
+                {/* <Col lg="6" md="6" className="mb-2">
                   <Label>Investment Amount</Label>
                   <Input
                     name="investment_amt"
@@ -307,7 +307,7 @@ class EditFnoIndex extends React.Component {
                     value={this.state.investment_amt}
                     onChange={this.changeHandler}
                   />
-                </Col>
+                </Col> */}
                 <Col lg="6" md="6" className="mb-2">
                   <Label>Number Of Lots</Label>
                   <Input

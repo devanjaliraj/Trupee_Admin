@@ -196,6 +196,8 @@ const PerformanceSheet = lazy(() =>
   import("./views/apps/explore/Trupee/PerformanceSheet")
 );
 const AddPS = lazy(() => import("./views/apps/explore/Trupee/AddPS"));
+const EditPS = lazy(() => import("./views/apps/explore/Trupee/EditPS"));
+
 const UserPerformanceSheet = lazy(() =>
   import("./views/apps/explore/Trupee/UserPerformanceSheet")
 );
@@ -428,13 +430,13 @@ const AppRoute = connect(mapStateToProps)(RouteConfig);
 class AppRouter extends React.Component {
   componentDidMount() {
     let data = localStorage.getItem("ad-token");
-    console.log('token data',data)
+    console.log("token data", data);
     sessionStorage.clear();
     if (data === undefined || data === null) {
       //history.push("/#/pages/login")
       //window.location.replace("/#/");
 
-       window.location.replace("/#/pages/login");
+      window.location.replace("/#/pages/login");
     }
   }
   render() {
@@ -444,7 +446,7 @@ class AppRouter extends React.Component {
       <Router history={history}>
         <HashRouter>
           <Switch>
-            <AppRoute exact={true} path="/" component={analyticsDashboard}  />
+            <AppRoute exact={true} path="/" component={analyticsDashboard} />
             {/* <AppRoute exact={true} path="/" component={analyticsDashboard} /> */}
             <AppRoute
               exact={true}
@@ -672,6 +674,10 @@ class AppRouter extends React.Component {
               component={PerformanceSheet}
             />
             <AppRoute path="/app/explore/Trupee/addPS" component={AddPS} />
+            <AppRoute
+              path="/app/explore/Trupee/editPS/:id"
+              component={EditPS}
+            />
             <AppRoute
               path="/app/explore/Trupee/userPerformanceSheet"
               component={UserPerformanceSheet}
