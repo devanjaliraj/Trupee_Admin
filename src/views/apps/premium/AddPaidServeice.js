@@ -8,6 +8,7 @@ import {
   Button,
   Label,
   Input,
+  CustomInput,
 } from "reactstrap";
 import "react-toastify/dist/ReactToastify.css";
 import { EditorState, convertToRaw } from "draft-js";
@@ -23,19 +24,36 @@ class AddPaidServeice extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      dealer: "",
+      title: "",
+      // planId: "",
       desc: "",
       editorState: EditorState.createEmpty(),
+      pack_nameM: [],
     };
   }
-
+  componentDidMount() {
+    //plan//
+    axiosConfig
+      .get("/plan_list")
+      .then((response) => {
+        console.log(response);
+        this.setState({
+          pack_nameM: response.data.data,
+        });
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }
   onEditorStateChange = (editorState) => {
     this.setState({
       editorState,
       desc: convertToRaw(editorState.getCurrentContent()),
     });
   };
-
+  changeHandler = (e) => {
+    this.setState({ [e.target.name]: e.target.value });
+  };
   submitHandler = (e) => {
     e.preventDefault();
 
@@ -43,10 +61,10 @@ class AddPaidServeice extends React.Component {
     data.append("desc", this.state.desc);
 
     axiosConfig
-      .post("/admin/add_termscondition", this.state)
+      .post("/addPrmiumSrvc", this.state)
       .then((response) => {
         console.log(response);
-        this.props.history.push("/app/termscondition/TermConditionList");
+        this.props.history.push("/app/premium/paidServeiceList");
         // alert("Privacy Policy Added Successfully !");
         swal("Good job!", "You clicked the button!", "success");
       })
@@ -92,21 +110,25 @@ class AddPaidServeice extends React.Component {
               <Label>Title</Label>
               <Input
                 type="text"
-                name="desc"
-                value={this.state.desc}
+                name="title"
+                value={this.state.title}
                 onChange={this.changeHandler}
               />
             </Col>
-            <Col lg="6" md="6" className="mb-2">
-              <Label for="exampleSelect">Membership Plan</Label>
-              <Input id="exampleSelect" name="select" type="select">
-                <option>Select Plan</option>
-                <option>FREE PLAN</option>
-                <option>1 Month</option>
-                <option>3 Month</option>
-                <option>6 Month</option>
-                <option>1 Year</option>
-              </Input>
+            <Col lg="6" md="6" sm="6" className="mb-2">
+              <Label>Membership plan</Label>
+              <CustomInput
+                type="select"
+                name="pack_name"
+                value={this.state.planId?.pack_name}
+                onChange={this.changeHandler}
+              >
+                {this.state.pack_nameM?.map((planmemship) => (
+                  <option value={planmemship?._id} key={planmemship?._id}>
+                    {planmemship?.pack_name}
+                  </option>
+                ))}
+              </CustomInput>
             </Col>
             <Editor
               toolbarClassName="demo-toolbar-absolute"

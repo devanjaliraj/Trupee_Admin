@@ -107,7 +107,7 @@ class FnoIndexList extends React.Component {
         },
       },
       {
-        headerName: "Active Value",
+        headerName: "Max. Value Price",
         field: "active_value2",
         width: 140,
         cellRendererFramework: (params) => {
@@ -178,26 +178,26 @@ class FnoIndexList extends React.Component {
           );
         },
       },
-      {
-        headerName: "T₹ 5",
-        field: "FT5",
-        width: 140,
-        cellRendererFramework: (params) => {
-          return (
-            <div className="d-flex align-items-center cursor-pointer">
-              <span>{params.data.t5}</span>
-            </div>
-          );
-        },
-      },
+      // {
+      //   headerName: "T₹ 5",
+      //   field: "FT5",
+      //   width: 140,
+      //   cellRendererFramework: (params) => {
+      //     return (
+      //       <div className="d-flex align-items-center cursor-pointer">
+      //         <span>{params.data.FT5}</span>
+      //       </div>
+      //     );
+      //   },
+      // },
       {
         headerName: "P&L ",
-        field: "profit_loss_amt",
+        field: "pl",
         width: 140,
         cellRendererFramework: (params) => {
           return (
             <div className="d-flex align-items-center cursor-pointer">
-              <span>{params.data.profit_loss_amt}</span>
+              <span>{params.data.pl}</span>
             </div>
           );
         },
@@ -239,7 +239,7 @@ class FnoIndexList extends React.Component {
         },
       },
       {
-        headerName: "EXpiry Date ",
+        headerName: "Expiry Date ",
         field: "expiryDate",
         width: 140,
         cellRendererFramework: (params) => {
@@ -286,68 +286,68 @@ class FnoIndexList extends React.Component {
       },
       {
         headerName: "T1 Type",
-        field: "t1_type",
+        field: "FT1_type",
         filter: true,
         width: 150,
         cellRendererFramework: (params) => {
           return params.value === "true" ? (
             <div className="badge badge-pill badge-success">
-              {params.data.t1_type}
+              {params.data.FT1_type}
             </div>
           ) : params.value === "false" ? (
             <div className="badge badge-pill badge-warning">
-              {params.data.t1_type}
+              {params.data.FT1_type}
             </div>
           ) : null;
         },
       },
       {
         headerName: "T2 Type",
-        field: "t2_type",
+        field: "FT2_type",
         filter: true,
         width: 150,
         cellRendererFramework: (params) => {
           return params.value === "true" ? (
             <div className="badge badge-pill badge-success">
-              {params.data.t2_type}
+              {params.data.FT2_type}
             </div>
           ) : params.value === "false" ? (
             <div className="badge badge-pill badge-warning">
-              {params.data.t2_type}
+              {params.data.FT2_type}
             </div>
           ) : null;
         },
       },
       {
         headerName: "T3 Type",
-        field: "t3_type",
+        field: "FT3_type",
         filter: true,
         width: 150,
         cellRendererFramework: (params) => {
           return params.value === "true" ? (
             <div className="badge badge-pill badge-success">
-              {params.data.t3_type}
+              {params.data.FT3_type}
             </div>
           ) : params.value === "false" ? (
             <div className="badge badge-pill badge-warning">
-              {params.data.t3_type}
+              {params.data.FT3_type}
             </div>
           ) : null;
         },
       },
       {
         headerName: "T5 Type",
-        field: "t5_type",
+        field: "FT5_type",
         filter: true,
         width: 150,
         cellRendererFramework: (params) => {
           return params.value === "true" ? (
             <div className="badge badge-pill badge-success">
-              {params.data.t5_type}
+              {params.data.FT5_type}
             </div>
           ) : params.value === "false" ? (
             <div className="badge badge-pill badge-warning">
-              {params.data.t5_type}
+              {params.data.FT5_type}
             </div>
           ) : null;
         },

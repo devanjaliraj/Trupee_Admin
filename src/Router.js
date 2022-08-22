@@ -217,6 +217,7 @@ const MemberShipContent = lazy(() =>
 const EditMemContent = lazy(() =>
   import("./views/apps/membercontent/EditMemContent")
 );
+
 // setting
 
 const EnquiryForm = lazy(() => import("./views/apps/setting/EnquiryForm"));

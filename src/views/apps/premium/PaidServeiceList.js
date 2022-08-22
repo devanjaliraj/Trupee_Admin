@@ -34,10 +34,48 @@ class PaidServeiceList extends React.Component {
 
     columnDefs: [
       {
+        headerName: "S.No",
+        valueGetter: "node.rowIndex + 1",
+        field: "node.rowIndex + 1",
+        width: 100,
+        // filter: true,
+        // checkboxSelection: true,
+        // headerCheckboxSelectionFilteredOnly: true,
+        // headerCheckboxSelection: true,
+      },
+      {
+        headerName: "Title",
+        field: "title",
+        // filter: true,
+        width: 200,
+        // pinned: window.innerWidth > 992 ? "left" : false,
+        cellRendererFramework: (params) => {
+          return (
+            <div className="d-flex align-items-center cursor-pointer">
+              <span>{params.data.title}</span>
+            </div>
+          );
+        },
+      },
+      {
+        headerName: "MemberShip",
+        field: "pack_name",
+        // filter: true,
+        width: 200,
+        // pinned: window.innerWidth > 992 ? "left" : false,
+        cellRendererFramework: (params) => {
+          return (
+            <div className="d-flex align-items-center cursor-pointer">
+              <span>{params.data.planId?.pack_name}</span>
+            </div>
+          );
+        },
+      },
+      {
         headerName: "Descripiton",
         field: "desc",
         // filter: true,
-        width: 600,
+        width: 200,
         // pinned: window.innerWidth > 992 ? "left" : false,
         cellRendererFramework: (params) => {
           return (
@@ -50,8 +88,8 @@ class PaidServeiceList extends React.Component {
       {
         headerName: "Actions",
         // field: "sortorder",
-        width: 200,
-        pinned: window.innerWidth > 992 ? "right" : false,
+        width: 100,
+        // pinned: window.innerWidth > 992 ? "right" : false,
         cellRendererFramework: (params) => {
           return (
             <div className="actions cursor-pointer">
@@ -89,7 +127,7 @@ class PaidServeiceList extends React.Component {
   };
   componentDidMount() {
     axiosConfig
-      .get(`/admin/allnotification`)
+      .get(`/serviceslist`)
       .then((response) => {
         let rowData = response.data.data;
         JSON.stringify(rowData);
@@ -237,7 +275,7 @@ class PaidServeiceList extends React.Component {
                       onGridReady={this.onGridReady}
                       colResizeDefault={"shift"}
                       animateRows={true}
-                      floatingFilter={true}
+                      floatingFilter={false}
                       pagination={true}
                       paginationPageSize={this.state.paginationPageSize}
                       pivotPanelShow="always"

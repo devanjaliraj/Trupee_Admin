@@ -11,7 +11,7 @@ import {
   CustomInput,
   Button,
 } from "reactstrap";
-// import swal from "sweetalert";
+import swal from "sweetalert";
 import axiosConfig from "../../../axiosConfig";
 
 import { Route } from "react-router-dom";
@@ -32,30 +32,35 @@ export default class EditMembership extends Component {
       date: "",
       expdate: "",
       status: "",
-      firstnameU: [],
-      mobileU: [],
-      emailU: [],
-      lastnameU: [],
-      dobU: [],
-      genderU: [],
+      // firstnameU: [],
+      // mobileU: [],
+      // emailU: [],
+      // lastnameU: [],
+      // dobU: [],
+      // genderU: [],
       pack_nameM: [],
     };
-    this.submitHandler = this.submitHandler.bind(this);
   }
 
   componentDidMount() {
-    //Script//
+    let { id } = this.props.match.params;
+
     axiosConfig
-      .get("/getuser")
+      .get(`/viewonemembership/${id}`, {
+        headers: {
+          // "auth-adtoken": localStorage.getItem("auth-adtoken"),
+        },
+      })
       .then((response) => {
         console.log(response);
         this.setState({
-          firstnameU: response.data.data,
-          mobileU: response.data.data,
-          emailU: response.data.data,
-          genderU: response.data.data,
-          dobU: response.data.data,
-          lastnameU: response.data.data,
+          firstname: response.data.data.firstname,
+          mobile: response.data.data.mobile,
+          email: response.data.data.email,
+          gender: response.data.data.gender,
+          dob: response.data.data.dob,
+          lastname: response.data.data.lastname,
+          status: response.data.data.status,
         });
       })
       .catch((error) => {
@@ -73,72 +78,36 @@ export default class EditMembership extends Component {
       .catch((error) => {
         console.log(error);
       });
-
-    // var transaction_id = "";
-    // var expdate = "";
-    // const queryParams = new URLSearchParams(window.location.href);
-    // transaction_id = queryParams.get("transaction_id");
-    // expdate = queryParams.get("expdate");
-
-    // this.setState({ transaction_id: transaction_id, expdate: expdate });
-    // var payload = {
-    //   transaction_id: transaction_id,
-    //   expdate: expdate,
-    // };
-
-    // let { id } = this.props.match.params;
-    // axiosConfig
-    //   .post(`/dealer/updatemembership/${id}`, payload)
-    //   .then((response) => {
-    //     console.log(response.data.data);
-    //     this.setState({
-    //       membershipData: response.data.data,
-    //       date: response.data.data?.date,
-    //       // start_date:response.data.data?.date,
-    //       expdate: response.data.data?.expdate,
-    //       amount: response.data.data?.amount,
-    //     });
-    //   })
-    //   .catch((error) => {
-    //     console.log(error);
-    //   });
   }
+
+  changeHandler1 = (e) => {
+    this.setState({ status: e.target.value });
+  };
 
   changeHandler = (e) => {
     this.setState({ [e.target.name]: e.target.value });
   };
   submitHandler = (e) => {
     e.preventDefault();
-    const { transaction_id, expdate, date, status, amount, planId } =
-      this.state;
-    var payload = {
-      transaction_id: transaction_id,
-      expdate: expdate,
-      amount: amount,
-      planId: planId,
-      date: date,
-      status: status,
-    };
-    console.log(payload);
     let { id } = this.props.match.params;
     axiosConfig
-      .post(`/updatemembership/${id}`, payload)
+      .post(`/updatemembership/${id}`, this.state, {
+        headers: {
+          // "auth-adtoken": localStorage.getItem("auth-adtoken"),
+        },
+      })
       .then((response) => {
         console.log(response);
-        // swal("Success!", "Submitted SuccessFull!", "success");
+        swal("Success!", "Submitted SuccessFull!", "success");
         this.props.history.push(`/app/membership/MembershipList`);
       })
 
       .catch((error) => {
-        console.log(error.response);
+        console.log(error);
       });
-  };
-  changeHandler1 = (e) => {
-    this.setState({ status: e.target.value });
   };
 
   render() {
-    let { membershipData } = this.state;
     return (
       <div>
         <Breadcrumbs

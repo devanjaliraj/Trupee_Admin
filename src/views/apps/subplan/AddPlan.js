@@ -8,7 +8,6 @@ import {
   Input,
   Label,
   Button,
-  
 } from "reactstrap";
 import { history } from "../../../history";
 // import axiosConfig from "../../../../axiosConfig";
@@ -21,14 +20,11 @@ export class AddPlans extends Component {
     super(props);
 
     this.state = {
-        _id: "",
-        video_link: "",
-        associated_plan: "",
-     
+      _id: "",
+      video_link: "",
+      associated_plan: "",
     };
-  
   }
-
 
   changeHandler1 = (e) => {
     this.setState({ status: e.target.value });
@@ -40,12 +36,14 @@ export class AddPlans extends Component {
     e.preventDefault();
 
     axios
-      .post("http://3.108.185.7/nodejs/api/admin/addplan", this.state, 
-      // {
-      //   headers: {
-      //     "auth-adtoken": localStorage.getItem("auth-adtoken"),
-      //   },
-      // }
+      .post(
+        "http://3.108.185.7/nodejs/api/admin/addplan",
+        this.state
+        // {
+        //   headers: {
+        //     "auth-adtoken": localStorage.getItem("auth-adtoken"),
+        //   },
+        // }
       )
       .then((response) => {
         console.log(response);
@@ -67,32 +65,21 @@ export class AddPlans extends Component {
               </h1>
             </Col>
             <Col>
-            <Route
-              render={({ history }) => (
-              <Button
-                className=" btn btn-danger float-right"
-                onClick={() =>
-                  history.push("/app/subplan/SubPlanVideos")
-                }
-              >
-                Back
-              </Button>
-              )}
-          />
+              <Route
+                render={({ history }) => (
+                  <Button
+                    className=" btn btn-danger float-right"
+                    onClick={() => history.push("/app/subplan/SubPlanVideos")}
+                  >
+                    Back
+                  </Button>
+                )}
+              />
             </Col>
           </Row>
           <CardBody>
             <Form className="m-1" onSubmit={this.submitHandler}>
               <Row className="mb-2">
-              {/* <Col lg="6" md="6" className="mb-2">
-                  <Label>ID </Label>
-                  <Input
-                    type="text"
-                    name="_id"
-                    value={this.state._id}
-                    onChange={this.changeHandler}
-                  />
-                </Col> */}
                 <Col lg="6" md="6" className="mb-2">
                   <Label>Video Link </Label>
                   <Input
@@ -102,7 +89,7 @@ export class AddPlans extends Component {
                     onChange={this.changeHandler}
                   />
                 </Col>
-              
+
                 <Col lg="6" md="6" className="mb-2">
                   <Label>Associated Plan </Label>
                   <Input
@@ -112,45 +99,6 @@ export class AddPlans extends Component {
                     onChange={this.changeHandler}
                   />
                 </Col>
-
-                {/* <Col lg="6" md="6" className="mb-2">
-                  <Label> Coupon Start Date</Label>
-                  <Input
-                    type="date"
-                    name="startDate"
-                    value={this.state.startDate}
-                    onChange={this.changeHandler}
-                  />
-                </Col>
-
-                <Col lg="6" md="6" className="mb-2">
-                  <Label>Coupon Expire date </Label>
-                  <Input
-                    type="date"
-                    name="expireOn"
-                    value={this.state.expireOn}
-                    onChange={this.changeHandler}
-                  />
-                </Col> */}
-
-                {/* <Col lg="6" md="6" className="mb-2">
-                  <Label>Usage Limit</Label>
-                  <Input
-                    type="text"
-                    name="usage_limit"
-                    value={this.state.usage_limit}
-                    onChange={this.changeHandler}
-                  />
-                </Col> */}
-                {/* <Col lg="6" md="6" className="mb-1">
-                  <Label>Amount </Label>
-                  <Input
-                    type="text"
-                    name="amount"
-                    value={this.state.amount}
-                    onChange={this.changeHandler}
-                  />
-                </Col> */}
 
                 {/* <Col lg="6" md="6" sm="6" className="mb-2 ">
                   <Label className="mb-1">Status</Label>

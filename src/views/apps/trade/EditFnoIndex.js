@@ -32,11 +32,18 @@ class EditFnoIndex extends React.Component {
       qty: "",
       investment_amt: "",
       no_of_lots: "",
-      pl_type: "",
-      profit_loss_amt: "",
+      // pl_type: "",
+      // profit_loss_amt: "",
       trade_type: "",
       t5: "",
       type: "Index",
+      FT1: "",
+      FT1_type: "false",
+      FT2: "",
+      FT2_type: "false",
+      FT3: "",
+      FT3_type: "false",
+      FT5_type: "false",
     };
     this.state = {
       scriptN: [],
@@ -65,13 +72,17 @@ class EditFnoIndex extends React.Component {
           t5: response.data.data.t5,
           trl: response.data.data.trl,
           trl_type: response.data.data.trl_type,
+          FT1_type: response.data.data.FT1_type,
+          FT2_type: response.data.data.FT2_type,
+          FT3_type: response.data.data.FT3_type,
+          FT5_type: response.data.data.FT5_type,
           qty: response.data.data.qty,
-          pl_type: response.data.data.pl_type,
-          investment_amt: response.data.data.investment_amt,
+          // pl_type: response.data.data.pl_type,
+          // investment_amt: response.data.data.investment_amt,
           no_of_lots: response.data.data.no_of_lots,
           trade_type: response.data.data.trade_type,
           expiryDate: response.data.data.expiryDate,
-          profit_loss_amt: response.data.data.profit_loss_amt,
+          // profit_loss_amt: response.data.data.profit_loss_amt,
           type: response.data.data.type,
         });
       })
@@ -92,19 +103,19 @@ class EditFnoIndex extends React.Component {
       });
   }
   changeHandler1 = (e) => {
-    this.setState({ sl_type: e.target.value });
+    this.setState({ trl_type: e.target.value });
   };
   changeHandler2 = (e) => {
-    this.setState({ t1_type: e.target.value });
+    this.setState({ FT1_type: e.target.value });
   };
   changeHandler3 = (e) => {
-    this.setState({ t2_type: e.target.value });
+    this.setState({ FT2_type: e.target.value });
   };
   changeHandler4 = (e) => {
-    this.setState({ t3_type: e.target.value });
+    this.setState({ FT3_type: e.target.value });
   };
   changeHandler5 = (e) => {
-    this.setState({ t4_type: e.target.value });
+    this.setState({ FT5_type: e.target.value });
   };
 
   changeHandler = (e) => {
@@ -168,7 +179,6 @@ class EditFnoIndex extends React.Component {
                     onChange={this.changeHandler}
                   />
                 </Col>
-
                 <Col lg="6" md="6" sm="6" className="mb-2">
                   <Label>Script Name</Label>
                   <CustomInput
@@ -177,6 +187,7 @@ class EditFnoIndex extends React.Component {
                     value={this.state.scriptName}
                     onChange={this.changeHandler}
                   >
+                    <option>select script</option>
                     {this.state.scriptN?.map((allScript) => (
                       <option value={allScript?._id} key={allScript?._id}>
                         {allScript?.scriptName}
@@ -236,27 +247,7 @@ class EditFnoIndex extends React.Component {
                     <option>Intraday (Hero-Zero)</option>
                   </Input>
                 </Col>
-                {/* <Col lg="6" md="6" className="mb-2">
-                  <div>
-                    <Label>P&L</Label>
-                    <Input
-                      type="select"
-                      name="pl_type"
-                      value={this.state.pl_type}
-                      onChange={this.changeHandler}
-                    >
-                      <option value="Option 1">Select Option</option>
-                      <option value="Option 2">Profit</option>
-                      <option value="Option 3">Loss</option>
-                    </Input>
-                    <Input
-                      type="number"
-                      name="profit_loss_amt"
-                      value={this.state.profit_loss_amt}
-                      onChange={this.changeHandler}
-                    />
-                  </div>
-                </Col> */}
+
                 <Col lg="6" md="6" className="mb-2">
                   <Label>Active Value</Label>
                   <Input
@@ -267,16 +258,7 @@ class EditFnoIndex extends React.Component {
                     onChange={this.changeHandler}
                   />
                 </Col>
-                <Col lg="6" md="6" className="mb-2">
-                  <Label>TRAIL</Label>
-                  <Input
-                    name="trl"
-                    type="number"
-                    // placeholder="Enter Stop Loss"
-                    value={this.state.trl}
-                    onChange={this.changeHandler}
-                  />
-                </Col>
+
                 <Col lg="6" md="6" className="mb-2">
                   <Label>T5</Label>
                   <Input
@@ -298,16 +280,7 @@ class EditFnoIndex extends React.Component {
                     onChange={this.changeHandler}
                   />
                 </Col>
-                {/* <Col lg="6" md="6" className="mb-2">
-                  <Label>Investment Amount</Label>
-                  <Input
-                    name="investment_amt"
-                    type="numder"
-                    placeholder="Enter Investment Amount"
-                    value={this.state.investment_amt}
-                    onChange={this.changeHandler}
-                  />
-                </Col> */}
+
                 <Col lg="6" md="6" className="mb-2">
                   <Label>Number Of Lots</Label>
                   <Input
@@ -385,14 +358,14 @@ class EditFnoIndex extends React.Component {
                     <input
                       style={{ marginRight: "3px" }}
                       type="radio"
-                      name="t1_type"
+                      name="FT1_type"
                       value="true"
                     />
                     <span style={{ marginRight: "20px" }}>True</span>
                     <input
                       style={{ marginRight: "3px" }}
                       type="radio"
-                      name="t1_type"
+                      name="FT1_type"
                       value="false"
                     />
 
@@ -408,14 +381,14 @@ class EditFnoIndex extends React.Component {
                     <input
                       style={{ marginRight: "3px" }}
                       type="radio"
-                      name="t2_type"
+                      name="FT2_type"
                       value="true"
                     />
                     <span style={{ marginRight: "20px" }}>True</span>
                     <input
                       style={{ marginRight: "3px" }}
                       type="radio"
-                      name="t2_type"
+                      name="FT2_type"
                       value="false"
                     />
 
@@ -431,14 +404,14 @@ class EditFnoIndex extends React.Component {
                     <input
                       style={{ marginRight: "3px" }}
                       type="radio"
-                      name="t3_type"
+                      name="FT3_type"
                       value="true"
                     />
                     <span style={{ marginRight: "20px" }}>True</span>
                     <input
                       style={{ marginRight: "3px" }}
                       type="radio"
-                      name="t3_type"
+                      name="FT3_type"
                       value="false"
                     />
 
@@ -446,7 +419,7 @@ class EditFnoIndex extends React.Component {
                   </div>
                 </Col>
                 <Col lg="3" md="3" sm="3" className="mb-3 mt-1">
-                  <Label className="mb-1">T4</Label>
+                  <Label className="mb-1">T5</Label>
                   <div
                     className="form-label-group"
                     onChange={(e) => this.changeHandler5(e)}
@@ -454,14 +427,14 @@ class EditFnoIndex extends React.Component {
                     <input
                       style={{ marginRight: "3px" }}
                       type="radio"
-                      name="t4_type"
+                      name="FT5_type"
                       value="true"
                     />
                     <span style={{ marginRight: "20px" }}>True</span>
                     <input
                       style={{ marginRight: "3px" }}
                       type="radio"
-                      name="t4_type"
+                      name="FT5_type"
                       value="false"
                     />
 

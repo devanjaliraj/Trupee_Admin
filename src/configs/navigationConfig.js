@@ -119,6 +119,15 @@ const navigationConfig = [
     navLink: "/app/package/packagePlanList",
   },
   {
+    id: "memberShipContent",
+    title: "Membership Content ",
+    type: "item",
+    icon: <Icon.ArrowRight size={12} />,
+    permissions: ["admin", "editor"],
+    navLink: "/app/membercontent/memberShipContent",
+  },
+
+  {
     type: "groupHeader",
     groupTitle: "UPDATE",
   },
@@ -161,13 +170,12 @@ const navigationConfig = [
   },
 
   {
-    id: "nonActivePlanList",
+    id: "paidServeiceList",
     title: "Premium Service ",
     type: "item",
     icon: <Icon.ArrowRight size={12} />,
     permissions: ["admin", "editor"],
-    // navLink: "/app/package/nonActivePlanList",
-    navLink: "/",
+    navLink: "/app/premium/paidServeiceList",
   },
   {
     id: "userSpreedSheet",

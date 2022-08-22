@@ -206,13 +206,13 @@ export default class EditPackagePlan extends Component {
                   <Label className="mb-1">Status</Label>
                   <div
                     className="form-label-group"
-                    onChange={this.changeHandler}
+                    onChange={this.changeHandler1}
                   >
                     <input
                       style={{ marginRight: "3px" }}
                       type="radio"
                       name="status"
-                      value="Confirm"
+                      value="true"
                     />
                     <span style={{ marginRight: "20px" }}>Active</span>
 

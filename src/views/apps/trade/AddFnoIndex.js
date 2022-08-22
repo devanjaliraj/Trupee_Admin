@@ -30,13 +30,11 @@ export class AddFnoIndex extends Component {
       qty: "",
       investment_amt: "",
       no_of_lots: "",
-      pl_type: "",
-      profit_loss_amt: "",
+      // pl_type: "",
+      // profit_loss_amt: "",
       trade_type: "",
       t5: "",
       type: "Index",
-
-      trl: "",
     };
     this.state = {
       // scriptT: [],
@@ -50,7 +48,6 @@ export class AddFnoIndex extends Component {
       .then((response) => {
         console.log(response);
         this.setState({
-          // scriptT: response.data.data,
           scriptN: response.data.data,
         });
       })
@@ -119,7 +116,6 @@ export class AddFnoIndex extends Component {
                     onChange={this.changeHandler}
                   />
                 </Col>
-
                 <Col lg="6" md="6" sm="6" className="mb-2">
                   <Label>Script Name</Label>
                   <CustomInput
@@ -188,27 +184,7 @@ export class AddFnoIndex extends Component {
                     <option>Intraday (Hero-Zero)</option>
                   </Input>
                 </Col>
-                {/* <Col lg="6" md="6" className="mb-2">
-                  <div>
-                    <Label>P&L</Label>
-                    <Input
-                      type="select"
-                      name="pl_type"
-                      value={this.state.pl_type}
-                      onChange={this.changeHandler}
-                    >
-                      <option value="Option 1">Select Option</option>
-                      <option value="Option 2">Profit</option>
-                      <option value="Option 3">Loss</option>
-                    </Input>
-                    <Input
-                      type="number"
-                      name="profit_loss_amt"
-                      value={this.state.profit_loss_amt}
-                      onChange={this.changeHandler}
-                    />
-                  </div>
-                </Col> */}
+
                 <Col lg="6" md="6" className="mb-2">
                   <Label>Active Value</Label>
                   <Input
@@ -219,16 +195,7 @@ export class AddFnoIndex extends Component {
                     onChange={this.changeHandler}
                   />
                 </Col>
-                <Col lg="6" md="6" className="mb-2">
-                  <Label>TRAIL</Label>
-                  <Input
-                    name="trl"
-                    type="number"
-                    // placeholder="Enter Stop Loss"
-                    value={this.state.trl}
-                    onChange={this.changeHandler}
-                  />
-                </Col>
+
                 <Col lg="6" md="6" className="mb-2">
                   <Label>T5</Label>
                   <Input
@@ -250,16 +217,7 @@ export class AddFnoIndex extends Component {
                     onChange={this.changeHandler}
                   />
                 </Col>
-                {/* <Col lg="6" md="6" className="mb-2">
-                  <Label>Investment Amount</Label>
-                  <Input
-                    name="investment_amt"
-                    type="numder"
-                    placeholder="Enter Investment Amount"
-                    value={this.state.investment_amt}
-                    onChange={this.changeHandler}
-                  />
-                </Col> */}
+
                 <Col lg="6" md="6" className="mb-2">
                   <Label>Number Of Lots</Label>
                   <Input

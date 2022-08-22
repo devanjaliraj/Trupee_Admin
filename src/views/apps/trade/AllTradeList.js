@@ -391,7 +391,7 @@ class AllTradeList extends React.Component {
                   history.push(`/app/size/viewSize/${params.data._id}`)
                 }
               /> */}
-              <Route
+              {/* <Route
                 render={({ history }) => (
                   <Edit
                     className="mr-50"
@@ -402,7 +402,7 @@ class AllTradeList extends React.Component {
                     }
                   />
                 )}
-              />
+              /> */}
 
               <Trash2
                 size={20}
@@ -477,7 +477,7 @@ class AllTradeList extends React.Component {
                     Trade Notification List
                   </h1>
                 </Col>
-                <Col className="pt-4">
+                {/* <Col className="pt-4">
                   <Route
                     render={({ history }) => (
                       <Button
@@ -488,7 +488,7 @@ class AllTradeList extends React.Component {
                       </Button>
                     )}
                   />
-                </Col>
+                </Col> */}
               </Row>
               <CardBody>
                 {this.state.rowData === null ? null : (
