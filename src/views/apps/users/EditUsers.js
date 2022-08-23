@@ -86,18 +86,18 @@ export default class EditSize extends Component {
     //   .catch((error) => {
     //     console.log(error);
     //   });
-    //   //plan//
-    //   axiosConfig
-    //     .get("/plan_list")
-    //     .then((response) => {
-    //       console.log(response);
-    //       this.setState({
-    //         pack_nameM: response.data.data,
-    //       });
-    //     })
-    //     .catch((error) => {
-    //       console.log(error);
-    //     });
+    //plan//
+    axiosConfig
+      .get("/plan_list")
+      .then((response) => {
+        console.log(response);
+        this.setState({
+          pack_nameM: response.data.data,
+        });
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   }
 
   changeHandler1 = (e) => {
@@ -224,6 +224,7 @@ export default class EditSize extends Component {
                     value={this.state.pack_name}
                     onChange={this.changeHandler}
                   >
+                    <option>Select Plan</option>
                     {this.state.pack_nameM?.map((planmemship) => (
                       <option value={planmemship?._id} key={planmemship?._id}>
                         {planmemship?.pack_name}
@@ -249,31 +250,30 @@ export default class EditSize extends Component {
                     onChange={this.changeHandler}
                   ></Input>
                 </Col>
-                <Col lg="6" md="6" sm="6" className="mb-2">
-                  <Col lg="6" md="6" sm="6" className="mb-2 mt-1">
-                    <Label className="mb-1">Status</Label>
-                    <div
-                      className="form-label-group"
-                      onChange={this.changeHandler1}
-                    >
-                      <input
-                        style={{ marginRight: "3px" }}
-                        type="radio"
-                        name="status"
-                        value="true"
-                      />
-                      <span style={{ marginRight: "20px" }}>Active</span>
 
-                      <input
-                        style={{ marginRight: "3px" }}
-                        type="radio"
-                        name="false"
-                        value="Deactive"
-                      />
+                <Col lg="6" md="6" sm="6" className="mb-2 mt-1">
+                  <Label className="mb-1">Status</Label>
+                  <div
+                    className="form-label-group"
+                    onChange={this.changeHandler1}
+                  >
+                    <input
+                      style={{ marginRight: "3px" }}
+                      type="radio"
+                      name="status"
+                      value="Active"
+                    />
+                    <span style={{ marginRight: "20px" }}>Active</span>
 
-                      <span style={{ marginRight: "3px" }}>Deactive</span>
-                    </div>
-                  </Col>
+                    <input
+                      style={{ marginRight: "3px" }}
+                      type="radio"
+                      name="status"
+                      value="Inactive"
+                    />
+
+                    <span style={{ marginRight: "3px" }}>Deactive</span>
+                  </div>
                 </Col>
               </Row>
               <Row>

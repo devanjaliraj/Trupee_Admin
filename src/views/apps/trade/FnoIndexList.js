@@ -250,23 +250,23 @@ class FnoIndexList extends React.Component {
           );
         },
       },
-      // {
-      //   headerName: "SL Type",
-      //   field: "sl_type",
-      //   filter: true,
-      //   width: 150,
-      //   cellRendererFramework: (params) => {
-      //     return params.value === "true" ? (
-      //       <div className="badge badge-pill badge-success">
-      //         {params.data.sl_type}
-      //       </div>
-      //     ) : params.value === "false" ? (
-      //       <div className="badge badge-pill badge-warning">
-      //         {params.data.sl_type}
-      //       </div>
-      //     ) : null;
-      //   },
-      // },
+      {
+        headerName: "SL Type",
+        field: "sl_type",
+        filter: true,
+        width: 150,
+        cellRendererFramework: (params) => {
+          return params.value === "true" ? (
+            <div className="badge badge-pill badge-success">
+              {params.data.sl_type}
+            </div>
+          ) : params.value === "false" ? (
+            <div className="badge badge-pill badge-warning">
+              {params.data.sl_type}
+            </div>
+          ) : null;
+        },
+      },
       {
         headerName: "Trial Type",
         field: "trl_type",

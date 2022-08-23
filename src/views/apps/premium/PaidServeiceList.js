@@ -139,11 +139,9 @@ class PaidServeiceList extends React.Component {
   }
   async runthisfunction(id) {
     console.log(id);
-    await axiosConfig
-      .get(`/admin/deletenotification/${id}`)
-      .then((response) => {
-        console.log(response);
-      });
+    await axiosConfig.get(`/dltPsrvc/${id}`).then((response) => {
+      console.log(response);
+    });
   }
 
   onGridReady = (params) => {

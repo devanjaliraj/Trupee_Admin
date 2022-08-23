@@ -167,7 +167,7 @@ class EquityCashList extends React.Component {
         },
       },
       {
-        headerName: "T₹ 5",
+        headerName: "Range",
         field: "t5",
         width: 140,
         cellRendererFramework: (params) => {

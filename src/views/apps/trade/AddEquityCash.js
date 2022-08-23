@@ -51,8 +51,9 @@ export class AddEquityCash extends Component {
       scriptN: [],
     };
   }
-  //Script//
-  async componentDidMount() {
+  componentDidMount() {
+    //Script//
+
     axiosConfig
       .get("/getCashScript")
       .then((response) => {
@@ -279,7 +280,7 @@ export class AddEquityCash extends Component {
                   />
                 </Col>{" "}
                 <Col lg="6" md="6" className="mb-2">
-                  <Label>T₹ 5</Label>
+                  <Label>Range</Label>
                   <Input
                     type="number"
                     placeholder="Enter Target 5"

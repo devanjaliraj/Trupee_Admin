@@ -197,7 +197,7 @@ export class AddFnoIndex extends Component {
                 </Col>
 
                 <Col lg="6" md="6" className="mb-2">
-                  <Label>T5</Label>
+                  <Label>Range</Label>
                   <Input
                     name="t5"
                     type="number"

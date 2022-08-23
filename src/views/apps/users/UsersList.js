@@ -158,7 +158,7 @@ class UsersList extends React.Component {
             <div className="badge badge-pill badge-success">
               {params.data.status}
             </div>
-          ) : params.value === "Deactive" ? (
+          ) : params.value === "Inactive" ? (
             <div className="badge badge-pill badge-warning">
               {params.data.status}
             </div>

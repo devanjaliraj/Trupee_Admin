@@ -210,7 +210,7 @@ class AllTradeList extends React.Component {
         },
       },
       {
-        headerName: "T5",
+        headerName: "Range",
         field: "t5",
         width: 140,
         cellRendererFramework: (params) => {

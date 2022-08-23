@@ -180,7 +180,7 @@ class MembershipList extends React.Component {
                     color="blue"
                     onClick={() =>
                       history.push(
-                        `/app/membership/EditMembership/${params.data._id}`
+                        `/app/membership/editMembership/${params.data._id}`
                       )
                     }
                   />

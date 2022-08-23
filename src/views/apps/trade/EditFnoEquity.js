@@ -342,7 +342,7 @@ class EditFnoEquity extends React.Component {
                   />
                 </Col>
                 <Col lg="6" md="6" className="mb-2">
-                  <Label>T₹ 5</Label>
+                  <Label>Range</Label>
                   <Input
                     type="text"
                     placeholder="Enter Target 5"

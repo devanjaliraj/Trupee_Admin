@@ -44,6 +44,7 @@ class EditFnoIndex extends React.Component {
       FT3: "",
       FT3_type: "false",
       FT5_type: "false",
+      sl_type: "false",
     };
     this.state = {
       scriptN: [],
@@ -77,7 +78,7 @@ class EditFnoIndex extends React.Component {
           FT3_type: response.data.data.FT3_type,
           FT5_type: response.data.data.FT5_type,
           qty: response.data.data.qty,
-          // pl_type: response.data.data.pl_type,
+          sl_type: response.data.data.sl_type,
           // investment_amt: response.data.data.investment_amt,
           no_of_lots: response.data.data.no_of_lots,
           trade_type: response.data.data.trade_type,
@@ -116,6 +117,9 @@ class EditFnoIndex extends React.Component {
   };
   changeHandler5 = (e) => {
     this.setState({ FT5_type: e.target.value });
+  };
+  changeHandler6 = (e) => {
+    this.setState({ sl_type: e.target.value });
   };
 
   changeHandler = (e) => {
@@ -260,7 +264,7 @@ class EditFnoIndex extends React.Component {
                 </Col>
 
                 <Col lg="6" md="6" className="mb-2">
-                  <Label>T5</Label>
+                  <Label>Range</Label>
                   <Input
                     name="t5"
                     type="number"
@@ -270,7 +274,7 @@ class EditFnoIndex extends React.Component {
                   />
                 </Col>
 
-                <Col lg="6" md="6" className="mb-2">
+                {/* <Col lg="6" md="6" className="mb-2">
                   <Label>Quantity</Label>
                   <Input
                     type="number"
@@ -279,7 +283,7 @@ class EditFnoIndex extends React.Component {
                     value={this.state.qty}
                     onChange={this.changeHandler}
                   />
-                </Col>
+                </Col> */}
 
                 <Col lg="6" md="6" className="mb-2">
                   <Label>Number Of Lots</Label>
@@ -291,7 +295,7 @@ class EditFnoIndex extends React.Component {
                     onChange={this.changeHandler}
                   />
                 </Col>
-                <Col lg="6" md="6" className="mb-2">
+                {/* <Col lg="6" md="6" className="mb-2">
                   <Label> Type </Label>
                   <Input
                     type="text"
@@ -300,9 +304,9 @@ class EditFnoIndex extends React.Component {
                     value={this.state.type}
                     onChange={this.changeHandler}
                   />
-                </Col>
+                </Col> */}
               </Row>
-              {/* <Col lg="3" md="3" sm="3" className="mb-3 mt-1">
+              <Col lg="3" md="3" sm="3" className="mb-3 mt-1">
                 <Label className="mb-1">SL</Label>
                 <div
                   className="form-label-group"
@@ -324,12 +328,12 @@ class EditFnoIndex extends React.Component {
 
                   <span style={{ marginRight: "3px" }}>False</span>
                 </div>
-              </Col> */}
+              </Col>
               <Col lg="3" md="3" sm="3" className="mb-3 mt-1">
                 <Label className="mb-1">TRAIL</Label>
                 <div
                   className="form-label-group"
-                  onChange={(e) => this.changeHandler1(e)}
+                  onChange={(e) => this.changeHandler6(e)}
                 >
                   <input
                     style={{ marginRight: "3px" }}

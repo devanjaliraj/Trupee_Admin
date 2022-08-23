@@ -55,7 +55,7 @@ const membershipList = lazy(() =>
   import("./views/apps/membership/MembershipList")
 );
 
-const editMembership = lazy(() =>
+const EditMembership = lazy(() =>
   import("./views/apps/membership/EditMembership")
 );
 const notificationList = lazy(() =>
@@ -738,8 +738,8 @@ class AppRouter extends React.Component {
               component={membershipList}
             />
             <AppRoute
-              path="/app/membership/EditMembership/:id"
-              component={editMembership}
+              path="/app/membership/editMembership/:id"
+              component={EditMembership}
             />
             <AppRoute
               path="/app/notification/NotificationList"

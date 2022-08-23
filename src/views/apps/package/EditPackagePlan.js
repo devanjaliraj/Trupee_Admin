@@ -79,24 +79,19 @@ export default class EditPackagePlan extends Component {
         console.log(error);
       });
   }
+  changeHandler1 = (e) => {
+    this.setState({ status: e.target.value });
+  };
 
   changeHandler = (e) => {
     this.setState({ [e.target.name]: e.target.value });
   };
   submitHandler = (e) => {
     e.preventDefault();
-    const { expdate, date, status, amount, planId } = this.state;
-    var payload = {
-      expdate: expdate,
-      amount: amount,
-      planId: planId,
-      date: date,
-      status: status,
-    };
-    console.log(payload);
     let { id } = this.props.match.params;
+
     axiosConfig
-      .post(`/editplan/${id}`, payload)
+      .post(`/editplan/${id}`)
       .then((response) => {
         console.log(response);
         // swal("Success!", "Submitted SuccessFull!", "success");
@@ -106,9 +101,6 @@ export default class EditPackagePlan extends Component {
       .catch((error) => {
         console.log(error.response);
       });
-  };
-  changeHandler1 = (e) => {
-    this.setState({ status: e.target.value });
   };
 
   render() {
@@ -206,24 +198,24 @@ export default class EditPackagePlan extends Component {
                   <Label className="mb-1">Status</Label>
                   <div
                     className="form-label-group"
-                    onChange={this.changeHandler1}
+                    onChange={(e) => this.changeHandler1(e)}
                   >
                     <input
                       style={{ marginRight: "3px" }}
                       type="radio"
                       name="status"
-                      value="true"
+                      value="Active"
                     />
                     <span style={{ marginRight: "20px" }}>Active</span>
 
-                    {/* <input
+                    <input
                       style={{ marginRight: "3px" }}
                       type="radio"
                       name="status"
-                      value="Pending"
+                      value="Inactive"
                     />
 
-                    <span style={{ marginRight: "3px" }}>Inactive</span> */}
+                    <span style={{ marginRight: "3px" }}>Inactive</span>
                   </div>
                 </Col>
               </Row>

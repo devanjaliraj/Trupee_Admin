@@ -47,9 +47,9 @@ export default class EditMembership extends Component {
 
     axiosConfig
       .get(`/viewonemembership/${id}`, {
-        headers: {
-          // "auth-adtoken": localStorage.getItem("auth-adtoken"),
-        },
+        // headers: {
+        //   // "auth-adtoken": localStorage.getItem("auth-adtoken"),
+        // },
       })
       .then((response) => {
         console.log(response);
@@ -92,9 +92,9 @@ export default class EditMembership extends Component {
     let { id } = this.props.match.params;
     axiosConfig
       .post(`/updatemembership/${id}`, this.state, {
-        headers: {
-          // "auth-adtoken": localStorage.getItem("auth-adtoken"),
-        },
+        // headers: {
+        //   // "auth-adtoken": localStorage.getItem("auth-adtoken"),
+        // },
       })
       .then((response) => {
         console.log(response);
@@ -198,6 +198,7 @@ export default class EditMembership extends Component {
                     value={this.state.planId?.pack_name}
                     onChange={this.changeHandler}
                   >
+                    <option>Select plan</option>
                     {this.state.pack_nameM?.map((planmemship) => (
                       <option value={planmemship?._id} key={planmemship?._id}>
                         {planmemship?.pack_name}
@@ -234,18 +235,18 @@ export default class EditMembership extends Component {
                         style={{ marginRight: "3px" }}
                         type="radio"
                         name="status"
-                        value="true"
+                        value="Active"
                       />
                       <span style={{ marginRight: "20px" }}>Active</span>
 
-                      <input
+                      {/* <input
                         style={{ marginRight: "3px" }}
                         type="radio"
                         name="false"
                         value="Deactive"
-                      />
+                      /> */}
 
-                      <span style={{ marginRight: "3px" }}>Deactive</span>
+                      {/* <span style={{ marginRight: "3px" }}>Deactive</span> */}
                     </div>
                   </Col>
                 </Col>
