@@ -103,9 +103,9 @@ class EditFnoIndex extends React.Component {
         console.log(error);
       });
   }
-  changeHandler1 = (e) => {
-    this.setState({ trl_type: e.target.value });
-  };
+  // changeHandler1 = (e) => {
+  //   this.setState({ trl_type: e.target.value });
+  // };
   changeHandler2 = (e) => {
     this.setState({ FT1_type: e.target.value });
   };
@@ -129,7 +129,7 @@ class EditFnoIndex extends React.Component {
     e.preventDefault();
     let { id } = this.props.match.params;
     axiosConfig
-      .post(`/editalltrade/${id}`, this.state, {
+      .post(`/editFnoindex/${id}`, this.state, {
         // headers: {
         //   "auth-adtoken": localStorage.getItem("auth-adtoken"),
         // },
@@ -274,7 +274,7 @@ class EditFnoIndex extends React.Component {
                   />
                 </Col>
 
-                {/* <Col lg="6" md="6" className="mb-2">
+                <Col lg="6" md="6" className="mb-2">
                   <Label>Quantity</Label>
                   <Input
                     type="number"
@@ -283,7 +283,7 @@ class EditFnoIndex extends React.Component {
                     value={this.state.qty}
                     onChange={this.changeHandler}
                   />
-                </Col> */}
+                </Col>
 
                 <Col lg="6" md="6" className="mb-2">
                   <Label>Number Of Lots</Label>
@@ -310,7 +310,7 @@ class EditFnoIndex extends React.Component {
                 <Label className="mb-1">SL</Label>
                 <div
                   className="form-label-group"
-                  onChange={(e) => this.changeHandler1(e)}
+                  onChange={(e) => this.changeHandler6(e)}
                 >
                   <input
                     style={{ marginRight: "3px" }}
@@ -329,7 +329,7 @@ class EditFnoIndex extends React.Component {
                   <span style={{ marginRight: "3px" }}>False</span>
                 </div>
               </Col>
-              <Col lg="3" md="3" sm="3" className="mb-3 mt-1">
+              {/* <Col lg="3" md="3" sm="3" className="mb-3 mt-1">
                 <Label className="mb-1">TRAIL</Label>
                 <div
                   className="form-label-group"
@@ -351,7 +351,7 @@ class EditFnoIndex extends React.Component {
 
                   <span style={{ marginRight: "3px" }}>False</span>
                 </div>
-              </Col>
+              </Col> */}
               <Row className="mb-2">
                 <Col lg="3" md="3" sm="3" className="mb-3 mt-1">
                   <Label className="mb-1">T1</Label>

@@ -35,20 +35,35 @@ export class AddFnoIndex extends Component {
       trade_type: "",
       t5: "",
       type: "Index",
+      // expiryDate: "",
     };
     this.state = {
       // scriptT: [],
       scriptN: [],
+      expdateI: [],
     };
   }
-  //Script//
-  async componentDidMount() {
+
+  componentDidMount() {
+    //Script//
     axiosConfig
       .get("/getFnoScript")
       .then((response) => {
         console.log(response);
         this.setState({
           scriptN: response.data.data,
+        });
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+    // expDate//
+    axiosConfig
+      .get("/datelist")
+      .then((response) => {
+        console.log(response);
+        this.setState({
+          expdateI: response.data.data,
         });
       })
       .catch((error) => {
@@ -107,7 +122,7 @@ export class AddFnoIndex extends Component {
           <CardBody>
             <Form className="m-1" onSubmit={this.submitHandler}>
               <Row className="mb-2">
-                <Col lg="6" md="6" className="mb-2">
+                {/* <Col lg="6" md="6" className="mb-2">
                   <Label>Exp. Date</Label>
                   <Input
                     type="date"
@@ -115,6 +130,22 @@ export class AddFnoIndex extends Component {
                     value={this.state.expiryDate}
                     onChange={this.changeHandler}
                   />
+                </Col> */}
+                <Col lg="6" md="6" sm="6" className="mb-2">
+                  <Label>Expiry Date</Label>
+                  <CustomInput
+                    type="select"
+                    name="expiryDate"
+                    value={this.state.expDate}
+                    onChange={this.changeHandler}
+                  >
+                    <option>Expiry Date</option>
+                    {this.state.expdateI?.map((allExpDate) => (
+                      <option value={allExpDate?._id} key={allExpDate?._id}>
+                        {allExpDate?.expDate}
+                      </option>
+                    ))}
+                  </CustomInput>
                 </Col>
                 <Col lg="6" md="6" sm="6" className="mb-2">
                   <Label>Script Name</Label>
