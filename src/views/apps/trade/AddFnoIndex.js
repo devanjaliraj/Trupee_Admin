@@ -36,6 +36,7 @@ export class AddFnoIndex extends Component {
       t5: "",
       type: "Index",
       // expiryDate: "",
+      state: "",
     };
     this.state = {
       // scriptT: [],
@@ -232,7 +233,7 @@ export class AddFnoIndex extends Component {
                   <Input
                     name="t5"
                     type="number"
-                    // placeholder="Enter Stop Loss"
+                    placeholder="Enter Range "
                     value={this.state.t5}
                     onChange={this.changeHandler}
                   />

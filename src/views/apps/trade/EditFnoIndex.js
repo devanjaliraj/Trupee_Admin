@@ -35,7 +35,7 @@ class EditFnoIndex extends React.Component {
       // pl_type: "",
       // profit_loss_amt: "",
       trade_type: "",
-      t5: "",
+      // t5: "",
       type: "Index",
       FT1: "",
       FT1_type: "false",
@@ -45,6 +45,7 @@ class EditFnoIndex extends React.Component {
       FT3_type: "false",
       FT5_type: "false",
       sl_type: "false",
+      status: "",
     };
     this.state = {
       scriptN: [],
@@ -66,11 +67,11 @@ class EditFnoIndex extends React.Component {
           fnoindex_scrpt_name: response.data.data.fnoindex_scrpt_name,
           call_type: response.data.data.call_type,
           active_value: response.data.data.active_value,
-          // SL: response.data.data.SL,
+
           T1: response.data.data.T1,
           T2: response.data.data.T2,
           T3: response.data.data.T3,
-          t5: response.data.data.t5,
+          // t5: response.data.data.t5,
           trl: response.data.data.trl,
           trl_type: response.data.data.trl_type,
           FT1_type: response.data.data.FT1_type,
@@ -79,11 +80,9 @@ class EditFnoIndex extends React.Component {
           FT5_type: response.data.data.FT5_type,
           qty: response.data.data.qty,
           sl_type: response.data.data.sl_type,
-          // investment_amt: response.data.data.investment_amt,
           no_of_lots: response.data.data.no_of_lots,
           trade_type: response.data.data.trade_type,
           expiryDate: response.data.data.expiryDate,
-          // profit_loss_amt: response.data.data.profit_loss_amt,
           type: response.data.data.type,
         });
       })
@@ -103,9 +102,9 @@ class EditFnoIndex extends React.Component {
         console.log(error);
       });
   }
-  // changeHandler1 = (e) => {
-  //   this.setState({ trl_type: e.target.value });
-  // };
+  changeHandler1 = (e) => {
+    this.setState({ status: e.target.value });
+  };
   changeHandler2 = (e) => {
     this.setState({ FT1_type: e.target.value });
   };
@@ -128,6 +127,7 @@ class EditFnoIndex extends React.Component {
   submitHandler = (e) => {
     e.preventDefault();
     let { id } = this.props.match.params;
+
     axiosConfig
       .post(`/editFnoindex/${id}`, this.state, {
         // headers: {
@@ -135,7 +135,7 @@ class EditFnoIndex extends React.Component {
         // },
       })
       .then((response) => {
-        console.log(response);
+        console.log("sdjgsjdgjhgsdjh", response);
         swal("Success!", "Submitted SuccessFull!", "success");
         this.props.history.push("/app/trade/fnoIndexList");
       })
@@ -174,7 +174,7 @@ class EditFnoIndex extends React.Component {
           <CardBody>
             <Form className="m-1" onSubmit={this.submitHandler}>
               <Row className="mb-2">
-                <Col lg="6" md="6" className="mb-2">
+                {/* <Col lg="6" md="6" className="mb-2">
                   <Label>Exp. Date</Label>
                   <Input
                     type="date"
@@ -182,7 +182,7 @@ class EditFnoIndex extends React.Component {
                     value={this.state.expiryDate}
                     onChange={this.changeHandler}
                   />
-                </Col>
+                </Col> */}
                 <Col lg="6" md="6" sm="6" className="mb-2">
                   <Label>Script Name</Label>
                   <CustomInput
@@ -263,16 +263,16 @@ class EditFnoIndex extends React.Component {
                   />
                 </Col>
 
-                <Col lg="6" md="6" className="mb-2">
+                {/* <Col lg="6" md="6" className="mb-2">
                   <Label>Range</Label>
                   <Input
                     name="t5"
                     type="number"
-                    // placeholder="Enter Stop Loss"
+                    placeholder="Enter Range"
                     value={this.state.t5}
                     onChange={this.changeHandler}
                   />
-                </Col>
+                </Col> */}
 
                 <Col lg="6" md="6" className="mb-2">
                   <Label>Quantity</Label>
@@ -329,29 +329,7 @@ class EditFnoIndex extends React.Component {
                   <span style={{ marginRight: "3px" }}>False</span>
                 </div>
               </Col>
-              {/* <Col lg="3" md="3" sm="3" className="mb-3 mt-1">
-                <Label className="mb-1">TRAIL</Label>
-                <div
-                  className="form-label-group"
-                  onChange={(e) => this.changeHandler6(e)}
-                >
-                  <input
-                    style={{ marginRight: "3px" }}
-                    type="radio"
-                    name="trl_type"
-                    value="true"
-                  />
-                  <span style={{ marginRight: "20px" }}>True</span>
-                  <input
-                    style={{ marginRight: "3px" }}
-                    type="radio"
-                    name="trl_type"
-                    value="false"
-                  />
 
-                  <span style={{ marginRight: "3px" }}>False</span>
-                </div>
-              </Col> */}
               <Row className="mb-2">
                 <Col lg="3" md="3" sm="3" className="mb-3 mt-1">
                   <Label className="mb-1">T1</Label>
@@ -443,6 +421,29 @@ class EditFnoIndex extends React.Component {
                     />
 
                     <span style={{ marginRight: "3px" }}>False</span>
+                  </div>
+                </Col>
+                <Col lg="3" md="3" sm="3" className="mb-3 mt-1">
+                  <Label className="mb-1">Status</Label>
+                  <div
+                    className="form-label-group"
+                    onChange={(e) => this.changeHandler1(e)}
+                  >
+                    <input
+                      style={{ marginRight: "3px" }}
+                      type="radio"
+                      name="status"
+                      value="Active"
+                    />
+                    <span style={{ marginRight: "20px" }}>Active</span>
+                    <input
+                      style={{ marginRight: "3px" }}
+                      type="radio"
+                      name="status"
+                      value="Deactive"
+                    />
+
+                    <span style={{ marginRight: "3px" }}>Deactive</span>
                   </div>
                 </Col>
               </Row>

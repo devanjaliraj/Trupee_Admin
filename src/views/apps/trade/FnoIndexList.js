@@ -203,6 +203,18 @@ class FnoIndexList extends React.Component {
         },
       },
       {
+        headerName: "PL% ",
+        field: "pl_per",
+        width: 140,
+        cellRendererFramework: (params) => {
+          return (
+            <div className="d-flex align-items-center cursor-pointer">
+              <span>{params.data.pl_per} </span>
+            </div>
+          );
+        },
+      },
+      {
         headerName: "Quantity",
         field: "qty",
         width: 140,
@@ -348,6 +360,23 @@ class FnoIndexList extends React.Component {
           ) : params.value === "false" ? (
             <div className="badge badge-pill badge-warning">
               {params.data.FT5_type}
+            </div>
+          ) : null;
+        },
+      },
+      {
+        headerName: "status ",
+        field: "status",
+        filter: true,
+        width: 150,
+        cellRendererFramework: (params) => {
+          return params.value === "Active" ? (
+            <div className="badge badge-pill badge-success">
+              {params.data.status}
+            </div>
+          ) : params.value === "Deactive" ? (
+            <div className="badge badge-pill badge-warning">
+              {params.data.status}
             </div>
           ) : null;
         },
