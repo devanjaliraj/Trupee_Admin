@@ -14,7 +14,15 @@ import {
 import axiosConfig from "../../../axiosConfig";
 import { ContextLayout } from "../../../utility/context/Layout";
 import { AgGridReact } from "ag-grid-react";
-import { Eye, Edit, Trash2, ChevronDown } from "react-feather";
+import {
+  Edit,
+  Trash2,
+  ChevronDown,
+  ToggleLeft,
+  Phone,
+  Smartphone,
+  ToggleRight,
+} from "react-feather";
 import "../../../assets/scss/plugins/tables/_agGridStyleOverride.scss";
 import "../../../assets/scss/pages/users.scss";
 import { Route } from "react-router-dom";
@@ -384,18 +392,63 @@ class FnoIndexList extends React.Component {
       {
         headerName: "Actions",
         field: "sortorder",
-        width: 150,
+        width: 350,
         pinned: window.innerWidth > 992 ? "right" : false,
         cellRendererFramework: (params) => {
           return (
             <div className="actions cursor-pointer">
-              {/* <Eye
+              {/* cellRendererFramework: (params) => {
+          return params.value === "Active" ? (
+            <div className="badge badge-pill badge-success">
+              <ToggleLeft
                 className="mr-50"
-                color="green"
-                size={20}
-                onClick={() =>
-                  history.push(`/app/size/viewSize/${params.data._id}`)
-                }
+                size="25px"
+                color="black"
+                onClick={() => history.push(`{params.data.status}`)}
+              />
+            </div>
+          ) : params.value === "Deactive" ? (
+            <div className="badge badge-pill badge-warning">
+              <ToggleRight
+                className="mr-50"
+                class="switch"
+                size="25px"
+                color="black"
+                type="checkbox"
+                onClick={() => history.push(`{params.data.status}`)}
+              />
+            </div>
+          ) : null;
+        }, */}
+              {/* <div className="badge badge-pill badge-warning">
+                <ToggleRight
+                  className="mr-50"
+                  // class="switch"
+                  size="25px"
+                  color="black"
+                  type="checkbox"
+                  onClick={() => history.push(`{params.data.status}`)}
+                >
+                  <div className="badge badge-pill badge-success">
+                    {params.data.true}
+                  </div>
+                  <div className="badge badge-pill badge-warning">
+                    {params.data.false}
+                  </div>
+                </ToggleRight>
+              </div> */}
+
+              {/* <Route
+                render={({ history }) => (
+                  <div class="form-check form-switch">
+                    <switch
+                      class="form-check-input"
+                      type="checkbox"
+                      role="switch"
+                      id="flexSwitchCheckDefault"
+                    />
+                  </div>
+                )}
               /> */}
               <Route
                 render={({ history }) => (

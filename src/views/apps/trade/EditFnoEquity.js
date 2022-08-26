@@ -45,6 +45,7 @@ class EditFnoEquity extends React.Component {
       profit_loss_amt: "",
       expiryDate: "",
       type: "Equity",
+      status: "",
     };
     this.state = {
       // scriptT: [],
@@ -82,6 +83,7 @@ class EditFnoEquity extends React.Component {
           t3_type: response.data.data.t3_type,
           t4_type: response.data.data.t4_type,
           type: response.data.data.type,
+          status: response.data.data.status,
         });
       })
       .catch((error) => {
@@ -102,22 +104,22 @@ class EditFnoEquity extends React.Component {
         console.log(error);
       });
   }
-  // changeHandler1 = (e) => {
-  //   this.setState({ status: e.target.value });
-  // };
   changeHandler1 = (e) => {
-    this.setState({ sl_type: e.target.value });
+    this.setState({ status: e.target.value });
   };
   changeHandler2 = (e) => {
-    this.setState({ t1_type: e.target.value });
+    this.setState({ sl_type: e.target.value });
   };
   changeHandler3 = (e) => {
-    this.setState({ t2_type: e.target.value });
+    this.setState({ t1_type: e.target.value });
   };
   changeHandler4 = (e) => {
-    this.setState({ t3_type: e.target.value });
+    this.setState({ t2_type: e.target.value });
   };
   changeHandler5 = (e) => {
+    this.setState({ t3_type: e.target.value });
+  };
+  changeHandler6 = (e) => {
     this.setState({ t4_type: e.target.value });
   };
 
@@ -128,7 +130,7 @@ class EditFnoEquity extends React.Component {
     e.preventDefault();
     let { id } = this.props.match.params;
     axiosConfig
-      .post(`/editalltrade/${id}`, this.state, {
+      .post(`/editfnoOption/${id}`, this.state, {
         // headers: {
         //   "auth-adtoken": localStorage.getItem("auth-adtoken"),
         // },
@@ -396,7 +398,7 @@ class EditFnoEquity extends React.Component {
                 <Label className="mb-1">SL</Label>
                 <div
                   className="form-label-group"
-                  onChange={(e) => this.changeHandler1(e)}
+                  onChange={(e) => this.changeHandler2(e)}
                 >
                   <input
                     style={{ marginRight: "3px" }}
@@ -420,7 +422,7 @@ class EditFnoEquity extends React.Component {
                   <Label className="mb-1">T1</Label>
                   <div
                     className="form-label-group"
-                    onChange={(e) => this.changeHandler2(e)}
+                    onChange={(e) => this.changeHandler3(e)}
                   >
                     <input
                       style={{ marginRight: "3px" }}
@@ -443,7 +445,7 @@ class EditFnoEquity extends React.Component {
                   <Label className="mb-1">T2</Label>
                   <div
                     className="form-label-group"
-                    onChange={(e) => this.changeHandler3(e)}
+                    onChange={(e) => this.changeHandler4(e)}
                   >
                     <input
                       style={{ marginRight: "3px" }}
@@ -466,7 +468,7 @@ class EditFnoEquity extends React.Component {
                   <Label className="mb-1">T3</Label>
                   <div
                     className="form-label-group"
-                    onChange={(e) => this.changeHandler4(e)}
+                    onChange={(e) => this.changeHandler5(e)}
                   >
                     <input
                       style={{ marginRight: "3px" }}
@@ -489,7 +491,7 @@ class EditFnoEquity extends React.Component {
                   <Label className="mb-1">T4</Label>
                   <div
                     className="form-label-group"
-                    onChange={(e) => this.changeHandler5(e)}
+                    onChange={(e) => this.changeHandler6(e)}
                   >
                     <input
                       style={{ marginRight: "3px" }}
@@ -506,6 +508,29 @@ class EditFnoEquity extends React.Component {
                     />
 
                     <span style={{ marginRight: "3px" }}>False</span>
+                  </div>
+                </Col>
+                <Col lg="3" md="3" sm="3" className="mb-3 mt-1">
+                  <Label className="mb-1">Status</Label>
+                  <div
+                    className="form-label-group"
+                    onChange={(e) => this.changeHandler1(e)}
+                  >
+                    <input
+                      style={{ marginRight: "3px" }}
+                      type="radio"
+                      name="status"
+                      value="Active"
+                    />
+                    <span style={{ marginRight: "20px" }}>Active</span>
+                    <input
+                      style={{ marginRight: "3px" }}
+                      type="radio"
+                      name="status"
+                      value="Deactive"
+                    />
+
+                    <span style={{ marginRight: "3px" }}>Deactive</span>
                   </div>
                 </Col>
               </Row>

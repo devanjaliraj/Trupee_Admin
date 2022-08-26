@@ -28,22 +28,19 @@ export class AddFnoEquity extends Component {
       active_value2: "",
       call_type: "",
       SL: "",
-      sl_type: false,
+      sl_type: "false",
       T1: "",
-      t1_type: false,
+      t1_type: "false",
       T2: "",
-      t2_type: false,
+      t2_type: "false",
       T3: "",
-      t3_type: false,
+      t3_type: "false",
       T4: "",
-      t4_type: false,
+      t4_type: "false",
       t5: "",
-      t5_type: false,
+      t5_type: "false",
       qty: "",
-      investment_amt: "",
       no_of_lots: "",
-      pl_type: "",
-      profit_loss_amt: "",
       expiryDate: "",
       type: "Equity",
     };
@@ -61,6 +58,18 @@ export class AddFnoEquity extends Component {
         this.setState({
           // scriptT: response.data.data,
           scriptN: response.data.data,
+        });
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+    // expDate//
+    axiosConfig
+      .get("/datelist")
+      .then((response) => {
+        console.log(response);
+        this.setState({
+          expdateI: response.data.data,
         });
       })
       .catch((error) => {
@@ -119,14 +128,21 @@ export class AddFnoEquity extends Component {
           <CardBody>
             <Form className="m-1" onSubmit={this.submitHandler}>
               <Row className="mb-2">
-                <Col lg="6" md="6" className="mb-2">
-                  <Label>Exp Date</Label>
-                  <Input
-                    type="date"
+                <Col lg="6" md="6" sm="6" className="mb-2">
+                  <Label>Expiry Date</Label>
+                  <CustomInput
+                    type="select"
                     name="expiryDate"
-                    value={this.state.expiryDate}
+                    value={this.state.expDate}
                     onChange={this.changeHandler}
-                  />
+                  >
+                    <option>Expiry Date</option>
+                    {this.state.expdateI?.map((allExpDate) => (
+                      <option value={allExpDate?._id} key={allExpDate?._id}>
+                        {allExpDate?.expDate}
+                      </option>
+                    ))}
+                  </CustomInput>
                 </Col>
                 <Col lg="6" md="6" sm="6" className="mb-2">
                   <Label>Script Name</Label>
@@ -181,27 +197,6 @@ export class AddFnoEquity extends Component {
                     <option>Intraday (Hero-Zero)</option>
                   </Input>
                 </Col>
-                {/* <Col lg="6" md="6" className="mb-2">
-                  <div>
-                    <Label>P&L</Label>
-                    <Input
-                      type="select"
-                      name="pl_type"
-                      value={this.state.pl_type}
-                      onChange={this.changeHandler}
-                    >
-                      <option value="Option 1">Select Option</option>
-                      <option value="Option 2">Profit</option>
-                      <option value="Option 3">Loss</option>
-                    </Input>
-                    <Input
-                      type="number"
-                      name="profit_loss_amt"
-                      value={this.state.profit_loss_amt}
-                      onChange={this.changeHandler}
-                    />
-                  </div>
-                </Col> */}
                 <Col lg="6" md="6" className="mb-2">
                   <Label>Active Value</Label>
                   <Input

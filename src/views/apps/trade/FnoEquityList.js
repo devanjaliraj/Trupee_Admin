@@ -176,14 +176,38 @@ class FnoEquityList extends React.Component {
           );
         },
       },
+      // {
+      //   headerName: "P&L ",
+      //   field: "profit_loss_amt",
+      //   width: 140,
+      //   cellRendererFramework: (params) => {
+      //     return (
+      //       <div className="d-flex align-items-center cursor-pointer">
+      //         <span>{params.data.profit_loss_amt}</span>
+      //       </div>
+      //     );
+      //   },
+      // },
       {
         headerName: "P&L ",
-        field: "profit_loss_amt",
+        field: "pl",
         width: 140,
         cellRendererFramework: (params) => {
           return (
             <div className="d-flex align-items-center cursor-pointer">
-              <span>{params.data.profit_loss_amt}</span>
+              <span>{params.data.pl}</span>
+            </div>
+          );
+        },
+      },
+      {
+        headerName: "PL% ",
+        field: "pl_per",
+        width: 140,
+        cellRendererFramework: (params) => {
+          return (
+            <div className="d-flex align-items-center cursor-pointer">
+              <span>{params.data.pl_per} </span>
             </div>
           );
         },
@@ -225,13 +249,13 @@ class FnoEquityList extends React.Component {
         },
       },
       {
-        headerName: "EXpiry Date ",
-        field: "expiryDate",
+        headerName: "Expiry Date ",
+        field: "expDate",
         width: 140,
         cellRendererFramework: (params) => {
           return (
             <div className="d-flex align-items-center cursor-pointer">
-              <span>{params.data.expiryDate}</span>
+              <span>{params.data.expiryDate?.expDate}</span>
             </div>
           );
         },
@@ -334,6 +358,23 @@ class FnoEquityList extends React.Component {
           ) : params.value === "false" ? (
             <div className="badge badge-pill badge-warning">
               {params.data.t5_type}
+            </div>
+          ) : null;
+        },
+      },
+      {
+        headerName: "status ",
+        field: "status",
+        filter: true,
+        width: 150,
+        cellRendererFramework: (params) => {
+          return params.value === "Active" ? (
+            <div className="badge badge-pill badge-success">
+              {params.data.status}
+            </div>
+          ) : params.value === "Deactive" ? (
+            <div className="badge badge-pill badge-warning">
+              {params.data.status}
             </div>
           ) : null;
         },
