@@ -22,10 +22,12 @@ import {
   Phone,
   Smartphone,
   ToggleRight,
+  User,
 } from "react-feather";
 import "../../../assets/scss/plugins/tables/_agGridStyleOverride.scss";
 import "../../../assets/scss/pages/users.scss";
 import { Route } from "react-router-dom";
+import swal from "sweetalert";
 
 class FnoIndexList extends React.Component {
   state = {
@@ -427,7 +429,7 @@ class FnoIndexList extends React.Component {
                   size="25px"
                   color="black"
                   type="checkbox"
-                  onClick={() => history.push(`{params.data.status}`)}
+                  //onClick={() => history.push(`{params.data.status}`)}
                 >
                   <div className="badge badge-pill badge-success">
                     {params.data.true}
@@ -450,6 +452,17 @@ class FnoIndexList extends React.Component {
                   </div>
                 )}
               /> */}
+               <Smartphone
+                    className="mr-50"
+                    size="25px"
+                    color={params.data.status === 'Active' ? "green" : "red"}
+                    onClick={() =>{
+                      let selectedData = this.gridApi.getSelectedRows();
+                     this.runthisfunctionEdit(params.data._id,selectedData);
+                    } }
+                    
+                  />
+
               <Route
                 render={({ history }) => (
                   <Edit
@@ -497,6 +510,45 @@ class FnoIndexList extends React.Component {
       }
     );
   }
+
+  async runthisfunctionEdit(id,selectedData) {
+    console.log('@@selectedData',id,selectedData[0].FT1);
+    //
+    let status = selectedData[0].status === "Active" ? "Deactive" : "Active";
+    let payload = {
+      expiryDate:selectedData[0].expiryDate,
+      script_type:selectedData[0].script_type,
+      fnoindex_scrpt_name:selectedData[0].fnoindex_scrpt_name,
+      call_type:selectedData[0].call_type,
+      active_value:selectedData[0].active_value,
+      T1:selectedData[0].T1,
+      T2:selectedData[0].T2,
+      T3:selectedData[0].T3,
+      trl:selectedData[0].trl,
+      trl_type:selectedData[0].trl_type,
+      FT1_type:selectedData[0].FT1_type,
+      FT2_type:selectedData[0].FT2_type,
+      FT3_type:selectedData[0].FT3_type,
+      FT5_type:selectedData[0].FT5_type,
+      qty:selectedData[0].qty,
+      sl_type:selectedData[0].sl_type,
+      no_of_lots:selectedData[0].no_of_lots,
+      trade_type:selectedData[0].trade_type,
+      type:selectedData[0].type,
+      status:status
+    }
+    await axiosConfig.post(`/editFnoindex/${id}`,payload)
+    .then((response) => {
+      console.log("sdjgsjdgjhgsdjh", response);
+      swal("Success!", "Status " +status+ " SuccessFull!", "success");
+      // this.props.history.push("/app/trade/fnoIndexList");
+      window.location.reload()
+    })
+    .catch((error) => {
+      console.log(error);
+    });
+  }
+
   onGridReady = (params) => {
     this.gridApi = params.api;
     this.gridColumnApi = params.columnApi;
