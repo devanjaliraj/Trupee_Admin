@@ -72,7 +72,7 @@ class PerformanceSheet extends React.Component {
         },
       },
       {
-        headerName: "Plan Price",
+        headerName: "Discount Price",
         field: "plan_price",
         // filter: true,
         width: 250,
@@ -85,20 +85,20 @@ class PerformanceSheet extends React.Component {
           );
         },
       },
-      // {
-      //   headerName: "Free Paid",
-      //   field: "desc",
-      //   // filter: true,
-      //   width: 250,
-      //   // pinned: window.innerWidth > 992 ? "left" : false,
-      //   cellRendererFramework: (params) => {
-      //     return (
-      //       <div className="d-flex align-items-center cursor-pointer">
-      //         <span>{params.data.desc}</span>
-      //       </div>
-      //     );
-      //   },
-      // },
+      {
+        headerName: "MRP",
+        field: "desc",
+        // filter: true,
+        width: 250,
+        // pinned: window.innerWidth > 992 ? "left" : false,
+        cellRendererFramework: (params) => {
+          return (
+            <div className="d-flex align-items-center cursor-pointer">
+              <span>{params.data.desc}</span>
+            </div>
+          );
+        },
+      },
       // {
       //   headerName: "Start Date",
       //   field: "desc",

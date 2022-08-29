@@ -45,6 +45,8 @@ class EditEquityCash extends React.Component {
       profit_loss_amt: "",
       expiryDate: "",
       type: "Cash",
+      status:""
+ 
     };
     this.state = {
       // scriptT: [],
@@ -85,6 +87,7 @@ class EditEquityCash extends React.Component {
           profit_loss_amt: response.data.data.profit_loss_amt,
           expiryDate: response.data.data.expiryDate,
           type: response.data.data.type,
+          status: response.data.data.status,
         });
       })
       .catch((error) => {
@@ -104,9 +107,9 @@ class EditEquityCash extends React.Component {
         console.log(error);
       });
   }
-  // changeHandler1 = (e) => {
-  //   this.setState({ status: e.target.value });
-  // };
+  changeHandler6 = (e) => {
+    this.setState({ status: e.target.value });
+  };
   changeHandler1 = (e) => {
     this.setState({ sl_type: e.target.value });
   };
@@ -494,6 +497,28 @@ class EditEquityCash extends React.Component {
                     />
 
                     <span style={{ marginRight: "3px" }}>False</span>
+                  </div>
+                </Col>
+                <Col lg="3" md="3" sm="3" className="mb-3 mt-1">
+                  <Label className="mb-1">Status</Label>
+                  <div
+                    className="form-label-group"
+                    onChange={(e) => this.changeHandler6(e)}
+                  >
+                    <input
+                      style={{ marginRight: "3px" }}
+                      type="radio"
+                      name="status"
+                      value="Active"
+                    />
+                    <span style={{ marginRight: "20px" }}>Active</span>
+                    <input
+                      style={{ marginRight: "3px" }}
+                      type="radio"
+                      name="status"
+                      value="Deactive"
+                    />
+                    <span style={{ marginRight: "3px" }}>NA</span>
                   </div>
                 </Col>
               </Row>

@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React from "react";
 import {
   Card,
   CardBody,
@@ -21,7 +21,7 @@ class EditFnoIndex extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      type: "Index",
+      
       trl_type: false,
       trl: "",
       expiryDate: "",
@@ -32,10 +32,7 @@ class EditFnoIndex extends React.Component {
       qty: "",
       investment_amt: "",
       no_of_lots: "",
-      // pl_type: "",
-      // profit_loss_amt: "",
       trade_type: "",
-      // t5: "",
       type: "Index",
       FT1: "",
       FT1_type: "false",
@@ -67,7 +64,6 @@ class EditFnoIndex extends React.Component {
           fnoindex_scrpt_name: response.data.data.fnoindex_scrpt_name,
           call_type: response.data.data.call_type,
           active_value: response.data.data.active_value,
-
           T1: response.data.data.T1,
           T2: response.data.data.T2,
           T3: response.data.data.T3,
@@ -82,7 +78,6 @@ class EditFnoIndex extends React.Component {
           sl_type: response.data.data.sl_type,
           no_of_lots: response.data.data.no_of_lots,
           trade_type: response.data.data.trade_type,
-          expiryDate: response.data.data.expiryDate,
           type: response.data.data.type,
         });
       })
@@ -174,7 +169,7 @@ class EditFnoIndex extends React.Component {
           <CardBody>
             <Form className="m-1" onSubmit={this.submitHandler}>
               <Row className="mb-2">
-                {/* <Col lg="6" md="6" className="mb-2">
+                <Col lg="6" md="6" className="mb-2">
                   <Label>Exp. Date</Label>
                   <Input
                     type="date"
@@ -182,7 +177,7 @@ class EditFnoIndex extends React.Component {
                     value={this.state.expiryDate}
                     onChange={this.changeHandler}
                   />
-                </Col> */}
+                </Col>
                 <Col lg="6" md="6" sm="6" className="mb-2">
                   <Label>Script Name</Label>
                   <CustomInput
@@ -251,7 +246,6 @@ class EditFnoIndex extends React.Component {
                     <option>Intraday (Hero-Zero)</option>
                   </Input>
                 </Col>
-
                 <Col lg="6" md="6" className="mb-2">
                   <Label>Active Value</Label>
                   <Input
@@ -262,18 +256,6 @@ class EditFnoIndex extends React.Component {
                     onChange={this.changeHandler}
                   />
                 </Col>
-
-                {/* <Col lg="6" md="6" className="mb-2">
-                  <Label>Range</Label>
-                  <Input
-                    name="t5"
-                    type="number"
-                    placeholder="Enter Range"
-                    value={this.state.t5}
-                    onChange={this.changeHandler}
-                  />
-                </Col> */}
-
                 <Col lg="6" md="6" className="mb-2">
                   <Label>Quantity</Label>
                   <Input
@@ -284,7 +266,6 @@ class EditFnoIndex extends React.Component {
                     onChange={this.changeHandler}
                   />
                 </Col>
-
                 <Col lg="6" md="6" className="mb-2">
                   <Label>Number Of Lots</Label>
                   <Input
@@ -295,16 +276,6 @@ class EditFnoIndex extends React.Component {
                     onChange={this.changeHandler}
                   />
                 </Col>
-                {/* <Col lg="6" md="6" className="mb-2">
-                  <Label> Type </Label>
-                  <Input
-                    type="text"
-                    name="type"
-                    placeholder="Enter Trade Type"
-                    value={this.state.type}
-                    onChange={this.changeHandler}
-                  />
-                </Col> */}
               </Row>
               <Col lg="3" md="3" sm="3" className="mb-3 mt-1">
                 <Label className="mb-1">SL</Label>
@@ -325,11 +296,9 @@ class EditFnoIndex extends React.Component {
                     name="sl_type"
                     value="false"
                   />
-
                   <span style={{ marginRight: "3px" }}>False</span>
                 </div>
               </Col>
-
               <Row className="mb-2">
                 <Col lg="3" md="3" sm="3" className="mb-3 mt-1">
                   <Label className="mb-1">T1</Label>
@@ -350,7 +319,6 @@ class EditFnoIndex extends React.Component {
                       name="FT1_type"
                       value="false"
                     />
-
                     <span style={{ marginRight: "3px" }}>False</span>
                   </div>
                 </Col>
@@ -373,7 +341,6 @@ class EditFnoIndex extends React.Component {
                       name="FT2_type"
                       value="false"
                     />
-
                     <span style={{ marginRight: "3px" }}>False</span>
                   </div>
                 </Col>
@@ -396,7 +363,6 @@ class EditFnoIndex extends React.Component {
                       name="FT3_type"
                       value="false"
                     />
-
                     <span style={{ marginRight: "3px" }}>False</span>
                   </div>
                 </Col>
@@ -419,7 +385,6 @@ class EditFnoIndex extends React.Component {
                       name="FT5_type"
                       value="false"
                     />
-
                     <span style={{ marginRight: "3px" }}>False</span>
                   </div>
                 </Col>
@@ -442,7 +407,6 @@ class EditFnoIndex extends React.Component {
                       name="status"
                       value="Deactive"
                     />
-
                     <span style={{ marginRight: "3px" }}>Deactive</span>
                   </div>
                 </Col>
@@ -465,5 +429,4 @@ class EditFnoIndex extends React.Component {
     );
   }
 }
-
 export default EditFnoIndex;

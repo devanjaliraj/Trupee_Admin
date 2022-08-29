@@ -18,11 +18,7 @@ import {
   Edit,
   Trash2,
   ChevronDown,
-  ToggleLeft,
-  Phone,
   Smartphone,
-  ToggleRight,
-  User,
 } from "react-feather";
 import "../../../assets/scss/plugins/tables/_agGridStyleOverride.scss";
 import "../../../assets/scss/pages/users.scss";
@@ -188,18 +184,7 @@ class FnoIndexList extends React.Component {
           );
         },
       },
-      // {
-      //   headerName: "T₹ 5",
-      //   field: "FT5",
-      //   width: 140,
-      //   cellRendererFramework: (params) => {
-      //     return (
-      //       <div className="d-flex align-items-center cursor-pointer">
-      //         <span>{params.data.FT5}</span>
-      //       </div>
-      //     );
-      //   },
-      // },
+     
       {
         headerName: "P&L ",
         field: "pl",
@@ -316,11 +301,13 @@ class FnoIndexList extends React.Component {
             <div className="badge badge-pill badge-success">
               {params.data.FT1_type}
             </div>
-          ) : params.value === "false" ? (
+          ) 
+          : params.value === "false" ? (
             <div className="badge badge-pill badge-warning">
               {params.data.FT1_type}
             </div>
-          ) : null;
+          )
+           : null;
         },
       },
       {
@@ -394,64 +381,12 @@ class FnoIndexList extends React.Component {
       {
         headerName: "Actions",
         field: "sortorder",
-        width: 350,
+        width: 150,
         pinned: window.innerWidth > 992 ? "right" : false,
         cellRendererFramework: (params) => {
           return (
             <div className="actions cursor-pointer">
-              {/* cellRendererFramework: (params) => {
-          return params.value === "Active" ? (
-            <div className="badge badge-pill badge-success">
-              <ToggleLeft
-                className="mr-50"
-                size="25px"
-                color="black"
-                onClick={() => history.push(`{params.data.status}`)}
-              />
-            </div>
-          ) : params.value === "Deactive" ? (
-            <div className="badge badge-pill badge-warning">
-              <ToggleRight
-                className="mr-50"
-                class="switch"
-                size="25px"
-                color="black"
-                type="checkbox"
-                onClick={() => history.push(`{params.data.status}`)}
-              />
-            </div>
-          ) : null;
-        }, */}
-              {/* <div className="badge badge-pill badge-warning">
-                <ToggleRight
-                  className="mr-50"
-                  // class="switch"
-                  size="25px"
-                  color="black"
-                  type="checkbox"
-                  //onClick={() => history.push(`{params.data.status}`)}
-                >
-                  <div className="badge badge-pill badge-success">
-                    {params.data.true}
-                  </div>
-                  <div className="badge badge-pill badge-warning">
-                    {params.data.false}
-                  </div>
-                </ToggleRight>
-              </div> */}
 
-              {/* <Route
-                render={({ history }) => (
-                  <div class="form-check form-switch">
-                    <switch
-                      class="form-check-input"
-                      type="checkbox"
-                      role="switch"
-                      id="flexSwitchCheckDefault"
-                    />
-                  </div>
-                )}
-              /> */}
                <Smartphone
                     className="mr-50"
                     size="25px"
