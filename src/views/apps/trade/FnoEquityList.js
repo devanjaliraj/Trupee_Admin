@@ -11,10 +11,12 @@ import {
   DropdownItem,
   DropdownToggle,
 } from "reactstrap";
+import swal from "sweetalert";
+
 import axiosConfig from "../../../axiosConfig";
 import { ContextLayout } from "../../../utility/context/Layout";
 import { AgGridReact } from "ag-grid-react";
-import { Edit, Trash2, ChevronDown } from "react-feather";
+import { Edit, Trash2, ChevronDown, Smartphone } from "react-feather";
 import "../../../assets/scss/plugins/tables/_agGridStyleOverride.scss";
 import "../../../assets/scss/pages/users.scss";
 import { Route } from "react-router-dom";
@@ -165,7 +167,7 @@ class FnoEquityList extends React.Component {
         },
       },
       {
-        headerName: "Range",
+        headerName: "T5",
         field: "t5",
         width: 140,
         cellRendererFramework: (params) => {
@@ -345,23 +347,23 @@ class FnoEquityList extends React.Component {
           ) : null;
         },
       },
-      {
-        headerName: "T5 Type",
-        field: "t5_type",
-        filter: true,
-        width: 150,
-        cellRendererFramework: (params) => {
-          return params.value === "true" ? (
-            <div className="badge badge-pill badge-success">
-              {params.data.t5_type}
-            </div>
-          ) : params.value === "false" ? (
-            <div className="badge badge-pill badge-warning">
-              {params.data.t5_type}
-            </div>
-          ) : null;
-        },
-      },
+      // {
+      //   headerName: "T5 Type",
+      //   field: "t5_type",
+      //   filter: true,
+      //   width: 150,
+      //   cellRendererFramework: (params) => {
+      //     return params.value === "true" ? (
+      //       <div className="badge badge-pill badge-success">
+      //         {params.data.t5_type}
+      //       </div>
+      //     ) : params.value === "false" ? (
+      //       <div className="badge badge-pill badge-warning">
+      //         {params.data.t5_type}
+      //       </div>
+      //     ) : null;
+      //   },
+      // },
       {
         headerName: "status ",
         field: "status",
@@ -388,14 +390,16 @@ class FnoEquityList extends React.Component {
         cellRendererFramework: (params) => {
           return (
             <div className="actions cursor-pointer">
-              {/* <Eye
-                className="mr-50"
-                color="green"
-                size={20}
-                onClick={() =>
-                  history.push(`/app/size/viewSize/${params.data._id}`)
-                }
-              /> */}
+                          <Smartphone
+                    className="mr-50"
+                    size="25px"
+                    color={params.data.status === 'Active' ? "green" : "red"}
+                    onClick={() =>{
+                      let selectedData = this.gridApi.getSelectedRows();
+                     this.runthisfunctionEdit(params.data._id,selectedData);
+                    } }
+                    
+                  />
               <Route
                 render={({ history }) => (
                   <Edit
@@ -444,6 +448,44 @@ class FnoEquityList extends React.Component {
         console.log(error);
       }
     );
+  }
+  async runthisfunctionEdit(id,selectedData) {
+    console.log('@@selectedData',id,selectedData[0].t1);
+    //
+    let status = selectedData[0].status === "Active" ? "Deactive" : "Active";
+    let payload = {
+      expiryDate:selectedData[0].expiryDate,
+      script_type:selectedData[0].script_type,
+      fnoindex_scrpt_name:selectedData[0].fnoindex_scrpt_name,
+      call_type:selectedData[0].call_type,
+      active_value:selectedData[0].active_value,
+      T1:selectedData[0].T1,
+      T2:selectedData[0].T2,
+      T3:selectedData[0].T3,
+      T4:selectedData[0].T4,
+      trl:selectedData[0].trl,
+      trl_type:selectedData[0].trl_type,
+      t1_type:selectedData[0].t1_type,
+      t2_type:selectedData[0].t2_type,
+      t3_type:selectedData[0].FT3_type,
+      t4_type:selectedData[0].t4_type,
+      qty:selectedData[0].qty,
+      sl_type:selectedData[0].sl_type,
+      no_of_lots:selectedData[0].no_of_lots,
+      trade_type:selectedData[0].trade_type,
+      type:selectedData[0].type,
+      status:status
+    }
+    await axiosConfig.post(`/editfnoOption/${id}`,payload)
+    .then((response) => {
+      console.log("sdjgsjdgjhgsdjh", response);
+      swal("Success!", "Status " +status+ " SuccessFull!", "success");
+      // this.props.history.push("/app/trade/fnoIndexList");
+      window.location.reload()
+    })
+    .catch((error) => {
+      console.log(error);
+    });
   }
   onGridReady = (params) => {
     this.gridApi = params.api;

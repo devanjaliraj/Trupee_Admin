@@ -1,10 +1,9 @@
-import React, { Component } from "react";
+import React from "react";
 import {
   Card,
   CardBody,
   Row,
   Col,
-  FormGroup,
   CustomInput,
   Form,
   Label,
@@ -104,23 +103,24 @@ class EditFnoEquity extends React.Component {
         console.log(error);
       });
   }
+ 
   changeHandler1 = (e) => {
-    this.setState({ status: e.target.value });
-  };
-  changeHandler2 = (e) => {
     this.setState({ sl_type: e.target.value });
   };
-  changeHandler3 = (e) => {
+  changeHandler2 = (e) => {
     this.setState({ t1_type: e.target.value });
   };
-  changeHandler4 = (e) => {
+  changeHandler3 = (e) => {
     this.setState({ t2_type: e.target.value });
   };
-  changeHandler5 = (e) => {
+  changeHandler4 = (e) => {
     this.setState({ t3_type: e.target.value });
   };
-  changeHandler6 = (e) => {
+  changeHandler5 = (e) => {
     this.setState({ t4_type: e.target.value });
+  };
+  changeHandler6 = (e) => {
+    this.setState({ status: e.target.value });
   };
 
   changeHandler = (e) => {
@@ -344,7 +344,7 @@ class EditFnoEquity extends React.Component {
                   />
                 </Col>
                 <Col lg="6" md="6" className="mb-2">
-                  <Label>Range</Label>
+                  <Label>T5</Label>
                   <Input
                     type="text"
                     placeholder="Enter Target 5"
@@ -394,46 +394,48 @@ class EditFnoEquity extends React.Component {
                   />
                 </Col>
               </Row>
+              <Row>
               <Col lg="3" md="3" sm="3" className="mb-3 mt-1">
-                <Label className="mb-1">SL</Label>
-                <div
-                  className="form-label-group"
-                  onChange={(e) => this.changeHandler2(e)}
-                >
-                  <input
-                    style={{ marginRight: "3px" }}
-                    type="radio"
-                    name="sl_type"
-                    value="true"
-                  />
-                  <span style={{ marginRight: "20px" }}>True</span>
-                  <input
-                    style={{ marginRight: "3px" }}
-                    type="radio"
-                    name="sl_type"
-                    value="false"
-                  />
+                  <Label className="mb-1">SL</Label>
+                  <div
+                    className="form-label-group"
+                    onChange={(e) => this.changeHandler1(e)}
+                  >
+                    <input
+                      style={{ marginRight: "3px" }}
+                      type="checkbox"
+                      name="sl_type"
+                      value="true"
+                    />
+                    <span style={{ marginRight: "20px" }}>True</span>
+                    <input
+                      style={{ marginRight: "3px" }}
+                      type="checkbox"
+                      name="sl_type"
+                      value="false"
+                    />
 
-                  <span style={{ marginRight: "3px" }}>False</span>
-                </div>
-              </Col>
+                    <span style={{ marginRight: "3px" }}>False</span>
+                  </div>
+                </Col>
+              </Row>
               <Row className="mb-2">
                 <Col lg="3" md="3" sm="3" className="mb-3 mt-1">
                   <Label className="mb-1">T1</Label>
                   <div
                     className="form-label-group"
-                    onChange={(e) => this.changeHandler3(e)}
+                    onChange={(e) => this.changeHandler2(e)}
                   >
                     <input
                       style={{ marginRight: "3px" }}
-                      type="radio"
+                      type="checkbox"
                       name="t1_type"
                       value="true"
                     />
                     <span style={{ marginRight: "20px" }}>True</span>
                     <input
                       style={{ marginRight: "3px" }}
-                      type="radio"
+                      type="checkbox"
                       name="t1_type"
                       value="false"
                     />
@@ -445,18 +447,18 @@ class EditFnoEquity extends React.Component {
                   <Label className="mb-1">T2</Label>
                   <div
                     className="form-label-group"
-                    onChange={(e) => this.changeHandler4(e)}
+                    onChange={(e) => this.changeHandler3(e)}
                   >
                     <input
                       style={{ marginRight: "3px" }}
-                      type="radio"
+                      type="checkbox"
                       name="t2_type"
                       value="true"
                     />
                     <span style={{ marginRight: "20px" }}>True</span>
                     <input
                       style={{ marginRight: "3px" }}
-                      type="radio"
+                      type="checkbox"
                       name="t2_type"
                       value="false"
                     />
@@ -468,18 +470,18 @@ class EditFnoEquity extends React.Component {
                   <Label className="mb-1">T3</Label>
                   <div
                     className="form-label-group"
-                    onChange={(e) => this.changeHandler5(e)}
+                    onChange={(e) => this.changeHandler4(e)}
                   >
                     <input
                       style={{ marginRight: "3px" }}
-                      type="radio"
+                      type="checkbox"
                       name="t3_type"
                       value="true"
                     />
                     <span style={{ marginRight: "20px" }}>True</span>
                     <input
                       style={{ marginRight: "3px" }}
-                      type="radio"
+                      type="checkbox"
                       name="t3_type"
                       value="false"
                     />
@@ -491,18 +493,18 @@ class EditFnoEquity extends React.Component {
                   <Label className="mb-1">T4</Label>
                   <div
                     className="form-label-group"
-                    onChange={(e) => this.changeHandler6(e)}
+                    onChange={(e) => this.changeHandler5(e)}
                   >
                     <input
                       style={{ marginRight: "3px" }}
-                      type="radio"
+                      type="checkbox"
                       name="t4_type"
                       value="true"
                     />
                     <span style={{ marginRight: "20px" }}>True</span>
                     <input
                       style={{ marginRight: "3px" }}
-                      type="radio"
+                      type="checkbox"
                       name="t4_type"
                       value="false"
                     />
@@ -514,7 +516,7 @@ class EditFnoEquity extends React.Component {
                   <Label className="mb-1">Status</Label>
                   <div
                     className="form-label-group"
-                    onChange={(e) => this.changeHandler1(e)}
+                    onChange={(e) => this.changeHandler6(e)}
                   >
                     <input
                       style={{ marginRight: "3px" }}
@@ -529,8 +531,7 @@ class EditFnoEquity extends React.Component {
                       name="status"
                       value="Deactive"
                     />
-
-                    <span style={{ marginRight: "3px" }}>Deactive</span>
+                    <span style={{ marginRight: "3px" }}>NA</span>
                   </div>
                 </Col>
               </Row>

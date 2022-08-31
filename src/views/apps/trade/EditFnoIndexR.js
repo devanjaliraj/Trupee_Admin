@@ -17,68 +17,68 @@ import { Route } from "react-router-dom";
 import Breadcrumbs from "../../../components/@vuexy/breadCrumbs/BreadCrumb";
 // import Textarea from "../../../forms/form-elements/textarea/Textarea";
 
-class EditAllTrade extends React.Component {
+class EditFnoIndex extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      equity_script: "",
-      script_type: "",
-      script_name: "",
-      call_type: "",
+      t5:"",
+      trl_type: false,
+      trl: "",
+      expiryDate: "",
+      script_type: "CE",
+      fnoindex_scrpt_name: "",
       active_value: "",
-      SL: "",
-      T1: "",
-      T2: "",
-      T3: "",
-      T4: "",
+      call_type: "",
       qty: "",
       investment_amt: "",
       no_of_lots: "",
-      sl_type: "",
-      t1_type: "",
-      t2_type: "",
-      t3_type: "",
-      t4_type: "",
-      // sl_type: false,
-      // t1_type: false,
-      // t2_type: false,
-      // t3_type: false,
-      // t4_type: false,
+      trade_type: "",
+      type: "Index",
+      FT1: "",
+      FT1_type: "false",
+      FT2: "",
+      FT2_type: "false",
+      FT3: "",
+      FT3_type: "false",
+      FT5_type: "false",
+      sl_type: "false",
+      status: "",
     };
     this.state = {
-      scriptT: [],
       scriptN: [],
     };
   }
   async componentDidMount() {
     let { id } = this.props.match.params;
     axiosConfig
-      .get(`/getone_tradelist/${id}`, {
+      .get(`/viewonetrades/${id}`, {
         // headers: {
         //   "auth-adtoken": localStorage.getItem("auth-adtoken"),
         // },
       })
       .then((response) => {
-        console.log(response);
+        console.log(response.data.data.FT1_type);
         this.setState({
-          equity_script: response.data.data.equity_script,
+          expiryDate: response.data.data.expiryDate,
           script_type: response.data.data.script_type,
-          script_name: response.data.data.script_name,
+          fnoindex_scrpt_name: response.data.data.fnoindex_scrpt_name,
           call_type: response.data.data.call_type,
           active_value: response.data.data.active_value,
-          SL: response.data.data.SL,
           T1: response.data.data.T1,
           T2: response.data.data.T2,
           T3: response.data.data.T3,
-          T4: response.data.data.T4,
+           t5: response.data.data.t5,
+          trl: response.data.data.trl,
+          trl_type: response.data.data.trl_type,
+          FT1_type: response.data.data.FT1_type,
+          FT2_type: response.data.data.FT2_type,
+          FT3_type: response.data.data.FT3_type,
+          FT5_type: response.data.data.FT5_type,
           qty: response.data.data.qty,
-          investment_amt: response.data.data.investment_amt,
-          no_of_lots: response.data.data.no_of_lots,
           sl_type: response.data.data.sl_type,
-          t1_type: response.data.data.t1_type,
-          t2_type: response.data.data.t2_type,
-          t3_type: response.data.data.t3_type,
-          t4_type: response.data.data.t4_type,
+          no_of_lots: response.data.data.no_of_lots,
+          trade_type: response.data.data.trade_type,
+          type: response.data.data.type,
         });
       })
       .catch((error) => {
@@ -86,11 +86,10 @@ class EditAllTrade extends React.Component {
       });
     //Script//
     axiosConfig
-      .get("/getScript")
+      .get("/getFnoScript")
       .then((response) => {
         console.log(response);
         this.setState({
-          scriptT: response.data.data,
           scriptN: response.data.data,
         });
       })
@@ -99,19 +98,22 @@ class EditAllTrade extends React.Component {
       });
   }
   changeHandler1 = (e) => {
-    this.setState({ sl_type: e.target.value });
+    this.setState({ status: e.target.value });
   };
   changeHandler2 = (e) => {
-    this.setState({ t1_type: e.target.value });
+    this.setState({ FT1_type: e.target.value });
   };
   changeHandler3 = (e) => {
-    this.setState({ t2_type: e.target.value });
+    this.setState({ FT2_type: e.target.value });
   };
   changeHandler4 = (e) => {
-    this.setState({ t3_type: e.target.value });
+    this.setState({ FT3_type: e.target.value });
   };
-  changeHandler5 = (e) => {
-    this.setState({ t4_type: e.target.value });
+//   changeHandler5 = (e) => {
+//     this.setState({ FT5_type: e.target.value });
+//   };
+  changeHandler6 = (e) => {
+    this.setState({ sl_type: e.target.value });
   };
 
   changeHandler = (e) => {
@@ -120,34 +122,85 @@ class EditAllTrade extends React.Component {
   submitHandler = (e) => {
     e.preventDefault();
     let { id } = this.props.match.params;
+
     axiosConfig
-      .post(`/edit_trade/${id}`, this.state, {
+      .post(`/editFnoindex/${id}`, this.state, {
         // headers: {
         //   "auth-adtoken": localStorage.getItem("auth-adtoken"),
         // },
       })
       .then((response) => {
-        console.log(response);
+        console.log("sdjgsjdgjhgsdjh", response);
         swal("Success!", "Submitted SuccessFull!", "success");
-        this.props.history.push("/app/trade/allTradeList");
+        this.props.history.push("/app/trade/fnoIndexList");
       })
       .catch((error) => {
         console.log(error);
       });
   };
+
+  // Add/Remove checked item from list sl_type
+ handleCheckSlType = (event) => {
+  if (event.target.checked) {
+    this.setState({sl_type:"true"})
+  } else {
+    this.setState({sl_type:"false"})
+  }
+};
+
+ // Add/Remove checked item from list sl_type
+ handleCheckFT1Type = (event) => {
+  if (event.target.checked) {
+    this.setState({FT1_type:"true"})
+  } else {
+    this.setState({FT1_type:"false"})
+  }
+};
+
+ // Add/Remove checked item from list sl_type
+ handleCheckFT2Type = (event) => {
+  console.log('event.target.checked',event.target.checked)
+  if (event.target.checked) {
+    this.setState({FT2_type:"true"})
+  } else {
+    this.setState({FT2_type:"false"})
+  }
+};
+
+ // Add/Remove checked item from list sl_type
+ handleCheckFT3Type = (event) => {
+  if (event.target.checked) {
+    this.setState({FT3_type:"true"})
+  } else {
+    this.setState({FT3_type:"false"})
+  }
+};
+
+ // Add/Remove checked item from list sl_type
+//  handleCheckFT5Type = (event) => {
+//   if (event.target.checked) {
+//     this.setState({FT5_type:"true"})
+//   } else {
+//     this.setState({FT5_type:"false"})
+//   }
+// };
+  
   render() {
+    const { FT1_type,FT2_type,FT3_type} = this.state;
+    console.log('FT1_type',FT1_type)
+    console.log('FT2_type',FT2_type)
     return (
       <div>
         <Breadcrumbs
           breadCrumbTitle="Trade"
           breadCrumbParent="Home"
-          breadCrumbActive=" All Trade"
+          breadCrumbActive=" Edit FNO Index"
         />
         <Card>
           <Row className="m-2">
             <Col>
               <h1 col-sm-6 className="float-left">
-                Edit All Trade
+                Edit FNO Index
               </h1>
             </Col>
             <Col>
@@ -155,7 +208,7 @@ class EditAllTrade extends React.Component {
                 render={({ history }) => (
                   <Button
                     className=" btn btn-danger float-right"
-                    onClick={() => history.push("/app/trade/allTradeList")}
+                    onClick={() => history.push("/app/trade/fnoIndexList")}
                   >
                     Back
                   </Button>
@@ -168,38 +221,25 @@ class EditAllTrade extends React.Component {
               <Row className="mb-2">
                 <Col lg="6" md="6" className="mb-2">
                   <Label>Exp. Date</Label>
-                  <Input type="date" placeholder="Enter User Id" />
-                </Col>
-                {/* <Col lg="6" md="6" className="mb-2">
-                  <Label>Time</Label>
-                  <Input type="time" placeholder="Enter User Id" />
-                </Col> */}
-                <Col lg="6" md="6" sm="6" className="mb-2">
-                  <Label>Script</Label>
-                  <CustomInput
-                    type="select"
-                    name="script_type"
-                    value={this.state.script_type}
+                  <Input
+                    type="date"
+                    name="expiryDate"
+                    value={this.state.expiryDate}
                     onChange={this.changeHandler}
-                  >
-                    {this.state.scriptT.map((allScript) => (
-                      <option value={allScript._id} key={allScript._id}>
-                        {allScript.script_type}
-                      </option>
-                    ))}
-                  </CustomInput>
+                  />
                 </Col>
                 <Col lg="6" md="6" sm="6" className="mb-2">
                   <Label>Script Name</Label>
                   <CustomInput
                     type="select"
-                    name="script_name"
-                    value={this.state.script_name}
+                    name="fnoindex_scrpt_name"
+                    value={this.state.scriptName}
                     onChange={this.changeHandler}
                   >
-                    {this.state.scriptN.map((allScript) => (
-                      <option value={allScript._id} key={allScript._id}>
-                        {allScript.script_name}
+                    <option>select script</option>
+                    {this.state.scriptN?.map((allScript) => (
+                      <option value={allScript?._id} key={allScript?._id}>
+                        {allScript?.scriptName}
                       </option>
                     ))}
                   </CustomInput>
@@ -208,26 +248,33 @@ class EditAllTrade extends React.Component {
                   <Label for="exampleSelect">Equity Script</Label>
                   <Input
                     id="exampleSelect"
-                    name="equity_script"
+                    name="script_type"
                     type="select"
-                    value={this.state.equity_script}
+                    value={this.state.script_type}
                     onChange={this.changeHandler}
                   >
                     <option>Select Script</option>
-                    <option>CE</option>
-                    <option>PF</option>
+                    {/* <option>CE</option>
+                    <option>PF</option> */}
                     <option>BUY</option>
                     <option>SELL</option>
                   </Input>
                 </Col>
-                {/* <Col lg="6" md="6" className="mb-2">
-                  <Label>Script Name</Label>
-                  <Input type="text" placeholder="Enter Script Name" />
-                </Col> */}
-                {/* <Col lg="6" md="6" className="mb-2">
-                  <Label>Tip</Label>
-                  <Input type="text" placeholder="Enter Tip" />
-                </Col> */}
+                <Col lg="6" md="6" className="mb-2">
+                  <Label for="exampleSelect">Trade Type</Label>
+                  <Input
+                    id="exampleSelect"
+                    name="trade_type"
+                    type="select"
+                    value={this.state.trade_type}
+                    onChange={this.changeHandler}
+                  >
+                    <option>Select Trade</option>
+                    <option>BANK NIFTY</option>
+                    <option>NIFTY</option>
+                  </Input>
+                </Col>
+
                 <Col lg="6" md="6" className="mb-2">
                   <Label for="exampleSelect">Call Type</Label>
                   <Input
@@ -250,9 +297,19 @@ class EditAllTrade extends React.Component {
                   </Input>
                 </Col>
                 <Col lg="6" md="6" className="mb-2">
-                  <Label>Active Value</Label>
+                  <Label>T5</Label>
                   <Input
                     type="text"
+                    placeholder="Enter T5"
+                    name="t5"
+                    value={this.state.t5}
+                    onChange={this.changeHandler}
+                  />
+                </Col>
+                <Col lg="6" md="6" className="mb-2">
+                  <Label>Active Value</Label>
+                  <Input
+                    type="number"
                     placeholder="Enter Active Value"
                     name="active_value"
                     value={this.state.active_value}
@@ -260,70 +317,9 @@ class EditAllTrade extends React.Component {
                   />
                 </Col>
                 <Col lg="6" md="6" className="mb-2">
-                  <Label>SL</Label>
-                  <Input
-                    name="SL"
-                    type="text"
-                    placeholder="Enter Stop Loss"
-                    value={this.state.SL}
-                    onChange={this.changeHandler}
-                  />
-                </Col>
-                <Col lg="6" md="6" className="mb-2">
-                  <Label>T₹ 1 </Label>
-                  <Input
-                    type="text"
-                    placeholder="Enter Target 1"
-                    name="T1"
-                    value={this.state.T1}
-                    onChange={this.changeHandler}
-                  />
-                </Col>{" "}
-                <Col lg="6" md="6" className="mb-2">
-                  <Label>T₹ 2</Label>
-                  <Input
-                    type="text"
-                    placeholder="Enter Target 2"
-                    name="T2"
-                    value={this.state.T2}
-                    onChange={this.changeHandler}
-                  />
-                </Col>{" "}
-                <Col lg="6" md="6" className="mb-2">
-                  <Label>T₹ 3</Label>
-                  <Input
-                    type="text"
-                    placeholder="Enter Target 3"
-                    name="T3"
-                    value={this.state.T3}
-                    onChange={this.changeHandler}
-                  />
-                </Col>{" "}
-                <Col lg="6" md="6" className="mb-2">
-                  <Label>T₹ 4</Label>
-                  <Input
-                    type="text"
-                    placeholder="Enter Target 2"
-                    name="T4"
-                    value={this.state.T4}
-                    onChange={this.changeHandler}
-                  />
-                </Col>
-                <Col lg="6" md="6" className="mb-2">
-                  <Label>IS Range</Label>
-                  <Input
-                    type="text"
-                    placeholder="Enter Target 2"
-                    name="T4"
-                    // value={this.state.T4}
-                    // onChange={this.changeHandler}
-                  />
-                </Col>
-      
-                <Col lg="6" md="6" className="mb-2">
                   <Label>Quantity</Label>
                   <Input
-                    type="text"
+                    type="number"
                     name="qty"
                     placeholder="Enter Quantity"
                     value={this.state.qty}
@@ -331,56 +327,39 @@ class EditAllTrade extends React.Component {
                   />
                 </Col>
                 <Col lg="6" md="6" className="mb-2">
-                  <Label>Investment Amount</Label>
-                  <Input
-                    name="investment_amt"
-                    type="text"
-                    placeholder="Enter Investment Amount"
-                    value={this.state.investment_amt}
-                    onChange={this.changeHandler}
-                  />
-                </Col>
-                <Col lg="6" md="6" className="mb-2">
                   <Label>Number Of Lots</Label>
                   <Input
-                    type="text"
+                    type="number"
                     name="no_of_lots"
                     placeholder="Enter Lots Price"
                     value={this.state.no_of_lots}
                     onChange={this.changeHandler}
                   />
                 </Col>
-                {/* <Col lg="6" md="6" sm="6" className="mb-2">
-                  <h6>SL</h6>
-                  <Input
-                    readOnly
-                    // name="roconfiguration"
-                    // value={this.state.roconfiguration}
-                  ></Input>
-                </Col> */}
               </Row>
-
               <Col lg="3" md="3" sm="3" className="mb-3 mt-1">
                 <Label className="mb-1">SL</Label>
                 <div
                   className="form-label-group"
-                  onChange={(e) => this.changeHandler1(e)}
+                  onChange={(e) => this.changeHandler6(e)}
                 >
                   <input
                     style={{ marginRight: "3px" }}
-                    type="radio"
+                    type="checkbox"
                     name="sl_type"
-                    value="true"
+                    value={this.state.sl_type}
+                    onChange={(event) =>this.handleCheckSlType(event)}
+                    checked={this.state.sl_type === "true" ? true : false}
                   />
                   <span style={{ marginRight: "20px" }}>True</span>
-                  <input
+                  {/* <input
                     style={{ marginRight: "3px" }}
                     type="radio"
                     name="sl_type"
                     value="false"
+                    checked={!this.state.sl_type ? true : false}
                   />
-
-                  <span style={{ marginRight: "3px" }}>False</span>
+                  <span style={{ marginRight: "3px" }}>False</span> */}
                 </div>
               </Col>
               <Row className="mb-2">
@@ -392,19 +371,21 @@ class EditAllTrade extends React.Component {
                   >
                     <input
                       style={{ marginRight: "3px" }}
-                      type="radio"
-                      name="t1_type"
-                      value="true"
+                      type="checkbox"
+                      name="FT1_type"
+                      value={FT1_type}
+                      onChange={(e)=>this.changeHandler2(e)}
+                      checked={FT1_type==="true" ? true : false}
                     />
                     <span style={{ marginRight: "20px" }}>True</span>
-                    <input
+                    {/* <input
                       style={{ marginRight: "3px" }}
                       type="radio"
-                      name="t1_type"
+                      name="FT1_type"
                       value="false"
+                      checked={FT1_type ===false ? true : false}
                     />
-
-                    <span style={{ marginRight: "3px" }}>False</span>
+                    <span style={{ marginRight: "3px" }}>False</span> */}
                   </div>
                 </Col>
                 <Col lg="3" md="3" sm="3" className="mb-3 mt-1">
@@ -415,19 +396,21 @@ class EditAllTrade extends React.Component {
                   >
                     <input
                       style={{ marginRight: "3px" }}
-                      type="radio"
-                      name="t2_type"
-                      value="true"
+                      type="checkbox"
+                      name="FT2_type"
+                      value={FT2_type}
+                      checked={FT2_type === "true" ? true : false}
+                      onChange={(event)=>this.handleCheckFT2Type(event)}
                     />
                     <span style={{ marginRight: "20px" }}>True</span>
-                    <input
+                    {/* <input
                       style={{ marginRight: "3px" }}
-                      type="radio"
-                      name="t2_type"
+                      type="checkbox"
+                      name="FT2_type"
                       value="false"
-                    />
-
-                    <span style={{ marginRight: "3px" }}>False</span>
+                      checked={FT2_type ===false ? true : false}
+                    /> */}
+                    {/* <span style={{ marginRight: "3px" }}>False</span> */}
                   </div>
                 </Col>
                 <Col lg="3" md="3" sm="3" className="mb-3 mt-1">
@@ -438,46 +421,71 @@ class EditAllTrade extends React.Component {
                   >
                     <input
                       style={{ marginRight: "3px" }}
-                      type="radio"
-                      name="t3_type"
-                      value="true"
+                      type="checkbox"
+                      name="FT3_type"
+                      value={FT3_type}
+                      onChange={(event)=>this.handleCheckFT3Type(event)}
+                      checked={FT3_type === "true" ? true : false}
                     />
                     <span style={{ marginRight: "20px" }}>True</span>
-                    <input
+                    {/* <input
                       style={{ marginRight: "3px" }}
                       type="radio"
-                      name="t3_type"
+                      name="FT3_type"
                       value="false"
+                      checked={FT3_type === false ? true : false}
                     />
-
-                    <span style={{ marginRight: "3px" }}>False</span>
+                    <span style={{ marginRight: "3px" }}>False</span> */}
                   </div>
                 </Col>
-                <Col lg="3" md="3" sm="3" className="mb-3 mt-1">
-                  <Label className="mb-1">T4</Label>
+                {/* <Col lg="3" md="3" sm="3" className="mb-3 mt-1">
+                  <Label className="mb-1">T5</Label>
                   <div
                     className="form-label-group"
                     onChange={(e) => this.changeHandler5(e)}
                   >
                     <input
                       style={{ marginRight: "3px" }}
-                      type="radio"
-                      name="t4_type"
-                      value="true"
+                      type="checkbox"
+                      name="FT5_type"
+                      value={FT5_type}
+                      checked={FT5_type === "true" ? true : false}
+                      onChange={(event)=>this.handleCheckFT5Type(event)}
                     />
                     <span style={{ marginRight: "20px" }}>True</span>
+                     <input
+                      style={{ marginRight: "3px" }}
+                      type="radio"
+                      name="FT5_type"
+                      value="false"
+                      checked={FT5_type === false ? true : false}
+                    />
+                    <span style={{ marginRight: "3px" }}>False</span> 
+                  </div>
+                </Col> */}
+                <Col lg="3" md="3" sm="3" className="mb-3 mt-1">
+                  <Label className="mb-1">Status</Label>
+                  <div
+                    className="form-label-group"
+                    onChange={(e) => this.changeHandler1(e)}
+                  >
                     <input
                       style={{ marginRight: "3px" }}
                       type="radio"
-                      name="t4_type"
-                      value="false"
+                      name="status"
+                      value="Active"
                     />
-
-                    <span style={{ marginRight: "3px" }}>False</span>
+                    <span style={{ marginRight: "20px" }}>Active</span>
+                    <input
+                      style={{ marginRight: "3px" }}
+                      type="radio"
+                      name="status"
+                      value="Deactive"
+                    />
+                    <span style={{ marginRight: "3px" }}>Deactive</span>
                   </div>
                 </Col>
               </Row>
-
               <Row>
                 <Col lg="6" md="6" sm="6" className="mb-2">
                   <Button.Ripple
@@ -485,7 +493,7 @@ class EditAllTrade extends React.Component {
                     type="submit"
                     className="mr-1 mb-1"
                   >
-                    Update All Trade
+                    Update FNO Index
                   </Button.Ripple>
                 </Col>
               </Row>
@@ -496,5 +504,4 @@ class EditAllTrade extends React.Component {
     );
   }
 }
-
-export default EditAllTrade;
+export default EditFnoIndex;

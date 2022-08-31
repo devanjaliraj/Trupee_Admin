@@ -12,9 +12,8 @@ import {
   CustomInput,
 } from "reactstrap";
 import { Route } from "react-router-dom";
-import Select from "react-select";
+// import Select from "react-select";
 // import { history } from "../../../history";
-// import axiosConfig from "../../../../axiosConfig";
 import swal from "sweetalert";
 import axiosConfig from "../../../axiosConfig";
 
@@ -229,11 +228,11 @@ export class AddFnoIndex extends Component {
                 </Col>
 
                 <Col lg="6" md="6" className="mb-2">
-                  <Label>Range</Label>
+                  <Label>T5</Label>
                   <Input
                     name="t5"
-                    type="number"
-                    placeholder="Enter Range "
+                    type="text"
+                    placeholder="Enter T5 "
                     value={this.state.t5}
                     onChange={this.changeHandler}
                   />

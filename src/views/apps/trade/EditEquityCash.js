@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React from "react";
 import {
   Card,
   CardBody,
@@ -107,9 +107,7 @@ class EditEquityCash extends React.Component {
         console.log(error);
       });
   }
-  changeHandler6 = (e) => {
-    this.setState({ status: e.target.value });
-  };
+ 
   changeHandler1 = (e) => {
     this.setState({ sl_type: e.target.value });
   };
@@ -125,6 +123,9 @@ class EditEquityCash extends React.Component {
   changeHandler5 = (e) => {
     this.setState({ t4_type: e.target.value });
   };
+  changeHandler6 = (e) => {
+    this.setState({ status: e.target.value });
+  };
 
   changeHandler = (e) => {
     this.setState({ [e.target.name]: e.target.value });
@@ -133,7 +134,7 @@ class EditEquityCash extends React.Component {
     e.preventDefault();
     let { id } = this.props.match.params;
     axiosConfig
-      .post(`/editalltrade/${id}`, this.state, {
+      .post(`/editCash/${id}`, this.state, {
         // headers: {
         //   "auth-adtoken": localStorage.getItem("auth-adtoken"),
         // },
@@ -333,10 +334,10 @@ class EditEquityCash extends React.Component {
                   />
                 </Col>{" "}
                 <Col lg="6" md="6" className="mb-2">
-                  <Label>Range</Label>
+                  <Label>T5</Label>
                   <Input
-                    type="number"
-                    placeholder="Enter Target 5"
+                    type="text"
+                    placeholder="Enter T5"
                     name="t5"
                     value={this.state.t5}
                     onChange={this.changeHandler}
@@ -390,14 +391,14 @@ class EditEquityCash extends React.Component {
                   >
                     <input
                       style={{ marginRight: "3px" }}
-                      type="radio"
+                      type="checkbox"
                       name="sl_type"
                       value="true"
                     />
                     <span style={{ marginRight: "20px" }}>True</span>
                     <input
                       style={{ marginRight: "3px" }}
-                      type="radio"
+                      type="checkbox"
                       name="sl_type"
                       value="false"
                     />
@@ -415,14 +416,14 @@ class EditEquityCash extends React.Component {
                   >
                     <input
                       style={{ marginRight: "3px" }}
-                      type="radio"
+                      type="checkbox"
                       name="t1_type"
                       value="true"
                     />
                     <span style={{ marginRight: "20px" }}>True</span>
                     <input
                       style={{ marginRight: "3px" }}
-                      type="radio"
+                      type="checkbox"
                       name="t1_type"
                       value="false"
                     />
@@ -438,14 +439,14 @@ class EditEquityCash extends React.Component {
                   >
                     <input
                       style={{ marginRight: "3px" }}
-                      type="radio"
+                      type="checkbox"
                       name="t2_type"
                       value="true"
                     />
                     <span style={{ marginRight: "20px" }}>True</span>
                     <input
                       style={{ marginRight: "3px" }}
-                      type="radio"
+                      type="checkbox"
                       name="t2_type"
                       value="false"
                     />
@@ -461,14 +462,14 @@ class EditEquityCash extends React.Component {
                   >
                     <input
                       style={{ marginRight: "3px" }}
-                      type="radio"
+                      type="checkbox"
                       name="t3_type"
                       value="true"
                     />
                     <span style={{ marginRight: "20px" }}>True</span>
                     <input
                       style={{ marginRight: "3px" }}
-                      type="radio"
+                      type="checkbox"
                       name="t3_type"
                       value="false"
                     />
@@ -484,14 +485,14 @@ class EditEquityCash extends React.Component {
                   >
                     <input
                       style={{ marginRight: "3px" }}
-                      type="radio"
+                      type="checkbox"
                       name="t4_type"
                       value="true"
                     />
                     <span style={{ marginRight: "20px" }}>True</span>
                     <input
                       style={{ marginRight: "3px" }}
-                      type="radio"
+                      type="checkbox"
                       name="t4_type"
                       value="false"
                     />

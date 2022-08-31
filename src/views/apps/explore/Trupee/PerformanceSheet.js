@@ -73,28 +73,28 @@ class PerformanceSheet extends React.Component {
       },
       {
         headerName: "Discount Price",
-        field: "plan_price",
+        field: "dst_price",
         // filter: true,
         width: 250,
-        // pinned: window.innerWidth > 992 ? "left" : false,
+        
         cellRendererFramework: (params) => {
           return (
             <div className="d-flex align-items-center cursor-pointer">
-              <span>{params.data.plan_price}</span>
+              <span>{params.data.dst_price}</span>
             </div>
           );
         },
       },
       {
         headerName: "MRP",
-        field: "desc",
+        field: "mrp",
         // filter: true,
         width: 250,
         // pinned: window.innerWidth > 992 ? "left" : false,
         cellRendererFramework: (params) => {
           return (
             <div className="d-flex align-items-center cursor-pointer">
-              <span>{params.data.desc}</span>
+              <span>{params.data.mrp}</span>
             </div>
           );
         },
@@ -243,7 +243,7 @@ class PerformanceSheet extends React.Component {
                 <Route
                   render={({ history }) => (
                     <Button
-                      className=" btn btn-danger float-right"
+                      className=" btn btn-success float-right"
                       onClick={() => history.push("/app/explore/Trupee/addPS")}
                     >
                       Add

@@ -217,7 +217,7 @@ class TrupeeUnivercity extends React.Component {
                   <Route
                     render={({ history }) => (
                       <Button
-                        className=" btn btn-danger float-right"
+                        className=" btn btn-success float-right"
                         onClick={() =>
                           history.push(
                             "/app/explore/Trupee/addTrupeeUnivercity"

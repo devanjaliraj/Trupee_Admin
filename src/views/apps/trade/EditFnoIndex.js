@@ -35,13 +35,13 @@ class EditFnoIndex extends React.Component {
       trade_type: "",
       type: "Index",
       FT1: "",
-      FT1_type: "false",
+      FT1_type: false,
       FT2: "",
-      FT2_type: "false",
+      FT2_type: false,
       FT3: "",
-      FT3_type: "false",
-      FT5_type: "false",
-      sl_type: "false",
+      FT3_type: false,
+      FT5_type: false,
+      sl_type: false,
       status: "",
     };
     this.state = {
@@ -57,7 +57,7 @@ class EditFnoIndex extends React.Component {
         // },
       })
       .then((response) => {
-        console.log(response);
+        console.log(response.data.data.FT1_type);
         this.setState({
           expiryDate: response.data.data.expiryDate,
           script_type: response.data.data.script_type,
@@ -67,7 +67,7 @@ class EditFnoIndex extends React.Component {
           T1: response.data.data.T1,
           T2: response.data.data.T2,
           T3: response.data.data.T3,
-          // t5: response.data.data.t5,
+           t5: response.data.data.t5,
           trl: response.data.data.trl,
           trl_type: response.data.data.trl_type,
           FT1_type: response.data.data.FT1_type,
@@ -115,6 +115,9 @@ class EditFnoIndex extends React.Component {
   changeHandler6 = (e) => {
     this.setState({ sl_type: e.target.value });
   };
+  changeHandler7 = (e) => {
+    this.setState({ trl_type: e.target.value });
+  };
 
   changeHandler = (e) => {
     this.setState({ [e.target.name]: e.target.value });
@@ -138,7 +141,9 @@ class EditFnoIndex extends React.Component {
         console.log(error);
       });
   };
+  
   render() {
+    // const { FT1_type,FT2_type,FT3_type,FT5_type } = this.state;
     return (
       <div>
         <Breadcrumbs
@@ -247,6 +252,26 @@ class EditFnoIndex extends React.Component {
                   </Input>
                 </Col>
                 <Col lg="6" md="6" className="mb-2">
+                  <Label>T5</Label>
+                  <Input
+                    type="text"
+                    placeholder="Enter Target 5"
+                    name="t5"
+                    value={this.state.t5}
+                    onChange={this.changeHandler}
+                  />
+                </Col>
+                <Col lg="6" md="6" className="mb-2">
+                  <Label>TRAIL</Label>
+                  <Input
+                    type="number"
+                    placeholder="Enter TRAIL"
+                    name="trl"
+                    value={this.state.trl}
+                    onChange={this.changeHandler}
+                  />
+                </Col>
+                <Col lg="6" md="6" className="mb-2">
                   <Label>Active Value</Label>
                   <Input
                     type="number"
@@ -285,22 +310,51 @@ class EditFnoIndex extends React.Component {
                 >
                   <input
                     style={{ marginRight: "3px" }}
-                    type="radio"
+                    type="checkbox"
                     name="sl_type"
                     value="true"
+                    //  checked={this.state.sl_type ? true : false}
                   />
                   <span style={{ marginRight: "20px" }}>True</span>
                   <input
                     style={{ marginRight: "3px" }}
-                    type="radio"
+                    type="checkbox"
                     name="sl_type"
                     value="false"
+                    //  checked={!this.state.sl_type ? true : false}
+                     
                   />
                   <span style={{ marginRight: "3px" }}>False</span>
                 </div>
               </Col>
+              
               <Row className="mb-2">
-                <Col lg="3" md="3" sm="3" className="mb-3 mt-1">
+              <Col lg="3" md="3" sm="3" className="mb-3 mt-1">
+                <Label className="mb-1">TRAIL</Label>
+                <div
+                  className="form-label-group"
+                  onChange={(e) => this.changeHandler7(e)}
+                >
+                  <input
+                    style={{ marginRight: "3px" }}
+                    type="checkbox"
+                    name="trl_type"
+                    value="true"
+                    //  checked={this.state.trl_type ? true : false}
+                  />
+                  <span style={{ marginRight: "20px" }}>True</span>
+                  <input
+                    style={{ marginRight: "3px" }}
+                    type="checkbox"
+                    name="trl_type"
+                    value="false"
+                    //  checked={!this.state.trl_type ? true : false}
+                     
+                  />
+                  <span style={{ marginRight: "3px" }}>False</span>
+                </div>
+              </Col>
+                {/* <Col lg="3" md="3" sm="3" className="mb-3 mt-1">
                   <Label className="mb-1">T1</Label>
                   <div
                     className="form-label-group"
@@ -308,21 +362,45 @@ class EditFnoIndex extends React.Component {
                   >
                     <input
                       style={{ marginRight: "3px" }}
-                      type="radio"
+                      type="checkbox"
+                      name="FT1_type"
+                      value="true"
+                       checked={FT1_type ? true : false}
+                    />
+                    <span style={{ marginRight: "20px" }}>True</span>
+                    <input
+                      style={{ marginRight: "3px" }}
+                      type="checkbox"
+                      name="FT1_type"
+                      value="false"
+                       checked={FT1_type ===false ? true : false}
+                    />
+                    <span style={{ marginRight: "3px" }}>False</span>
+                  </div>
+                </Col> */}
+                     <Col lg="3" md="3" sm="3" className="mb-3 mt-1">
+                  <Label className="mb-1">T1</Label>
+                  <div
+                    className="form-label-group"
+                    onChange={(e) => this.changeHandler2(e)}
+                  >
+                    <input
+                      style={{ marginRight: "3px" }}
+                      type="checkbox"
                       name="FT1_type"
                       value="true"
                     />
                     <span style={{ marginRight: "20px" }}>True</span>
                     <input
                       style={{ marginRight: "3px" }}
-                      type="radio"
+                      type="checkbox"
                       name="FT1_type"
                       value="false"
                     />
                     <span style={{ marginRight: "3px" }}>False</span>
                   </div>
                 </Col>
-                <Col lg="3" md="3" sm="3" className="mb-3 mt-1">
+                {/* <Col lg="3" md="3" sm="3" className="mb-3 mt-1">
                   <Label className="mb-1">T2</Label>
                   <div
                     className="form-label-group"
@@ -330,21 +408,45 @@ class EditFnoIndex extends React.Component {
                   >
                     <input
                       style={{ marginRight: "3px" }}
-                      type="radio"
+                      type="checkbox"
+                      name="FT2_type"
+                      value="true"
+                       checked={FT2_type ? true : false}
+                    />
+                    <span style={{ marginRight: "20px" }}>True</span>
+                    <input
+                      style={{ marginRight: "3px" }}
+                      type="checkbox"
+                      name="FT2_type"
+                      value="false"
+                       checked={FT2_type ===false ? true : false}
+                    />
+                    <span style={{ marginRight: "3px" }}>False</span>
+                  </div>
+                </Col> */}
+                      <Col lg="3" md="3" sm="3" className="mb-3 mt-1">
+                  <Label className="mb-1">T2</Label>
+                  <div
+                    className="form-label-group"
+                    onChange={(e) => this.changeHandler3(e)}
+                  >
+                    <input
+                      style={{ marginRight: "3px" }}
+                      type="checkbox"
                       name="FT2_type"
                       value="true"
                     />
                     <span style={{ marginRight: "20px" }}>True</span>
                     <input
                       style={{ marginRight: "3px" }}
-                      type="radio"
+                      type="checkbox"
                       name="FT2_type"
                       value="false"
                     />
                     <span style={{ marginRight: "3px" }}>False</span>
                   </div>
                 </Col>
-                <Col lg="3" md="3" sm="3" className="mb-3 mt-1">
+                {/* <Col lg="3" md="3" sm="3" className="mb-3 mt-1">
                   <Label className="mb-1">T3</Label>
                   <div
                     className="form-label-group"
@@ -352,21 +454,45 @@ class EditFnoIndex extends React.Component {
                   >
                     <input
                       style={{ marginRight: "3px" }}
-                      type="radio"
+                      type="checkbox"
+                      name="FT3_type"
+                      value="true"
+                       checked={FT3_type ? true : false}
+                    />
+                    <span style={{ marginRight: "20px" }}>True</span>
+                    <input
+                      style={{ marginRight: "3px" }}
+                      type="checkbox"
+                      name="FT3_type"
+                      value="false"
+                       checked={FT3_type === false ? true : false}
+                    />
+                    <span style={{ marginRight: "3px" }}>False</span>
+                  </div>
+                </Col> */}
+                      <Col lg="3" md="3" sm="3" className="mb-3 mt-1">
+                  <Label className="mb-1">T3</Label>
+                  <div
+                    className="form-label-group"
+                    onChange={(e) => this.changeHandler4(e)}
+                  >
+                    <input
+                      style={{ marginRight: "3px" }}
+                      type="checkbox"
                       name="FT3_type"
                       value="true"
                     />
                     <span style={{ marginRight: "20px" }}>True</span>
                     <input
                       style={{ marginRight: "3px" }}
-                      type="radio"
+                      type="checkbox"
                       name="FT3_type"
                       value="false"
                     />
                     <span style={{ marginRight: "3px" }}>False</span>
                   </div>
                 </Col>
-                <Col lg="3" md="3" sm="3" className="mb-3 mt-1">
+                {/* <Col lg="3" md="3" sm="3" className="mb-3 mt-1">
                   <Label className="mb-1">T5</Label>
                   <div
                     className="form-label-group"
@@ -374,20 +500,45 @@ class EditFnoIndex extends React.Component {
                   >
                     <input
                       style={{ marginRight: "3px" }}
-                      type="radio"
+                      type="checkbox"
+                      name="FT5_type"
+                      value="true"
+                      checked={FT5_type ? true : false}
+                    />
+                    <span style={{ marginRight: "20px" }}>True</span>
+                    <input
+                      style={{ marginRight: "3px" }}
+                      type="checkbox"
+                      name="FT5_type"
+                      value="false"
+                      checked={FT5_type === false ? true : false}
+                    />
+                    <span style={{ marginRight: "3px" }}>False</span>
+                  </div>
+                </Col> */}
+      {/* <Col lg="3" md="3" sm="3" className="mb-3 mt-1">
+                  <Label className="mb-1">T5</Label>
+                  <div
+                    className="form-label-group"
+                    onChange={(e) => this.changeHandler5(e)}
+                  >
+                    <input
+                      style={{ marginRight: "3px" }}
+                      type="checkbox"
                       name="FT5_type"
                       value="true"
                     />
                     <span style={{ marginRight: "20px" }}>True</span>
                     <input
                       style={{ marginRight: "3px" }}
-                      type="radio"
+                      type="checkbox"
                       name="FT5_type"
                       value="false"
                     />
                     <span style={{ marginRight: "3px" }}>False</span>
                   </div>
-                </Col>
+                </Col> */}
+           
                 <Col lg="3" md="3" sm="3" className="mb-3 mt-1">
                   <Label className="mb-1">Status</Label>
                   <div

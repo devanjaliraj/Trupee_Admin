@@ -28,7 +28,9 @@ export default class AddPS extends Component {
     this.state = {
       month: "",
       year: "",
-      plan_price: "",
+      dst_price: "",
+      mrp: "",
+     
     };
   }
   changeHandler2 = (e) => {};
@@ -169,8 +171,8 @@ export default class AddPS extends Component {
                 <Col lg="6" md="6" sm="6" className="mb-2">
                   <Label>Year</Label>
                   <Input
-                    type="number"
-                    min="1900"
+                    type="text"
+                    min="1900-2099"
                     max="2099"
                     step="1"
                     name="year"
@@ -195,16 +197,28 @@ export default class AddPS extends Component {
                   ></Input> */}
                 </Col>
                 <Col lg="6" md="6" sm="6" className="mb-2">
-                  <Label>Plan Price</Label>
+                  <Label>Discount Price</Label>
                   <Input
                     required
                     type="text"
-                    name="plan_price"
+                    name="dst_price"
                     placeholder=""
-                    value={this.state.plan_price}
+                    value={this.state.dst_price}
                     onChange={this.changeHandler}
                   ></Input>
                 </Col>
+                <Col lg="6" md="6" sm="6" className="mb-2">
+                  <Label>MRP Price</Label>
+                  <Input
+                    required
+                    type="text"
+                    name="mrp"
+                    placeholder=""
+                    value={this.state.mrp}
+                    onChange={this.changeHandler}
+                  ></Input>
+                </Col>
+                
 
                 {/* <Col lg="6" md="6" sm="6" className="mb-2">
                   <Label className="mb-1">Status</Label>

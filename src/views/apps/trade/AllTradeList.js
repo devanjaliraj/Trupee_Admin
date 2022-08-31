@@ -78,13 +78,13 @@ class AllTradeList extends React.Component {
 
       {
         headerName: "Expiry Date",
-        field: "expiryDate",
+        field: "expDate",
         width: 140,
         // pinned: window.innerWidth > 992 ? "left" : false,
         cellRendererFramework: (params) => {
           return (
             <div className="d-flex  align-items-center cursor-pointer">
-              <span>{params.data.expiryDate}</span>
+              <span>{params.data.expiryDate?.expDate}</span>
             </div>
           );
         },
@@ -210,7 +210,7 @@ class AllTradeList extends React.Component {
         },
       },
       {
-        headerName: "Range",
+        headerName: "T5",
         field: "t5",
         width: 140,
         cellRendererFramework: (params) => {

@@ -12,9 +12,8 @@ import {
   CustomInput,
 } from "reactstrap";
 import { Route } from "react-router-dom";
-import Select from "react-select";
+// import Select from "react-select";
 // import { history } from "../../../history";
-// import axiosConfig from "../../../../axiosConfig";
 import swal from "sweetalert";
 import axiosConfig from "../../../axiosConfig";
 
@@ -280,9 +279,9 @@ export class AddEquityCash extends Component {
                   />
                 </Col>{" "}
                 <Col lg="6" md="6" className="mb-2">
-                  <Label>Range</Label>
+                  <Label>T5</Label>
                   <Input
-                    type="number"
+                    type="text"
                     placeholder="Enter Target 5"
                     name="t5"
                     value={this.state.t5}

@@ -184,6 +184,18 @@ class FnoIndexList extends React.Component {
           );
         },
       },
+      {
+        headerName: "T₹ 5",
+        field: "t5",
+        width: 140,
+        cellRendererFramework: (params) => {
+          return (
+            <div className="d-flex align-items-center cursor-pointer">
+              <span>{params.data.t5}</span>
+            </div>
+          );
+        },
+      },
      
       {
         headerName: "P&L ",
@@ -344,23 +356,23 @@ class FnoIndexList extends React.Component {
           ) : null;
         },
       },
-      {
-        headerName: "T5 Type",
-        field: "FT5_type",
-        filter: true,
-        width: 150,
-        cellRendererFramework: (params) => {
-          return params.value === "true" ? (
-            <div className="badge badge-pill badge-success">
-              {params.data.FT5_type}
-            </div>
-          ) : params.value === "false" ? (
-            <div className="badge badge-pill badge-warning">
-              {params.data.FT5_type}
-            </div>
-          ) : null;
-        },
-      },
+      // {
+      //   headerName: "T5 Type",
+      //   field: "t5_type",
+      //   filter: true,
+      //   width: 150,
+      //   cellRendererFramework: (params) => {
+      //     return params.value === "true" ? (
+      //       <div className="badge badge-pill badge-success">
+      //         {params.data.t5_type}
+      //       </div>
+      //     ) : params.value === "false" ? (
+      //       <div className="badge badge-pill badge-warning">
+      //         {params.data.t5_type}
+      //       </div>
+      //     ) : null;
+      //   },
+      // },
       {
         headerName: "status ",
         field: "status",

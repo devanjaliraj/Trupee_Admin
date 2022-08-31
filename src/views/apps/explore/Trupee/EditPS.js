@@ -25,7 +25,8 @@ export default class EditTVC extends Component {
     this.state = {
       month: "",
       year: "",
-      plan_price: "",
+      dst_price: "",
+      mrp: "",
     };
   }
   componentDidMount() {
@@ -37,7 +38,8 @@ export default class EditTVC extends Component {
         this.setState({
           month: response.data.data.month,
           year: response.data.data.year,
-          plan_price: response.data.data.plan_price,
+          dst_price: response.data.data.dst_price,
+          mrp: response.data.data.mrp,
         });
       })
       .catch((error) => {
@@ -59,7 +61,8 @@ export default class EditTVC extends Component {
     const data = new FormData();
     data.append("month", this.state.month);
     data.append("year", this.state.year);
-    data.append("plan_price", this.state.plan_price);
+    data.append("dst_price", this.state.dst_price);
+    data.append("mrp", this.state.mrp);
 
     for (var value of data.values()) {
       console.log(value);
@@ -129,7 +132,7 @@ export default class EditTVC extends Component {
           </Row>
           <CardBody>
             <Form className="m-1" onSubmit={this.submitHandler}>
-              <Row>
+            <Row>
                 <Col lg="6" md="6" sm="6" className="mb-2">
                   <Label>Month</Label>
                   <Input
@@ -178,30 +181,70 @@ export default class EditTVC extends Component {
                       December
                     </option>
                   </Input>
+                  {/* <Label>Month</Label>
+                  <Input
+                    required
+                    name="month"
+                    placeholder=""
+                    value={this.state.month}
+                    onChange={this.changeHandler}
+                  >
+                    <select placeholder="MM">
+                     
+                    </select>
+                  </Input> */}
                 </Col>
                 <Col lg="6" md="6" sm="6" className="mb-2">
                   <Label>Year</Label>
                   <Input
-                    type="number"
-                    min="1900"
+                    type="text"
+                    min="1900-2099"
                     max="2099"
                     step="1"
                     name="year"
                     value={this.state.year}
                     onChange={this.changeHandler}
                   />
+
+                  {/* <YearPicker
+                    changeHandler
+                    name="year"
+                    value={this.state.year}
+                    onChange={this.changeHandler}
+                  /> */}
+                  {/* <Label>Year</Label>
+                  <Input
+                    required
+                    // dateFormat="yyyy"
+                    type="month"
+                    name="year"
+                    value={this.state.year}
+                    onChange={this.changeHandler}
+                  ></Input> */}
                 </Col>
                 <Col lg="6" md="6" sm="6" className="mb-2">
-                  <Label>Plan Price</Label>
+                  <Label>Discount Price</Label>
                   <Input
                     required
                     type="text"
-                    name="plan_price"
+                    name="dst_price"
                     placeholder=""
-                    value={this.state.plan_price}
+                    value={this.state.dst_price}
                     onChange={this.changeHandler}
                   ></Input>
                 </Col>
+                <Col lg="6" md="6" sm="6" className="mb-2">
+                  <Label>MRP Price</Label>
+                  <Input
+                    required
+                    type="text"
+                    name="mrp"
+                    placeholder=""
+                    value={this.state.mrp}
+                    onChange={this.changeHandler}
+                  ></Input>
+                </Col>
+                
 
                 {/* <Col lg="6" md="6" sm="6" className="mb-2">
                   <Label className="mb-1">Status</Label>
