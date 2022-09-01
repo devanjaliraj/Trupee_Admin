@@ -36,6 +36,7 @@ export class AddFnoIndex extends Component {
       type: "Index",
       // expiryDate: "",
       state: "",
+      cstmMsg: "",
     };
     this.state = {
       // scriptT: [],
@@ -268,6 +269,19 @@ export class AddFnoIndex extends Component {
                     value={this.state.type}
                     onChange={this.changeHandler}
                   />
+                </Col>
+                <Col lg="6" md="6" className="mb-2">
+                  <Label>Trade Alert</Label>
+                  <Input
+                    type="text"
+                    placeholder="Keep booking or trailing stop loss"
+                    name="cstmMsg"
+                    value={this.state.cstmMsg}
+                    onChange={this.changeHandler}
+                  />
+                  <span>
+                    <b> We will type 210+ Keep booking or trailing stop loss</b>
+                  </span>
                 </Col>
               </Row>
               <Row>

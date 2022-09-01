@@ -45,8 +45,8 @@ class EditEquityCash extends React.Component {
       profit_loss_amt: "",
       expiryDate: "",
       type: "Cash",
-      status:""
- 
+      status: "",
+      cstmMsg: "",
     };
     this.state = {
       // scriptT: [],
@@ -67,7 +67,7 @@ class EditEquityCash extends React.Component {
           script_type: response.data.data.script_type,
           cash_scrpt_name: response.data.data.cash_scrpt_name,
           active_value2: response.data.data.active_value2,
-          call_type: response.data.data.active_value,
+          call_type: response.data.data.call_type,
           SL: response.data.data.SL,
           sl_type: response.data.data.sl_type,
           T1: response.data.data.T1,
@@ -88,6 +88,7 @@ class EditEquityCash extends React.Component {
           expiryDate: response.data.data.expiryDate,
           type: response.data.data.type,
           status: response.data.data.status,
+          cstmMsg: response.data.data.cstmMsg,
         });
       })
       .catch((error) => {
@@ -107,7 +108,7 @@ class EditEquityCash extends React.Component {
         console.log(error);
       });
   }
- 
+
   changeHandler1 = (e) => {
     this.setState({ sl_type: e.target.value });
   };
@@ -521,6 +522,19 @@ class EditEquityCash extends React.Component {
                     />
                     <span style={{ marginRight: "3px" }}>NA</span>
                   </div>
+                </Col>
+                <Col lg="6" md="6" className="mb-2">
+                  <Label>Trade Alert</Label>
+                  <Input
+                    type="text"
+                    placeholder="Keep booking or trailing stop loss"
+                    name="cstmMsg"
+                    value={this.state.cstmMsg}
+                    onChange={this.changeHandler}
+                  />
+                  <span>
+                    <b> We will type 210+ Keep booking or trailing stop loss</b>
+                  </span>
                 </Col>
               </Row>
 

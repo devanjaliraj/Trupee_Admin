@@ -133,7 +133,7 @@ const navigationConfig = [
   },
   {
     id: "allTradeList",
-    title: "Trade Notification ",
+    title: "All Active Trade",
     type: "item",
     icon: <Icon.ArrowRight size={12} />,
     permissions: ["admin", "editor"],

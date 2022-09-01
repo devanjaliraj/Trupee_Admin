@@ -21,7 +21,6 @@ class EditFnoIndex extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      
       trl_type: false,
       trl: "",
       expiryDate: "",
@@ -43,6 +42,7 @@ class EditFnoIndex extends React.Component {
       FT5_type: false,
       sl_type: false,
       status: "",
+      cstmMsg: "",
     };
     this.state = {
       scriptN: [],
@@ -67,7 +67,7 @@ class EditFnoIndex extends React.Component {
           T1: response.data.data.T1,
           T2: response.data.data.T2,
           T3: response.data.data.T3,
-           t5: response.data.data.t5,
+          t5: response.data.data.t5,
           trl: response.data.data.trl,
           trl_type: response.data.data.trl_type,
           FT1_type: response.data.data.FT1_type,
@@ -79,6 +79,7 @@ class EditFnoIndex extends React.Component {
           no_of_lots: response.data.data.no_of_lots,
           trade_type: response.data.data.trade_type,
           type: response.data.data.type,
+          cstmMsg: response.data.data.cstmMsg,
         });
       })
       .catch((error) => {
@@ -141,7 +142,7 @@ class EditFnoIndex extends React.Component {
         console.log(error);
       });
   };
-  
+
   render() {
     // const { FT1_type,FT2_type,FT3_type,FT5_type } = this.state;
     return (
@@ -322,38 +323,36 @@ class EditFnoIndex extends React.Component {
                     name="sl_type"
                     value="false"
                     //  checked={!this.state.sl_type ? true : false}
-                     
                   />
                   <span style={{ marginRight: "3px" }}>False</span>
                 </div>
               </Col>
-              
+
               <Row className="mb-2">
-              <Col lg="3" md="3" sm="3" className="mb-3 mt-1">
-                <Label className="mb-1">TRAIL</Label>
-                <div
-                  className="form-label-group"
-                  onChange={(e) => this.changeHandler7(e)}
-                >
-                  <input
-                    style={{ marginRight: "3px" }}
-                    type="checkbox"
-                    name="trl_type"
-                    value="true"
-                    //  checked={this.state.trl_type ? true : false}
-                  />
-                  <span style={{ marginRight: "20px" }}>True</span>
-                  <input
-                    style={{ marginRight: "3px" }}
-                    type="checkbox"
-                    name="trl_type"
-                    value="false"
-                    //  checked={!this.state.trl_type ? true : false}
-                     
-                  />
-                  <span style={{ marginRight: "3px" }}>False</span>
-                </div>
-              </Col>
+                <Col lg="3" md="3" sm="3" className="mb-3 mt-1">
+                  <Label className="mb-1">TRAIL</Label>
+                  <div
+                    className="form-label-group"
+                    onChange={(e) => this.changeHandler7(e)}
+                  >
+                    <input
+                      style={{ marginRight: "3px" }}
+                      type="checkbox"
+                      name="trl_type"
+                      value="true"
+                      //  checked={this.state.trl_type ? true : false}
+                    />
+                    <span style={{ marginRight: "20px" }}>True</span>
+                    <input
+                      style={{ marginRight: "3px" }}
+                      type="checkbox"
+                      name="trl_type"
+                      value="false"
+                      //  checked={!this.state.trl_type ? true : false}
+                    />
+                    <span style={{ marginRight: "3px" }}>False</span>
+                  </div>
+                </Col>
                 {/* <Col lg="3" md="3" sm="3" className="mb-3 mt-1">
                   <Label className="mb-1">T1</Label>
                   <div
@@ -378,7 +377,7 @@ class EditFnoIndex extends React.Component {
                     <span style={{ marginRight: "3px" }}>False</span>
                   </div>
                 </Col> */}
-                     <Col lg="3" md="3" sm="3" className="mb-3 mt-1">
+                <Col lg="3" md="3" sm="3" className="mb-3 mt-1">
                   <Label className="mb-1">T1</Label>
                   <div
                     className="form-label-group"
@@ -424,7 +423,7 @@ class EditFnoIndex extends React.Component {
                     <span style={{ marginRight: "3px" }}>False</span>
                   </div>
                 </Col> */}
-                      <Col lg="3" md="3" sm="3" className="mb-3 mt-1">
+                <Col lg="3" md="3" sm="3" className="mb-3 mt-1">
                   <Label className="mb-1">T2</Label>
                   <div
                     className="form-label-group"
@@ -470,7 +469,7 @@ class EditFnoIndex extends React.Component {
                     <span style={{ marginRight: "3px" }}>False</span>
                   </div>
                 </Col> */}
-                      <Col lg="3" md="3" sm="3" className="mb-3 mt-1">
+                <Col lg="3" md="3" sm="3" className="mb-3 mt-1">
                   <Label className="mb-1">T3</Label>
                   <div
                     className="form-label-group"
@@ -516,7 +515,7 @@ class EditFnoIndex extends React.Component {
                     <span style={{ marginRight: "3px" }}>False</span>
                   </div>
                 </Col> */}
-      {/* <Col lg="3" md="3" sm="3" className="mb-3 mt-1">
+                {/* <Col lg="3" md="3" sm="3" className="mb-3 mt-1">
                   <Label className="mb-1">T5</Label>
                   <div
                     className="form-label-group"
@@ -538,7 +537,7 @@ class EditFnoIndex extends React.Component {
                     <span style={{ marginRight: "3px" }}>False</span>
                   </div>
                 </Col> */}
-           
+
                 <Col lg="3" md="3" sm="3" className="mb-3 mt-1">
                   <Label className="mb-1">Status</Label>
                   <div
@@ -562,6 +561,19 @@ class EditFnoIndex extends React.Component {
                   </div>
                 </Col>
               </Row>
+              <Col lg="6" md="6" className="mb-2">
+                <Label>Trade Alert</Label>
+                <Input
+                  type="text"
+                  placeholder="Keep booking or trailing stop loss"
+                  name="cstmMsg"
+                  value={this.state.cstmMsg}
+                  onChange={this.changeHandler}
+                />
+                <span>
+                  <b> We will type 210+ Keep booking or trailing stop loss</b>
+                </span>
+              </Col>
               <Row>
                 <Col lg="6" md="6" sm="6" className="mb-2">
                   <Button.Ripple
@@ -573,6 +585,31 @@ class EditFnoIndex extends React.Component {
                   </Button.Ripple>
                 </Col>
               </Row>
+              {/* <Row>
+                <Col lg="6" md="6" className="mb-2">
+                  <Label>Trade Alert</Label>
+                  <Input
+                    type="text"
+                    placeholder="Keep booking or trailing stop loss"
+                    name="cstmMsg"
+                    value={this.state.cstmMsg}
+                    onChange={this.changeHandler}
+                  />
+                  <span>
+                    <b> We will type 210+ Keep booking or trailing stop loss</b>
+                  </span>
+                </Col>
+
+                <Col lg="6" md="6" sm="6" className="mb-2">
+                  <Button.Ripple
+                    color="primary"
+                    type="submit"
+                    className="mr-1 mb-1"
+                  >
+                    Submit
+                  </Button.Ripple>
+                </Col>
+              </Row> */}
             </Form>
           </CardBody>
         </Card>

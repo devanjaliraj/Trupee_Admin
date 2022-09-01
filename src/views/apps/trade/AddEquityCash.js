@@ -45,9 +45,11 @@ export class AddEquityCash extends Component {
       profit_loss_amt: "",
       expiryDate: "",
       type: "Cash",
+      cstmMsg: "",
     };
     this.state = {
       scriptN: [],
+      expdateI: [],
     };
   }
   componentDidMount() {
@@ -60,6 +62,18 @@ export class AddEquityCash extends Component {
         this.setState({
           // scriptT: response.data.data,
           scriptN: response.data.data,
+        });
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+    // expDate//
+    axiosConfig
+      .get("/datelist")
+      .then((response) => {
+        console.log(response);
+        this.setState({
+          expdateI: response.data.data,
         });
       })
       .catch((error) => {
@@ -124,15 +138,21 @@ export class AddEquityCash extends Component {
           <CardBody>
             <Form className="m-1" onSubmit={this.submitHandler}>
               <Row className="mb-2">
-                <Col lg="6" md="6" className="mb-2">
-                  <Label> Exp. Date</Label>
-                  <Input
-                    type="date"
-                    placeholder="Enter User Id"
+                <Col lg="6" md="6" sm="6" className="mb-2">
+                  <Label>Expiry Date</Label>
+                  <CustomInput
+                    type="select"
                     name="expiryDate"
-                    value={this.state.expiryDate}
+                    value={this.state.expDate}
                     onChange={this.changeHandler}
-                  />
+                  >
+                    <option>Expiry Date</option>
+                    {this.state.expdateI?.map((allExpDate) => (
+                      <option value={allExpDate?._id} key={allExpDate?._id}>
+                        {allExpDate?.expDate}
+                      </option>
+                    ))}
+                  </CustomInput>
                 </Col>
                 <Col lg="6" md="6" sm="6" className="mb-2">
                   <Label>Script Name</Label>
@@ -327,6 +347,19 @@ export class AddEquityCash extends Component {
                     value={this.state.type}
                     onChange={this.changeHandler}
                   />
+                </Col>
+                <Col lg="6" md="6" className="mb-2">
+                  <Label>Trade Alert</Label>
+                  <Input
+                    type="text"
+                    placeholder="Keep booking or trailing stop loss"
+                    name="cstmMsg"
+                    value={this.state.cstmMsg}
+                    onChange={this.changeHandler}
+                  />
+                  <span>
+                    <b> We will type 210+ Keep booking or trailing stop loss</b>
+                  </span>
                 </Col>
               </Row>
               <Row>

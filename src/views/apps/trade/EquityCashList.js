@@ -108,7 +108,7 @@ class EquityCashList extends React.Component {
           );
         },
       },
-      
+
       {
         headerName: "SL",
         field: "SL",
@@ -181,7 +181,7 @@ class EquityCashList extends React.Component {
           );
         },
       },
-  
+
       {
         headerName: "P&L ",
         field: "pl",
@@ -383,16 +383,15 @@ class EquityCashList extends React.Component {
         cellRendererFramework: (params) => {
           return (
             <div className="actions cursor-pointer">
-                      <Smartphone
-                    className="mr-50"
-                    size="25px"
-                    color={params.data.status === 'Active' ? "green" : "red"}
-                    onClick={() =>{
-                      let selectedData = this.gridApi.getSelectedRows();
-                     this.runthisfunctionEdit(params.data._id,selectedData);
-                    } }
-                    
-                  />
+              <Smartphone
+                className="mr-50"
+                size="25px"
+                color={params.data.status === "Active" ? "green" : "red"}
+                onClick={() => {
+                  let selectedData = this.gridApi.getSelectedRows();
+                  this.runthisfunctionEdit(params.data._id, selectedData);
+                }}
+              />
               <Route
                 render={({ history }) => (
                   <Edit
@@ -442,43 +441,44 @@ class EquityCashList extends React.Component {
       }
     );
   }
-  async runthisfunctionEdit(id,selectedData) {
-    console.log('@@selectedData',id,selectedData[0].t1);
+  async runthisfunctionEdit(id, selectedData) {
+    console.log("@@selectedData", id, selectedData[0].t1);
     //
     let status = selectedData[0].status === "Active" ? "Deactive" : "Active";
     let payload = {
-      expiryDate:selectedData[0].expiryDate,
-      script_type:selectedData[0].script_type,
-      fnoindex_scrpt_name:selectedData[0].fnoindex_scrpt_name,
-      call_type:selectedData[0].call_type,
-      active_value:selectedData[0].active_value,
-      T1:selectedData[0].T1,
-      T2:selectedData[0].T2,
-      T3:selectedData[0].T3,
-      T4:selectedData[0].T4,
-      trl:selectedData[0].trl,
-      trl_type:selectedData[0].trl_type,
-      t1_type:selectedData[0].t1_type,
-      t2_type:selectedData[0].t2_type,
-      t3_type:selectedData[0].t3_type,
-      t4_type:selectedData[0].t4_type,
-      qty:selectedData[0].qty,
-      sl_type:selectedData[0].sl_type,
-      no_of_lots:selectedData[0].no_of_lots,
-      trade_type:selectedData[0].trade_type,
-      type:selectedData[0].type,
-      status:status
-    }
-    await axiosConfig.post(`/editCash/${id}`,payload)
-    .then((response) => {
-      console.log("sdjgsjdgjhgsdjh", response);
-      swal("Success!", "Status " +status+ " SuccessFull!", "success");
-      // this.props.history.push("/app/trade/fnoIndexList");
-      window.location.reload()
-    })
-    .catch((error) => {
-      console.log(error);
-    });
+      expiryDate: selectedData[0].expiryDate,
+      script_type: selectedData[0].script_type,
+      fnoindex_scrpt_name: selectedData[0].fnoindex_scrpt_name,
+      call_type: selectedData[0].call_type,
+      active_value: selectedData[0].active_value,
+      T1: selectedData[0].T1,
+      T2: selectedData[0].T2,
+      T3: selectedData[0].T3,
+      T4: selectedData[0].T4,
+      trl: selectedData[0].trl,
+      trl_type: selectedData[0].trl_type,
+      t1_type: selectedData[0].t1_type,
+      t2_type: selectedData[0].t2_type,
+      t3_type: selectedData[0].t3_type,
+      t4_type: selectedData[0].t4_type,
+      qty: selectedData[0].qty,
+      sl_type: selectedData[0].sl_type,
+      no_of_lots: selectedData[0].no_of_lots,
+      trade_type: selectedData[0].trade_type,
+      type: selectedData[0].type,
+      status: status,
+    };
+    await axiosConfig
+      .post(`/editCash/${id}`, payload)
+      .then((response) => {
+        console.log("sdjgsjdgjhgsdjh", response);
+        swal("Success!", "Status " + status + " SuccessFull!", "success");
+        // this.props.history.push("/app/trade/fnoIndexList");
+        window.location.reload();
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   }
   onGridReady = (params) => {
     this.gridApi = params.api;

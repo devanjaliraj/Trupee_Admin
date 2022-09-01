@@ -45,6 +45,7 @@ class EditFnoEquity extends React.Component {
       expiryDate: "",
       type: "Equity",
       status: "",
+      cstmMsg: "",
     };
     this.state = {
       // scriptT: [],
@@ -62,6 +63,7 @@ class EditFnoEquity extends React.Component {
       .then((response) => {
         console.log(response);
         this.setState({
+          script_type: response.data.data.script_type,
           equity_script: response.data.data.equity_script,
           profit_loss_amt: response.data.data.profit_loss_amt,
           fnoequty_scrpt_name: response.data.data.fnoequty_scrpt_name,
@@ -83,6 +85,7 @@ class EditFnoEquity extends React.Component {
           t4_type: response.data.data.t4_type,
           type: response.data.data.type,
           status: response.data.data.status,
+          cstmMsg: response.data.data.cstmMsg,
         });
       })
       .catch((error) => {
@@ -103,7 +106,7 @@ class EditFnoEquity extends React.Component {
         console.log(error);
       });
   }
- 
+
   changeHandler1 = (e) => {
     this.setState({ sl_type: e.target.value });
   };
@@ -184,21 +187,6 @@ class EditFnoEquity extends React.Component {
                     onChange={this.changeHandler}
                   />
                 </Col>
-                {/* <Col lg="6" md="6" sm="6" className="mb-2">
-                  <Label>Script</Label>
-                  <CustomInput
-                    type="select"
-                    name="script_type"
-                    value={this.state.script_type}
-                    onChange={this.changeHandler}
-                  >
-                    {this.state.scriptT.map((allScript) => (
-                      <option value={allScript._id} key={allScript._id}>
-                        {allScript.script_type}
-                      </option>
-                    ))}
-                  </CustomInput>
-                </Col> */}
                 <Col lg="6" md="6" sm="6" className="mb-2">
                   <Label>Script Name</Label>
                   <CustomInput
@@ -232,9 +220,9 @@ class EditFnoEquity extends React.Component {
                   </Input>
                 </Col>
                 <Col lg="6" md="6" className="mb-2">
-                  <Label for="exampleSelect">Call Type</Label>
+                  <Label for="exampleSelect1">Call Type</Label>
                   <Input
-                    id="exampleSelect"
+                    id="exampleSelect1"
                     name="call_type"
                     type="select"
                     value={this.state.call_type}
@@ -252,27 +240,6 @@ class EditFnoEquity extends React.Component {
                     <option>Intraday (Hero-Zero)</option>
                   </Input>
                 </Col>
-                {/* <Col lg="6" md="6" className="mb-2">
-                  <div>
-                    <Label>P&L</Label>
-                    <Input
-                      type="select"
-                      name="pl_type"
-                      value={this.state.pl_type}
-                      onChange={this.changeHandler}
-                    >
-                      <option value="Option 1">Select Option</option>
-                      <option value="Option 2">Profit</option>
-                      <option value="Option 3">Loss</option>
-                    </Input>
-                    <Input
-                      type="number"
-                      name="profit_loss_amt"
-                      value={this.state.profit_loss_amt}
-                      onChange={this.changeHandler}
-                    />
-                  </div>
-                </Col> */}
                 <Col lg="6" md="6" className="mb-2">
                   <Label>Active Value</Label>
                   <Input
@@ -280,16 +247,6 @@ class EditFnoEquity extends React.Component {
                     placeholder="Enter Active Value"
                     name="active_value"
                     value={this.state.active_value}
-                    onChange={this.changeHandler}
-                  />
-                </Col>
-                <Col lg="6" md="6" className="mb-2">
-                  <Label>Max. Lot Price</Label>
-                  <Input
-                    type="text"
-                    placeholder="Enter Max. Lot Price"
-                    name="active_value2"
-                    value={this.state.active_value2}
                     onChange={this.changeHandler}
                   />
                 </Col>
@@ -395,7 +352,7 @@ class EditFnoEquity extends React.Component {
                 </Col>
               </Row>
               <Row>
-              <Col lg="3" md="3" sm="3" className="mb-3 mt-1">
+                <Col lg="3" md="3" sm="3" className="mb-3 mt-1">
                   <Label className="mb-1">SL</Label>
                   <div
                     className="form-label-group"
@@ -533,6 +490,19 @@ class EditFnoEquity extends React.Component {
                     />
                     <span style={{ marginRight: "3px" }}>NA</span>
                   </div>
+                </Col>
+                <Col lg="6" md="6" className="mb-2">
+                  <Label>Trade Alert</Label>
+                  <Input
+                    type="text"
+                    placeholder="Keep booking or trailing stop loss"
+                    name="cstmMsg"
+                    value={this.state.cstmMsg}
+                    onChange={this.changeHandler}
+                  />
+                  <span>
+                    <b> We will type 210+ Keep booking or trailing stop loss</b>
+                  </span>
                 </Col>
               </Row>
               <Row>

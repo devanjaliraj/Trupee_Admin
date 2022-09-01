@@ -21,11 +21,11 @@ class EditFnoIndex extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      t5:"",
+      t5: "",
       trl_type: false,
       trl: "",
       expiryDate: "",
-      script_type: "CE",
+      script_type: "",
       fnoindex_scrpt_name: "",
       active_value: "",
       call_type: "",
@@ -67,7 +67,7 @@ class EditFnoIndex extends React.Component {
           T1: response.data.data.T1,
           T2: response.data.data.T2,
           T3: response.data.data.T3,
-           t5: response.data.data.t5,
+          t5: response.data.data.t5,
           trl: response.data.data.trl,
           trl_type: response.data.data.trl_type,
           FT1_type: response.data.data.FT1_type,
@@ -109,9 +109,9 @@ class EditFnoIndex extends React.Component {
   changeHandler4 = (e) => {
     this.setState({ FT3_type: e.target.value });
   };
-//   changeHandler5 = (e) => {
-//     this.setState({ FT5_type: e.target.value });
-//   };
+  //   changeHandler5 = (e) => {
+  //     this.setState({ FT5_type: e.target.value });
+  //   };
   changeHandler6 = (e) => {
     this.setState({ sl_type: e.target.value });
   };
@@ -140,55 +140,55 @@ class EditFnoIndex extends React.Component {
   };
 
   // Add/Remove checked item from list sl_type
- handleCheckSlType = (event) => {
-  if (event.target.checked) {
-    this.setState({sl_type:"true"})
-  } else {
-    this.setState({sl_type:"false"})
-  }
-};
+  handleCheckSlType = (event) => {
+    if (event.target.checked) {
+      this.setState({ sl_type: "true" });
+    } else {
+      this.setState({ sl_type: "false" });
+    }
+  };
 
- // Add/Remove checked item from list sl_type
- handleCheckFT1Type = (event) => {
-  if (event.target.checked) {
-    this.setState({FT1_type:"true"})
-  } else {
-    this.setState({FT1_type:"false"})
-  }
-};
+  // Add/Remove checked item from list sl_type
+  handleCheckFT1Type = (event) => {
+    if (event.target.checked) {
+      this.setState({ FT1_type: "true" });
+    } else {
+      this.setState({ FT1_type: "false" });
+    }
+  };
 
- // Add/Remove checked item from list sl_type
- handleCheckFT2Type = (event) => {
-  console.log('event.target.checked',event.target.checked)
-  if (event.target.checked) {
-    this.setState({FT2_type:"true"})
-  } else {
-    this.setState({FT2_type:"false"})
-  }
-};
+  // Add/Remove checked item from list sl_type
+  handleCheckFT2Type = (event) => {
+    console.log("event.target.checked", event.target.checked);
+    if (event.target.checked) {
+      this.setState({ FT2_type: "true" });
+    } else {
+      this.setState({ FT2_type: "false" });
+    }
+  };
 
- // Add/Remove checked item from list sl_type
- handleCheckFT3Type = (event) => {
-  if (event.target.checked) {
-    this.setState({FT3_type:"true"})
-  } else {
-    this.setState({FT3_type:"false"})
-  }
-};
+  // Add/Remove checked item from list sl_type
+  handleCheckFT3Type = (event) => {
+    if (event.target.checked) {
+      this.setState({ FT3_type: "true" });
+    } else {
+      this.setState({ FT3_type: "false" });
+    }
+  };
 
- // Add/Remove checked item from list sl_type
-//  handleCheckFT5Type = (event) => {
-//   if (event.target.checked) {
-//     this.setState({FT5_type:"true"})
-//   } else {
-//     this.setState({FT5_type:"false"})
-//   }
-// };
-  
+  // Add/Remove checked item from list sl_type
+  //  handleCheckFT5Type = (event) => {
+  //   if (event.target.checked) {
+  //     this.setState({FT5_type:"true"})
+  //   } else {
+  //     this.setState({FT5_type:"false"})
+  //   }
+  // };
+
   render() {
-    const { FT1_type,FT2_type,FT3_type} = this.state;
-    console.log('FT1_type',FT1_type)
-    console.log('FT2_type',FT2_type)
+    const { FT1_type, FT2_type, FT3_type } = this.state;
+    console.log("FT1_type", FT1_type);
+    console.log("FT2_type", FT2_type);
     return (
       <div>
         <Breadcrumbs
@@ -348,7 +348,7 @@ class EditFnoIndex extends React.Component {
                     type="checkbox"
                     name="sl_type"
                     value={this.state.sl_type}
-                    onChange={(event) =>this.handleCheckSlType(event)}
+                    onChange={(event) => this.handleCheckSlType(event)}
                     checked={this.state.sl_type === "true" ? true : false}
                   />
                   <span style={{ marginRight: "20px" }}>True</span>
@@ -374,8 +374,8 @@ class EditFnoIndex extends React.Component {
                       type="checkbox"
                       name="FT1_type"
                       value={FT1_type}
-                      onChange={(e)=>this.changeHandler2(e)}
-                      checked={FT1_type==="true" ? true : false}
+                      onChange={(e) => this.changeHandler2(e)}
+                      checked={FT1_type === "true" ? true : false}
                     />
                     <span style={{ marginRight: "20px" }}>True</span>
                     {/* <input
@@ -400,7 +400,7 @@ class EditFnoIndex extends React.Component {
                       name="FT2_type"
                       value={FT2_type}
                       checked={FT2_type === "true" ? true : false}
-                      onChange={(event)=>this.handleCheckFT2Type(event)}
+                      onChange={(event) => this.handleCheckFT2Type(event)}
                     />
                     <span style={{ marginRight: "20px" }}>True</span>
                     {/* <input
@@ -424,7 +424,7 @@ class EditFnoIndex extends React.Component {
                       type="checkbox"
                       name="FT3_type"
                       value={FT3_type}
-                      onChange={(event)=>this.handleCheckFT3Type(event)}
+                      onChange={(event) => this.handleCheckFT3Type(event)}
                       checked={FT3_type === "true" ? true : false}
                     />
                     <span style={{ marginRight: "20px" }}>True</span>
