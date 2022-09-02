@@ -74,19 +74,21 @@ class UserPerformanceSheet extends React.Component {
         },
       },
       {
-        headerName: "Performance Sheet Choose",
+        headerName: "Plan Name",
         field: "pack_name",
         // filter: true,
-        width: 180,
+        width: 150,
         // pinned: window.innerWidth > 992 ? "left" : false,
         cellRendererFramework: (params) => {
           return (
             <div className="d-flex align-items-center cursor-pointer">
+              {/* <span>{params.data.plan[0]?.pack_name}</span> */}
               <span>{params.data.plan?.pack_name}</span>
             </div>
           );
         },
       },
+
       {
         headerName: "Date",
         field: "createdAt",

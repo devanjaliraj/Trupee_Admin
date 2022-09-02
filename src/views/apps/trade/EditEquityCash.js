@@ -520,7 +520,7 @@ class EditEquityCash extends React.Component {
                       name="status"
                       value="Deactive"
                     />
-                    <span style={{ marginRight: "3px" }}>NA</span>
+                    <span style={{ marginRight: "3px" }}>Deactive</span>
                   </div>
                 </Col>
                 <Col lg="6" md="6" className="mb-2">

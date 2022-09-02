@@ -129,6 +129,8 @@ const GeneralNotifList = lazy(() =>
 const AddGeneralNotif = lazy(() =>
   import("./views/apps/trade/AddGeneralNotif")
 );
+const PnLSheetList = lazy(() => import("./views/apps/trade/PnLSheetList"));
+
 //package//
 const PackagePlanList = lazy(() =>
   import("./views/apps/package/PackagePlanList")
@@ -582,6 +584,7 @@ class AppRouter extends React.Component {
               path="/app/trade/addGeneralNotif"
               component={AddGeneralNotif}
             />
+            <AppRoute path="/app/trade/pnLSheetList" component={PnLSheetList} />
             {/* setting */}
             <AppRoute path="/app/setting/enquiryForm" component={EnquiryForm} />
             <AppRoute

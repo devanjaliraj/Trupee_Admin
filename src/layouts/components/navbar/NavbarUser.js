@@ -24,21 +24,22 @@ const NavbarUser = () => {
 
   const tokenVerify = () => {
     let data = localStorage.getItem("ad-token");
-    console.log('token data',data)
+    console.log("token data", data);
     sessionStorage.clear();
     if (data === undefined || data === null) {
-       window.location.replace("/#/pages/login");
+      window.location.replace("/#/pages/login");
     }
-  }
+  };
 
   useEffect(() => {
     tokenVerify();
     async function getNotifications() {
       try {
         //axiosConfig.get(`/dlt_startup/${id}`)
-        let userId = localStorage.getItem("userId");
+        // let userId = localStorage.getItem("userId");
         const data = await axiosConfig.get(
-          `/viewoneadmin/${userId}`  
+          // (`/viewoneadmin/${userId}`);
+          `/viewoneadmin/62e125db337df218d9c152f9`
         );
         console.log(data.data.data);
         setAdminimg(data.data.data);

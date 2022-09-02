@@ -187,7 +187,7 @@ class PaidServeiceList extends React.Component {
               <Route
                 render={({ history }) => (
                   <Button
-                    className=" btn btn-danger float-right"
+                    className=" btn btn-success float-right"
                     onClick={() => history.push("/app/premium/addPaidServeice")}
                   >
                     Add Paid Serveice

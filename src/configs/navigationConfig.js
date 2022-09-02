@@ -147,14 +147,14 @@ const navigationConfig = [
     permissions: ["admin", "editor"],
     navLink: "/app/trade/generalNotifList",
   },
-  // {
-  //   id: "generalNotif",
-  //   title: "General Notification ",
-  //   type: "item",
-  //   icon: <Icon.ArrowRight size={12} />,
-  //   permissions: ["admin", "editor"],
-  //   navLink: "/app/notif/generalNotif",
-  // },
+  {
+    id: "pnLSheetList",
+    title: "P&L Screenshort List",
+    type: "item",
+    icon: <Icon.ArrowRight size={12} />,
+    permissions: ["admin", "editor"],
+    navLink: "/app/trade/pnLSheetList",
+  },
   // {
   //   id: "popupNotif",
   //   title: "Pop Up Notification ",

@@ -46,40 +46,41 @@ class GeneralNotifList extends React.Component {
       },
       {
         headerName: "Title ",
-        field: "sizeName",
+        field: "title",
         filter: true,
         width: 200,
         cellRendererFramework: (params) => {
           return (
             <div>
-              {/* <span>{params.data.sizeName}</span> */}
+              <span>{params.data.title}</span>
             </div>
           );
         },
       },
       {
         headerName: "Description ",
-        field: "sizeName",
+        field: "desc",
         filter: true,
         width: 200,
         cellRendererFramework: (params) => {
           return (
             <div>
-              {/* <span>{params.data.sizeName}</span> */}
+              <span>{params.data.desc}</span>
             </div>
           );
         },
       },
+
       {
         headerName: "Upload Image",
-        field: "image",
+        field: "img",
         // filter: true,
         width: 200,
         // pinned: window.innerWidth > 992 ? "left" : false,
         cellRendererFramework: (params) => {
           return (
             <div className="d-flex align-items-center cursor-pointer">
-              <span>{params.data.image}</span>
+              <span>{params.data.img}</span>
             </div>
           );
         },
@@ -93,14 +94,14 @@ class GeneralNotifList extends React.Component {
         cellRendererFramework: (params) => {
           return (
             <div className="actions cursor-pointer">
-              <Edit
+              {/* <Edit
                 className="mr-50"
                 color="blue"
                 size={20}
                 onClick={() =>
                   history.push(`/app/size/editSize/${params.data._id}`)
                 }
-              />
+              /> */}
               <Trash2
                 size={20}
                 color="red"
@@ -119,7 +120,7 @@ class GeneralNotifList extends React.Component {
 
   async componentDidMount() {
     await axiosConfig
-      .get("/getsizebyseller", {
+      .get("/get_notification", {
         // headers: {
         //   "auth-adtoken": localStorage.getItem("auth-adtoken"),
         // },
@@ -132,7 +133,7 @@ class GeneralNotifList extends React.Component {
   }
   async runthisfunction(id) {
     console.log(id);
-    await axiosConfig.get(`/deleteSize/${id}`).then(
+    await axiosConfig.get(`/dlt_notification/${id}`).then(
       (response) => {
         console.log(response);
       },
@@ -177,17 +178,20 @@ class GeneralNotifList extends React.Component {
               <Row className="m-2">
                 <Col>
                   <h1 sm="6" className="float-left">
-                    General Notification List</h1>
+                    General Notification List
+                  </h1>
                 </Col>
                 <Col>
-                <Route
+                  <Route
                     render={({ history }) => (
-                  <Button
-                    className=" btn btn-danger float-right"
-                    onClick={() => history.push("/app/trade/addGeneralNotif")}
-                  >
-                    Add General Notification
-                    </Button>
+                      <Button
+                        className=" btn btn-success float-right"
+                        onClick={() =>
+                          history.push("/app/trade/addGeneralNotif")
+                        }
+                      >
+                        Add General Notification
+                      </Button>
                     )}
                   />
                 </Col>

@@ -25,8 +25,8 @@ export default class AddStartUp extends Component {
     this.state = {
       title: "",
       desc: "",
-      image: "",
-      video_link: "",
+      img: "",
+
       selectedName: "",
       selectedFile: null,
     };
@@ -50,8 +50,7 @@ export default class AddStartUp extends Component {
     const data = new FormData();
     data.append("title", this.state.title);
     data.append("desc", this.state.desc);
-    data.append("video_link", this.state.video_link);
-    data.append("image", this.state.selectedFile, this.state.selectedName);
+    data.append("img", this.state.selectedFile, this.state.selectedName);
 
     for (var value of data.values()) {
       console.log(value);
@@ -61,7 +60,7 @@ export default class AddStartUp extends Component {
       console.log(key);
     }
     axiosConfig
-      .post("/addStartup", data)
+      .post("/add_notification", data)
 
       .then((response) => {
         console.log(response.data);
@@ -85,7 +84,7 @@ export default class AddStartUp extends Component {
                   Home
                 </BreadcrumbItem>
                 <BreadcrumbItem href="/app/trade/generalNotifList" tag="a">
-                General Notification  List
+                  General Notification List
                 </BreadcrumbItem>
                 <BreadcrumbItem active>Add General Notification</BreadcrumbItem>
               </Breadcrumb>
@@ -142,11 +141,11 @@ export default class AddStartUp extends Component {
                   <Input
                     required
                     type="file"
-                    name="image"
+                    name="img"
                     onChange={this.onChangeHandler}
                   />
                 </Col>
-              
+
                 <Col lg="6" md="6" sm="6" className="mb-2">
                   <Label>Descripition</Label>
                   <Input

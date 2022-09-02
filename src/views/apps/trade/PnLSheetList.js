@@ -11,16 +11,19 @@ import {
   DropdownItem,
   DropdownToggle,
 } from "reactstrap";
+import swal from "sweetalert";
+
 import axiosConfig from "../../../axiosConfig";
 import { ContextLayout } from "../../../utility/context/Layout";
 import { AgGridReact } from "ag-grid-react";
-import { Eye, Edit, Trash2, ChevronDown } from "react-feather";
+import { Edit, Trash2, ChevronDown, Smartphone } from "react-feather";
 //import classnames from "classnames";
-import { history } from "../../../history";
-import { Route } from "react-router-dom";
+// import { history } from "../../../history";
 import "../../../assets/scss/plugins/tables/_agGridStyleOverride.scss";
 import "../../../assets/scss/pages/users.scss";
-class FaqList extends React.Component {
+import { Route } from "react-router-dom";
+
+class PnLSheetList extends React.Component {
   state = {
     rowData: [],
     paginationPageSize: 20,
@@ -44,99 +47,147 @@ class FaqList extends React.Component {
         // headerCheckboxSelectionFilteredOnly: true,
         // headerCheckboxSelection: true,
       },
-      {
-        headerName: "Title",
-        field: "title",
-        // filter: true,
-        width: 400,
-        // pinned: window.innerWidth > 992 ? "left" : false,
-        cellRendererFramework: (params) => {
-          return (
-            <div className="d-flex align-items-center cursor-pointer">
-              <span>{params.data.title}</span>
-            </div>
-          );
-        },
-      },
-      {
-        headerName: "Descripiton",
-        field: "desc",
-        // filter: true,
-        width: 500,
-        // pinned: window.innerWidth > 992 ? "left" : false,
-        cellRendererFramework: (params) => {
-          return (
-            <div className="d-flex align-items-center cursor-pointer">
-              <span>{params.data.desc}</span>
-            </div>
-          );
-        },
-      },
-      {
-        headerName: "Actions",
-        field: "sortorder",
-        width: 150,
-        // pinned: window.innerWidth > 992 ? "right" : false,
-        cellRendererFramework: (params) => {
-          return (
-            <div className="actions cursor-pointer">
-              {/* <Route
-                render={({ history }) => (
-                  <Edit
-                    className="mr-50"
-                    size="25px"
-                    color="blue"
-                    onClick={() =>
-                      history.push(
-                        
-                        `/app/about/EditAboutUs/${params.data._id}`
-                      )
-                    }
-                  />
-                )}
-              /> */}
 
-              <Trash2
-                className="mr-50"
-                size="25px"
-                color="red"
-                onClick={() => {
-                  let selectedData = this.gridApi.getSelectedRows();
-                  this.runthisfunction(params.data._id);
-                  this.gridApi.updateRowData({ remove: selectedData });
-                }}
-              />
+      {
+        headerName: "P&L Image",
+        field: "pnlimg",
+        // filter: true,
+        width: 200,
+        // pinned: window.innerWidth > 992 ? "left" : false,
+        cellRendererFramework: (params) => {
+          return (
+            <div className="d-flex align-items-center cursor-pointer">
+              <span>{params.data.pnlimg}</span>
             </div>
           );
         },
       },
+      {
+        headerName: "User Name",
+        field: "firstname",
+        width: 200,
+        cellRendererFramework: (params) => {
+          return (
+            <div className="d-flex  align-items-center cursor-pointer">
+              <span>
+                {params.data.userId?.firstname} {params.data.userId?.lastname}
+              </span>
+            </div>
+          );
+        },
+      },
+
+      {
+        headerName: "Email Id",
+        field: "email",
+        width: 200,
+        cellRendererFramework: (params) => {
+          return (
+            <div className="d-flex align-items-center cursor-pointer">
+              <span>{params.data.userId?.email}</span>
+            </div>
+          );
+        },
+      },
+      {
+        headerName: "Moblie",
+        field: "mobile",
+        width: 200,
+        cellRendererFramework: (params) => {
+          return (
+            <div className="d-flex align-items-center cursor-pointer">
+              <span>{params.data.userId?.mobile}</span>
+            </div>
+          );
+        },
+      },
+
+      //   {
+      //     headerName: "status ",
+      //     field: "status",
+      //     filter: true,
+      //     width: 150,
+      //     cellRendererFramework: (params) => {
+      //       return params.value === "Active" ? (
+      //         <div className="badge badge-pill badge-success">
+      //           {params.data.status}
+      //         </div>
+      //       ) : params.value === "Deactive" ? (
+      //         <div className="badge badge-pill badge-warning">
+      //           {params.data.status}
+      //         </div>
+      //       ) : null;
+      //     },
+      //   },
+      //   {
+      //     headerName: "Actions",
+      //     field: "sortorder",
+      //     // field: "transactions",
+      //     width: 150,
+      //     pinned: window.innerWidth > 992 ? "right" : false,
+
+      //     cellRendererFramework: (params) => {
+      //       return (
+      //         <div className="actions cursor-pointer">
+      //           {/* <Smartphone
+      //             className="mr-50"
+      //             size="25px"
+      //             color={params.data.status === "Active" ? "green" : "red"}
+      //             onClick={() => {
+      //               let selectedData = this.gridApi.getSelectedRows();
+      //               this.runthisfunctionEdit(params.data._id, selectedData);
+      //             }}
+      //           /> */}
+      //           {/* <Route
+      //             render={({ history }) => (
+      //               <Edit
+      //                 className="mr-50"
+      //                 size="25px"
+      //                 color="blue"
+      //                 onClick={() =>
+      //                   history.push(
+      //                     `/app/trade/editEquityCash/${params.data._id}`
+      //                   )
+      //                 }
+      //               />
+      //             )}
+      //           /> */}
+
+      //           <Trash2
+      //             size={20}
+      //             color="red"
+      //             onClick={() => {
+      //               let selectedData = this.gridApi.getSelectedRows();
+      //               this.runthisfunction(params.data._id);
+      //               this.gridApi.updateRowData({ remove: selectedData });
+      //             }}
+      //           />
+      //         </div>
+      //       );
+      //     },
+      //   },
     ],
   };
 
   async componentDidMount() {
-    await axiosConfig
-      .get("/faq_list", {
-        // headers: {
-        //   "auth-adtoken": localStorage.getItem("auth-adtoken"),
-        // },
-      })
-      .then((response) => {
-        const rowData = response.data.data;
-        console.log(rowData);
-        this.setState({ rowData });
-      });
+    await axiosConfig.get(`/getPnlSheet`).then((response) => {
+      const rowData = response.data.data;
+      console.log(rowData);
+      this.setState({ rowData });
+    });
   }
-  async runthisfunction(id) {
-    console.log(id);
-    await axiosConfig.get(`/dltFaq/${id}`).then(
-      (response) => {
-        console.log(response);
-      },
-      (error) => {
-        console.log(error);
-      }
-    );
-  }
+  //   async runthisfunction(id) {
+  //     console.log(id);
+  //     await axiosConfig.get(`/dlt_alltrade/${id}`).then(
+  //       (response) => {
+  //         console.log(response);
+  //       },
+  //       (error) => {
+  //         console.log(error);
+  //       }
+  //     );
+  //   }
+
   onGridReady = (params) => {
     this.gridApi = params.api;
     this.gridColumnApi = params.columnApi;
@@ -173,17 +224,17 @@ class FaqList extends React.Component {
               <Row className="m-2">
                 <Col>
                   <h1 sm="6" className="float-left">
-                    FAQ List
+                    Equity Cash List
                   </h1>
                 </Col>
-                <Col>
+                <Col className="pt-4">
                   <Route
                     render={({ history }) => (
                       <Button
                         className=" btn btn-success float-right"
-                        onClick={() => history.push("/app/faq/AddFaq")}
+                        onClick={() => history.push("/app/trade/AddEquityCash")}
                       >
-                        Add FAQ
+                        Add Equity Cash
                       </Button>
                     )}
                   />
@@ -288,4 +339,4 @@ class FaqList extends React.Component {
     );
   }
 }
-export default FaqList;
+export default PnLSheetList;
