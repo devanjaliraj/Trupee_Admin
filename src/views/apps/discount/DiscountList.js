@@ -105,14 +105,14 @@ class DiscountList extends React.Component {
       },
       {
         headerName: "Membership Plan",
-        field: "pack_name",
+        field: "plan",
         // filter: true,
         width: 120,
         // pinned: window.innerWidth > 992 ? "left" : false,
         cellRendererFramework: (params) => {
           return (
             <div className="d-flex align-items-center cursor-pointer">
-              <span>{params.data.plan?.pack_name}</span>
+              <span>{params.data.plan}</span>
             </div>
           );
         },

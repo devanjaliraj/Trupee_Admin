@@ -91,6 +91,9 @@ export class AddFnoIndex extends Component {
       .catch((error) => {
         console.log(error);
       });
+
+
+      
   };
 
   render() {

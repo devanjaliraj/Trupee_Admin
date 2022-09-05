@@ -144,7 +144,7 @@ class ExpDateList extends React.Component {
                   Date List
                 </h1>
               </Col>
-              {/* <Col className="pt-4">
+              <Col className="pt-4">
                   <Route
                     render={({ history }) => (
                       <Button
@@ -155,7 +155,7 @@ class ExpDateList extends React.Component {
                       </Button>
                     )}
                   />
-                </Col> */}
+                </Col>
             </Row>
 
             <CardBody className="py-0">

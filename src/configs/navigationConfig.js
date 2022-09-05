@@ -38,6 +38,15 @@ const navigationConfig = [
     navLink: "/app/scripts/cashEquity",
   },
   {
+    id: "expDateList",
+    title: "Trade Expiry Date",
+    type: "item",
+    icon: <Icon.ArrowRight size={12} />,
+    permissions: ["admin", "editor"],
+    navLink: "/app/trade/expdate/expDateList",
+  },
+
+  {
     type: "groupHeader",
     groupTitle: "TRADES",
   },
@@ -88,14 +97,6 @@ const navigationConfig = [
     icon: <Icon.ArrowRight size={12} />,
     permissions: ["admin", "editor"],
     navLink: "/app/trade/equityCashList",
-  },
-  {
-    id: "expDateList",
-    title: "Trade Expiry Date",
-    type: "item",
-    icon: <Icon.ArrowRight size={12} />,
-    permissions: ["admin", "editor"],
-    navLink: "/app/trade/expdate/expDateList",
   },
 
   {
@@ -185,15 +186,15 @@ const navigationConfig = [
     permissions: ["admin", "editor"],
     navLink: "/app/premium/paidServeiceList",
   },
-  {
-    id: "userSpreedSheet",
-    title: "User Spreed Sheet ",
-    type: "item",
-    icon: <Icon.ArrowRight size={12} />,
-    permissions: ["admin", "editor"],
-    // navLink: "/app/package/nonActivePlanList",
-    navLink: "/",
-  },
+  // {
+  //   id: "userSpreedSheet",
+  //   title: "User Spreed Sheet ",
+  //   type: "item",
+  //   icon: <Icon.ArrowRight size={12} />,
+  //   permissions: ["admin", "editor"],
+  //   // navLink: "/app/package/nonActivePlanList",
+  //   navLink: "/",
+  // },
   {
     id: "faqList",
     title: "FAQ",
@@ -210,14 +211,14 @@ const navigationConfig = [
     permissions: ["admin", "editor"],
     navLink: "/app/package/refferalWalletList",
   },
-  {
-    id: "discountList",
-    title: "Discount Code List",
-    type: "item",
-    icon: <Icon.ArrowRight size={12} />,
-    permissions: ["admin", "editor"],
-    navLink: "/app/discount/discountList",
-  },
+  // {
+  //   id: "discountList",
+  //   title: "Discount Code List",
+  //   type: "item",
+  //   icon: <Icon.ArrowRight size={12} />,
+  //   permissions: ["admin", "editor"],
+  //   navLink: "/app/discount/discountList",
+  // },
 
   {
     type: "groupHeader",
