@@ -49,7 +49,7 @@ class EditEquityCash extends React.Component {
       cstmMsg: "",
     };
     this.state = {
-      // scriptT: [],
+       expdateI: [],
       scriptN: [],
     };
   }
@@ -66,6 +66,7 @@ class EditEquityCash extends React.Component {
         this.setState({
           script_type: response.data.data.script_type,
           cash_scrpt_name: response.data.data.cash_scrpt_name,
+          active_value: response.data.data.active_value,
           active_value2: response.data.data.active_value2,
           call_type: response.data.data.call_type,
           SL: response.data.data.SL,
@@ -107,22 +108,54 @@ class EditEquityCash extends React.Component {
       .catch((error) => {
         console.log(error);
       });
+                    // expDate//
+    axiosConfig
+    .get("/datelist")
+    .then((response) => {
+      console.log(response);
+      this.setState({
+        expdateI: response.data.data,
+      });
+    })
+    .catch((error) => {
+      console.log(error);
+    });
   }
 
   changeHandler1 = (e) => {
-    this.setState({ sl_type: e.target.value });
+    if(e.target.checked){
+      this.setState({ sl_type: "true" });
+    }else{
+      this.setState({ sl_type: "false" });
+    }
   };
   changeHandler2 = (e) => {
-    this.setState({ t1_type: e.target.value });
+    if(e.target.checked){
+      this.setState({ t1_type: "true" });
+    }else{
+      this.setState({ t1_type: "false" });
+    }
   };
   changeHandler3 = (e) => {
-    this.setState({ t2_type: e.target.value });
+    if(e.target.checked){
+      this.setState({ t2_type: "true" });
+    }else{
+      this.setState({ t2_type: "false" });
+    }
   };
   changeHandler4 = (e) => {
-    this.setState({ t3_type: e.target.value });
+    if(e.target.checked){
+      this.setState({ t3_type: "true" });
+    }else{
+      this.setState({ t3_type: "false" });
+    }
   };
   changeHandler5 = (e) => {
-    this.setState({ t4_type: e.target.value });
+    if(e.target.checked){
+      this.setState({ t4_type: "true" });
+    }else{
+      this.setState({ t4_type: "false" });
+    }
   };
   changeHandler6 = (e) => {
     this.setState({ status: e.target.value });
@@ -180,28 +213,35 @@ class EditEquityCash extends React.Component {
           <CardBody>
             <Form className="m-1" onSubmit={this.submitHandler}>
               <Row className="mb-2">
-                <Col lg="6" md="6" className="mb-2">
-                  <Label> Exp. Date</Label>
-                  <Input
-                    type="date"
-                    placeholder="Enter User Id"
-                    name="expiryDate"
-                    value={this.state.expiryDate}
-                    onChange={this.changeHandler}
-                  />
-                </Col>
+            
                 <Col lg="6" md="6" sm="6" className="mb-2">
                   <Label>Script Name</Label>
                   <CustomInput
                     type="select"
                     name="cash_scrpt_name"
-                    value={this.state.scriptName}
+                    value={this.state.cash_scrpt_name}
                     onChange={this.changeHandler}
                   >
                     <option>select script</option>
                     {this.state.scriptN?.map((allScript) => (
                       <option value={allScript?._id} key={allScript?._id}>
                         {allScript?.scriptName}
+                      </option>
+                    ))}
+                  </CustomInput>
+                </Col>
+                <Col lg="6" md="6" sm="6" className="mb-2">
+                  <Label>Expiry Date</Label>
+                  <CustomInput
+                    type="select"
+                    name="expiryDate"
+                    value={this.state.expiryDate}
+                    onChange={this.changeHandler}
+                  >
+                    <option>Expiry Date</option>
+                    {this.state.expdateI?.map((allExpDate) => (
+                      <option value={allExpDate?._id} key={allExpDate?._id}>
+                        {allExpDate?.expDate}
                       </option>
                     ))}
                   </CustomInput>
@@ -216,8 +256,6 @@ class EditEquityCash extends React.Component {
                     onChange={this.changeHandler}
                   >
                     <option>Select Script</option>
-                    {/* <option>CE</option>
-                    <option>PF</option> */}
                     <option>BUY</option>
                     <option>SELL</option>
                   </Input>
@@ -243,27 +281,7 @@ class EditEquityCash extends React.Component {
                     <option>Intraday (Hero-Zero)</option>
                   </Input>
                 </Col>
-                {/* <Col lg="6" md="6" className="mb-2">
-                  <div>
-                    <Label>P&L</Label>
-                    <Input
-                      type="select"
-                      name="pl_type"
-                      value={this.state.pl_type}
-                      onChange={this.changeHandler}
-                    >
-                      <option value="Option 1">Select Option</option>
-                      <option value="Option 2">Profit</option>
-                      <option value="Option 3">Loss</option>
-                    </Input>
-                    <Input
-                      type="number"
-                      name="profit_loss_amt"
-                      value={this.state.profit_loss_amt}
-                      onChange={this.changeHandler}
-                    />
-                  </div>
-                </Col> */}
+            
                 <Col lg="6" md="6" className="mb-2">
                   <Label>Active Value</Label>
                   <Input
@@ -284,6 +302,7 @@ class EditEquityCash extends React.Component {
                     onChange={this.changeHandler}
                   />
                 </Col>
+              
                 <Col lg="6" md="6" className="mb-2">
                   <Label>SL</Label>
                   <Input
@@ -354,26 +373,7 @@ class EditEquityCash extends React.Component {
                     onChange={this.changeHandler}
                   />
                 </Col>
-                {/* <Col lg="6" md="6" className="mb-2">
-                  <Label>Investment Amount</Label>
-                  <Input
-                    name="investment_amt"
-                    type="number"
-                    placeholder="Enter Investment Amount"
-                    value={this.state.investment_amt}
-                    onChange={this.changeHandler}
-                  />
-                </Col> */}
-                {/* <Col lg="6" md="6" className="mb-2">
-                  <Label>Number Of Lots</Label>
-                  <Input
-                    type="number"
-                    name="no_of_lots"
-                    placeholder="Enter Lots Price"
-                    value={this.state.no_of_lots}
-                    onChange={this.changeHandler}
-                  />
-                </Col>{" "} */}
+               
                 <Col lg="6" md="6" className="mb-2">
                   <Label>Type</Label>
                   <Input
@@ -384,123 +384,106 @@ class EditEquityCash extends React.Component {
                     onChange={this.changeHandler}
                   />
                 </Col>
-                <Col lg="3" md="3" sm="3" className="mb-3 mt-1">
-                  <Label className="mb-1">SL</Label>
-                  <div
-                    className="form-label-group"
+                
+                </Row>
+                <Row>
+              <Col lg="3" md="3" sm="3" className="mb-3 mt-1">
+                <Label className="mb-1">SL</Label>
+                <div
+                  className="form-label-group"
+                  
+                >
+          
+                  <input
+                    style={{ marginRight: "3px" }}
+                    type="checkbox"
+                    name="sl_type"
                     onChange={(e) => this.changeHandler1(e)}
-                  >
-                    <input
-                      style={{ marginRight: "3px" }}
-                      type="checkbox"
-                      name="sl_type"
-                      value="true"
-                    />
-                    <span style={{ marginRight: "20px" }}>True</span>
-                    <input
-                      style={{ marginRight: "3px" }}
-                      type="checkbox"
-                      name="sl_type"
-                      value="false"
-                    />
-
-                    <span style={{ marginRight: "3px" }}>False</span>
-                  </div>
-                </Col>
+                   
+                    checked={this.state.sl_type === "false" || this.state.sl_type === false ? false : true}
+                  />
+                <span style={{ marginRight: "20px" }}>{this.state.sl_type}</span>
+            
+                </div>
+              </Col>
               </Row>
-              <Row className="mb-2">
-                <Col lg="3" md="3" sm="3" className="mb-3 mt-1">
-                  <Label className="mb-1">T1</Label>
-                  <div
-                    className="form-label-group"
+                <Row className="mb-2">
+              <Col lg="3" md="3" sm="3" className="mb-3 mt-1">
+                <Label className="mb-1">T1</Label>
+                <div
+                  className="form-label-group"
+                  
+                >
+          
+                  <input
+                    style={{ marginRight: "3px" }}
+                    type="checkbox"
+                    name="t1_type"
                     onChange={(e) => this.changeHandler2(e)}
-                  >
-                    <input
-                      style={{ marginRight: "3px" }}
-                      type="checkbox"
-                      name="t1_type"
-                      value="true"
-                    />
-                    <span style={{ marginRight: "20px" }}>True</span>
-                    <input
-                      style={{ marginRight: "3px" }}
-                      type="checkbox"
-                      name="t1_type"
-                      value="false"
-                    />
-
-                    <span style={{ marginRight: "3px" }}>False</span>
-                  </div>
-                </Col>
-                <Col lg="3" md="3" sm="3" className="mb-3 mt-1">
-                  <Label className="mb-1">T2</Label>
-                  <div
-                    className="form-label-group"
+                   
+                    checked={this.state.t1_type === "false" || this.state.t1_type === false ? false : true}
+                  />
+                <span style={{ marginRight: "20px" }}>{this.state.t1_type}</span>
+            
+                </div>
+              </Col>
+              <Col lg="3" md="3" sm="3" className="mb-3 mt-1">
+                <Label className="mb-1">T2</Label>
+                <div
+                  className="form-label-group"
+                  
+                >
+          
+                  <input
+                    style={{ marginRight: "3px" }}
+                    type="checkbox"
+                    name="t2_type"
                     onChange={(e) => this.changeHandler3(e)}
-                  >
-                    <input
-                      style={{ marginRight: "3px" }}
-                      type="checkbox"
-                      name="t2_type"
-                      value="true"
-                    />
-                    <span style={{ marginRight: "20px" }}>True</span>
-                    <input
-                      style={{ marginRight: "3px" }}
-                      type="checkbox"
-                      name="t2_type"
-                      value="false"
-                    />
-
-                    <span style={{ marginRight: "3px" }}>False</span>
-                  </div>
-                </Col>
-                <Col lg="3" md="3" sm="3" className="mb-3 mt-1">
-                  <Label className="mb-1">T3</Label>
-                  <div
-                    className="form-label-group"
+                   
+                    checked={this.state.t2_type === "false" || this.state.t2_type === false ? false : true}
+                  />
+                <span style={{ marginRight: "20px" }}>{this.state.t2_type}</span>
+            
+                </div>
+              </Col>
+              <Col lg="3" md="3" sm="3" className="mb-3 mt-1">
+                <Label className="mb-1">T3</Label>
+                <div
+                  className="form-label-group"
+                  
+                >
+          
+                  <input
+                    style={{ marginRight: "3px" }}
+                    type="checkbox"
+                    name="t3_type"
                     onChange={(e) => this.changeHandler4(e)}
-                  >
-                    <input
-                      style={{ marginRight: "3px" }}
-                      type="checkbox"
-                      name="t3_type"
-                      value="true"
-                    />
-                    <span style={{ marginRight: "20px" }}>True</span>
-                    <input
-                      style={{ marginRight: "3px" }}
-                      type="checkbox"
-                      name="t3_type"
-                      value="false"
-                    />
-
-                    <span style={{ marginRight: "3px" }}>False</span>
-                  </div>
-                </Col>
-                <Col lg="3" md="3" sm="3" className="mb-3 mt-1">
-                  <Label className="mb-1">T4</Label>
-                  <div
-                    className="form-label-group"
+                   
+                    checked={this.state.t3_type === "false" || this.state.t3_type === false ? false : true}
+                  />
+                <span style={{ marginRight: "20px" }}>{this.state.t3_type}</span>
+            
+                </div>
+              </Col>
+              <Col lg="3" md="3" sm="3" className="mb-3 mt-1">
+                <Label className="mb-1">T4</Label>
+                <div
+                  className="form-label-group"
+                  
+                >
+          
+                  <input
+                    style={{ marginRight: "3px" }}
+                    type="checkbox"
+                    name="t4_type"
                     onChange={(e) => this.changeHandler5(e)}
-                  >
-                    <input
-                      style={{ marginRight: "3px" }}
-                      type="checkbox"
-                      name="t4_type"
-                      value="true"
-                    />
-                    <span style={{ marginRight: "20px" }}>True</span>
-                    <input
-                      style={{ marginRight: "3px" }}
-                      type="checkbox"
-                      name="t4_type"
-                      value="false"
-                    />
-
-                    <span style={{ marginRight: "3px" }}>False</span>
-                  </div>
-                </Col>
+                   
+                    checked={this.state.t4_type === "false" || this.state.t4_type === false ? false : true}
+                  />
+                <span style={{ marginRight: "20px" }}>{this.state.t4_type}</span>
+            
+                </div>
+              </Col>
                 <Col lg="3" md="3" sm="3" className="mb-3 mt-1">
                   <Label className="mb-1">Status</Label>
                   <div
@@ -520,7 +503,7 @@ class EditEquityCash extends React.Component {
                       name="status"
                       value="Deactive"
                     />
-                    <span style={{ marginRight: "3px" }}>Deactive</span>
+                    <span style={{ marginRight: "3px" }}>NA</span>
                   </div>
                 </Col>
                 <Col lg="6" md="6" className="mb-2">
@@ -532,9 +515,9 @@ class EditEquityCash extends React.Component {
                     value={this.state.cstmMsg}
                     onChange={this.changeHandler}
                   />
-                  <span>
+                  {/* <span>
                     <b> We will type 210+ Keep booking or trailing stop loss</b>
-                  </span>
+                  </span> */}
                 </Col>
               </Row>
 

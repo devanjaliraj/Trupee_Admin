@@ -48,7 +48,7 @@ class FaqList extends React.Component {
         headerName: "Title",
         field: "title",
         // filter: true,
-        width: 400,
+        width: 250,
         // pinned: window.innerWidth > 992 ? "left" : false,
         cellRendererFramework: (params) => {
           return (

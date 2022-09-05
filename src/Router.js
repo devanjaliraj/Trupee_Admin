@@ -54,6 +54,9 @@ const ViewHelpUs = lazy(() =>
 const membershipList = lazy(() =>
   import("./views/apps/membership/MembershipList")
 );
+const AddMembership = lazy(() =>
+  import("./views/apps/membership/AddMembership")
+);
 
 const EditMembership = lazy(() =>
   import("./views/apps/membership/EditMembership")
@@ -75,6 +78,10 @@ const editSubplanvideos = lazy(() =>
   import("./views/apps/subplan/EditSubplanvideos")
 );
 const addPlan = lazy(() => import("./views/apps/subplan/AddPlan"));
+// Exp Date
+const ExpDateList = lazy(() => import("./views/apps/trade/expdate/ExpDateList"));
+const AddDate= lazy(() => import("./views/apps/trade/expdate/AddDate"));
+const EditDate = lazy(() => import("./views/apps/trade/expdate/EditDate"));
 
 // user//
 const UsersList = lazy(() => import("./views/apps/users/UsersList"));
@@ -120,9 +127,9 @@ const FnoIndexList = lazy(() => import("./views/apps/trade/FnoIndexList"));
 const AddFnoIndex = lazy(() => import("./views/apps/trade/AddFnoIndex"));
 const EditFnoIndex = lazy(() => import("./views/apps/trade/EditFnoIndex"));
 
-const BankNiftyList = lazy(() => import("./views/apps/trade/BankNiftyList"));
+// const BankNiftyList = lazy(() => import("./views/apps/trade/BankNiftyList"));
 
-const NiftyList = lazy(() => import("./views/apps/trade/NiftyList"));
+// const NiftyList = lazy(() => import("./views/apps/trade/NiftyList"));
 const GeneralNotifList = lazy(() =>
   import("./views/apps/trade/GeneralNotifList")
 );
@@ -571,11 +578,11 @@ class AppRouter extends React.Component {
               component={EditFnoIndex}
             />
             <AppRoute path="/app/trade/addFnoIndex" component={AddFnoIndex} />
-            <AppRoute
+            {/* <AppRoute
               path="/app/trade/bankNiftyList"
               component={BankNiftyList}
-            />
-            <AppRoute path="/app/trade/niftyList" component={NiftyList} />
+            /> */}
+            {/* <AppRoute path="/app/trade/niftyList" component={NiftyList} /> */}
             <AppRoute
               path="/app/trade/generalNotifList"
               component={GeneralNotifList}
@@ -617,6 +624,20 @@ class AppRouter extends React.Component {
               path="/app/discount/discountList"
               component={DiscountList}
             />
+{/* Exp date */}
+<AppRoute
+              path="/app/trade/expdate/expDateList"
+              component={ExpDateList}
+            />
+            <AppRoute
+              path="/app/trade/expdate/addDate"
+              component={AddDate}
+            />
+            <AppRoute
+              path="/app/trade/expdate/editDate/:id"
+              component={EditDate}
+            />
+
             {/*userNotification*/}
             <AppRoute
               path="/app/userNotif/userNotification"
@@ -739,6 +760,10 @@ class AppRouter extends React.Component {
             <AppRoute
               path="/app/membership/MembershipList"
               component={membershipList}
+            />
+             <AppRoute
+              path="/app/membership/addMembership"
+              component={AddMembership}
             />
             <AppRoute
               path="/app/membership/editMembership/:id"

@@ -76,19 +76,19 @@ class AllTradeList extends React.Component {
         },
       },
 
-      {
-        headerName: "Expiry Date",
-        field: "expDate",
-        width: 140,
-        // pinned: window.innerWidth > 992 ? "left" : false,
-        cellRendererFramework: (params) => {
-          return (
-            <div className="d-flex  align-items-center cursor-pointer">
-              <span>{params.data.expiryDate?.expDate}</span>
-            </div>
-          );
-        },
-      },
+      // {
+      //   headerName: "Expiry Date",
+      //   field: "expDate",
+      //   width: 140,
+      //   // pinned: window.innerWidth > 992 ? "left" : false,
+      //   cellRendererFramework: (params) => {
+      //     return (
+      //       <div className="d-flex  align-items-center cursor-pointer">
+      //         <span>{params.data.expiryDate?.expDate}</span>
+      //       </div>
+      //     );
+      //   },
+      // },
       {
         headerName: "Trade Type",
         field: "type",
@@ -246,18 +246,18 @@ class AllTradeList extends React.Component {
           );
         },
       },
-      {
-        headerName: "Profit/Loss",
-        field: "profit_loss_amt",
-        width: 140,
-        cellRendererFramework: (params) => {
-          return (
-            <div className="d-flex align-items-center cursor-pointer">
-              <span>{params.data.profit_loss_amt}</span>
-            </div>
-          );
-        },
-      },
+      // {
+      //   headerName: "Profit/Loss",
+      //   field: "profit_loss_amt",
+      //   width: 140,
+      //   cellRendererFramework: (params) => {
+      //     return (
+      //       <div className="d-flex align-items-center cursor-pointer">
+      //         <span>{params.data.profit_loss_amt}</span>
+      //       </div>
+      //     );
+      //   },
+      // },
 
       {
         headerName: "Number Of Lots",
@@ -474,7 +474,7 @@ class AllTradeList extends React.Component {
               <Row className="m-2">
                 <Col>
                   <h1 sm="6" className="float-left">
-                    Trade Notification List
+                    All Active Trade List
                   </h1>
                 </Col>
                 {/* <Col className="pt-4">

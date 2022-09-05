@@ -6,14 +6,11 @@ import {
   Col,
   Form,
   Label,
-  FormGroup,
   Input,
-  CustomInput,
   Button,
 } from "reactstrap";
 // import swal from "sweetalert";
 import axiosConfig from "../../../axiosConfig";
-
 import { Route } from "react-router-dom";
 import Breadcrumbs from "../../../components/@vuexy/breadCrumbs/BreadCrumb";
 // import moment from "moment";
@@ -26,47 +23,23 @@ export default class EditPackagePlan extends Component {
       mrp_price: "",
       desc: "",
       des_price: "",
-      // date: "",
-      // expdate: "",
-      // transaction_id: "",
+    
       status: "",
-      // membershipData: {},
+    
     };
     // this.state = {
     //   planN: [],
     // };
-    this.submitHandler = this.submitHandler.bind(this);
   }
 
   componentDidMount() {
-    //plan
-    // axiosConfig
-    //   .get("/admin/allplan")
-    //   .then((response) => {
-    //     console.log(response.data.data);
-    //     this.setState({ planN: response.data.data });
-    //   })
-    //   .catch((error) => {
-    //     console.log(error);
-    //   });
-
-    // var transaction_id = "";
-    // var expdate = "";
-    // const queryParams = new URLSearchParams(window.location.href);
-    // transaction_id = queryParams.get("transaction_id");
-    // expdate = queryParams.get("expdate");
-
-    // this.setState({ transaction_id: transaction_id, expdate: expdate });
-    // var payload = {
-    //   transaction_id: transaction_id,
-    //   expdate: expdate,
-    // };
-
     let { id } = this.props.match.params;
     axiosConfig
-      .post(`/editplan/${id}`)
+      .get(`/getoneexpDate/${id}`, {
+      
+      })
       .then((response) => {
-        console.log(response.data.data);
+        console.log(response);
         this.setState({
           pack_name: response.data.data.pack_name,
           mrp_price: response.data.data.mrp_price,
@@ -167,7 +140,7 @@ export default class EditPackagePlan extends Component {
                 <Col lg="6" md="6" className="mb-2">
                   <Label>MRP Price</Label>
                   <Input
-                    type="text"
+                    type="number"
                     placeholder="Enter MRP Price"
                     name="mrp_price"
                     value={this.state.mrp_price}
@@ -177,7 +150,7 @@ export default class EditPackagePlan extends Component {
                 <Col lg="6" md="6" className="mb-2">
                   <Label>Discount Price</Label>
                   <Input
-                    type="text"
+                    type="number"
                     placeholder="Enter Discount Price"
                     name="des_price"
                     value={this.state.des_price}

@@ -74,8 +74,8 @@ class UserPerformanceSheet extends React.Component {
         },
       },
       {
-        headerName: "Plan Name",
-        field: "pack_name",
+        headerName: "Plan Month",
+        field: "month",
         // filter: true,
         width: 150,
         // pinned: window.innerWidth > 992 ? "left" : false,
@@ -83,7 +83,7 @@ class UserPerformanceSheet extends React.Component {
           return (
             <div className="d-flex align-items-center cursor-pointer">
               {/* <span>{params.data.plan[0]?.pack_name}</span> */}
-              <span>{params.data.plan?.pack_name}</span>
+              <span>{params.data.plan?.month}</span>
             </div>
           );
         },

@@ -456,7 +456,7 @@ class FnoEquityList extends React.Component {
     let payload = {
       expiryDate:selectedData[0].expiryDate,
       script_type:selectedData[0].script_type,
-      fnoindex_scrpt_name:selectedData[0].fnoindex_scrpt_name,
+      fnoequty_scrpt_name:selectedData[0].fnoequty_scrpt_name,
       call_type:selectedData[0].call_type,
       active_value:selectedData[0].active_value,
       T1:selectedData[0].T1,

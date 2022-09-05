@@ -49,7 +49,7 @@ class TrupeeUnivercity extends React.Component {
         headerName: "Title",
         field: "title",
         // filter: true,
-        width: 150,
+        width: 200,
         // pinned: window.innerWidth > 992 ? "left" : false,
         cellRendererFramework: (params) => {
           return (
@@ -63,7 +63,7 @@ class TrupeeUnivercity extends React.Component {
         headerName: "Descripiton",
         field: "desc",
         // filter: true,
-        width: 150,
+        width: 200,
         // pinned: window.innerWidth > 992 ? "left" : false,
         cellRendererFramework: (params) => {
           return (
@@ -77,7 +77,7 @@ class TrupeeUnivercity extends React.Component {
         headerName: "Upload Video",
         field: "video_link",
         // filter: true,
-        width: 150,
+        width: 200,
         // pinned: window.innerWidth > 992 ? "left" : false,
         cellRendererFramework: (params) => {
           return (
@@ -91,7 +91,7 @@ class TrupeeUnivercity extends React.Component {
         headerName: "Date/Time",
         field: "createdAt",
         // filter: true,
-        width: 150,
+        width: 200,
         // pinned: window.innerWidth > 992 ? "left" : false,
         cellRendererFramework: (params) => {
           return (
@@ -118,7 +118,7 @@ class TrupeeUnivercity extends React.Component {
       {
         headerName: "Actions",
         field: "sortorder",
-        width: 250,
+        width: 200,
         // pinned: window.innerWidth > 992 ? "right" : false,
         cellRendererFramework: (params) => {
           return (

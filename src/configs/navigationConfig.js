@@ -89,6 +89,14 @@ const navigationConfig = [
     permissions: ["admin", "editor"],
     navLink: "/app/trade/equityCashList",
   },
+  {
+    id: "expDateList",
+    title: "Trade Expiry Date",
+    type: "item",
+    icon: <Icon.ArrowRight size={12} />,
+    permissions: ["admin", "editor"],
+    navLink: "/app/trade/expdate/expDateList",
+  },
 
   {
     type: "groupHeader",

@@ -126,14 +126,14 @@ class PackagePlanList extends React.Component {
                     color="blue"
                     onClick={() =>
                       history.push(
-                        `/app/package/EditPackagePlan/${params.data._id}`
+                        `/app/package/editPackagePlan/${params.data._id}`
                       )
                     }
                   />
                 )}
               />
 
-              {/* <Trash2
+              <Trash2
                 className="mr-50"
                 size="25px"
                 color="red"
@@ -142,7 +142,7 @@ class PackagePlanList extends React.Component {
                   this.runthisfunction(params.data._id);
                   this.gridApi.updateRowData({ remove: selectedData });
                 }}
-              /> */}
+              />
             </div>
           );
         },
@@ -156,14 +156,14 @@ class PackagePlanList extends React.Component {
     });
   }
 
-  // async runthisfunction(id) {
-  //   console.log(id);
-  //   await axiosConfig
-  //     .get(`/dealer/deletedealershipform/${id}`)
-  //     .then((response) => {
-  //       console.log(response);
-  //     });
-  // }
+  async runthisfunction(id) {
+    console.log(id);
+    await axiosConfig
+      .get(`/deleteplan/${id}`)
+      .then((response) => {
+        console.log(response);
+      });
+  }
 
   onGridReady = (params) => {
     this.gridApi = params.api;
@@ -203,7 +203,7 @@ class PackagePlanList extends React.Component {
                 </h1>
               </Col>
             </Row>
-            {/* <Col className="pt-4">
+            <Col className="pt-4">
               <Route
                 render={({ history }) => (
                   <Button
@@ -214,7 +214,7 @@ class PackagePlanList extends React.Component {
                   </Button>
                 )}
               />
-            </Col> */}
+            </Col>
 
             <CardBody className="py-0">
               {this.state.rowData === null ? null : (

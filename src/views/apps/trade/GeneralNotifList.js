@@ -61,7 +61,7 @@ class GeneralNotifList extends React.Component {
         headerName: "Description ",
         field: "desc",
         filter: true,
-        width: 200,
+        width: 350,
         cellRendererFramework: (params) => {
           return (
             <div>
@@ -90,7 +90,7 @@ class GeneralNotifList extends React.Component {
         headerName: "Actions",
         field: "sortorder",
         // field: "transactions",
-        width: 150,
+        width: 200,
         cellRendererFramework: (params) => {
           return (
             <div className="actions cursor-pointer">

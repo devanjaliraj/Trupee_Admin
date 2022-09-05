@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React from "react";
 import {
   Card,
   CardBody,
@@ -14,7 +14,7 @@ import axiosConfig from "../../../axiosConfig";
 import swal from "sweetalert";
 import { Route } from "react-router-dom";
 import Breadcrumbs from "../../../components/@vuexy/breadCrumbs/BreadCrumb";
-// import Textarea from "../../../forms/form-elements/textarea/Textarea";
+
 
 class EditDiscount extends React.Component {
   constructor(props) {
@@ -34,28 +34,7 @@ class EditDiscount extends React.Component {
     };
   }
   async componentDidMount() {
-    // let { id } = this.props.match.params;
-    // axiosConfig
-    //   .get(`/getone_equityCash/${id}`, {
-    //     // headers: {
-    //     //   "auth-adtoken": localStorage.getItem("auth-adtoken"),
-    //     // },
-    //   })
-    //   .then((response) => {
-    //     console.log(response);
-    //     this.setState({
-    //     title: response.data.data.title,
-    //     dis_type:response.data.data.dis_type,
-    //     dis_amt: response.data.data.dis_amt,
-    //     plan: response.data.data.plan,
-    //     userid: response.data.data.userid,
-    //     startdate: response.data.data.startdate,
-    //     expdate: response.data.data.expdate,
-    //     });
-    //   })
-    //   .catch((error) => {
-    //     console.log(error);
-    //   });
+
     //plan//
     axiosConfig
       .get("/plan_list")
@@ -172,7 +151,8 @@ class EditDiscount extends React.Component {
                     name="pack_name"
                     value={this.state.pack_name}
                     onChange={this.changeHandler}
-                  >
+                  ><option>Select Plan</option>
+                    <option>Free</option>
                     {this.state.planN?.map((allPlan) => (
                       <option value={allPlan?._id} key={allPlan?._id}>
                         {allPlan?.pack_name}

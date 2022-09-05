@@ -75,7 +75,7 @@ class PaidServeiceList extends React.Component {
         headerName: "Descripiton",
         field: "desc",
         // filter: true,
-        width: 200,
+        width: 300,
         // pinned: window.innerWidth > 992 ? "left" : false,
         cellRendererFramework: (params) => {
           return (
@@ -88,7 +88,7 @@ class PaidServeiceList extends React.Component {
       {
         headerName: "Actions",
         // field: "sortorder",
-        width: 100,
+        width: 200,
         // pinned: window.innerWidth > 992 ? "right" : false,
         cellRendererFramework: (params) => {
           return (

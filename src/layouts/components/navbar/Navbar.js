@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { Navbar } from "reactstrap";
 import { connect } from "react-redux";
 import classnames from "classnames";
@@ -10,7 +10,7 @@ import {
 import NavbarBookmarks from "./NavbarBookmarks";
 import NavbarUser from "./NavbarUser";
 import userImg from "../../../assets/img/portrait/small/avatar-s-11.jpg";
-import axiosConfig from "../../../axiosConfig";
+// import axiosConfig from "../../../axiosConfig";
 import "../../../assets/scss/pages/users.scss";
 
 const UserName = (props) => {
@@ -35,7 +35,7 @@ const ThemeNavbar = (props) => {
   const colorsArr = ["primary", "danger", "success", "info", "warning", "dark"];
   const navbarTypes = ["floating", "static", "sticky", "hidden"];
 
-  const [userData, setUserData] = useState("");
+  const [userData] = useState("");
 
   // useEffect(() => {
   //   console.log('mount it!')

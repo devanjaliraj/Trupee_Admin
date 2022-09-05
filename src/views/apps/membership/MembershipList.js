@@ -1,15 +1,16 @@
 import React from "react";
 import {
+ 
   Card,
   CardBody,
   Input,
   Button,
-  Col,
+ 
   UncontrolledDropdown,
   DropdownMenu,
   DropdownItem,
   DropdownToggle,
-  CardTitle,
+ 
 } from "reactstrap";
 import axiosConfig from "../../../axiosConfig";
 // import { history } from "../../../history";
@@ -19,7 +20,7 @@ import { ChevronDown, Trash2, Edit } from "react-feather";
 import "../../../assets/scss/plugins/tables/_agGridStyleOverride.scss";
 import Breadcrumbs from "../../../components/@vuexy/breadCrumbs/BreadCrumb";
 import { Route } from "react-router-dom";
-import moment from "moment";
+// import moment from "moment";
 
 class MembershipList extends React.Component {
   state = {
@@ -250,7 +251,27 @@ class MembershipList extends React.Component {
           breadCrumbParent="Membership"
           breadCrumbActive="Membership List"
         />
+
         <Card className="overflow-hidden agGrid-card">
+        {/* <Row className="m-2">
+                <Col>
+                  <h1 sm="6" className="float-left">
+                   Membership List
+                  </h1>
+                </Col>
+                <Col className="pt-4">
+                  <Route
+                    render={({ history }) => (
+                      <Button
+                        className=" btn btn-success float-right"
+                        onClick={() => history.push("/app/membership/AddMembership")}
+                      >
+                        Add Membership
+                      </Button>
+                    )}
+                  />
+                </Col>
+              </Row> */}
           <CardBody className="py-0">
             {this.state.rowData === null ? null : (
               <div className="ag-theme-material w-100 my-2 ag-grid-table">

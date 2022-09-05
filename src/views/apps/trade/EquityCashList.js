@@ -243,7 +243,7 @@ class EquityCashList extends React.Component {
         },
       },
       {
-        headerName: "EXpiry Date ",
+        headerName: "Expiry Date ",
         field: "expDate",
         width: 140,
         cellRendererFramework: (params) => {
@@ -339,23 +339,7 @@ class EquityCashList extends React.Component {
           ) : null;
         },
       },
-      // {
-      //   headerName: "T5 Type",
-      //   field: "t5_type",
-      //   filter: true,
-      //   width: 150,
-      //   cellRendererFramework: (params) => {
-      //     return params.value === "true" ? (
-      //       <div className="badge badge-pill badge-success">
-      //         {params.data.t5_type}
-      //       </div>
-      //     ) : params.value === "false" ? (
-      //       <div className="badge badge-pill badge-warning">
-      //         {params.data.t5_type}
-      //       </div>
-      //     ) : null;
-      //   },
-      // },
+    
       {
         headerName: "status ",
         field: "status",
@@ -448,15 +432,16 @@ class EquityCashList extends React.Component {
     let payload = {
       expiryDate: selectedData[0].expiryDate,
       script_type: selectedData[0].script_type,
-      fnoindex_scrpt_name: selectedData[0].fnoindex_scrpt_name,
+      cash_scrpt_name: selectedData[0].cash_scrpt_name,
       call_type: selectedData[0].call_type,
       active_value: selectedData[0].active_value,
+      active_value2: selectedData[0].active_value2,
+   
       T1: selectedData[0].T1,
       T2: selectedData[0].T2,
       T3: selectedData[0].T3,
       T4: selectedData[0].T4,
-      trl: selectedData[0].trl,
-      trl_type: selectedData[0].trl_type,
+      t5: selectedData[0].t5,
       t1_type: selectedData[0].t1_type,
       t2_type: selectedData[0].t2_type,
       t3_type: selectedData[0].t3_type,
@@ -465,7 +450,7 @@ class EquityCashList extends React.Component {
       sl_type: selectedData[0].sl_type,
       no_of_lots: selectedData[0].no_of_lots,
       trade_type: selectedData[0].trade_type,
-      type: selectedData[0].type,
+      type: selectedData["cash"].type,
       status: status,
     };
     await axiosConfig

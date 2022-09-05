@@ -46,7 +46,7 @@ class CashEquityList extends React.Component {
       {
         headerName: "Script Name",
         field: "scriptName",
-        width: 200,
+        width: 400,
         cellRendererFramework: (params) => {
           return (
             <div className="d-flex align-items-center cursor-pointer">
@@ -61,7 +61,7 @@ class CashEquityList extends React.Component {
         headerName: "Status",
         field: "status",
         filter: true,
-        width: 200,
+        width: 250,
         cellRendererFramework: (params) => {
           return params.value === "Active" ? (
             <div className="badge badge-pill badge-success">
@@ -77,7 +77,7 @@ class CashEquityList extends React.Component {
       {
         headerName: "Actions",
         field: "sortorder",
-        width: 200,
+        width: 250,
         // pinned: window.innerWidth > 992 ? "right" : false,
         cellRendererFramework: (params) => {
           return (

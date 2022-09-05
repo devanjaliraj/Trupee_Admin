@@ -48,7 +48,7 @@ class UserAppreciation extends React.Component {
         headerName: "User Name",
         field: "firstname",
         // filter: true,
-        width: 120,
+        width: 200,
         // pinned: window.innerWidth > 992 ? "left" : false,
         cellRendererFramework: (params) => {
           return (
@@ -82,18 +82,7 @@ class UserAppreciation extends React.Component {
           );
         },
       },
-      //   {
-      //     headerName: "Email",
-      //     field: "email",
-      //     width: 180,
-      //     cellRendererFramework: (params) => {
-      //       return (
-      //         <div className="d-flex align-items-center cursor-pointer">
-      //           <span>{params.data.email}</span>
-      //         </div>
-      //       );
-      //     },
-      //   },
+   
 
       {
         headerName: "Donate",
@@ -107,59 +96,7 @@ class UserAppreciation extends React.Component {
           );
         },
       },
-      //   {
-      //     headerName: "City",
-      //     field: "district",
-      //     width: 180,
-      //     cellRendererFramework: (params) => {
-      //       return (
-      //         <div className="d-flex align-items-center cursor-pointer">
-      //           <span>{params.data.district}</span>
-      //         </div>
-      //       );
-      //     },
-      //   },
-      //   {
-      //     headerName: "Start Date",
-      //     field: "district",
-      //     width: 180,
-      //     cellRendererFramework: (params) => {
-      //       return (
-      //         <div className="d-flex align-items-center cursor-pointer">
-      //           <span>{params.data.district}</span>
-      //         </div>
-      //       );
-      //     },
-      //   },
-      //   {
-      //     headerName: "Expiry Date",
-      //     field: "district",
-      //     width: 180,
-      //     cellRendererFramework: (params) => {
-      //       return (
-      //         <div className="d-flex align-items-center cursor-pointer">
-      //           <span>{params.data.district}</span>
-      //         </div>
-      //       );
-      //     },
-      //   },
-      //   // {
-      //   //   headerName: "Status",
-      //   //   field: "userverified",
-      //   //   // filter: true,
-      //   //   width: 150,
-      //   //   cellRendererFramework: (params) => {
-      //   //     return params.value === "Active" ? (
-      //   //       <div className="badge badge-pill badge-success">
-      //   //         {params.data.userverified}
-      //   //       </div>
-      //   //     ) : params.value === "Inactive" ? (
-      //   //       <div className="badge badge-pill badge-warning">
-      //   //         {params.data.userverified}
-      //   //       </div>
-      //   //     ) : null;
-      //   //   },
-      //   // },
+
       {
         headerName: "Actions",
         field: "sortorder",

@@ -1,6 +1,3 @@
-
-
-
 import React, { Component } from "react";
 import {
   Card,
@@ -66,9 +63,9 @@ export default class AddSize extends Component {
                   Home
                 </BreadcrumbItem>
                 <BreadcrumbItem href="/app/trade/allTradeList" tag="a">
-                 Trade Notification List
+                All Active Trade List
                 </BreadcrumbItem>
-                <BreadcrumbItem active>Add Trade Notification</BreadcrumbItem>
+                <BreadcrumbItem active>Add All Active Trade </BreadcrumbItem>
               </Breadcrumb>
             </div>
           </Col>
@@ -77,7 +74,7 @@ export default class AddSize extends Component {
           <Row className="m-2">
             <Col>
               <h1 col-sm-6 className="float-left">
-                Add Trade Notification
+                Add All Active Trade 
               </h1>
             </Col>
             <Col>

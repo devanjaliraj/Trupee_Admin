@@ -29,17 +29,13 @@ export class AddFnoIndex extends Component {
       qty: "",
       investment_amt: "",
       no_of_lots: "",
-      // pl_type: "",
-      // profit_loss_amt: "",
       trade_type: "",
       t5: "",
       type: "Index",
-      // expiryDate: "",
       state: "",
       cstmMsg: "",
     };
     this.state = {
-      // scriptT: [],
       scriptN: [],
       expdateI: [],
     };
@@ -132,22 +128,7 @@ export class AddFnoIndex extends Component {
                     onChange={this.changeHandler}
                   />
                 </Col> */}
-                <Col lg="6" md="6" sm="6" className="mb-2">
-                  <Label>Expiry Date</Label>
-                  <CustomInput
-                    type="select"
-                    name="expiryDate"
-                    value={this.state.expDate}
-                    onChange={this.changeHandler}
-                  >
-                    <option>Expiry Date</option>
-                    {this.state.expdateI?.map((allExpDate) => (
-                      <option value={allExpDate?._id} key={allExpDate?._id}>
-                        {allExpDate?.expDate}
-                      </option>
-                    ))}
-                  </CustomInput>
-                </Col>
+    
                 <Col lg="6" md="6" sm="6" className="mb-2">
                   <Label>Script Name</Label>
                   <CustomInput
@@ -160,6 +141,22 @@ export class AddFnoIndex extends Component {
                     {this.state.scriptN?.map((allScript) => (
                       <option value={allScript?._id} key={allScript?._id}>
                         {allScript?.scriptName}
+                      </option>
+                    ))}
+                  </CustomInput>
+                </Col>
+                <Col lg="6" md="6" sm="6" className="mb-2">
+                  <Label>Expiry Date</Label>
+                  <CustomInput
+                    type="select"
+                    name="expiryDate"
+                    value={this.state.expiryDate}
+                    onChange={this.changeHandler}
+                  >
+                    <option>Expiry Date</option>
+                    {this.state.expdateI?.map((allExpDate) => (
+                      <option value={allExpDate?._id} key={allExpDate?._id}>
+                        {allExpDate?.expDate}
                       </option>
                     ))}
                   </CustomInput>
@@ -229,7 +226,7 @@ export class AddFnoIndex extends Component {
                 </Col>
 
                 <Col lg="6" md="6" className="mb-2">
-                  <Label>T5</Label>
+                  <Label>Range Value</Label>
                   <Input
                     name="t5"
                     type="text"
@@ -279,9 +276,9 @@ export class AddFnoIndex extends Component {
                     value={this.state.cstmMsg}
                     onChange={this.changeHandler}
                   />
-                  <span>
+                  {/* <span>
                     <b> We will type 210+ Keep booking or trailing stop loss</b>
-                  </span>
+                  </span> */}
                 </Col>
               </Row>
               <Row>

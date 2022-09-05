@@ -48,7 +48,7 @@ class MemberShipContent extends React.Component {
         headerName: "Title ",
         field: "title",
         filter: true,
-        width: 200,
+        width: 250,
         cellRendererFramework: (params) => {
           return (
             <div>
@@ -61,7 +61,7 @@ class MemberShipContent extends React.Component {
         headerName: "Description ",
         field: "desc",
         filter: true,
-        width: 200,
+        width: 400,
         cellRendererFramework: (params) => {
           return (
             <div>
@@ -74,7 +74,7 @@ class MemberShipContent extends React.Component {
         headerName: "Actions",
         field: "sortorder",
         // field: "transactions",
-        width: 150,
+        width: 250,
         cellRendererFramework: (params) => {
           return (
             <div className="actions cursor-pointer">

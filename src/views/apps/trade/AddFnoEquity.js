@@ -129,22 +129,7 @@ export class AddFnoEquity extends Component {
           <CardBody>
             <Form className="m-1" onSubmit={this.submitHandler}>
               <Row className="mb-2">
-                <Col lg="6" md="6" sm="6" className="mb-2">
-                  <Label>Expiry Date</Label>
-                  <CustomInput
-                    type="select"
-                    name="expiryDate"
-                    value={this.state.expDate}
-                    onChange={this.changeHandler}
-                  >
-                    <option>Expiry Date</option>
-                    {this.state.expdateI?.map((allExpDate) => (
-                      <option value={allExpDate?._id} key={allExpDate?._id}>
-                        {allExpDate?.expDate}
-                      </option>
-                    ))}
-                  </CustomInput>
-                </Col>
+              
                 <Col lg="6" md="6" sm="6" className="mb-2">
                   <Label>Script Name</Label>
                   <CustomInput
@@ -157,6 +142,22 @@ export class AddFnoEquity extends Component {
                     {this.state.scriptN?.map((allScript) => (
                       <option value={allScript?._id} key={allScript?._id}>
                         {allScript?.scriptName}
+                      </option>
+                    ))}
+                  </CustomInput>
+                </Col>
+                <Col lg="6" md="6" sm="6" className="mb-2">
+                  <Label>Expiry Date</Label>
+                  <CustomInput
+                    type="select"
+                    name="expiryDate"
+                    value={this.state.expiryDate}
+                    onChange={this.changeHandler}
+                  >
+                    <option>Expiry Date</option>
+                    {this.state.expdateI?.map((allExpDate) => (
+                      <option value={allExpDate?._id} key={allExpDate?._id}>
+                        {allExpDate?.expDate}
                       </option>
                     ))}
                   </CustomInput>
@@ -327,9 +328,9 @@ export class AddFnoEquity extends Component {
                     value={this.state.cstmMsg}
                     onChange={this.changeHandler}
                   />
-                  <span>
+                  {/* <span>
                     <b> We will type 210+ Keep booking or trailing stop loss</b>
-                  </span>
+                  </span> */}
                 </Col>
               </Row>
               <Row>

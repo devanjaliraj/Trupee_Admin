@@ -2,55 +2,35 @@ import React, { Component } from "react";
 import {
   Card,
   CardBody,
+  Row,
   Col,
   Form,
-  Row,
-  Input,
   Label,
+  Input,
   Button,
-  // FormGroup,
-  // CustomInput,
+  Breadcrumb,
+  BreadcrumbItem,
 } from "reactstrap";
-import { Route } from "react-router-dom";
-import Select from "react-select";
-// import { history } from "../../../history";
-// import axiosConfig from "../../../../axiosConfig";
-// import swal from "sweetalert";
 import axiosConfig from "../../../axiosConfig";
+import swal from "sweetalert";
+import { Route } from "react-router-dom";
 
-const dealerName = [];
-
-export class PackagePlan extends Component {
+export default class AddMembership extends Component {
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = {
+      pack_name: "",
+      mrp_price: "",
+      desc: "",
+      des_price: "",
+     
+      status: "",
+      
+   
+    };
   }
-
-  async componentDidMount() {
-    axiosConfig
-      .get("/dealer/alldealers")
-      .then((response) => {
-        console.log(response);
-        //this.setState({ dealerN: response.data.data });
-
-        // eslint-disable-next-line no-unused-expressions
-        response.data?.data?.map((dealerp) => {
-          let obj = {
-            label: dealerp.dealer_name,
-            value: dealerp._id,
-          };
-          dealerName.push(obj);
-        });
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  }
-
-  handleChange = (dealer) => {
-    this.setState({ dealer }, () =>
-      console.log(`Option selected:`, this.state.dealer)
-    );
+  changeHandler1 = (e) => {
+    this.setState({ status: e.target.value });
   };
 
   changeHandler = (e) => {
@@ -60,32 +40,44 @@ export class PackagePlan extends Component {
     e.preventDefault();
 
     axiosConfig
-      .post(
-        "/admin/addnotification",
-        this.state
-        // {
-        //   headers: {
-        //     "auth-adtoken": localStorage.getItem("auth-adtoken"),
-        //   },
-        // }
-      )
+      .post("/addPlan", this.state, {
+        // headers: {
+        //   "auth-adtoken": localStorage.getItem("auth-adtoken"),
+        // },
+      })
       .then((response) => {
         console.log(response);
-        // swal("Success!", "Submitted SuccessFull!", "success");
-        this.props.history.push("/app/users/usersList");
+        swal("Success!", "Submitted SuccessFull!", "success");
+        this.props.history.push("/app/package/PackagePlanList");
       })
       .catch((error) => {
         console.log(error);
       });
   };
+
   render() {
     return (
       <div>
+        <Row>
+          <Col sm="12">
+            <div>
+              <Breadcrumb listTag="div">
+                <BreadcrumbItem href="/analyticsDashboard" tag="a">
+                  Home
+                </BreadcrumbItem>
+                <BreadcrumbItem href="/app/package/PackagePlanList" tag="a">
+                Membership List
+                </BreadcrumbItem>
+                <BreadcrumbItem active>Add Membership</BreadcrumbItem>
+              </Breadcrumb>
+            </div>
+          </Col>
+        </Row>
         <Card>
           <Row className="m-2">
             <Col>
               <h1 col-sm-6 className="float-left">
-                Add Membership Plan
+                Add Membership
               </h1>
             </Col>
             <Col>
@@ -93,7 +85,7 @@ export class PackagePlan extends Component {
                 render={({ history }) => (
                   <Button
                     className=" btn btn-danger float-right"
-                    onClick={() => history.push("app/package/PackagePlanList")}
+                    onClick={() => history.push("/app/package/PackagePlanList")}
                   >
                     Back
                   </Button>
@@ -103,10 +95,29 @@ export class PackagePlan extends Component {
           </Row>
           <CardBody>
             <Form className="m-1" onSubmit={this.submitHandler}>
-              <Row className="mb-2">
+            <Row className="mb-2">
+                {/* <Col lg="6" md="6" className="mb-2">
+                  <Label>User ID</Label>
+                  <Input
+                    type="text"
+                    placeholder="Enter User Id"
+                    // name="desc"{
+  
+    
+
+                    // value={this.state.desc}
+                    // onChange={this.changeHandler}
+                  />
+                </Col> */}
                 <Col lg="6" md="6" className="mb-2">
                   <Label for="exampleSelect">Package Plan</Label>
-                  <Input id="exampleSelect" name="select" type="select">
+                  <Input
+                    id="exampleSelect"
+                    name="pack_name"
+                    type="select"
+                    value={this.state.pack_name}
+                    onChange={this.changeHandler}
+                  >
                     <option>Select Plan</option>
                     <option>FREE PLAN</option>
                     <option>1 Month</option>
@@ -120,10 +131,9 @@ export class PackagePlan extends Component {
                   <Input
                     type="text"
                     placeholder="Enter MRP Price"
-
-                    // name="desc"
-                    // value={this.state.desc}
-                    // onChange={this.changeHandler}
+                    name="mrp_price"
+                    value={this.state.mrp_price}
+                    onChange={this.changeHandler}
                   />
                 </Col>
                 <Col lg="6" md="6" className="mb-2">
@@ -131,21 +141,56 @@ export class PackagePlan extends Component {
                   <Input
                     type="text"
                     placeholder="Enter Discount Price"
-
-                    // name="desc"
-                    // value={this.state.desc}
-                    // onChange={this.changeHandler}
+                    name="des_price"
+                    value={this.state.des_price}
+                    onChange={this.changeHandler}
                   />
+                </Col>{" "}
+                <Col lg="6" md="6" className="mb-2">
+                  <Label>Discount </Label>
+                  <Input
+                    type="text"
+                    placeholder="Enter Discount "
+                    name="desc"
+                    value={this.state.desc}
+                    onChange={this.changeHandler}
+                  />
+                </Col>{" "}
+                <Col lg="6" md="6" sm="6" className="mb-2 mt-1">
+                  <Label className="mb-1">Status</Label>
+                  <div
+                    className="form-label-group"
+                    onChange={(e) => this.changeHandler1(e)}
+                  >
+                    <input
+                      style={{ marginRight: "3px" }}
+                      type="radio"
+                      name="status"
+                      value="Active"
+                    />
+                    <span style={{ marginRight: "20px" }}>Active</span>
+
+                    <input
+                      style={{ marginRight: "3px" }}
+                      type="radio"
+                      name="status"
+                      value="Inactive"
+                    />
+
+                    <span style={{ marginRight: "3px" }}>Inactive</span>
+                  </div>
                 </Col>
               </Row>
               <Row>
-                <Button.Ripple
-                  className="mr-1 mb-1"
-                  type="submit"
-                  color="primary"
-                >
-                  Add Membership Plan
-                </Button.Ripple>
+                <Col lg="6" md="6" sm="6" className="mb-2">
+                  <Button.Ripple
+                    color="primary"
+                    type="submit"
+                    className="mr-1 mb-1"
+                  >
+                    Add
+                  </Button.Ripple>
+                </Col>
               </Row>
             </Form>
           </CardBody>
@@ -154,4 +199,3 @@ export class PackagePlan extends Component {
     );
   }
 }
-export default PackagePlan;
