@@ -227,9 +227,49 @@ export class AddFnoIndex extends Component {
                     onChange={this.changeHandler}
                   />
                 </Col>
+                {/* <Col lg="6" md="6" className="mb-2">
+                  <Label>Tiral</Label>
+                  <Input
+                    name="trl"
+                    type="text"
+                    placeholder="Enter Tiral "
+                    value={this.state.t5}
+                    onChange={this.changeHandler}
+                  />
+                </Col>
+                <Col lg="6" md="6" className="mb-2">
+                  <Label>T1</Label>
+                  <Input
+                    name="FT1"
+                    type="text"
+                    placeholder="Enter T1 "
+                    value={this.state.FT1}
+                    onChange={this.changeHandler}
+                  />
+                </Col>
+                <Col lg="6" md="6" className="mb-2">
+                  <Label>T2</Label>
+                  <Input
+                    name="FT1"
+                    type="text"
+                    placeholder="Enter T2 "
+                    value={this.state.FT2}
+                    onChange={this.changeHandler}
+                  />
+                </Col>
+                <Col lg="6" md="6" className="mb-2">
+                  <Label>T3</Label>
+                  <Input
+                    name="FT3"
+                    type="text"
+                    placeholder="Enter T3 "
+                    value={this.state.FT3}
+                    onChange={this.changeHandler}
+                  />
+                </Col> */}
 
                 <Col lg="6" md="6" className="mb-2">
-                  <Label>Range Value</Label>
+                  <Label>Achieved Target+</Label>
                   <Input
                     name="t5"
                     type="text"

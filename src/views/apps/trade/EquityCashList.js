@@ -97,7 +97,7 @@ class EquityCashList extends React.Component {
         },
       },
       {
-        headerName: "Active Value 2",
+        headerName: "Range value",
         field: "active_value2",
         width: 140,
         cellRendererFramework: (params) => {
@@ -170,7 +170,7 @@ class EquityCashList extends React.Component {
         },
       },
       {
-        headerName: "T5",
+        headerName: "Achieved Target+",
         field: "t5",
         width: 140,
         cellRendererFramework: (params) => {

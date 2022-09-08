@@ -127,14 +127,14 @@ const navigationConfig = [
     permissions: ["admin", "editor"],
     navLink: "/app/package/packagePlanList",
   },
-  {
-    id: "memberShipContent",
-    title: "Membership Content ",
-    type: "item",
-    icon: <Icon.ArrowRight size={12} />,
-    permissions: ["admin", "editor"],
-    navLink: "/app/membercontent/memberShipContent",
-  },
+  // {
+  //   id: "memberShipContent",
+  //   title: "Membership Content ",
+  //   type: "item",
+  //   icon: <Icon.ArrowRight size={12} />,
+  //   permissions: ["admin", "editor"],
+  //   navLink: "/app/membercontent/memberShipContent",
+  // },
 
   {
     type: "groupHeader",

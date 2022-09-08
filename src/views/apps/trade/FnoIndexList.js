@@ -373,21 +373,39 @@ class FnoIndexList extends React.Component {
       //     ) : null;
       //   },
       // },
+
+
+
       {
         headerName: "status ",
         field: "status",
         filter: true,
         width: 150,
+
         cellRendererFramework: (params) => {
-          return params.value === "Active" ? (
+         
+          // return params.value === "Active" ? (
+
+          //   <div className="badge badge-pill badge-success">
+          //     {params.data.status}
+          //   </div>
+          // ) : params.value === "NA" ? (
+          //   <div className="badge badge-pill badge-danger">
+          //     {params.data.status}
+          //   </div>
+          // ) : null;
+
+          return (params?.data?.FT1_type == "true" || params?.data?.FT2_type == "true" || params?.data?.FT3_type == "true" || params?.data?.FT5_type == "true" || params?.data?.trl_type == "true" ? (
             <div className="badge badge-pill badge-success">
               {params.data.status}
             </div>
-          ) : params.value === "Deactive" ? (
-            <div className="badge badge-pill badge-warning">
+          ) : params?.data?.sl_type == "true" ? (
+            <div className="badge badge-pill badge-danger">
               {params.data.status}
             </div>
-          ) : null;
+          ) : (<div className="badge badge-pill badge-secondary">
+                {params.data.status}
+              </div>));
         },
       },
       {

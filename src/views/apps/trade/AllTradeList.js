@@ -374,6 +374,33 @@ class AllTradeList extends React.Component {
         },
       },
       {
+        headerName: "status ",
+        field: "tradeStatus",
+        filter: true,
+        width: 150,
+        cellRendererFramework: (params) => {
+          // return params.value === "Closed" ? (
+          //   <div className="badge badge-pill badge-success">
+          //     {params.data.tradeStatus}
+          //   </div>
+          // ) : params.value === "Closed" ? (
+          //   <div className="badge badge-pill badge-danger">
+          //     {params.data.tradeStatus}
+          //   </div>
+          // ) : null;
+
+          return (params?.data?.t1_type == "true" || params?.data?.t2_type == "true" || params?.data?.t3_type == "true" || params?.data?.t4_type == "true" || params?.data?.trl_type == "true" || params?.data?.t5_type == "true"? (
+            <div className="badge badge-pill badge-success">
+              {params?.data?.tradeStatus}
+            </div>
+          ) : params?.data?.sl_type == "true" ? (
+            <div className="badge badge-pill badge-danger">
+              {params?.data?.tradeStatus}
+            </div>
+          ) : null);
+        },
+      },
+      {
         headerName: "Actions",
         field: "sortorder",
         // field: "transactions",

@@ -210,7 +210,7 @@ export class AddFnoEquity extends Component {
                   />
                 </Col>
                 <Col lg="6" md="6" className="mb-2">
-                  <Label>Max. Value Price</Label>
+                  <Label>Range Value</Label>
                   <Input
                     type="number"
                     placeholder="Enter Max. Value Price"
@@ -270,7 +270,7 @@ export class AddFnoEquity extends Component {
                   />
                 </Col>
                 <Col lg="6" md="6" className="mb-2">
-                  <Label>T5</Label>
+                  <Label>Achieved Target+</Label>
                   <Input
                     type="text"
                     placeholder="Enter Target 5"

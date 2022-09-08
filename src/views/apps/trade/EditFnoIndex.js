@@ -307,7 +307,7 @@ class EditFnoIndex extends React.Component {
                   />
                 </Col>
                 <Col lg="6" md="6" className="mb-2">
-                  <Label>Range Value</Label>
+                  <Label>Achieved Target+</Label>
                   <Input
                     type="text"
                     placeholder="Enter Target 5"
@@ -337,7 +337,7 @@ class EditFnoIndex extends React.Component {
                   />
                 </Col>
                 <Col lg="6" md="6" className="mb-2">
-                  <Label>Achieved Target+</Label>
+                  <Label>TRAIL</Label>
                   <Input
                     type="number"
                     placeholder="Enter TRAIL"
