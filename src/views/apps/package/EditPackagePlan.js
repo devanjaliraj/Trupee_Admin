@@ -130,7 +130,7 @@ export default class EditPackagePlan extends Component {
                     onChange={this.changeHandler}
                   >
                     <option>Select Plan</option>
-                    <option>FREE PLAN</option>
+                    <option>FREE</option>
                     <option>1 Month</option>
                     <option>3 Month</option>
                     <option>6 Month</option>

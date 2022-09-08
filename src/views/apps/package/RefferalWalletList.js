@@ -16,11 +16,11 @@ import axiosConfig from "../../../axiosConfig";
 // import { history } from "../../../history";
 import { AgGridReact } from "ag-grid-react";
 import { ContextLayout } from "../../../utility/context/Layout";
-import { ChevronDown, Trash2, Edit } from "react-feather";
+import { ChevronDown, Trash2 } from "react-feather";
 import "../../../assets/scss/plugins/tables/_agGridStyleOverride.scss";
 // import Breadcrumbs from "../../../components/@vuexy/breadCrumbs/BreadCrumb";
-import { Route } from "react-router-dom";
-import moment from "moment";
+// import { Route } from "react-router-dom";
+// import moment from "moment";
 
 class RefferalWalletList extends React.Component {
   state = {
