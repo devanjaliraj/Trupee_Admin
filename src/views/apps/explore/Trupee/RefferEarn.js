@@ -278,7 +278,7 @@ class RefferEarn extends React.Component {
             <Row className="m-2">
               <Col>
                 <h1 col-sm-6 className="float-left">
-                 Refferal Wallet List
+                 Refferal&Earn List
                 </h1>
               </Col>
             </Row>

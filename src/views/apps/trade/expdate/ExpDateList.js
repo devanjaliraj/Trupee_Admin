@@ -48,6 +48,7 @@ class ExpDateList extends React.Component {
         cellRendererFramework: (params) => {
           return (
             <div className="d-flex align-items-center cursor-pointer">
+              
               <span>
                 {params.data.expDate} 
               </span>

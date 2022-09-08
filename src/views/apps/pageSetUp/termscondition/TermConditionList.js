@@ -35,9 +35,19 @@ class termscondition extends React.Component {
     },
     columnDefs: [
       {
+        headerName: "S.No",
+        valueGetter: "node.rowIndex + 1",
+        field: "node.rowIndex + 1",
+        width: 100,
+        filter: true,
+        // checkboxSelection: true,
+        // headerCheckboxSelectionFilteredOnly: true,
+        // headerCheckboxSelection: true,
+      },
+      {
         headerName: "Descriptions",
         field: "desc",
-        width: 800,
+        width: 600,
         cellRendererFramework: (params) => {
           return (
             <div className="d-flex align-items-center cursor-pointer">
@@ -67,7 +77,7 @@ class termscondition extends React.Component {
       {
         headerName: "Actions",
         field: "sortorder",
-        width: 100,
+        width: 200,
         cellRendererFramework: (params) => {
           return (
             <div className="actions cursor-pointer">

@@ -5,7 +5,6 @@ const navigationConfig = [
     id: "dashboard",
     title: "DASHBOARD",
     type: "item",
-    // icon: <Icon.Circle size={12} />,
     permissions: ["admin", "editor"],
     navLink: "/",
   },
@@ -58,30 +57,7 @@ const navigationConfig = [
     permissions: ["admin", "editor"],
     navLink: "/app/trade/fnoIndexList",
   },
-  // {
-  //   id: "trade",
-  //   title: "FNO INDEX",
-  //   type: "collapse",
-  //   icon: <Icon.ArrowRight size={12} />,
-  //   children: [
-  //     {
-  //       id: "niftyList",
-  //       title: "NIFTY50",
-  //       type: "item",
-  //       icon: <Icon.Circle size={12} />,
-  //       permissions: ["admin", "editor"],
-  //       navLink: "/app/trade/niftyList",
-  //     },
-  //     {
-  //       id: "bankNiftyList",
-  //       title: "BANK NIFTY",
-  //       type: "item",
-  //       icon: <Icon.Circle size={12} />,
-  //       permissions: ["admin", "editor"],
-  //       navLink: "/app/trade/bankNiftyList",
-  //     },
-  //   ],
-  // },
+
   {
     id: "fnoEquityList",
     title: "FNO OPTIONS",
@@ -127,14 +103,7 @@ const navigationConfig = [
     permissions: ["admin", "editor"],
     navLink: "/app/package/packagePlanList",
   },
-  // {
-  //   id: "memberShipContent",
-  //   title: "Membership Content ",
-  //   type: "item",
-  //   icon: <Icon.ArrowRight size={12} />,
-  //   permissions: ["admin", "editor"],
-  //   navLink: "/app/membercontent/memberShipContent",
-  // },
+  
 
   {
     type: "groupHeader",
@@ -202,6 +171,30 @@ const navigationConfig = [
     icon: <Icon.ArrowRight size={12} />,
     permissions: ["admin", "editor"],
     navLink: "/app/faq/faqList",
+  },
+  {
+    id: "aboutus",
+    title: "About Us ",
+    type: "item",
+    icon: <Icon.ArrowRight size={12} />,
+    permissions: ["admin", "editor"],
+    navLink: "/app/pageSetUP/about/AllaboutUs",
+  },
+  // {
+  //   id: "helpUs",
+  //   title: "Help Us",
+  //   type: "item",
+  //   icon: <Icon.ArrowRight size={12} />,
+  //   permissions: ["admin", "editor"],
+  //   navLink: "/app/pageSetUP/helpUs/HelpUs",
+  // },
+  {
+    id: "TermConditionList",
+    title: "Term And Condition ",
+    type: "item",
+    icon: <Icon.ArrowRight size={12} />,
+    permissions: ["admin", "editor"],
+    navLink: "/app/pageSetUP/termscondition/TermConditionList",
   },
   // {
   //   id: "refferalWalletList",
@@ -282,7 +275,11 @@ const navigationConfig = [
     navLink: "/app/explore/Trupee/tradingViewCharts",
   },
 
-  {
+ 
+
+  
+ 
+ {
     type: "groupHeader",
     groupTitle: "Profile Page",
   },
@@ -292,7 +289,6 @@ const navigationConfig = [
     type: "item",
     icon: <Icon.ArrowRight size={12} />,
     permissions: ["admin", "editor"],
-    // navLink: "/app/package/nonActivePlanList",
     navLink: "/pages/profile",
   },
 
@@ -321,264 +317,13 @@ const navigationConfig = [
     permissions: ["admin", "editor"],
     navLink: "/app/showAppre/userAppreciation",
   },
+   
   {
-    id: "TermConditionList",
+    id: "login",
     title: "Logout ",
     type: "item",
-    // icon: <Icon.ArrowRight size={12} />,
-
     permissions: ["admin", "editor"],
     navLink: "/pages/login",
   },
-  // {
-  //   id: "packagePlanList",
-  //   title: "Active Members ",
-  //   type: "item",
-  //   icon: <Icon.ArrowRight size={12} />,
-  //   permissions: ["admin", "editor"],
-  //   navLink: "/app/package/packagePlanList",
-  // },
-
-  // {
-  //   id: "packagePlanList",
-  //   title: "Active Members ",
-  //   type: "item",
-  //   icon: <Icon.ArrowRight size={12} />,
-  //   permissions: ["admin", "editor"],
-  //   navLink: "/app/package/packagePlanList",
-  // },
-
-  // {
-  //   type: "groupHeader",
-  //   groupTitle: "Component",
-  // },
-  // {
-  //   id: "users",
-  //   title: "Users ",
-  //   type: "collapse",
-  //   icon: <Icon.User size={12} />,
-  //   children: [
-  //     {
-  //       id: "usersList",
-  //       title: "Users List",
-  //       type: "item",
-  //       icon: <Icon.Circle size={12} />,
-  //       permissions: ["admin", "editor"],
-  //       navLink: "/app/users/usersList",
-  //     },
-  //   ],
-  // },
-  // {
-  //   id: "script",
-  //   title: "Script ",
-  //   type: "collapse",
-  //   icon: <Icon.User size={12} />,
-  //   children: [
-  //     {
-  //       id: "scriptList",
-  //       title: "Script List",
-  //       type: "item",
-  //       icon: <Icon.Circle size={12} />,
-  //       permissions: ["admin", "editor"],
-  //       navLink: "/app/script/scriptList",
-  //     },
-  //   ],
-  // },
-  // {
-  //   id: "trade",
-  //   title: "Trade",
-  //   type: "collapse",
-  //   icon: <Icon.Users size={12} />,
-  //   children: [
-  //     {
-  //       id: "allTradeList",
-  //       title: "All Trade",
-  //       type: "item",
-  //       icon: <Icon.Circle size={12} />,
-  //       permissions: ["admin", "editor"],
-  //       navLink: "/app/trade/allTradeList",
-  //     },
-  //     {
-  //       id: "fnoIndexList",
-  //       title: "FNO Index",
-  //       type: "item",
-  //       icon: <Icon.Circle size={12} />,
-  //       permissions: ["admin", "editor"],
-  //       navLink: "/app/trade/fnoIndexList",
-  //     },
-  //     {
-  //       id: "fnoEquityList",
-  //       title: "FNO Equity",
-  //       type: "item",
-  //       icon: <Icon.Circle size={12} />,
-  //       permissions: ["admin", "editor"],
-  //       navLink: "/app/trade/fnoEquityList",
-  //     },
-  //     {
-  //       id: "equityCashList",
-  //       title: "Equity Cash",
-  //       type: "item",
-  //       icon: <Icon.Circle size={12} />,
-  //       permissions: ["admin", "editor"],
-  //       navLink: "/app/trade/equityCashList",
-  //     },
-  // {
-  //   id: "niftyList",
-  //   title: "NIFTY",
-  //   type: "item",
-  //   icon: <Icon.Circle size={12} />,
-  //   permissions: ["admin", "editor"],
-  //   navLink: "/app/trade/niftyList",
-  // },
-  // {
-  //   id: "bankNiftyList",
-  //   title: "BANK NIFTY",
-  //   type: "item",
-  //   icon: <Icon.Circle size={12} />,
-  //   permissions: ["admin", "editor"],
-  //   navLink: "/app/trade/bankNiftyList",
-  // },
-  //   ],
-  // },
-  // {
-  //   id: "packagePlanList",
-  //   title: "Membership Plan",
-  //   type: "item",
-  //   icon: <Icon.User size={12} />,
-  //   permissions: ["admin", "editor"],
-  //   navLink: "/app/package/packagePlanList",
-  // },
-  // {
-  //   id: "paidServeiceList",
-  //   title: "Premium Services",
-  //   type: "item",
-  //   icon: <Icon.User size={12} />,
-  //   permissions: ["admin", "editor"],
-  //   navLink: "/app/premium/paidServeiceList",
-  // },
-  // {
-  //   id: "memberShipContent",
-  //   title: "Membership Content",
-  //   type: "item",
-  //   icon: <Icon.User size={12} />,
-  //   permissions: ["admin", "editor"],
-  //   navLink: "/app/membercontent/memberShipContent",
-  // },
-  // {
-  //   id: "faqList",
-  //   title: "FAQ",
-  //   type: "item",
-  //   icon: <Icon.User size={12} />,
-  //   permissions: ["admin", "editor"],
-  //   navLink: "/app/faq/faqList",
-  // },
-  // {
-  //   id: "discountList",
-  //   title: "Discount Code List",
-  //   type: "item",
-  //   icon: <Icon.User size={12} />,
-  //   permissions: ["admin", "editor"],
-  //   navLink: "/app/discount/discountList",
-  // },
-  // {
-  //   id: "notification",
-  //   title: "Notification",
-  //   type: "collapse",
-  //   icon: <Icon.User size={12} />,
-  //   children: [
-  //     {
-  //       id: "notificationList",
-  //       title: "Notification List ",
-  //       type: "item",
-  //       icon: <Icon.Circle size={12} />,
-  //       permissions: ["admin", "editor"],
-  //       navLink: "/app/notification/notificationList",
-  //     },
-  //   ],
-  // },
-
-  // {
-  //   id: "subplan",
-  //   title: "Subscription ",
-  //   type: "collapse",
-  //   icon: <Icon.User size={12} />,
-  //   children: [
-  //     {
-  //       id: "SubPlanVideos",
-  //       title: "Plan Video ",
-  //       type: "item",
-  //       icon: <Icon.Circle size={12} />,
-  //       permissions: ["admin", "editor"],
-  //       navLink: "/app/subplan/SubPlanVideos",
-  //     },
-  //   ],
-  // },
-  // {
-  //   id: "userNotification",
-  //   title: "User Notification List ",
-  //   type: "item",
-  //   icon: <Icon.User size={12} />,
-  //   permissions: ["admin", "editor"],
-  //   navLink: "/app/userNotif/userNotification",
-  // },
-  // {
-  //   id: "showAppreciation",
-  //   title: "Show Appreciation List ",
-  //   type: "item",
-  //   icon: <Icon.Circle size={12} />,
-  //   permissions: ["admin", "editor"],
-  //   navLink: "/app/showAppre/showAppreciation",
-  // },
-  // {
-  //   id: "userAppreciation",
-  //   title: "User Appreciation List ",
-  //   type: "item",
-  //   icon: <Icon.User size={12} />,
-  //   permissions: ["admin", "editor"],
-  //   navLink: "/app/showAppre/userAppreciation",
-  // },
-  // {
-  //   id: "feedbackList",
-  //   title: "Feedback List ",
-  //   type: "item",
-  //   icon: <Icon.User size={12} />,
-
-  //   permissions: ["admin", "editor"],
-  //   navLink: "/app/feedback/feedbackList",
-  // },
-  // {
-  //   id: "pageSetUP",
-  //   title: "Page SetUp",
-  //   type: "collapse",
-  //   icon: <Icon.User size={12} />,
-  //   children: [
-  //     {
-  //       id: "aboutus",
-  //       title: "About Us ",
-  //       type: "item",
-  //       icon: <Icon.User size={12} />,
-  //       permissions: ["admin", "editor"],
-  //       navLink: "/app/pageSetUP/about/AllaboutUs",
-  //     },
-  //     {
-  //       id: "helpUs",
-  //       title: "Help Us",
-  //       type: "item",
-  //       icon: <Icon.User size={12} />,
-  //       permissions: ["admin", "editor"],
-  //       navLink: "/app/pageSetUP/helpUs/HelpUs",
-  //     },
-
-  //     {
-  //       id: "TermConditionList",
-  //       title: "Term And Condition ",
-  //       type: "item",
-  //       icon: <Icon.User size={12} />,
-  //       permissions: ["admin", "editor"],
-  //       navLink: "/app/pageSetUP/termscondition/TermConditionList",
-  //     },
-
-  //   ],
-  // },
 ];
 export default navigationConfig;
