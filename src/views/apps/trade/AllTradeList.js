@@ -306,6 +306,57 @@ class AllTradeList extends React.Component {
         },
       },
       {
+        headerName: "FT1 Type",
+        field: "FT1_type",
+        filter: true,
+        width: 150,
+        cellRendererFramework: (params) => {
+          return params.value === "true" ? (
+            <div className="badge badge-pill badge-success">
+              {params.data.FT1_type}
+            </div>
+          ) : params.value === "false" ? (
+            <div className="badge badge-pill badge-warning">
+              {params.data.FT1_type}
+            </div>
+          ) : null;
+        },
+      },
+      {
+        headerName: "FT2 Type",
+        field: "FT2_type",
+        filter: true,
+        width: 150,
+        cellRendererFramework: (params) => {
+          return params.value === "true" ? (
+            <div className="badge badge-pill badge-success">
+              {params.data.FT2_type}
+            </div>
+          ) : params.value === "false" ? (
+            <div className="badge badge-pill badge-warning">
+              {params.data.FT2_type}
+            </div>
+          ) : null;
+        },
+      },
+      {
+        headerName: "FT3 Type",
+        field: "FT3_type",
+        filter: true,
+        width: 150,
+        cellRendererFramework: (params) => {
+          return params.value === "true" ? (
+            <div className="badge badge-pill badge-success">
+              {params.data.FT3_type}
+            </div>
+          ) : params.value === "false" ? (
+            <div className="badge badge-pill badge-warning">
+              {params.data.FT3_type}
+            </div>
+          ) : null;
+        },
+      },
+      {
         headerName: "T1 Type",
         field: "t1_type",
         filter: true,
@@ -389,7 +440,7 @@ class AllTradeList extends React.Component {
           //   </div>
           // ) : null;
 
-          return (params?.data?.t1_type == "true" || params?.data?.t2_type == "true" || params?.data?.t3_type == "true" || params?.data?.t4_type == "true" || params?.data?.trl_type == "true" || params?.data?.t5_type == "true"? (
+          return (params?.data?.FT1_type == "true" || params?.data?.FT2_type == "true" || params?.data?.FT3_type == "true" || params?.data?.t1_type == "true"|| params?.data?.t2_type == "true"|| params?.data?.t3_type == "true"|| params?.data?.t4_type == "true" || params?.data?.trl_type == "true" || params?.data?.t5_type == "true"? (
             <div className="badge badge-pill badge-success">
               {params?.data?.tradeStatus}
             </div>

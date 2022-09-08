@@ -203,14 +203,14 @@ const navigationConfig = [
     permissions: ["admin", "editor"],
     navLink: "/app/faq/faqList",
   },
-  {
-    id: "refferalWalletList",
-    title: "Refferal Wallet ",
-    type: "item",
-    icon: <Icon.ArrowRight size={12} />,
-    permissions: ["admin", "editor"],
-    navLink: "/app/package/refferalWalletList",
-  },
+  // {
+  //   id: "refferalWalletList",
+  //   title: "Refferal Wallet ",
+  //   type: "item",
+  //   icon: <Icon.ArrowRight size={12} />,
+  //   permissions: ["admin", "editor"],
+  //   navLink: "/app/package/refferalWalletList",
+  // },
   // {
   //   id: "discountList",
   //   title: "Discount Code List",

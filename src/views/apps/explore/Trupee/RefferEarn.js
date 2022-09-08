@@ -1,23 +1,26 @@
 import React from "react";
 import {
-  Col,
   Row,
   Card,
   CardBody,
   Input,
   Button,
+  Col,
   UncontrolledDropdown,
   DropdownMenu,
   DropdownItem,
   DropdownToggle,
 } from "reactstrap";
-import { Route } from "react-router-dom";
+// import axios from "axios";
+import axiosConfig from "../../../../axiosConfig";
+// import { history } from "../../../history";
 import { AgGridReact } from "ag-grid-react";
 import { ContextLayout } from "../../../../utility/context/Layout";
-import { ChevronDown, Trash2, Edit } from "react-feather";
-import axiosConfig from "../../../../axiosConfig";
+import { ChevronDown, Trash2 } from "react-feather";
 import "../../../../assets/scss/plugins/tables/_agGridStyleOverride.scss";
 // import Breadcrumbs from "../../../components/@vuexy/breadCrumbs/BreadCrumb";
+// import { Route } from "react-router-dom";
+// import moment from "moment";
 
 class RefferEarn extends React.Component {
   state = {
@@ -31,115 +34,162 @@ class RefferEarn extends React.Component {
       resizable: true,
       suppressMenu: true,
     },
-
+  
     columnDefs: [
       {
         headerName: "S.No",
         valueGetter: "node.rowIndex + 1",
         field: "node.rowIndex + 1",
         width: 100,
-        // filter: true,
+        filter: true,
         // checkboxSelection: true,
         // headerCheckboxSelectionFilteredOnly: true,
         // headerCheckboxSelection: true,
       },
       {
-        headerName: "User Name",
-        field: "desc",
-        // filter: true,
+        headerName: "Name",
+        field: "firstname",
         width: 150,
-        // pinned: window.innerWidth > 992 ? "left" : false,
         cellRendererFramework: (params) => {
           return (
             <div className="d-flex align-items-center cursor-pointer">
-              <span>{params.data.desc}</span>
+              <span>
+                {params.data.userid?.firstname} {params.data.userid?.lastname}
+              </span>
             </div>
           );
         },
       },
       {
-        headerName: "Reffer Code",
-        field: "desc",
-        // filter: true,
-        width: 150,
-        // pinned: window.innerWidth > 992 ? "left" : false,
+        headerName: "Mobile",
+        field: "mobile",
+        width: 120,
         cellRendererFramework: (params) => {
           return (
             <div className="d-flex align-items-center cursor-pointer">
-              <span>{params.data.desc}</span>
+              <span>{params.data.userid?.mobile}</span>
+            </div>
+          );
+        },
+      },
+
+      {
+        headerName: "Email ID",
+        field: "email",
+        width: 120,
+        cellRendererFramework: (params) => {
+          return (
+            <div className="d-flex align-items-center cursor-pointer">
+              <span>{params.data.userid?.email}</span>
+            </div>
+          );
+        },
+      },
+
+      {
+        headerName: "Gender",
+        field: "gender",
+        width: 120,
+        cellRendererFramework: (params) => {
+          return (
+            <div className="d-flex align-items-center cursor-pointer">
+              <span>{params.data.userid?.gender}</span>
             </div>
           );
         },
       },
       {
-        headerName: "Affiliate UserName",
-        field: "desc",
-        // filter: true,
-        width: 150,
-        // pinned: window.innerWidth > 992 ? "left" : false,
+        headerName: "Date Of Birth",
+        field: "dob",
+        width: 120,
         cellRendererFramework: (params) => {
           return (
             <div className="d-flex align-items-center cursor-pointer">
-              <span>{params.data.desc}</span>
+              <span>{params.data.userid?.dob}</span>
+            </div>
+          );
+        },
+      },
+         {
+        headerName: "Amount",
+        field: "amount",
+        width: 120,
+        cellRendererFramework: (params) => {
+          return (
+            <div className="d-flex align-items-center cursor-pointer">
+              <span>{params.data.userid?.amount}</span>
             </div>
           );
         },
       },
       {
-        headerName: "Membership Name",
-        field: "desc",
-        // filter: true,
-        width: 150,
-        // pinned: window.innerWidth > 992 ? "left" : false,
+        headerName: "Membership plan",
+        field: "pack_name",
+        width: 120,
         cellRendererFramework: (params) => {
           return (
             <div className="d-flex align-items-center cursor-pointer">
-              <span>{params.data.desc}</span>
+              <span>{params.data.planId?.pack_name}</span>
             </div>
           );
         },
       },
       {
         headerName: "Start Date",
-        field: "desc",
-        // filter: true,
-        width: 150,
-        // pinned: window.innerWidth > 992 ? "left" : false,
+        field: "date",
+        width: 120,
         cellRendererFramework: (params) => {
           return (
             <div className="d-flex align-items-center cursor-pointer">
-              <span>{params.data.desc}</span>
+              {/* <span>{moment(params.data.createdAt).format("ll")} </span> */}
+              <span>{params.data.date}</span>
             </div>
           );
         },
       },
+
       {
         headerName: "Expiry Date",
-        field: "desc",
-        // filter: true,
-        width: 150,
-        // pinned: window.innerWidth > 992 ? "left" : false,
+        field: "expdate",
+        width: 120,
         cellRendererFramework: (params) => {
           return (
             <div className="d-flex align-items-center cursor-pointer">
-              <span>{params.data.desc}</span>
+              <span>{params.data.expdate}</span>
+              {/* <span>{moment(params.data.updatedAt).format("ll")} </span> */}
             </div>
           );
         },
       },
+     
+      {
+        headerName: "Refferal Code",
+        field: "refral_Code",
+        width: 120,
+        cellRendererFramework: (params) => {
+          return (
+            <div className="d-flex align-items-center cursor-pointer">
+              <span>{params.data.refral_Code}</span>
+            </div>
+          );
+        },
+      },
+    
+   
+
       {
         headerName: "Status",
-        field: "completed",
-        // filter: completed,
-        width: 150,
+        field: "status",
+        filter: true,
+        width: 100,
         cellRendererFramework: (params) => {
-          return params.value === "Active" ? (
+          return params.value === "Success" ? (
             <div className="badge badge-pill badge-success">
-              {params.data.completed}
+              {params.data.status}
             </div>
-          ) : params.value === "Inactive" ? (
+          ) : params.value === "Pending" ? (
             <div className="badge badge-pill badge-warning">
-              {params.data.completed}
+              {params.data.status}
             </div>
           ) : null;
         },
@@ -159,10 +209,7 @@ class RefferEarn extends React.Component {
                     size="25px"
                     color="blue"
                     onClick={() =>
-                      history.push(
-                        
-                        `/app/about/EditAboutUs/${params.data._id}`
-                      )
+                      history.push(`/app/script/editScript/${params.data._id}`)
                     }
                   />
                 )}
@@ -184,25 +231,17 @@ class RefferEarn extends React.Component {
       },
     ],
   };
-  componentDidMount() {
-    axiosConfig
-      .get(`/admin/allnotification`)
-      .then((response) => {
-        let rowData = response.data.data;
-        JSON.stringify(rowData);
-        this.setState({ rowData });
-      })
-      .catch((error) => {
-        console.log(error.response);
-      });
+  async componentDidMount() {
+    await axiosConfig.get("/allmembership").then((response) => {
+      let rowData = response.data.data;
+      this.setState({ rowData });
+    });
   }
   async runthisfunction(id) {
     console.log(id);
-    await axiosConfig
-      .get(`/admin/deletenotification/${id}`)
-      .then((response) => {
-        console.log(response);
-      });
+    await axiosConfig.get(`/dlt_membership/${id}`).then((response) => {
+      console.log(response);
+    });
   }
 
   onGridReady = (params) => {
@@ -235,29 +274,27 @@ class RefferEarn extends React.Component {
       <Row className="app-user-list">
         <Col sm="12"></Col>
         <Col sm="12">
-          <Card className="overflow-hidden agGrid-card">
+          <Card>
             <Row className="m-2">
               <Col>
-                <h1 sm="6" className="float-left">
-                  Reffer & Earn List
+                <h1 col-sm-6 className="float-left">
+                 Refferal Wallet List
                 </h1>
               </Col>
-              {/* <Col>
+            </Row>
+            {/* <Col className="pt-4">
               <Route
                 render={({ history }) => (
                   <Button
-                    className=" btn btn-danger float-right"
-                    onClick={() =>
-                      history.push("/app/notification/Addnotification")
-                    }
+                    className=" btn btn-success float-right"
+                    onClick={() => history.push("/app/package/addRefferalWallet")}
                   >
-                    Add Notification
+                    Add Refferal Wallet
                   </Button>
                 )}
               />
             </Col> */}
-            </Row>
-            <CardBody>
+            <CardBody className="py-0">
               {this.state.rowData === null ? null : (
                 <div className="ag-theme-material w-100 my-2 ag-grid-table">
                   <div className="d-flex flex-wrap justify-content-between align-items-center">
@@ -354,3 +391,4 @@ class RefferEarn extends React.Component {
   }
 }
 export default RefferEarn;
+

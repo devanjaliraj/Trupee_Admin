@@ -34,6 +34,43 @@ class RefferalWalletList extends React.Component {
       resizable: true,
       suppressMenu: true,
     },
+    // {
+    //   "_id": "63198fd6f72f743b37b8d342",
+    //   "userid": {
+    //       "_id": "631989855c73b3496d92f343",
+    //       "mobile": 9893805276,
+    //       "userverified": true,
+    //       "refral_Code": "WY0n2D",
+    //       "amount": 0,
+    //       "status": "Active",
+    //       "otp": "123456",
+    //       "createdAt": "2022-09-08T06:19:50.020Z",
+    //       "updatedAt": "2022-09-08T06:53:39.623Z",
+    //       "__v": 0,
+    //       "walletId": "631989855c73b3496d92f343",
+    //       "dob": "1998/07/10",
+    //       "email": "araj@gmail.com",
+    //       "firstname": "Anjali",
+    //       "gender": "Female",
+    //       "lastname": "Raj"
+    //   },
+    //   "date": "2022-09-08",
+    //   "expdate": "2023-09-08",
+    //   "planId": {
+    //       "_id": "62e28f41dea47c1d2b6d95f0",
+    //       "pack_name": "1 Month",
+    //       "mrp_price": 3999,
+    //       "des_price": 1999,
+    //       "status": "Active",
+    //       "desc": "40% Off",
+    //       "createdAt": "2022-07-28T13:29:37.597Z",
+    //       "updatedAt": "2022-08-23T06:34:09.028Z",
+    //       "__v": 0
+    //   },
+    //   "refral_Code": "CYteN0",
+    //   "status": "Success",
+    //   "createdAt": "2022-09-08T06:46:46.885Z",
+    //   "updatedAt": "2022-09-08T06:46:46.885Z",
     columnDefs: [
       {
         headerName: "S.No",
@@ -46,53 +83,147 @@ class RefferalWalletList extends React.Component {
         // headerCheckboxSelection: true,
       },
       {
-        headerName: "Refferal Code",
-        field: "script_name",
-        width: 220,
+        headerName: "Name",
+        field: "firstname",
+        width: 150,
         cellRendererFramework: (params) => {
           return (
             <div className="d-flex align-items-center cursor-pointer">
-              {/* <span>{params.data.script_name}</span> */}
+              <span>
+                {params.data.userid?.firstname} {params.data.userid?.lastname}
+              </span>
             </div>
           );
         },
       },
       {
-        headerName: "MemberShip Plan",
-        field: "script_type",
-        width: 220,
+        headerName: "Mobile",
+        field: "mobile",
+        width: 120,
         cellRendererFramework: (params) => {
           return (
             <div className="d-flex align-items-center cursor-pointer">
-              {/* <span>{params.data.script_type}</span> */}
-            </div>
-          );
-        },
-      },
-      {
-        headerName: "Refferal Amount",
-        field: "script_type",
-        width: 220,
-        cellRendererFramework: (params) => {
-          return (
-            <div className="d-flex align-items-center cursor-pointer">
-              {/* <span>{params.data.script_type}</span> */}
+              <span>{params.data.userid?.mobile}</span>
             </div>
           );
         },
       },
 
       {
+        headerName: "Email ID",
+        field: "email",
+        width: 120,
+        cellRendererFramework: (params) => {
+          return (
+            <div className="d-flex align-items-center cursor-pointer">
+              <span>{params.data.userid?.email}</span>
+            </div>
+          );
+        },
+      },
+
+      {
+        headerName: "Gender",
+        field: "gender",
+        width: 120,
+        cellRendererFramework: (params) => {
+          return (
+            <div className="d-flex align-items-center cursor-pointer">
+              <span>{params.data.userid?.gender}</span>
+            </div>
+          );
+        },
+      },
+      {
+        headerName: "Date Of Birth",
+        field: "dob",
+        width: 120,
+        cellRendererFramework: (params) => {
+          return (
+            <div className="d-flex align-items-center cursor-pointer">
+              <span>{params.data.userid?.dob}</span>
+            </div>
+          );
+        },
+      },
+         {
+        headerName: "Amount",
+        field: "amount",
+        width: 120,
+        cellRendererFramework: (params) => {
+          return (
+            <div className="d-flex align-items-center cursor-pointer">
+              <span>{params.data.userid?.amount}</span>
+            </div>
+          );
+        },
+      },
+      {
+        headerName: "Membership plan",
+        field: "pack_name",
+        width: 120,
+        cellRendererFramework: (params) => {
+          return (
+            <div className="d-flex align-items-center cursor-pointer">
+              <span>{params.data.planId?.pack_name}</span>
+            </div>
+          );
+        },
+      },
+      {
+        headerName: "Start Date",
+        field: "date",
+        width: 120,
+        cellRendererFramework: (params) => {
+          return (
+            <div className="d-flex align-items-center cursor-pointer">
+              {/* <span>{moment(params.data.createdAt).format("ll")} </span> */}
+              <span>{params.data.date}</span>
+            </div>
+          );
+        },
+      },
+
+      {
+        headerName: "Expiry Date",
+        field: "expdate",
+        width: 120,
+        cellRendererFramework: (params) => {
+          return (
+            <div className="d-flex align-items-center cursor-pointer">
+              <span>{params.data.expdate}</span>
+              {/* <span>{moment(params.data.updatedAt).format("ll")} </span> */}
+            </div>
+          );
+        },
+      },
+     
+      {
+        headerName: "Refferal Code",
+        field: "refral_Code",
+        width: 120,
+        cellRendererFramework: (params) => {
+          return (
+            <div className="d-flex align-items-center cursor-pointer">
+              <span>{params.data.refral_Code}</span>
+            </div>
+          );
+        },
+      },
+    
+   
+
+      {
         headerName: "Status",
         field: "status",
         filter: true,
-        width: 220,
+        width: 100,
         cellRendererFramework: (params) => {
-          return params.value === "Active" ? (
+          return params.value === "Success" ? (
             <div className="badge badge-pill badge-success">
               {params.data.status}
             </div>
-          ) : params.value === "Deactive" ? (
+          ) : params.value === "Pending" ? (
             <div className="badge badge-pill badge-warning">
               {params.data.status}
             </div>
@@ -102,12 +233,12 @@ class RefferalWalletList extends React.Component {
       {
         headerName: "Actions",
         field: "sortorder",
-        width: 200,
+        width: 150,
         // pinned: window.innerWidth > 992 ? "right" : false,
         cellRendererFramework: (params) => {
           return (
             <div className="actions cursor-pointer">
-              <Route
+              {/* <Route
                 render={({ history }) => (
                   <Edit
                     className="mr-50"
@@ -118,7 +249,7 @@ class RefferalWalletList extends React.Component {
                     }
                   />
                 )}
-              />
+              /> */}
 
               <Trash2
                 className="mr-50"
@@ -137,14 +268,14 @@ class RefferalWalletList extends React.Component {
     ],
   };
   async componentDidMount() {
-    await axiosConfig.get("/getScript").then((response) => {
+    await axiosConfig.get("/allmembership").then((response) => {
       let rowData = response.data.data;
       this.setState({ rowData });
     });
   }
   async runthisfunction(id) {
     console.log(id);
-    await axiosConfig.get(`/deletescript/${id}`).then((response) => {
+    await axiosConfig.get(`/dlt_membership/${id}`).then((response) => {
       console.log(response);
     });
   }
@@ -187,7 +318,7 @@ class RefferalWalletList extends React.Component {
                 </h1>
               </Col>
             </Row>
-            <Col className="pt-4">
+            {/* <Col className="pt-4">
               <Route
                 render={({ history }) => (
                   <Button
@@ -198,7 +329,7 @@ class RefferalWalletList extends React.Component {
                   </Button>
                 )}
               />
-            </Col>
+            </Col> */}
             <CardBody className="py-0">
               {this.state.rowData === null ? null : (
                 <div className="ag-theme-material w-100 my-2 ag-grid-table">
