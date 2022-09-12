@@ -14,10 +14,10 @@ import {
 import axiosConfig from "../../../../axiosConfig";
 import { AgGridReact } from "ag-grid-react";
 import { ContextLayout } from "../../../../utility/context/Layout";
-import { ChevronDown,   Edit } from "react-feather";
+import { ChevronDown, Trash2,  Edit } from "react-feather";
 import "../../../../assets/scss/plugins/tables/_agGridStyleOverride.scss";
 import { Route } from "react-router-dom";
-import moment from "moment";
+// import moment from "moment";
 
 class ExpDateList extends React.Component {
   state = {
@@ -81,8 +81,7 @@ class ExpDateList extends React.Component {
                   />
                 )}
               />
-
-              {/* <Trash2
+               <Trash2
                 className="mr-50"
                 size="25px"
                 color="red"
@@ -91,7 +90,7 @@ class ExpDateList extends React.Component {
                   this.runthisfunction(params.data._id);
                   this.gridApi.updateRowData({ remove: selectedData });
                 }}
-              /> */}
+              /> 
             </div>
           );
         },
