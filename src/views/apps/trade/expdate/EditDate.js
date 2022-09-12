@@ -14,6 +14,7 @@ import {
 import axiosConfig from "../../../../axiosConfig";
 import swal from "sweetalert";
 import { Route } from "react-router-dom";
+// import moment from "moment";
 
 export default class EditDate extends Component {
   constructor(props) {
@@ -52,7 +53,7 @@ export default class EditDate extends Component {
     e.preventDefault();
     let { id } = this.props.match.params;
     axiosConfig
-      .post(`/editDate/${id}`)
+      .post(`/editDate/${id}`,this.state)
       .then((response) => {
         console.log(response);
         swal("Success!", "Submitted SuccessFull!", "success");
@@ -109,9 +110,9 @@ export default class EditDate extends Component {
                   <Label>Expiry Date</Label>
                   <Input
                     required
-                    type="date"
+                    type="dd/mm/yyyy"
                     name="expDate"
-                    placeholder=""
+                    placeholder="dd/mm/yyyy"
                     value={this.state.expDate}
                     onChange={this.changeHandler}
                   ></Input>

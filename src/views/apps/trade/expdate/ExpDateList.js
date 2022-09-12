@@ -17,6 +17,7 @@ import { ContextLayout } from "../../../../utility/context/Layout";
 import { ChevronDown,   Edit } from "react-feather";
 import "../../../../assets/scss/plugins/tables/_agGridStyleOverride.scss";
 import { Route } from "react-router-dom";
+import moment from "moment";
 
 class ExpDateList extends React.Component {
   state = {
@@ -48,10 +49,12 @@ class ExpDateList extends React.Component {
         cellRendererFramework: (params) => {
           return (
             <div className="d-flex align-items-center cursor-pointer">
+                <span>{params.data.expDate}
               
-              <span>
-                {params.data.expDate} 
               </span>
+              {/* <span>{moment(params.data.expDate).format("dd/mm/yyyy")}
+              
+              </span> */}
             </div>
           );
         },

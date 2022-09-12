@@ -96,9 +96,9 @@ export default class AddFnIndex extends Component {
                   <Label>Expiry Date</Label>
                   <Input
                     required
-                    type="date"
+                    type="dd/mm/yyyy"
                     name="expDate"
-                    placeholder=""
+                    placeholder="dd/mm/yyyy"
                     value={this.state.expDate}
                     onChange={this.changeHandler}
                   ></Input>

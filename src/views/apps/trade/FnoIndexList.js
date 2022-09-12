@@ -12,6 +12,8 @@ import {
   DropdownToggle,
 } from "reactstrap";
 import axiosConfig from "../../../axiosConfig";
+import moment from "moment";
+
 import { ContextLayout } from "../../../utility/context/Layout";
 import { AgGridReact } from "ag-grid-react";
 import {
@@ -257,6 +259,18 @@ class FnoIndexList extends React.Component {
           );
         },
       },
+      // {
+      //   headerName: "Date ",
+      //   field: "createdAt",
+      //   width: 140,
+      //   cellRendererFramework: (params) => {
+      //     return (
+      //       <div className="d-flex align-items-center cursor-pointer">
+      //         <span>{moment(params.data.createdAt).format("L")}</span>
+      //       </div>
+      //     );
+      //   },
+      // },
       {
         headerName: "Expiry Date ",
         field: "expDate",
@@ -264,7 +278,7 @@ class FnoIndexList extends React.Component {
         cellRendererFramework: (params) => {
           return (
             <div className="d-flex align-items-center cursor-pointer">
-              <span>{params.data.expiryDate?.expDate}</span>
+              <span>{moment(params.data.expiryDate?.expDate).format('L')}</span>
             </div>
           );
         },

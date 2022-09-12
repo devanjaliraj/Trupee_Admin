@@ -267,7 +267,26 @@ export class AddFnoIndex extends Component {
                     onChange={this.changeHandler}
                   />
                 </Col> */}
-
+    <Col lg="6" md="6" className="mb-2">
+                  <Label>Quantity</Label>
+                  <Input
+                    type="number"
+                    name="qty"
+                    placeholder="Enter Quantity"
+                    value={this.state.qty}
+                    onChange={this.changeHandler}
+                  />
+                </Col>
+                <Col lg="6" md="6" className="mb-2">
+                  <Label>Number Of Lots</Label>
+                  <Input
+                    type="number"
+                    name="no_of_lots"
+                    placeholder="Enter Lots Price"
+                    value={this.state.no_of_lots}
+                    onChange={this.changeHandler}
+                  />
+                </Col>
                 <Col lg="6" md="6" className="mb-2">
                   <Label>Achieved Target+</Label>
                   <Input
@@ -279,27 +298,9 @@ export class AddFnoIndex extends Component {
                   />
                 </Col>
 
-                <Col lg="6" md="6" className="mb-2">
-                  <Label>Quantity</Label>
-                  <Input
-                    type="number"
-                    name="qty"
-                    placeholder="Enter Quantity"
-                    value={this.state.qty}
-                    onChange={this.changeHandler}
-                  />
-                </Col>
+            
 
-                <Col lg="6" md="6" className="mb-2">
-                  <Label>Number Of Lots</Label>
-                  <Input
-                    type="number"
-                    name="no_of_lots"
-                    placeholder="Enter Lots Price"
-                    value={this.state.no_of_lots}
-                    onChange={this.changeHandler}
-                  />
-                </Col>
+              
                 <Col lg="6" md="6" className="mb-2">
                   <Label> Type </Label>
                   <Input

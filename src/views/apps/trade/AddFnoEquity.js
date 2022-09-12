@@ -269,16 +269,7 @@ export class AddFnoEquity extends Component {
                     onChange={this.changeHandler}
                   />
                 </Col>
-                <Col lg="6" md="6" className="mb-2">
-                  <Label>Achieved Target+</Label>
-                  <Input
-                    type="text"
-                    placeholder="Enter Target 5"
-                    name="t5"
-                    value={this.state.t5}
-                    onChange={this.changeHandler}
-                  />
-                </Col>
+              
                 <Col lg="6" md="6" className="mb-2">
                   <Label>Quantity</Label>
                   <Input
@@ -306,6 +297,16 @@ export class AddFnoEquity extends Component {
                     name="no_of_lots"
                     placeholder="Enter Per Lots Price"
                     value={this.state.no_of_lots}
+                    onChange={this.changeHandler}
+                  />
+                </Col>
+                <Col lg="6" md="6" className="mb-2">
+                  <Label>Achieved Target+</Label>
+                  <Input
+                    type="text"
+                    placeholder="Enter Target 5"
+                    name="t5"
+                    value={this.state.t5}
                     onChange={this.changeHandler}
                   />
                 </Col>

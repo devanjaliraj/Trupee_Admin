@@ -8,8 +8,8 @@ import SalesCard from "./SalesCard";
 // import ProductOrders from "../../ui-elements/cards/analytics/ProductOrders"
 // import SalesStat from "../../ui-elements/cards/analytics/Sales"
 // import ActivityTimeline from "./ActivityTimeline"
-import DispatchedOrders from "./DispatchedOrders";
-import Notification from "./Notification";
+// import DispatchedOrders from "./DispatchedOrders";
+// import Notification from "./Notification";
 import axiosConfig from "../../../axiosConfig";
 import "../../../assets/scss/pages/dashboard-analytics.scss";
 // import axios from "axios";
@@ -30,125 +30,115 @@ class AnalyticsDashboard extends React.Component {
     super(props);
     this.state = {
       total7sayplan: {},
-      bsicplan: {},
+      activetrade: {},
+      Completetrade: {},
+      Activeuser: {},
       endtoend: {},
       day7planearnig: {},
       basicplanearning: {},
-      endtoendearning: {},
-      maneger: {},
-      dsm: {},
-      outherstaff: {},
-      // dealerTable: [],
+      freeusers:{},
+     
+    
     };
   }
 
   componentDidMount() {
-    // //dealer table
+ 
+    // //end dealer //
+    axiosConfig
+      .get("/totlactivetrade")
+      .then((response) => {
+        console.log(response.data);
+        //console.log(response.data.data);
+        this.setState({ activetrade: response.data });
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+
+    axiosConfig
+      .get("/ttlCompletetrade")
+      .then((response) => {
+        console.log(response.data);
+        //console.log(response.data.data);
+        this.setState({ Completetrade: response.data });
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+
+    axiosConfig
+      .get("/ttlfreeusers")
+      .then((response) => {
+        console.log(response.data);
+        //console.log(response.data.data);
+        this.setState({ freeusers: response.data });
+      })
+      .catch((error) => {
+        console.log(error);
+      });
     // axiosConfig
-    //   .get("/dealer/alldealers")
+    //   .get("/dealer/total7dayplanearnig")
     //   .then((response) => {
     //     console.log(response.data);
-    //     //console.log(response.data.data);
-    //     this.setState({ dealerTable: response.data });
+    //     console.log(response.data.Earning);
+    //     this.setState({ day7planearnig: response.data });
     //   })
     //   .catch((error) => {
     //     console.log(error);
     //   });
-    // //end dealer //
+    // axiosConfig
+    //   .get("/dealer/totalbasicplanearning")
+    //   .then((response) => {
+    //     console.log(response.data);
+    //     //console.log(response.data.data);
+    //     this.setState({ basicplanearning: response.data });
+    //   })
+    //   .catch((error) => {
+    //     console.log(error);
+    //   });
     axiosConfig
-      .get("/dealer/total7sayplan")
+      .get("/ttlActiveuser")
       .then((response) => {
         console.log(response.data);
         //console.log(response.data.data);
-        this.setState({ total7sayplan: response.data });
+        this.setState({ Activeuser: response.data });
       })
       .catch((error) => {
         console.log(error);
       });
 
-    axiosConfig
-      .get("/dealer/totalvasicplan")
-      .then((response) => {
-        console.log(response.data);
-        //console.log(response.data.data);
-        this.setState({ bsicplan: response.data });
-      })
-      .catch((error) => {
-        console.log(error);
-      });
+    // axiosConfig
+    //   .get("/dealer/totalmaneger")
+    //   .then((response) => {
+    //     console.log(response.data);
+    //     //console.log(response.data.data);
+    //     this.setState({ maneger: response.data });
+    //   })
+    //   .catch((error) => {
+    //     console.log(error);
+    //   });
 
-    axiosConfig
-      .get("/dealer/totalendtoendplan")
-      .then((response) => {
-        console.log(response.data);
-        //console.log(response.data.data);
-        this.setState({ endtoend: response.data });
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-    axiosConfig
-      .get("/dealer/total7dayplanearnig")
-      .then((response) => {
-        console.log(response.data);
-        console.log(response.data.Earning);
-        this.setState({ day7planearnig: response.data });
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-    axiosConfig
-      .get("/dealer/totalbasicplanearning")
-      .then((response) => {
-        console.log(response.data);
-        //console.log(response.data.data);
-        this.setState({ basicplanearning: response.data });
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-    axiosConfig
-      .get("dealer/endtoendearning")
-      .then((response) => {
-        console.log(response.data);
-        //console.log(response.data.data);
-        this.setState({ endtoendearning: response.data });
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-
-    axiosConfig
-      .get("/dealer/totalmaneger")
-      .then((response) => {
-        console.log(response.data);
-        //console.log(response.data.data);
-        this.setState({ maneger: response.data });
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-
-    axiosConfig
-      .get("/dealer/totaldsm")
-      .then((response) => {
-        console.log(response.data);
-        //console.log(response.data.data);
-        this.setState({ dsm: response.data });
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-    axiosConfig
-      .get("/dealer/totaloutherstaff")
-      .then((response) => {
-        console.log(response.data);
-        //console.log(response.data.data);
-        this.setState({ outherstaff: response.data });
-      })
-      .catch((error) => {
-        console.log(error);
-      });
+    // axiosConfig
+    //   .get("/dealer/totaldsm")
+    //   .then((response) => {
+    //     console.log(response.data);
+    //     //console.log(response.data.data);
+    //     this.setState({ dsm: response.data });
+    //   })
+    //   .catch((error) => {
+    //     console.log(error);
+    //   });
+    // axiosConfig
+    //   .get("/dealer/totaloutherstaff")
+    //   .then((response) => {
+    //     console.log(response.data);
+    //     //console.log(response.data.data);
+    //     this.setState({ outherstaff: response.data });
+    //   })
+    //   .catch((error) => {
+    //     console.log(error);
+    //   });
   }
 
   render() {
@@ -159,7 +149,7 @@ class AnalyticsDashboard extends React.Component {
         </Col>
         {/* <h3>Menbership Plans</h3> */}
         <Row className="match-height">
-          <Col lg="3" md="12">
+          <Col lg="4" md="12">
             <Card
                className="bg-primary"
               body
@@ -167,21 +157,16 @@ class AnalyticsDashboard extends React.Component {
               style={{ borderColor: "white" }}
             >
               <CardTitle className="mb-1" tag="h4" style={{ color: "white" }}>
-                {/* <h6 class="card-title text-uppercase text-muted mb-0"> Drivers registered</h6>a.	Total Carry forward trade 
-	b.	Total Today Active Trade,
-	c.	Total Today Completed Trade
-	d.	Total Active / Live Users
-	e.	Total Free Users
-	f.	Day Total P/L */}
+              
                Total Carry forward trade 
               </CardTitle>
 
-              <CardText tag="h3" style={{ color: "black" }}>
-                {this.state.total7sayplan.data}
+              <CardText tag="h3" style={{ color: "white" }}>
+                {this.state.activetrade.data}
               </CardText>
             </Card>
           </Col>
-          <Col lg="3" md="12">
+          <Col lg="4" md="12">
             <Card
                className="bg-primary"
               body
@@ -192,12 +177,12 @@ class AnalyticsDashboard extends React.Component {
               Total Today Active Trade
               </CardTitle>
 
-              <CardText tag="h3" style={{ color: "black" }}>
-                {this.state.bsicplan.data}
+              <CardText tag="h3" style={{ color: "white" }}>
+              {this.state.activetrade.data}
               </CardText>
             </Card>
           </Col>
-          <Col lg="3" md="12">
+          <Col lg="4" md="12">
             <Card
               className="bg-primary"
               body
@@ -208,12 +193,12 @@ class AnalyticsDashboard extends React.Component {
               Total Today Completed Trade
               </CardTitle>
 
-              <CardText tag="h3" style={{ color: "black" }}>
-                {this.state.endtoend.data}
+              <CardText tag="h3" style={{ color: "white" }}>
+                {this.state.Completetrade.data}
               </CardText>
             </Card>
           </Col>
-          <Col lg="3" md="12">
+          <Col lg="4" md="12">
             <Card
               className="bg-primary"
               body
@@ -223,12 +208,12 @@ class AnalyticsDashboard extends React.Component {
               <CardTitle className="mb-1" tag="h4" style={{ color: "white" }}>
               Total Active / Live Users
               </CardTitle>
-              <CardText tag="h3" style={{ color: "black" }}>
-                {this.state.day7planearnig.Earning}
+              <CardText tag="h3" style={{ color: "white" }}>
+                {this.state.Activeuser.data}
               </CardText>
             </Card>
           </Col>
-          <Col lg="3" md="12">
+          <Col lg="4" md="12">
             <Card
                className="bg-primary"
               body
@@ -238,12 +223,12 @@ class AnalyticsDashboard extends React.Component {
               <CardTitle className="mb-1" tag="h4" style={{ color: "white" }}>
               Total Free Users
               </CardTitle>
-              <CardText tag="h3" style={{ color: "black" }}>
-                {this.state.day7planearnig.Earning}
+              <CardText tag="h3" style={{ color: "white" }}>
+                {this.state.freeusers.data}
               </CardText>
             </Card>
           </Col>
-          <Col lg="3" md="12">
+          <Col lg="4" md="12">
             <Card
               className="bg-primary"
               body
@@ -260,73 +245,7 @@ class AnalyticsDashboard extends React.Component {
               </CardText>
             </Card>
           </Col>
-          {/* <Col lg="3" md="12">
-            <Card
-              className="bg-primary"
-              body
-              inverse
-              style={{ borderColor: "white" }}
-            >
-              <CardTitle className="mb-1" tag="h4" style={{ color: "white" }}>
-              Total No. Of Free Subscriber
-              </CardTitle>
-
-              <CardText tag="h3" style={{ color: "white" }}>
-                {this.state.endtoendearning.Earning}
-              </CardText>
-            </Card>
-          </Col> */}
-       {/*  </Row>
-        <h3>Staff Enrollment</h3>
-        <Row className="match-height">
-          <Col lg="3" md="12">
-            <Card
-              className="bg-warning"
-              body
-              inverse
-              style={{ borderColor: "white" }}
-            >
-              <CardTitle className="mb-1" tag="h4" style={{ color: "white" }}>
-                Total DSM
-              </CardTitle>
-
-              <CardText tag="h3" style={{ color: "white" }}>
-                {this.state.dsm.data}
-              </CardText>
-            </Card>
-          </Col>
-          <Col lg="3" md="12">
-            <Card
-              className="bg-danger"
-              body
-              inverse
-              style={{ borderColor: "white" }}
-            >
-              <CardTitle className="mb-1" tag="h4" style={{ color: "white" }}>
-                Total Other Staff
-              </CardTitle>
-
-              <CardText tag="h3" style={{ color: "white" }}>
-                {this.state.outherstaff.data}
-              </CardText>
-            </Card>
-          </Col>
-          <Col lg="3" md="12">
-            <Card
-              className="bg-info"
-              body
-              inverse
-              style={{ borderColor: "white" }}
-            >
-              <CardTitle className="mb-1" tag="h4" style={{ color: "white" }}>
-                Total Staff Management
-              </CardTitle>
-
-              <CardText tag="h3" style={{ color: "white" }}>
-                {this.state.maneger.data}
-              </CardText>
-            </Card>
-          </Col>*/}
+        
         </Row>
 
         <Row>
