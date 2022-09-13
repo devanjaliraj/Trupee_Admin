@@ -426,7 +426,7 @@ class CompletedTradeList extends React.Component {
       },
       {
         headerName: "status ",
-        field: "tradeStatus",
+        field: "status",
         filter: true,
         width: 150,
         cellRendererFramework: (params) => {
@@ -450,11 +450,11 @@ class CompletedTradeList extends React.Component {
             params?.data?.trl_type == "true" ||
             params?.data?.t5_type == "true" ? (
             <div className="badge badge-pill badge-success">
-              {params?.data?.tradeStatus}
+              {params?.data?.status}
             </div>
           ) : params?.data?.sl_type == "true" ? (
             <div className="badge badge-pill badge-danger">
-              {params?.data?.tradeStatus}
+              {params?.data?.status}
             </div>
           ) : null;
         },

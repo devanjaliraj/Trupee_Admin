@@ -32,7 +32,7 @@ export class AddFnoIndex extends Component {
       trade_type: "",
       t5: "",
       type: "Index",
-      state: "",
+      status: "",
       cstmMsg: "",
     };
     this.state = {
@@ -67,6 +67,9 @@ export class AddFnoIndex extends Component {
         console.log(error);
       });
   }
+  changeHandler1 = (e) => {
+    this.setState({ status: e.target.value });
+  };
   changeHandler = (e) => {
     this.setState({ [e.target.name]: e.target.value });
   };
@@ -91,9 +94,6 @@ export class AddFnoIndex extends Component {
       .catch((error) => {
         console.log(error);
       });
-
-
-      
   };
 
   render() {
@@ -131,7 +131,7 @@ export class AddFnoIndex extends Component {
                     onChange={this.changeHandler}
                   />
                 </Col> */}
-    
+
                 <Col lg="6" md="6" sm="6" className="mb-2">
                   <Label>Script Name</Label>
                   <CustomInput
@@ -277,7 +277,7 @@ export class AddFnoIndex extends Component {
                     onChange={this.changeHandler}
                   />
                 </Col> */}
-    <Col lg="6" md="6" className="mb-2">
+                <Col lg="6" md="6" className="mb-2">
                   <Label>Quantity</Label>
                   <Input
                     type="number"
@@ -297,11 +297,7 @@ export class AddFnoIndex extends Component {
                     onChange={this.changeHandler}
                   />
                 </Col>
-            
 
-            
-
-              
                 <Col lg="6" md="6" className="mb-2">
                   <Label> Type </Label>
                   <Input
@@ -312,7 +308,7 @@ export class AddFnoIndex extends Component {
                     onChange={this.changeHandler}
                   />
                 </Col>
-                <Col lg="6" md="6" className="mb-2">
+                {/* <Col lg="6" md="6" className="mb-2">
                   <Label>Trade Alert</Label>
                   <Input
                     type="text"
@@ -320,11 +316,34 @@ export class AddFnoIndex extends Component {
                     name="cstmMsg"
                     value={this.state.cstmMsg}
                     onChange={this.changeHandler}
-                  />
-                  {/* <span>
+                  /> 
+                   </Col>*/}
+                <Col lg="6" md="6" sm="6" className="mb-2">
+                  <Label className="mb-1">Status</Label>
+                  <div
+                    className="form-label-group"
+                    onChange={(e) => this.changeHandler1(e)}
+                  >
+                    <input
+                      style={{ marginRight: "3px" }}
+                      type="radio"
+                      name="status"
+                      value="Active"
+                    />
+                    <span style={{ marginRight: "20px" }}>Active</span>
+
+                    <input
+                      style={{ marginRight: "3px" }}
+                      type="radio"
+                      name="status"
+                      value="Inactive"
+                    />
+                    <span style={{ marginRight: "3px" }}>Inactive</span>
+                  </div>
+                </Col>
+                {/* <span>
                     <b> We will type 210+ Keep booking or trailing stop loss</b>
                   </span> */}
-                </Col>
               </Row>
               <Row>
                 <Button.Ripple

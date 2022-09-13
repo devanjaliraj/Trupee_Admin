@@ -114,6 +114,7 @@ class EditFnoIndex extends React.Component {
   changeHandler1 = (e) => {
     this.setState({ status: e.target.value });
   };
+
   changeHandler2 = (e) => {
     if (e.target.checked) {
       this.setState({ FT1_type: "true" });
@@ -454,18 +455,29 @@ class EditFnoIndex extends React.Component {
                   </div>
                 </Col>
 
-                {/* <Col lg="3" md="3" sm="3" className="mb-3 mt-1">
-                  <h3 className="mb-1">Call Status</h3>
-                  <Col lg="6" md="6" sm="6" className="mb-2">
-                    <Button.Ripple
-                      color="primary"
-                      type="submit"
-                      className="mr-1 mb-1"
-                    >
-                      Completed
-                    </Button.Ripple>
-                  </Col>
-                </Col> */}
+                <Col lg="6" md="6" sm="6" className="mb-2">
+                  <Label className="mb-1"> Call Status</Label>
+                  <div
+                    className="form-label-group"
+                    onChange={(e) => this.changeHandler1(e)}
+                  >
+                    <input
+                      style={{ marginRight: "3px" }}
+                      type="radio"
+                      name="status"
+                      value="Active"
+                    />
+                    <span style={{ marginRight: "20px" }}>Active</span>
+
+                    <input
+                      style={{ marginRight: "3px" }}
+                      type="radio"
+                      name="status"
+                      value="Closed"
+                    />
+                    <span style={{ marginRight: "3px" }}>Closed</span>
+                  </div>
+                </Col>
               </Row>
               <Col lg="6" md="6" className="mb-2">
                 <Label>Trade Alert</Label>
