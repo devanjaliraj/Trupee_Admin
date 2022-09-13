@@ -339,7 +339,7 @@ class EquityCashList extends React.Component {
           ) : null;
         },
       },
-    
+
       {
         headerName: "status ",
         field: "status",
@@ -430,31 +430,31 @@ class EquityCashList extends React.Component {
     //
     let status = selectedData[0].status === "Active" ? "Deactive" : "Active";
     let payload = {
-      expiryDate: selectedData[0].expiryDate,
-      script_type: selectedData[0].script_type,
-      cash_scrpt_name: selectedData[0].cash_scrpt_name,
-      call_type: selectedData[0].call_type,
-      active_value: selectedData[0].active_value,
-      active_value2: selectedData[0].active_value2,
-   
-      T1: selectedData[0].T1,
-      T2: selectedData[0].T2,
-      T3: selectedData[0].T3,
-      T4: selectedData[0].T4,
-      t5: selectedData[0].t5,
-      t1_type: selectedData[0].t1_type,
-      t2_type: selectedData[0].t2_type,
-      t3_type: selectedData[0].t3_type,
-      t4_type: selectedData[0].t4_type,
-      qty: selectedData[0].qty,
-      sl_type: selectedData[0].sl_type,
-      no_of_lots: selectedData[0].no_of_lots,
-      trade_type: selectedData[0].trade_type,
-      type: selectedData["cash"].type,
+      // expiryDate: selectedData[0].expiryDate,
+      // script_type: selectedData[0].script_type,
+      // cash_scrpt_name: selectedData[0].cash_scrpt_name,
+      // call_type: selectedData[0].call_type,
+      // active_value: selectedData[0].active_value,
+      // active_value2: selectedData[0].active_value2,
+
+      // T1: selectedData[0].T1,
+      // T2: selectedData[0].T2,
+      // T3: selectedData[0].T3,
+      // T4: selectedData[0].T4,
+      // t5: selectedData[0].t5,
+      // t1_type: selectedData[0].t1_type,
+      // t2_type: selectedData[0].t2_type,
+      // t3_type: selectedData[0].t3_type,
+      // t4_type: selectedData[0].t4_type,
+      // qty: selectedData[0].qty,
+      // sl_type: selectedData[0].sl_type,
+      // no_of_lots: selectedData[0].no_of_lots,
+      // trade_type: selectedData[0].trade_type,
+      // type: selectedData["cash"].type,
       status: status,
     };
     await axiosConfig
-      .post(`/editCash/${id}`, payload)
+      .post(`/editalltrade/${id}`, payload)
       .then((response) => {
         console.log("sdjgsjdgjhgsdjh", response);
         swal("Success!", "Status " + status + " SuccessFull!", "success");
