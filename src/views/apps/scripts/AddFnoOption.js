@@ -61,9 +61,9 @@ export default class AddFnoOption extends Component {
                   Home
                 </BreadcrumbItem>
                 <BreadcrumbItem href="/app/scripts/fnoOption" tag="a">
-                FNO Option List
+                  FNO Option List
                 </BreadcrumbItem>
-                <BreadcrumbItem active>Add  FNO Option</BreadcrumbItem>
+                <BreadcrumbItem active>Add FNO Option</BreadcrumbItem>
               </Breadcrumb>
             </div>
           </Col>
@@ -108,7 +108,7 @@ export default class AddFnoOption extends Component {
                  
                   </Input>
                 </Col> */}
-               <Col lg="6" md="6" sm="6" className="mb-2">
+                <Col lg="6" md="6" sm="6" className="mb-2">
                   <Label>Script Name</Label>
                   <Input
                     required
@@ -119,7 +119,7 @@ export default class AddFnoOption extends Component {
                     onChange={this.changeHandler}
                   ></Input>
                 </Col>
-                    <Col lg="6" md="6" sm="6" className="mb-2">
+                {/* <Col lg="6" md="6" sm="6" className="mb-2">
                   <Label className="mb-1">Status</Label>
                   <div
                     className="form-label-group"
@@ -141,7 +141,7 @@ export default class AddFnoOption extends Component {
                     />
                     <span style={{ marginRight: "3px" }}>Inactive</span>
                   </div>
-                </Col>
+                </Col> */}
               </Row>
               <Row>
                 <Col lg="6" md="6" sm="6" className="mb-2">

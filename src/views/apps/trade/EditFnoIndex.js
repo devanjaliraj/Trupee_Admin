@@ -46,7 +46,7 @@ class EditFnoIndex extends React.Component {
     };
     this.state = {
       scriptN: [],
-      expdateI:[]
+      expdateI: [],
     };
   }
   async componentDidMount() {
@@ -58,7 +58,7 @@ class EditFnoIndex extends React.Component {
         // },
       })
       .then((response) => {
-        console.log('sl_type response',response.data.data.sl_type);
+        console.log("sl_type response", response.data.data.sl_type);
         this.setState({
           expiryDate: response.data.data.expiryDate,
           script_type: response.data.data.script_type,
@@ -98,61 +98,61 @@ class EditFnoIndex extends React.Component {
       .catch((error) => {
         console.log(error);
       });
-          // expDate//
+    // expDate//
     axiosConfig
-    .get("/datelist")
-    .then((response) => {
-      console.log(response);
-      this.setState({
-        expdateI: response.data.data,
+      .get("/datelist")
+      .then((response) => {
+        console.log(response);
+        this.setState({
+          expdateI: response.data.data,
+        });
+      })
+      .catch((error) => {
+        console.log(error);
       });
-    })
-    .catch((error) => {
-      console.log(error);
-    });
   }
   changeHandler1 = (e) => {
     this.setState({ status: e.target.value });
   };
   changeHandler2 = (e) => {
-    if(e.target.checked){
+    if (e.target.checked) {
       this.setState({ FT1_type: "true" });
-    }else{
+    } else {
       this.setState({ FT1_type: "false" });
-    }   
+    }
   };
   changeHandler3 = (e) => {
-    if(e.target.checked){
+    if (e.target.checked) {
       this.setState({ FT2_type: "true" });
-    }else{
+    } else {
       this.setState({ FT2_type: "false" });
     }
   };
   changeHandler4 = (e) => {
-    if(e.target.checked){
+    if (e.target.checked) {
       this.setState({ FT3_type: "true" });
-    }else{
+    } else {
       this.setState({ FT3_type: "false" });
     }
   };
   changeHandler5 = (e) => {
-    if(e.target.checked){
+    if (e.target.checked) {
       this.setState({ FT5_type: "true" });
-    }else{
+    } else {
       this.setState({ FT5_type: "false" });
     }
   };
   changeHandler6 = (e) => {
-    if(e.target.checked){
+    if (e.target.checked) {
       this.setState({ sl_type: "true" });
-    }else{
+    } else {
       this.setState({ sl_type: "false" });
     }
   };
   changeHandler7 = (e) => {
-    if(e.target.checked){
+    if (e.target.checked) {
       this.setState({ trl_type: "true" });
-    }else{
+    } else {
       this.setState({ trl_type: "false" });
     }
   };
@@ -182,7 +182,7 @@ class EditFnoIndex extends React.Component {
 
   render() {
     // const { FT1_type,FT2_type,FT3_type,FT5_type } = this.state;
-    console.log('this.state.sl_type',this.state.sl_type)
+    console.log("this.state.sl_type", this.state.sl_type);
     return (
       <div>
         <Breadcrumbs
@@ -213,7 +213,6 @@ class EditFnoIndex extends React.Component {
           <CardBody>
             <Form className="m-1" onSubmit={this.submitHandler}>
               <Row className="mb-2">
-            
                 <Col lg="6" md="6" sm="6" className="mb-2">
                   <Label>Script Name</Label>
                   <CustomInput
@@ -349,118 +348,124 @@ class EditFnoIndex extends React.Component {
               </Row>
               <Col lg="3" md="3" sm="3" className="mb-3 mt-1">
                 <Label className="mb-1">SL</Label>
-                <div
-                  className="form-label-group">
-          
+                <div className="form-label-group">
                   <input
                     style={{ marginRight: "3px" }}
                     type="checkbox"
                     name="sl_type"
                     onChange={(e) => this.changeHandler6(e)}
-                 
-                    checked={this.state.sl_type === "false" || this.state.sl_type === false ? false : true}
+                    checked={
+                      this.state.sl_type === "false" ||
+                      this.state.sl_type === false
+                        ? false
+                        : true
+                    }
                   />
-                <span style={{ marginRight: "20px" }}>{this.state.sl_type}</span>
-                  
+                  <span style={{ marginRight: "20px" }}>
+                    {this.state.sl_type}
+                  </span>
                 </div>
               </Col>
 
               <Row className="mb-2">
                 <Col lg="3" md="3" sm="3" className="mb-3 mt-1">
                   <Label className="mb-1">TRAIL</Label>
-                  <div
-                    className="form-label-group">
+                  <div className="form-label-group">
                     <input
                       style={{ marginRight: "3px" }}
                       type="checkbox"
                       name="trl_type"
                       onChange={(e) => this.changeHandler7(e)}
-                      checked={this.state.trl_type === "false" || this.state.trl_type === false ? false : true}
-                     
+                      checked={
+                        this.state.trl_type === "false" ||
+                        this.state.trl_type === false
+                          ? false
+                          : true
+                      }
                     />
-                  <span style={{ marginRight: "20px" }}>{this.state.trl_type}</span>
-                  </div> 
+                    <span style={{ marginRight: "20px" }}>
+                      {this.state.trl_type}
+                    </span>
+                  </div>
                 </Col>
-               
+
                 <Col lg="3" md="3" sm="3" className="mb-3 mt-1">
                   <Label className="mb-1">T1</Label>
-                  <div
-                    className="form-label-group"
-                  >
+                  <div className="form-label-group">
                     <input
                       style={{ marginRight: "3px" }}
                       type="checkbox"
                       name="FT1_type"
                       readOnly
                       onChange={(e) => this.changeHandler2(e)}
-                      checked={this.state.FT1_type === "false" || this.state.FT1_type === false ? false : true}
-                  
+                      checked={
+                        this.state.FT1_type === "false" ||
+                        this.state.FT1_type === false
+                          ? false
+                          : true
+                      }
                     />
-                   <span style={{ marginRight: "20px" }}>{this.state.FT1_type}</span>
-          
+                    <span style={{ marginRight: "20px" }}>
+                      {this.state.FT1_type}
+                    </span>
                   </div>
                 </Col>
-                
+
                 <Col lg="3" md="3" sm="3" className="mb-3 mt-1">
                   <Label className="mb-1">T2</Label>
-                  <div
-                    className="form-label-group">
+                  <div className="form-label-group">
                     <input
-                     readOnly
+                      readOnly
                       style={{ marginRight: "3px" }}
                       type="checkbox"
                       name="FT2_type"
                       onChange={(e) => this.changeHandler3(e)}
-                      checked={this.state.FT2_type === "false" || this.state.FT2_type === false ? false : true}
+                      checked={
+                        this.state.FT2_type === "false" ||
+                        this.state.FT2_type === false
+                          ? false
+                          : true
+                      }
                     />
-                   <span style={{ marginRight: "20px" }}>{this.state.FT2_type}</span>
-                
+                    <span style={{ marginRight: "20px" }}>
+                      {this.state.FT2_type}
+                    </span>
                   </div>
                 </Col>
-              
+
                 <Col lg="3" md="3" sm="3" className="mb-3 mt-1">
                   <Label className="mb-1">T3</Label>
-                  <div
-                    className="form-label-group"
-                    
-                  >
+                  <div className="form-label-group">
                     <input
-                   
                       style={{ marginRight: "3px" }}
                       type="checkbox"
                       name="FT3_type"
                       onChange={(e) => this.changeHandler4(e)}
-                      checked={this.state.FT3_type === "false" || this.state.FT3_type === false ? false : true}
+                      checked={
+                        this.state.FT3_type === "false" ||
+                        this.state.FT3_type === false
+                          ? false
+                          : true
+                      }
                     />
-                  <span style={{ marginRight: "20px" }}>{this.state.FT3_type}</span>
-                
+                    <span style={{ marginRight: "20px" }}>
+                      {this.state.FT3_type}
+                    </span>
                   </div>
                 </Col>
-  
-               
 
-                <Col lg="3" md="3" sm="3" className="mb-3 mt-1">
-                  <Label className="mb-1">Status</Label>
-                  <div
-                    className="form-label-group"
-                    onChange={(e) => this.changeHandler1(e)}
-                  >
-                    <input
-                      style={{ marginRight: "3px" }}
-                      type="radio"
-                      name="status"
-                      value="Active"
-                    />
-                    <span style={{ marginRight: "20px" }}>Active</span>
-                    <input
-                      style={{ marginRight: "3px" }}
-                      type="radio"
-                      name="status"
-                      value="Deactive"
-                    />
-                    <span style={{ marginRight: "3px" }}>Deactive</span>
-                  </div>
-                </Col>
+                {/* <Col lg="3" md="3" sm="3" className="mb-3 mt-1">
+                  <h3 className="mb-1">Call Status</h3>
+                  <Col lg="6" md="6" sm="6" className="mb-2">
+                    <Button.Ripple
+                      color="primary"
+                      type="submit"
+                      className="mr-1 mb-1"
+                    >
+                      Completed
+                    </Button.Ripple>
+                  </Col>
+                </Col> */}
               </Row>
               <Col lg="6" md="6" className="mb-2">
                 <Label>Trade Alert</Label>
@@ -471,7 +476,6 @@ class EditFnoIndex extends React.Component {
                   value={this.state.cstmMsg}
                   onChange={this.changeHandler}
                 />
-            
               </Col>
               <Row>
                 <Col lg="6" md="6" sm="6" className="mb-2">
@@ -484,7 +488,6 @@ class EditFnoIndex extends React.Component {
                   </Button.Ripple>
                 </Col>
               </Row>
-            
             </Form>
           </CardBody>
         </Card>

@@ -61,7 +61,7 @@ export default class AddCashEqutiy extends Component {
                   Home
                 </BreadcrumbItem>
                 <BreadcrumbItem href="/app/scripts/cashEquity" tag="a">
-                Cash Equtiy List
+                  Cash Equtiy List
                 </BreadcrumbItem>
                 <BreadcrumbItem active>Add Cash Equtiy</BreadcrumbItem>
               </Breadcrumb>
@@ -91,8 +91,7 @@ export default class AddCashEqutiy extends Component {
           <CardBody>
             <Form className="m-1" onSubmit={this.submitHandler}>
               <Row>
-           
-                 <Col lg="6" md="6" sm="6" className="mb-2">
+                <Col lg="6" md="6" sm="6" className="mb-2">
                   <Label>Script Name</Label>
                   <Input
                     required
@@ -103,7 +102,7 @@ export default class AddCashEqutiy extends Component {
                     onChange={this.changeHandler}
                   ></Input>
                 </Col>
-                    <Col lg="6" md="6" sm="6" className="mb-2">
+                {/* <Col lg="6" md="6" sm="6" className="mb-2">
                   <Label className="mb-1">Status</Label>
                   <div
                     className="form-label-group"
@@ -125,7 +124,7 @@ export default class AddCashEqutiy extends Component {
                     />
                     <span style={{ marginRight: "3px" }}>Inactive</span>
                   </div>
-                </Col>  
+                </Col>   */}
               </Row>
               <Row>
                 <Col lg="6" md="6" sm="6" className="mb-2">

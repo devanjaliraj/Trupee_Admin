@@ -14,7 +14,7 @@ import {
 import axiosConfig from "../../../axiosConfig";
 import { ContextLayout } from "../../../utility/context/Layout";
 import { AgGridReact } from "ag-grid-react";
-import {  Edit, Trash2, ChevronDown } from "react-feather";
+import { Edit, Trash2, ChevronDown } from "react-feather";
 import "../../../assets/scss/plugins/tables/_agGridStyleOverride.scss";
 import "../../../assets/scss/pages/users.scss";
 import { Route } from "react-router-dom";
@@ -55,25 +55,24 @@ class CashEquityList extends React.Component {
           );
         },
       },
-   
 
-      {
-        headerName: "Status",
-        field: "status",
-        filter: true,
-        width: 250,
-        cellRendererFramework: (params) => {
-          return params.value === "Active" ? (
-            <div className="badge badge-pill badge-success">
-              {params.data.status}
-            </div>
-          ) : params.value === "Deactive" ? (
-            <div className="badge badge-pill badge-warning">
-              {params.data.status}
-            </div>
-          ) : null;
-        },
-      },
+      // {
+      //   headerName: "Status",
+      //   field: "status",
+      //   filter: true,
+      //   width: 250,
+      //   cellRendererFramework: (params) => {
+      //     return params.value === "Active" ? (
+      //       <div className="badge badge-pill badge-success">
+      //         {params.data.status}
+      //       </div>
+      //     ) : params.value === "Deactive" ? (
+      //       <div className="badge badge-pill badge-warning">
+      //         {params.data.status}
+      //       </div>
+      //     ) : null;
+      //   },
+      // },
       {
         headerName: "Actions",
         field: "sortorder",
@@ -163,17 +162,18 @@ class CashEquityList extends React.Component {
                   </h1>
                 </Col>
                 <Col className="pt-4">
-                <Route
-                render={({ history }) => (
-                  <Button
-                    className=" btn btn-success float-right"
-                    onClick={() => history.push("/app/scripts/addCashEquity")}
-                  >
-                    Add Cash Equity
-                  </Button>
-                )}
-              />
-                       
+                  <Route
+                    render={({ history }) => (
+                      <Button
+                        className=" btn btn-success float-right"
+                        onClick={() =>
+                          history.push("/app/scripts/addCashEquity")
+                        }
+                      >
+                        Add Cash Equity
+                      </Button>
+                    )}
+                  />
                 </Col>
               </Row>
               <CardBody>

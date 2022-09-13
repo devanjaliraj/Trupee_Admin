@@ -7,7 +7,7 @@ import {
   Form,
   Label,
   Input,
-//   CustomInput,
+  //   CustomInput,
   Button,
   Breadcrumb,
   BreadcrumbItem,
@@ -80,7 +80,7 @@ export default class EditOption extends Component {
                   Home
                 </BreadcrumbItem>
                 <BreadcrumbItem href="/app/scripts/fnoOption" tag="a">
-                FNO Option List
+                  FNO Option List
                 </BreadcrumbItem>
                 <BreadcrumbItem active> Edit FNO Option</BreadcrumbItem>
               </Breadcrumb>
@@ -110,7 +110,6 @@ export default class EditOption extends Component {
           <CardBody>
             <Form className="m-1" onSubmit={this.submitHandler}>
               <Row>
-                
                 <Col lg="6" md="6" sm="6" className="mb-2">
                   <Label>Script Name</Label>
                   <Input
@@ -122,7 +121,7 @@ export default class EditOption extends Component {
                     onChange={this.changeHandler}
                   ></Input>
                 </Col>
-                <Col lg="6" md="6" sm="6" className="mb-2">
+                {/* <Col lg="6" md="6" sm="6" className="mb-2">
                   <Label className="mb-1">Status</Label>
                   <div
                     className="form-label-group"
@@ -144,7 +143,7 @@ export default class EditOption extends Component {
                     />
                     <span style={{ marginRight: "3px" }}>Inactive</span>
                   </div>
-                </Col>  
+                </Col>   */}
               </Row>
               <Row>
                 <Col lg="6" md="6" sm="6" className="mb-2">

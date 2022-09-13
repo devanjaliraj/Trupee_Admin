@@ -1,14 +1,12 @@
 import React, { Component } from "react";
 import {
   Card,
-
   CardBody,
   Row,
   Col,
   Form,
   Label,
   Input,
-  
   Button,
   Breadcrumb,
   BreadcrumbItem,
@@ -21,7 +19,7 @@ export default class EditCash extends Component {
   constructor(props) {
     super(props);
     this.state = {
-        status: "",
+      status: "",
       scriptName: "",
     };
   }
@@ -111,7 +109,6 @@ export default class EditCash extends Component {
           <CardBody>
             <Form className="m-1" onSubmit={this.submitHandler}>
               <Row>
-               
                 <Col lg="6" md="6" sm="6" className="mb-2">
                   <Label>Script Name</Label>
                   <Input
@@ -123,7 +120,7 @@ export default class EditCash extends Component {
                     onChange={this.changeHandler}
                   ></Input>
                 </Col>
-                <Col lg="6" md="6" sm="6" className="mb-2">
+                {/* <Col lg="6" md="6" sm="6" className="mb-2">
                   <Label className="mb-1">Status</Label>
                   <div
                     className="form-label-group"
@@ -145,7 +142,7 @@ export default class EditCash extends Component {
                     />
                     <span style={{ marginRight: "3px" }}>Inactive</span>
                   </div>
-                </Col>  
+                </Col>   */}
               </Row>
               <Row>
                 <Col lg="6" md="6" sm="6" className="mb-2">
