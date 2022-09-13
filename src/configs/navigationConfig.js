@@ -103,7 +103,6 @@ const navigationConfig = [
     permissions: ["admin", "editor"],
     navLink: "/app/package/packagePlanList",
   },
-  
 
   {
     type: "groupHeader",
@@ -116,6 +115,14 @@ const navigationConfig = [
     icon: <Icon.ArrowRight size={12} />,
     permissions: ["admin", "editor"],
     navLink: "/app/trade/allTradeList",
+  },
+  {
+    id: "completedTradeList",
+    title: "Completed Trade",
+    type: "item",
+    icon: <Icon.ArrowRight size={12} />,
+    permissions: ["admin", "editor"],
+    navLink: "/app/trade/completedTradeList",
   },
   {
     id: "generalNotifList",
@@ -275,11 +282,7 @@ const navigationConfig = [
     navLink: "/app/explore/Trupee/tradingViewCharts",
   },
 
- 
-
-  
- 
- {
+  {
     type: "groupHeader",
     groupTitle: "Profile Page",
   },
@@ -317,7 +320,7 @@ const navigationConfig = [
     permissions: ["admin", "editor"],
     navLink: "/app/showAppre/userAppreciation",
   },
-   
+
   {
     id: "login",
     title: "Logout ",

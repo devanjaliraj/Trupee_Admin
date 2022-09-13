@@ -79,8 +79,10 @@ const editSubplanvideos = lazy(() =>
 );
 const addPlan = lazy(() => import("./views/apps/subplan/AddPlan"));
 // Exp Date
-const ExpDateList = lazy(() => import("./views/apps/trade/expdate/ExpDateList"));
-const AddDate= lazy(() => import("./views/apps/trade/expdate/AddDate"));
+const ExpDateList = lazy(() =>
+  import("./views/apps/trade/expdate/ExpDateList")
+);
+const AddDate = lazy(() => import("./views/apps/trade/expdate/AddDate"));
 const EditDate = lazy(() => import("./views/apps/trade/expdate/EditDate"));
 
 // user//
@@ -112,6 +114,9 @@ const EditScript = lazy(() => import("./views/apps/script/EditScript"));
 
 // Trade
 const AllTradeList = lazy(() => import("./views/apps/trade/AllTradeList"));
+const CompletedTradeList = lazy(() =>
+  import("./views/apps/trade/CompletedTradeList")
+);
 const AddAllTrade = lazy(() => import("./views/apps/trade/AddAllTrade"));
 const EditAllTrade = lazy(() => import("./views/apps/trade/EditAllTrade"));
 
@@ -545,6 +550,10 @@ class AppRouter extends React.Component {
               component={EditScript}
             />
             {/* Trade */}
+            <AppRoute
+              path="/app/trade/completedTradeList"
+              component={CompletedTradeList}
+            />
             <AppRoute path="/app/trade/allTradeList" component={AllTradeList} />
             <AppRoute path="/app/trade/addAllTrade" component={AddAllTrade} />
             <AppRoute
@@ -624,20 +633,16 @@ class AppRouter extends React.Component {
               path="/app/discount/discountList"
               component={DiscountList}
             />
-{/* Exp date */}
-<AppRoute
+            {/* Exp date */}
+            <AppRoute
               path="/app/trade/expdate/expDateList"
               component={ExpDateList}
             />
-            <AppRoute
-              path="/app/trade/expdate/addDate"
-              component={AddDate}
-            />
+            <AppRoute path="/app/trade/expdate/addDate" component={AddDate} />
             <AppRoute
               path="/app/trade/expdate/editDate/:id"
               component={EditDate}
             />
-
             {/*userNotification*/}
             <AppRoute
               path="/app/userNotif/userNotification"
@@ -761,7 +766,7 @@ class AppRouter extends React.Component {
               path="/app/membership/MembershipList"
               component={membershipList}
             />
-             <AppRoute
+            <AppRoute
               path="/app/membership/addMembership"
               component={AddMembership}
             />
