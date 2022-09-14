@@ -166,11 +166,13 @@ class EditFnoIndex extends React.Component {
     let { id } = this.props.match.params;
 
     axiosConfig
-      .post(`/editFnoindex/${id}`, this.state, {
-        // headers: {
-        //   "auth-adtoken": localStorage.getItem("auth-adtoken"),
-        // },
-      })
+      .post(`/editFnoindex/${id}`, this.state)
+      // , {
+      //   // headers: {
+      //   //   "auth-adtoken": localStorage.getItem("auth-adtoken"),
+      //   // },
+      // }
+      // )
       .then((response) => {
         console.log("sdjgsjdgjhgsdjh", response);
         swal("Success!", "Submitted SuccessFull!", "success");
@@ -270,8 +272,8 @@ class EditFnoIndex extends React.Component {
                     onChange={this.changeHandler}
                   >
                     <option>Select Trade</option>
-                    <option>BANK NIFTY</option>
-                    <option>NIFTY</option>
+                    <option value="BankNifty">BANK NIFTY</option>
+                    <option value="Nifty">NIFTY</option>
                   </Input>
                 </Col>
 

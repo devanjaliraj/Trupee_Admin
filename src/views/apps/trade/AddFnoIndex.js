@@ -190,8 +190,8 @@ export class AddFnoIndex extends Component {
                     onChange={this.changeHandler}
                   >
                     <option>Select Trade</option>
-                    <option>BANK NIFTY</option>
-                    <option>NIFTY</option>
+                    <option value="BankNifty">BANK NIFTY</option>
+                    <option value="Nifty">NIFTY</option>
                   </Input>
                 </Col>
 

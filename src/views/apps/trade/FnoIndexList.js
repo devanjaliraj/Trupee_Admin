@@ -492,7 +492,7 @@ class FnoIndexList extends React.Component {
       // expiryDate:selectedData[0].expiryDate,
       // script_type:selectedData[0].script_type,
       // fnoindex_scrpt_name:selectedData[0].fnoindex_scrpt_name,
-      // call_type:selectedData[0].call_type,
+      call_type: selectedData[0].call_type,
       active_value: selectedData[0].active_value,
       T1: selectedData[0].T1,
       T2: selectedData[0].T2,
@@ -506,7 +506,7 @@ class FnoIndexList extends React.Component {
       qty: selectedData[0].qty,
       sl_type: selectedData[0].sl_type,
       // no_of_lots:selectedData[0].no_of_lots,
-      // trade_type:selectedData[0].trade_type,
+      trade_type: selectedData[0].trade_type,
       cstmMsg: selectedData[0].cstmMsg,
 
       status: status,
