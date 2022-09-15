@@ -508,7 +508,6 @@ class FnoIndexList extends React.Component {
       // no_of_lots:selectedData[0].no_of_lots,
       trade_type: selectedData[0].trade_type,
       cstmMsg: selectedData[0].cstmMsg,
-
       status: status,
     };
     await axiosConfig

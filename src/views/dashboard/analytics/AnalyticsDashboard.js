@@ -36,14 +36,11 @@ class AnalyticsDashboard extends React.Component {
       endtoend: {},
       day7planearnig: {},
       basicplanearning: {},
-      freeusers:{},
-     
-    
+      freeusers: {},
     };
   }
 
   componentDidMount() {
- 
     // //end dealer //
     axiosConfig
       .get("/totlactivetrade")
@@ -151,34 +148,17 @@ class AnalyticsDashboard extends React.Component {
         <Row className="match-height">
           <Col lg="4" md="12">
             <Card
-               className="bg-primary"
+              className="bg-primary"
               body
               inverse
               style={{ borderColor: "white" }}
             >
               <CardTitle className="mb-1" tag="h4" style={{ color: "white" }}>
-              
-               Total Carry forward trade 
+                Total Carry forward trade
               </CardTitle>
 
               <CardText tag="h3" style={{ color: "white" }}>
                 {this.state.activetrade.data}
-              </CardText>
-            </Card>
-          </Col>
-          <Col lg="4" md="12">
-            <Card
-               className="bg-primary"
-              body
-              inverse
-              style={{ borderColor: "white" }}
-            >
-              <CardTitle className="mb-1" tag="h4" style={{ color: "white" }}>
-              Total Today Active Trade
-              </CardTitle>
-
-              <CardText tag="h3" style={{ color: "white" }}>
-              {this.state.activetrade.data}
               </CardText>
             </Card>
           </Col>
@@ -190,7 +170,23 @@ class AnalyticsDashboard extends React.Component {
               style={{ borderColor: "white" }}
             >
               <CardTitle className="mb-1" tag="h4" style={{ color: "white" }}>
-              Total Today Completed Trade
+                Total Today Active Trade
+              </CardTitle>
+
+              <CardText tag="h3" style={{ color: "white" }}>
+                {this.state.activetrade.data}
+              </CardText>
+            </Card>
+          </Col>
+          <Col lg="4" md="12">
+            <Card
+              className="bg-primary"
+              body
+              inverse
+              style={{ borderColor: "white" }}
+            >
+              <CardTitle className="mb-1" tag="h4" style={{ color: "white" }}>
+                Total Today Completed Trade
               </CardTitle>
 
               <CardText tag="h3" style={{ color: "white" }}>
@@ -206,7 +202,7 @@ class AnalyticsDashboard extends React.Component {
               style={{ borderColor: "white" }}
             >
               <CardTitle className="mb-1" tag="h4" style={{ color: "white" }}>
-              Total Active / Live Users
+                Total Active / Live Users
               </CardTitle>
               <CardText tag="h3" style={{ color: "white" }}>
                 {this.state.Activeuser.data}
@@ -215,13 +211,13 @@ class AnalyticsDashboard extends React.Component {
           </Col>
           <Col lg="4" md="12">
             <Card
-               className="bg-primary"
+              className="bg-primary"
               body
               inverse
               style={{ borderColor: "white" }}
             >
               <CardTitle className="mb-1" tag="h4" style={{ color: "white" }}>
-              Total Free Users
+                Total Free Users
               </CardTitle>
               <CardText tag="h3" style={{ color: "white" }}>
                 {this.state.freeusers.data}
@@ -236,8 +232,7 @@ class AnalyticsDashboard extends React.Component {
               style={{ borderColor: "white" }}
             >
               <CardTitle className="mb-1" tag="h4" style={{ color: "white" }}>
-              Day Total P/L 
-
+                Total Today P/L
               </CardTitle>
 
               <CardText tag="h3" style={{ color: "white" }}>
@@ -245,16 +240,45 @@ class AnalyticsDashboard extends React.Component {
               </CardText>
             </Card>
           </Col>
-        
+          <Col lg="4" md="12">
+            <Card
+              className="bg-primary"
+              body
+              inverse
+              style={{ borderColor: "white" }}
+            >
+              <CardTitle className="mb-1" tag="h4" style={{ color: "white" }}>
+                Total Weekly P/L
+              </CardTitle>
+
+              <CardText tag="h3" style={{ color: "white" }}>
+                {this.state.basicplanearning.Earning}
+              </CardText>
+            </Card>
+          </Col>
+          <Col lg="4" md="12">
+            <Card
+              className="bg-primary"
+              body
+              inverse
+              style={{ borderColor: "white" }}
+            >
+              <CardTitle className="mb-1" tag="h4" style={{ color: "white" }}>
+                Total Monthly P/L
+              </CardTitle>
+
+              <CardText tag="h3" style={{ color: "white" }}>
+                {this.state.basicplanearning.Earning}
+              </CardText>
+            </Card>
+          </Col>
         </Row>
 
         <Row>
           {/* <Col sm="12">
             <DispatchedOrders />
           </Col> */}
-          <Col sm="12">
-           {/* <Notification />  */}
-          </Col>
+          <Col sm="12">{/* <Notification />  */}</Col>
         </Row>
       </React.Fragment>
     );
