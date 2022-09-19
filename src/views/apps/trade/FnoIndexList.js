@@ -363,6 +363,41 @@ class FnoIndexList extends React.Component {
           ) : null;
         },
       },
+      {
+        headerName: "T6 Type",
+        field: "FT6_type",
+        filter: true,
+        width: 150,
+        cellRendererFramework: (params) => {
+          return params.value === "true" ? (
+            <div className="badge badge-pill badge-success">
+              {params.data.FT6_type}
+            </div>
+          ) : params.value === "false" ? (
+            <div className="badge badge-pill badge-warning">
+              {params.data.FT6_type}
+            </div>
+          ) : null;
+        },
+      },
+
+      {
+        headerName: "T7 Type",
+        field: "FT7_type",
+        filter: true,
+        width: 150,
+        cellRendererFramework: (params) => {
+          return params.value === "true" ? (
+            <div className="badge badge-pill badge-success">
+              {params.data.FT7_type}
+            </div>
+          ) : params.value === "false" ? (
+            <div className="badge badge-pill badge-warning">
+              {params.data.FT7_type}
+            </div>
+          ) : null;
+        },
+      },
       // {
       //   headerName: "T5 Type",
       //   field: "t5_type",

@@ -311,7 +311,7 @@ class EditFnoIndex extends React.Component {
                 <Col lg="6" md="6" className="mb-2">
                   <Label>Achieved Target+</Label>
                   <Input
-                    type="text"
+                    type="number"
                     placeholder="Enter Target 5"
                     name="t5"
                     value={this.state.t5}

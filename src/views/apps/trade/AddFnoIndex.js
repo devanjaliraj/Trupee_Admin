@@ -231,7 +231,7 @@ export class AddFnoIndex extends Component {
                   <Label>Range value</Label>
                   <Input
                     name="t5"
-                    type="text"
+                    type="number"
                     placeholder="Enter T5 "
                     value={this.state.t5}
                     onChange={this.changeHandler}
