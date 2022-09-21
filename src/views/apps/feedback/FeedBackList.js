@@ -75,20 +75,7 @@ class FeedBackList extends React.Component {
           );
         },
       },
-      {
-        headerName: "Script Type",
-        field: "script_type",
 
-        width: 150,
-
-        cellRendererFramework: (params) => {
-          return (
-            <div className="d-flex align-items-center cursor-pointer">
-              <span>{params.data.script_type?.script_type}</span>
-            </div>
-          );
-        },
-      },
       {
         headerName: "Descripiton",
         field: "desc",
