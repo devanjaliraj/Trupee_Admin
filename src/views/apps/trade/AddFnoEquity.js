@@ -110,7 +110,7 @@ export class AddFnoEquity extends Component {
           <Row className="m-2">
             <Col>
               <h1 col-sm-6 className="float-left">
-                Add FNO Equity
+                Add FNO Option
               </h1>
             </Col>
             <Col>
@@ -129,7 +129,6 @@ export class AddFnoEquity extends Component {
           <CardBody>
             <Form className="m-1" onSubmit={this.submitHandler}>
               <Row className="mb-2">
-              
                 <Col lg="6" md="6" sm="6" className="mb-2">
                   <Label>Script Name</Label>
                   <CustomInput
@@ -269,7 +268,6 @@ export class AddFnoEquity extends Component {
                     onChange={this.changeHandler}
                   />
                 </Col>
-              
                 <Col lg="6" md="6" className="mb-2">
                   <Label>Quantity</Label>
                   <Input
@@ -340,7 +338,7 @@ export class AddFnoEquity extends Component {
                   type="submit"
                   color="primary"
                 >
-                  Add FNO Equity
+                  Add FNO Option
                 </Button.Ripple>
               </Row>
             </Form>

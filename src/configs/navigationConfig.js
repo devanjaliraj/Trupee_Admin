@@ -14,7 +14,7 @@ const navigationConfig = [
   },
   {
     id: "fnIndex",
-    title: "FNO Index List",
+    title: "FNO INDEX SCRIPT",
     type: "item",
     icon: <Icon.ArrowRight size={12} />,
     permissions: ["admin", "editor"],
@@ -22,7 +22,7 @@ const navigationConfig = [
   },
   {
     id: "fnoOption",
-    title: "FNO Options List ",
+    title: "FNO OPTIONS SCRIPT ",
     type: "item",
     icon: <Icon.ArrowRight size={12} />,
     permissions: ["admin", "editor"],
@@ -30,7 +30,7 @@ const navigationConfig = [
   },
   {
     id: "cashEquity",
-    title: " Cash Equity List",
+    title: " CASH EQUITY SCRIPT",
     type: "item",
     icon: <Icon.ArrowRight size={12} />,
     permissions: ["admin", "editor"],
@@ -51,7 +51,7 @@ const navigationConfig = [
   },
   {
     id: "fnoIndexList",
-    title: "FNO INDEX",
+    title: "FNO INDEX LIST",
     type: "item",
     icon: <Icon.ArrowRight size={12} />,
     permissions: ["admin", "editor"],
@@ -60,7 +60,7 @@ const navigationConfig = [
 
   {
     id: "fnoEquityList",
-    title: "FNO OPTIONS",
+    title: "FNO OPTIONS LIST",
     type: "item",
     icon: <Icon.ArrowRight size={12} />,
     permissions: ["admin", "editor"],
@@ -68,7 +68,7 @@ const navigationConfig = [
   },
   {
     id: "equityCashList",
-    title: "CASH EQUITY",
+    title: "CASH EQUITY LIST",
     type: "item",
     icon: <Icon.ArrowRight size={12} />,
     permissions: ["admin", "editor"],
@@ -81,7 +81,7 @@ const navigationConfig = [
   },
   {
     id: "usersList",
-    title: "Users List",
+    title: "USER LIST",
     type: "item",
     icon: <Icon.ArrowRight size={12} />,
     permissions: ["admin", "editor"],

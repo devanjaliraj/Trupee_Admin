@@ -72,7 +72,7 @@ export default class AddCashEqutiy extends Component {
           <Row className="m-2">
             <Col>
               <h1 col-sm-6 className="float-left">
-                Add Cash Equtiy
+                ADD CASH EQUTIY SCRIT LIST
               </h1>
             </Col>
             <Col>

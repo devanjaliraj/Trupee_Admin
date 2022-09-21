@@ -23,6 +23,7 @@
   transition: width 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
   &.menu-light {
     @include menu-theme($body-color, $white);
+    font-size: small;
   }
 
   &.menu-dark {

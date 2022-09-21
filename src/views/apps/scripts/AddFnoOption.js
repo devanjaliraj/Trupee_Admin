@@ -72,7 +72,7 @@ export default class AddFnoOption extends Component {
           <Row className="m-2">
             <Col>
               <h1 col-sm-6 className="float-left">
-                Add FNO Option
+                ADD FNO OPTIONS SCRIPT
               </h1>
             </Col>
             <Col>

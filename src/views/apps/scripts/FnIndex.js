@@ -176,7 +176,7 @@ class FnIndex extends React.Component {
               <Row className="m-2">
                 <Col>
                   <h1 sm="6" className="float-left">
-                    FNO Index List
+                    FNO Index script List
                   </h1>
                 </Col>
                 <Col className="pt-4">

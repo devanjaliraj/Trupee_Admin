@@ -523,7 +523,7 @@ class FnoEquityList extends React.Component {
               <Row className="m-2">
                 <Col>
                   <h1 sm="6" className="float-left">
-                    Fno Equity List
+                    Fno Option List
                   </h1>
                 </Col>
                 <Col className="pt-4">
@@ -533,7 +533,7 @@ class FnoEquityList extends React.Component {
                         className=" btn btn-success float-right"
                         onClick={() => history.push("/app/trade/AddFnoEquity")}
                       >
-                        Add Fno Equity
+                        Add Fno Option
                       </Button>
                     )}
                   />

@@ -158,7 +158,7 @@ class CashEquityList extends React.Component {
               <Row className="m-2">
                 <Col>
                   <h1 sm="6" className="float-left">
-                    Cash Equity List
+                    Cash Equity script List
                   </h1>
                 </Col>
                 <Col className="pt-4">

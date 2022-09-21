@@ -40,7 +40,12 @@ class EditFnoIndex extends React.Component {
       FT3: "",
       FT3_type: false,
       FT5_type: false,
+      FT6_type: false,
+      FT7_type: false,
       sl_type: false,
+      t5: "",
+      FT6: "",
+      FT7: "",
       status: "",
       cstmMsg: "",
     };
@@ -68,6 +73,8 @@ class EditFnoIndex extends React.Component {
           T1: response.data.data.T1,
           T2: response.data.data.T2,
           T3: response.data.data.T3,
+          t4: response.data.data.t5,
+          // t: response.data.data.t5,
           t5: response.data.data.t5,
           trl: response.data.data.trl,
           trl_type: response.data.data.trl_type,
@@ -75,6 +82,10 @@ class EditFnoIndex extends React.Component {
           FT2_type: response.data.data.FT2_type,
           FT3_type: response.data.data.FT3_type,
           FT5_type: response.data.data.FT5_type,
+          FT6_type: response.data.data.FT6_type,
+          FT7_type: response.data.data.FT7_type,
+          FT6: response.data.data.FT6,
+          FT7: response.data.data.FT7,
           qty: response.data.data.qty,
           sl_type: response.data.data.sl_type,
           no_of_lots: response.data.data.no_of_lots,
@@ -143,6 +154,20 @@ class EditFnoIndex extends React.Component {
       this.setState({ FT5_type: "false" });
     }
   };
+  // changeHandlerT6 = (e) => {
+  //   if (e.target.checked) {
+  //     this.setState({ FT6_type: "true" });
+  //   } else {
+  //     this.setState({ FT6_type: "false" });
+  //   }
+  // };
+  // changeHandlerT7 = (e) => {
+  //   if (e.target.checked) {
+  //     this.setState({ FT7_type: "true" });
+  //   } else {
+  //     this.setState({ FT7_type: "false" });
+  //   }
+  // };
   changeHandler6 = (e) => {
     if (e.target.checked) {
       this.setState({ sl_type: "true" });
@@ -185,7 +210,7 @@ class EditFnoIndex extends React.Component {
 
   render() {
     // const { FT1_type,FT2_type,FT3_type,FT5_type } = this.state;
-    console.log("this.state.sl_type", this.state.sl_type);
+    // console.log("this.state.sl_type", this.state.sl_type);
     return (
       <div>
         <Breadcrumbs
@@ -455,6 +480,36 @@ class EditFnoIndex extends React.Component {
                       {this.state.FT3_type}
                     </span>
                   </div>
+                </Col>
+                {/* <Col lg="4" md="4" className="mb-2">
+                  <Label>T4</Label>
+                  <Input
+                    type="number"
+                    placeholder="Enter Target 5"
+                    name="t4"
+                    value={this.state.t4}
+                    onChange={this.changeHandler}
+                  />
+                </Col> */}
+                <Col lg="4" md="4" className="mb-2">
+                  <Label>T6</Label>
+                  <Input
+                    type="number"
+                    placeholder="Enter Target 6"
+                    name="FT6"
+                    value={this.state.FT6}
+                    onChange={this.changeHandler}
+                  />
+                </Col>
+                <Col lg="4" md="4" className="mb-2">
+                  <Label>T7</Label>
+                  <Input
+                    type="number"
+                    placeholder="Enter Target 7"
+                    name="FT7"
+                    value={this.state.FT7}
+                    onChange={this.changeHandler}
+                  />
                 </Col>
 
                 <Col lg="6" md="6" sm="6" className="mb-2">

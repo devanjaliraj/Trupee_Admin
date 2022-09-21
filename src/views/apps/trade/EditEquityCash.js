@@ -49,7 +49,7 @@ class EditEquityCash extends React.Component {
       cstmMsg: "",
     };
     this.state = {
-       expdateI: [],
+      expdateI: [],
       scriptN: [],
     };
   }
@@ -108,52 +108,52 @@ class EditEquityCash extends React.Component {
       .catch((error) => {
         console.log(error);
       });
-                    // expDate//
+    // expDate//
     axiosConfig
-    .get("/datelist")
-    .then((response) => {
-      console.log(response);
-      this.setState({
-        expdateI: response.data.data,
+      .get("/datelist")
+      .then((response) => {
+        console.log(response);
+        this.setState({
+          expdateI: response.data.data,
+        });
+      })
+      .catch((error) => {
+        console.log(error);
       });
-    })
-    .catch((error) => {
-      console.log(error);
-    });
   }
 
   changeHandler1 = (e) => {
-    if(e.target.checked){
+    if (e.target.checked) {
       this.setState({ sl_type: "true" });
-    }else{
+    } else {
       this.setState({ sl_type: "false" });
     }
   };
   changeHandler2 = (e) => {
-    if(e.target.checked){
+    if (e.target.checked) {
       this.setState({ t1_type: "true" });
-    }else{
+    } else {
       this.setState({ t1_type: "false" });
     }
   };
   changeHandler3 = (e) => {
-    if(e.target.checked){
+    if (e.target.checked) {
       this.setState({ t2_type: "true" });
-    }else{
+    } else {
       this.setState({ t2_type: "false" });
     }
   };
   changeHandler4 = (e) => {
-    if(e.target.checked){
+    if (e.target.checked) {
       this.setState({ t3_type: "true" });
-    }else{
+    } else {
       this.setState({ t3_type: "false" });
     }
   };
   changeHandler5 = (e) => {
-    if(e.target.checked){
+    if (e.target.checked) {
       this.setState({ t4_type: "true" });
-    }else{
+    } else {
       this.setState({ t4_type: "false" });
     }
   };
@@ -213,7 +213,6 @@ class EditEquityCash extends React.Component {
           <CardBody>
             <Form className="m-1" onSubmit={this.submitHandler}>
               <Row className="mb-2">
-            
                 <Col lg="6" md="6" sm="6" className="mb-2">
                   <Label>Script Name</Label>
                   <CustomInput
@@ -281,7 +280,6 @@ class EditEquityCash extends React.Component {
                     <option>Intraday (Hero-Zero)</option>
                   </Input>
                 </Col>
-            
                 <Col lg="6" md="6" className="mb-2">
                   <Label>Active Value</Label>
                   <Input
@@ -302,7 +300,6 @@ class EditEquityCash extends React.Component {
                     onChange={this.changeHandler}
                   />
                 </Col>
-              
                 <Col lg="6" md="6" className="mb-2">
                   <Label>SL</Label>
                   <Input
@@ -373,7 +370,6 @@ class EditEquityCash extends React.Component {
                     onChange={this.changeHandler}
                   />
                 </Col>
-               
                 <Col lg="6" md="6" className="mb-2">
                   <Label>Type</Label>
                   <Input
@@ -384,106 +380,130 @@ class EditEquityCash extends React.Component {
                     onChange={this.changeHandler}
                   />
                 </Col>
-                
-                </Row>
-                <Row>
-              <Col lg="3" md="3" sm="3" className="mb-3 mt-1">
-                <Label className="mb-1">SL</Label>
-                <div
-                  className="form-label-group"
-                  
-                >
-          
-                  <input
-                    style={{ marginRight: "3px" }}
-                    type="checkbox"
-                    name="sl_type"
-                    onChange={(e) => this.changeHandler1(e)}
-                   
-                    checked={this.state.sl_type === "false" || this.state.sl_type === false ? false : true}
-                  />
-                <span style={{ marginRight: "20px" }}>{this.state.sl_type}</span>
-            
-                </div>
-              </Col>
               </Row>
-                <Row className="mb-2">
-              <Col lg="3" md="3" sm="3" className="mb-3 mt-1">
-                <Label className="mb-1">T1</Label>
-                <div
-                  className="form-label-group"
-                  
-                >
-          
-                  <input
-                    style={{ marginRight: "3px" }}
-                    type="checkbox"
-                    name="t1_type"
-                    onChange={(e) => this.changeHandler2(e)}
-                   
-                    checked={this.state.t1_type === "false" || this.state.t1_type === false ? false : true}
+              <Row>
+                <Col lg="3" md="3" sm="3" className="mb-3 mt-1">
+                  <Label className="mb-1">SL</Label>
+                  <div className="form-label-group">
+                    <input
+                      style={{ marginRight: "3px" }}
+                      type="checkbox"
+                      name="sl_type"
+                      onChange={(e) => this.changeHandler1(e)}
+                      checked={
+                        this.state.sl_type === "false" ||
+                        this.state.sl_type === false
+                          ? false
+                          : true
+                      }
+                    />
+                    <span style={{ marginRight: "20px" }}>
+                      {this.state.sl_type}
+                    </span>
+                  </div>
+                </Col>
+              </Row>
+              <Row className="mb-2">
+                <Col lg="3" md="3" sm="3" className="mb-3 mt-1">
+                  <Label className="mb-1">T1</Label>
+                  <div className="form-label-group">
+                    <input
+                      style={{ marginRight: "3px" }}
+                      type="checkbox"
+                      name="t1_type"
+                      onChange={(e) => this.changeHandler2(e)}
+                      checked={
+                        this.state.t1_type === "false" ||
+                        this.state.t1_type === false
+                          ? false
+                          : true
+                      }
+                    />
+                    <span style={{ marginRight: "20px" }}>
+                      {this.state.t1_type}
+                    </span>
+                  </div>
+                </Col>
+                <Col lg="3" md="3" sm="3" className="mb-3 mt-1">
+                  <Label className="mb-1">T2</Label>
+                  <div className="form-label-group">
+                    <input
+                      style={{ marginRight: "3px" }}
+                      type="checkbox"
+                      name="t2_type"
+                      onChange={(e) => this.changeHandler3(e)}
+                      checked={
+                        this.state.t2_type === "false" ||
+                        this.state.t2_type === false
+                          ? false
+                          : true
+                      }
+                    />
+                    <span style={{ marginRight: "20px" }}>
+                      {this.state.t2_type}
+                    </span>
+                  </div>
+                </Col>
+                <Col lg="3" md="3" sm="3" className="mb-3 mt-1">
+                  <Label className="mb-1">T3</Label>
+                  <div className="form-label-group">
+                    <input
+                      style={{ marginRight: "3px" }}
+                      type="checkbox"
+                      name="t3_type"
+                      onChange={(e) => this.changeHandler4(e)}
+                      checked={
+                        this.state.t3_type === "false" ||
+                        this.state.t3_type === false
+                          ? false
+                          : true
+                      }
+                    />
+                    <span style={{ marginRight: "20px" }}>
+                      {this.state.t3_type}
+                    </span>
+                  </div>
+                </Col>
+                <Col lg="3" md="3" sm="3" className="mb-3 mt-1">
+                  <Label className="mb-1">T4</Label>
+                  <div className="form-label-group">
+                    <input
+                      style={{ marginRight: "3px" }}
+                      type="checkbox"
+                      name="t4_type"
+                      onChange={(e) => this.changeHandler5(e)}
+                      checked={
+                        this.state.t4_type === "false" ||
+                        this.state.t4_type === false
+                          ? false
+                          : true
+                      }
+                    />
+                    <span style={{ marginRight: "20px" }}>
+                      {this.state.t4_type}
+                    </span>
+                  </div>
+                </Col>
+                <Col lg="4" md="4" className="mb-2">
+                  <Label>T6</Label>
+                  <Input
+                    type="number"
+                    placeholder="Enter Target 6"
+                    name="t6"
+                    value={this.state.t6}
+                    onChange={this.changeHandler}
                   />
-                <span style={{ marginRight: "20px" }}>{this.state.t1_type}</span>
-            
-                </div>
-              </Col>
-              <Col lg="3" md="3" sm="3" className="mb-3 mt-1">
-                <Label className="mb-1">T2</Label>
-                <div
-                  className="form-label-group"
-                  
-                >
-          
-                  <input
-                    style={{ marginRight: "3px" }}
-                    type="checkbox"
-                    name="t2_type"
-                    onChange={(e) => this.changeHandler3(e)}
-                   
-                    checked={this.state.t2_type === "false" || this.state.t2_type === false ? false : true}
+                </Col>
+                <Col lg="4" md="4" className="mb-2">
+                  <Label>T7</Label>
+                  <Input
+                    type="number"
+                    placeholder="Enter Target 7"
+                    name="t7"
+                    value={this.state.t7}
+                    onChange={this.changeHandler}
                   />
-                <span style={{ marginRight: "20px" }}>{this.state.t2_type}</span>
-            
-                </div>
-              </Col>
-              <Col lg="3" md="3" sm="3" className="mb-3 mt-1">
-                <Label className="mb-1">T3</Label>
-                <div
-                  className="form-label-group"
-                  
-                >
-          
-                  <input
-                    style={{ marginRight: "3px" }}
-                    type="checkbox"
-                    name="t3_type"
-                    onChange={(e) => this.changeHandler4(e)}
-                   
-                    checked={this.state.t3_type === "false" || this.state.t3_type === false ? false : true}
-                  />
-                <span style={{ marginRight: "20px" }}>{this.state.t3_type}</span>
-            
-                </div>
-              </Col>
-              <Col lg="3" md="3" sm="3" className="mb-3 mt-1">
-                <Label className="mb-1">T4</Label>
-                <div
-                  className="form-label-group"
-                  
-                >
-          
-                  <input
-                    style={{ marginRight: "3px" }}
-                    type="checkbox"
-                    name="t4_type"
-                    onChange={(e) => this.changeHandler5(e)}
-                   
-                    checked={this.state.t4_type === "false" || this.state.t4_type === false ? false : true}
-                  />
-                <span style={{ marginRight: "20px" }}>{this.state.t4_type}</span>
-            
-                </div>
-              </Col>
+                </Col>
                 <Col lg="3" md="3" sm="3" className="mb-3 mt-1">
                   <Label className="mb-1">Status</Label>
                   <div

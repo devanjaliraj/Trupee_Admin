@@ -72,7 +72,7 @@ export default class AddFnIndex extends Component {
           <Row className="m-2">
             <Col>
               <h1 col-sm-6 className="float-left">
-                Add FNO INDEX
+                ADD FNO INDEX SCRIPT
               </h1>
             </Col>
             <Col>
