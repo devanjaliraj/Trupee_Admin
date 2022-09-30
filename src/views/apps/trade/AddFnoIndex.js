@@ -301,12 +301,14 @@ export class AddFnoIndex extends Component {
                 <Col lg="6" md="6" className="mb-2">
                   <Label> Type </Label>
                   <Input
-                    type="text"
+                    type="select"
                     name="type"
                     placeholder="Enter Trade Type"
                     value={this.state.type}
                     onChange={this.changeHandler}
-                  />
+                  >
+                    <option>Index</option>
+                  </Input>
                 </Col>
                 {/* <Col lg="6" md="6" className="mb-2">
                   <Label>Trade Alert</Label>

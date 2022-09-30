@@ -138,7 +138,6 @@ export class AddEquityCash extends Component {
           <CardBody>
             <Form className="m-1" onSubmit={this.submitHandler}>
               <Row className="mb-2">
-               
                 <Col lg="6" md="6" sm="6" className="mb-2">
                   <Label>Script Name</Label>
                   <CustomInput
@@ -299,7 +298,6 @@ export class AddEquityCash extends Component {
                     onChange={this.changeHandler}
                   />
                 </Col>{" "}
-            
                 <Col lg="6" md="6" className="mb-2">
                   <Label>Quantity</Label>
                   <Input
@@ -330,7 +328,7 @@ export class AddEquityCash extends Component {
                     onChange={this.changeHandler}
                   />
                 </Col>{" "} */}
-                    <Col lg="6" md="6" className="mb-2">
+                <Col lg="6" md="6" className="mb-2">
                   <Label>Achieved Target+</Label>
                   <Input
                     type="text"
@@ -343,12 +341,14 @@ export class AddEquityCash extends Component {
                 <Col lg="6" md="6" className="mb-2">
                   <Label>Type</Label>
                   <Input
-                    type="text"
+                    type="select"
                     name="type"
                     placeholder="Enter Type "
                     value={this.state.type}
                     onChange={this.changeHandler}
-                  />
+                  >
+                    <option>Cash</option>
+                  </Input>
                 </Col>
                 <Col lg="6" md="6" className="mb-2">
                   <Label>Trade Alert</Label>

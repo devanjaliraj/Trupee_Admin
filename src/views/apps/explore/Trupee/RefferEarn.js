@@ -20,7 +20,7 @@ import { ChevronDown, Trash2 } from "react-feather";
 import "../../../../assets/scss/plugins/tables/_agGridStyleOverride.scss";
 // import Breadcrumbs from "../../../components/@vuexy/breadCrumbs/BreadCrumb";
 // import { Route } from "react-router-dom";
-// import moment from "moment";
+import moment from "moment";
 
 class RefferEarn extends React.Component {
   state = {
@@ -34,7 +34,7 @@ class RefferEarn extends React.Component {
       resizable: true,
       suppressMenu: true,
     },
-  
+
     columnDefs: [
       {
         headerName: "S.No",
@@ -86,31 +86,31 @@ class RefferEarn extends React.Component {
         },
       },
 
+      // {
+      //   headerName: "Gender",
+      //   field: "gender",
+      //   width: 120,
+      //   cellRendererFramework: (params) => {
+      //     return (
+      //       <div className="d-flex align-items-center cursor-pointer">
+      //         <span>{params.data.userid?.gender}</span>
+      //       </div>
+      //     );
+      //   },
+      // },
+      // {
+      //   headerName: "Date Of Birth",
+      //   field: "dob",
+      //   width: 120,
+      //   cellRendererFramework: (params) => {
+      //     return (
+      //       <div className="d-flex align-items-center cursor-pointer">
+      //         <span>{params.data.userid?.dob}</span>
+      //       </div>
+      //     );
+      //   },
+      // },
       {
-        headerName: "Gender",
-        field: "gender",
-        width: 120,
-        cellRendererFramework: (params) => {
-          return (
-            <div className="d-flex align-items-center cursor-pointer">
-              <span>{params.data.userid?.gender}</span>
-            </div>
-          );
-        },
-      },
-      {
-        headerName: "Date Of Birth",
-        field: "dob",
-        width: 120,
-        cellRendererFramework: (params) => {
-          return (
-            <div className="d-flex align-items-center cursor-pointer">
-              <span>{params.data.userid?.dob}</span>
-            </div>
-          );
-        },
-      },
-         {
         headerName: "Amount",
         field: "amount",
         width: 120,
@@ -135,34 +135,6 @@ class RefferEarn extends React.Component {
         },
       },
       {
-        headerName: "Start Date",
-        field: "date",
-        width: 120,
-        cellRendererFramework: (params) => {
-          return (
-            <div className="d-flex align-items-center cursor-pointer">
-              {/* <span>{moment(params.data.createdAt).format("ll")} </span> */}
-              <span>{params.data.date}</span>
-            </div>
-          );
-        },
-      },
-
-      {
-        headerName: "Expiry Date",
-        field: "expdate",
-        width: 120,
-        cellRendererFramework: (params) => {
-          return (
-            <div className="d-flex align-items-center cursor-pointer">
-              <span>{params.data.expdate}</span>
-              {/* <span>{moment(params.data.updatedAt).format("ll")} </span> */}
-            </div>
-          );
-        },
-      },
-     
-      {
         headerName: "Refferal Code",
         field: "refral_Code",
         width: 120,
@@ -174,26 +146,51 @@ class RefferEarn extends React.Component {
           );
         },
       },
-    
-   
-
       {
-        headerName: "Status",
-        field: "status",
-        filter: true,
-        width: 100,
+        headerName: "Start Date",
+        field: "createdAt",
+        width: 120,
         cellRendererFramework: (params) => {
-          return params.value === "Success" ? (
-            <div className="badge badge-pill badge-success">
-              {params.data.status}
+          return (
+            <div className="d-flex align-items-center cursor-pointer">
+              <span>{moment(params.data.createdAt).format("ll")} </span>
+              {/* <span>{params.data.date}</span> */}
             </div>
-          ) : params.value === "Pending" ? (
-            <div className="badge badge-pill badge-warning">
-              {params.data.status}
-            </div>
-          ) : null;
+          );
         },
       },
+
+      {
+        headerName: "Expiry Date",
+        field: "updatedAt",
+        width: 120,
+        cellRendererFramework: (params) => {
+          return (
+            <div className="d-flex align-items-center cursor-pointer">
+              {/* <span>{params.data.expdate}</span> */}
+              <span>{moment(params.data.updatedAt).format("ll")} </span>
+            </div>
+          );
+        },
+      },
+
+      // {
+      //   headerName: "Status",
+      //   field: "status",
+      //   filter: true,
+      //   width: 100,
+      //   cellRendererFramework: (params) => {
+      //     return params.value === "Success" ? (
+      //       <div className="badge badge-pill badge-success">
+      //         {params.data.status}
+      //       </div>
+      //     ) : params.value === "Pending" ? (
+      //       <div className="badge badge-pill badge-warning">
+      //         {params.data.status}
+      //       </div>
+      //     ) : null;
+      //   },
+      // },
       {
         headerName: "Actions",
         field: "sortorder",
@@ -232,14 +229,14 @@ class RefferEarn extends React.Component {
     ],
   };
   async componentDidMount() {
-    await axiosConfig.get("/allmembership").then((response) => {
+    await axiosConfig.get("/referearn_list").then((response) => {
       let rowData = response.data.data;
       this.setState({ rowData });
     });
   }
   async runthisfunction(id) {
     console.log(id);
-    await axiosConfig.get(`/dlt_membership/${id}`).then((response) => {
+    await axiosConfig.get(`//${id}`).then((response) => {
       console.log(response);
     });
   }
@@ -278,7 +275,7 @@ class RefferEarn extends React.Component {
             <Row className="m-2">
               <Col>
                 <h1 col-sm-6 className="float-left">
-                 Refferal&Earn List
+                  Refferal&Earn List
                 </h1>
               </Col>
             </Row>
@@ -391,4 +388,3 @@ class RefferEarn extends React.Component {
   }
 }
 export default RefferEarn;
-
