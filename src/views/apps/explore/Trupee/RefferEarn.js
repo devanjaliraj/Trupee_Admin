@@ -117,7 +117,7 @@ class RefferEarn extends React.Component {
         cellRendererFramework: (params) => {
           return (
             <div className="d-flex align-items-center cursor-pointer">
-              <span>{params.data.userid?.amount}</span>
+              <span>{params.data.refer_from?.amount}</span>
             </div>
           );
         },
