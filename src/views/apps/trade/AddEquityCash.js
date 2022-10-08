@@ -328,7 +328,7 @@ export class AddEquityCash extends Component {
                     onChange={this.changeHandler}
                   />
                 </Col>{" "} */}
-                <Col lg="6" md="6" className="mb-2">
+                {/* <Col lg="6" md="6" className="mb-2">
                   <Label>Achieved Target+</Label>
                   <Input
                     type="text"
@@ -337,7 +337,7 @@ export class AddEquityCash extends Component {
                     value={this.state.t5}
                     onChange={this.changeHandler}
                   />
-                </Col>
+                </Col> */}
                 <Col lg="6" md="6" className="mb-2">
                   <Label>Type</Label>
                   <Input

@@ -298,7 +298,7 @@ export class AddFnoEquity extends Component {
                     onChange={this.changeHandler}
                   />
                 </Col>
-                <Col lg="6" md="6" className="mb-2">
+                {/* <Col lg="6" md="6" className="mb-2">
                   <Label>Achieved Target+</Label>
                   <Input
                     type="text"
@@ -307,7 +307,7 @@ export class AddFnoEquity extends Component {
                     value={this.state.t5}
                     onChange={this.changeHandler}
                   />
-                </Col>
+                </Col> */}
                 <Col lg="6" md="6" className="mb-2">
                   <Label>Trade Type</Label>
                   <Input
