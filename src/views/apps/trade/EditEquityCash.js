@@ -350,7 +350,7 @@ class EditEquityCash extends React.Component {
                     onChange={this.changeHandler}
                   />
                 </Col>{" "}
-                <Col lg="6" md="6" className="mb-2">
+                {/* <Col lg="6" md="6" className="mb-2">
                   <Label>Achieved Target+</Label>
                   <Input
                     type="text"
@@ -359,7 +359,7 @@ class EditEquityCash extends React.Component {
                     value={this.state.t5}
                     onChange={this.changeHandler}
                   />
-                </Col>
+                </Col> */}
                 <Col lg="6" md="6" className="mb-2">
                   <Label>Quantity</Label>
                   <Input
