@@ -39,11 +39,14 @@ class EditFnoIndex extends React.Component {
       FT2_type: false,
       FT3: "",
       FT3_type: false,
+      FT4_type: false,
       FT5_type: false,
       FT6_type: false,
       FT7_type: false,
       sl_type: false,
       t5: "",
+      FT5: "",
+      FT4: "",
       FT6: "",
       FT7: "",
       status: "",
@@ -73,7 +76,7 @@ class EditFnoIndex extends React.Component {
           T1: response.data.data.T1,
           T2: response.data.data.T2,
           T3: response.data.data.T3,
-          t4: response.data.data.t5,
+          t4: response.data.data.t4,
           // t: response.data.data.t5,
           t5: response.data.data.t5,
           trl: response.data.data.trl,
@@ -81,6 +84,7 @@ class EditFnoIndex extends React.Component {
           FT1_type: response.data.data.FT1_type,
           FT2_type: response.data.data.FT2_type,
           FT3_type: response.data.data.FT3_type,
+          FT4_type: response.data.data.FT4_type,
           FT5_type: response.data.data.FT5_type,
           FT6_type: response.data.data.FT6_type,
           FT7_type: response.data.data.FT7_type,
@@ -147,27 +151,34 @@ class EditFnoIndex extends React.Component {
       this.setState({ FT3_type: "false" });
     }
   };
-  changeHandler5 = (e) => {
+  changeHandlerT4 = (e) => {
+    if (e.target.checked) {
+      this.setState({ FT4_type: "true" });
+    } else {
+      this.setState({ FT4_type: "false" });
+    }
+  };
+  changeHandlerT5 = (e) => {
     if (e.target.checked) {
       this.setState({ FT5_type: "true" });
     } else {
       this.setState({ FT5_type: "false" });
     }
   };
-  // changeHandlerT6 = (e) => {
-  //   if (e.target.checked) {
-  //     this.setState({ FT6_type: "true" });
-  //   } else {
-  //     this.setState({ FT6_type: "false" });
-  //   }
-  // };
-  // changeHandlerT7 = (e) => {
-  //   if (e.target.checked) {
-  //     this.setState({ FT7_type: "true" });
-  //   } else {
-  //     this.setState({ FT7_type: "false" });
-  //   }
-  // };
+  changeHandlerT6 = (e) => {
+    if (e.target.checked) {
+      this.setState({ FT6_type: "true" });
+    } else {
+      this.setState({ FT6_type: "false" });
+    }
+  };
+  changeHandlerT7 = (e) => {
+    if (e.target.checked) {
+      this.setState({ FT7_type: "true" });
+    } else {
+      this.setState({ FT7_type: "false" });
+    }
+  };
   changeHandler6 = (e) => {
     if (e.target.checked) {
       this.setState({ sl_type: "true" });
@@ -481,17 +492,87 @@ class EditFnoIndex extends React.Component {
                     </span>
                   </div>
                 </Col>
-                {/* <Col lg="4" md="4" className="mb-2">
+                <Col lg="3" md="3" sm="3" className="mb-3 mt-1">
+                  <Label className="mb-1">T4</Label>
+                  <div className="form-label-group">
+                    <input
+                      style={{ marginRight: "3px" }}
+                      type="checkbox"
+                      name="FT4_type"
+                      onChange={(e) => this.changeHandlerT4(e)}
+                      checked={
+                        this.state.FT4_type === "false" ||
+                        this.state.FT4_type === false
+                          ? false
+                          : true
+                      }
+                    />
+                    <span style={{ marginRight: "20px" }}>
+                      {this.state.FT4_type}
+                    </span>
+                  </div>
+                </Col>
+                <Col lg="3" md="3" className="mb-2">
                   <Label>T4</Label>
                   <Input
                     type="number"
-                    placeholder="Enter Target 5"
-                    name="t4"
-                    value={this.state.t4}
+                    placeholder="Enter Target 4"
+                    name="FT4"
+                    value={this.state.FT4}
                     onChange={this.changeHandler}
                   />
-                </Col> */}
-                <Col lg="4" md="4" className="mb-2">
+                </Col>
+                <Col lg="3" md="3" sm="3" className="mb-3 mt-1">
+                  <Label className="mb-1">T5</Label>
+                  <div className="form-label-group">
+                    <input
+                      style={{ marginRight: "3px" }}
+                      type="checkbox"
+                      name="FT5_type"
+                      onChange={(e) => this.changeHandlerT5(e)}
+                      checked={
+                        this.state.FT5_type === "false" ||
+                        this.state.FT5_type === false
+                          ? false
+                          : true
+                      }
+                    />
+                    <span style={{ marginRight: "20px" }}>
+                      {this.state.FT5_type}
+                    </span>
+                  </div>
+                </Col>
+                <Col lg="3" md="3" className="mb-2">
+                  <Label>T5</Label>
+                  <Input
+                    type="number"
+                    placeholder="Enter Target 5"
+                    name="FT5"
+                    value={this.state.FT5}
+                    onChange={this.changeHandler}
+                  />
+                </Col>
+                <Col lg="3" md="3" sm="3" className="mb-3 mt-1">
+                  <Label className="mb-1">T6</Label>
+                  <div className="form-label-group">
+                    <input
+                      style={{ marginRight: "3px" }}
+                      type="checkbox"
+                      name="FT6_type"
+                      onChange={(e) => this.changeHandlerT6(e)}
+                      checked={
+                        this.state.FT6_type === "false" ||
+                        this.state.FT6_type === false
+                          ? false
+                          : true
+                      }
+                    />
+                    <span style={{ marginRight: "20px" }}>
+                      {this.state.FT6_type}
+                    </span>
+                  </div>
+                </Col>
+                <Col lg="3" md="3" className="mb-2">
                   <Label>T6</Label>
                   <Input
                     type="number"
@@ -501,7 +582,27 @@ class EditFnoIndex extends React.Component {
                     onChange={this.changeHandler}
                   />
                 </Col>
-                <Col lg="4" md="4" className="mb-2">
+                <Col lg="3" md="3" sm="3" className="mb-3 mt-1">
+                  <Label className="mb-1">T7</Label>
+                  <div className="form-label-group">
+                    <input
+                      style={{ marginRight: "3px" }}
+                      type="checkbox"
+                      name="FT7_type"
+                      onChange={(e) => this.changeHandlerT7(e)}
+                      checked={
+                        this.state.FT7_type === "false" ||
+                        this.state.FT7_type === false
+                          ? false
+                          : true
+                      }
+                    />
+                    <span style={{ marginRight: "20px" }}>
+                      {this.state.FT7_type}
+                    </span>
+                  </div>
+                </Col>
+                <Col lg="3" md="3" className="mb-2">
                   <Label>T7</Label>
                   <Input
                     type="number"

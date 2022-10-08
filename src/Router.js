@@ -21,6 +21,9 @@ const checkout = lazy(() => import("./views/apps/ecommerce/cart/Cart"));
 //Discount Code//
 const DiscountCode = lazy(() => import("./views/apps/discount/DiscountCode"));
 const DiscountList = lazy(() => import("./views/apps/discount/DiscountList"));
+const TransctionHistory = lazy(() =>
+  import("./views/apps/transctionhistory/TransctionHistory")
+);
 
 // feedback //
 const FeedBackList = lazy(() => import("./views/apps/feedback/FeedBackList"));
@@ -632,6 +635,10 @@ class AppRouter extends React.Component {
             <AppRoute
               path="/app/discount/discountList"
               component={DiscountList}
+            />
+            <AppRoute
+              path="/app/transctionhistory/transctionHistory"
+              component={TransctionHistory}
             />
             {/* Exp date */}
             <AppRoute

@@ -296,13 +296,12 @@ const navigationConfig = [
   },
 
   {
-    id: "nonActivePlanList",
+    id: "transctionHistory",
     title: "Transction History ",
     type: "item",
     icon: <Icon.ArrowRight size={12} />,
     permissions: ["admin", "editor"],
-    // navLink: "/app/package/nonActivePlanList",
-    navLink: "/",
+    navLink: "/app/transctionhistory/transctionHistory",
   },
   {
     id: "feedbackList",

@@ -347,6 +347,7 @@ export class AddEquityCash extends Component {
                     value={this.state.type}
                     onChange={this.changeHandler}
                   >
+                    <option>Select type</option>
                     <option>Cash</option>
                   </Input>
                 </Col>

@@ -317,6 +317,7 @@ export class AddFnoEquity extends Component {
                     value={this.state.type}
                     onChange={this.changeHandler}
                   >
+                    <option>Select type</option>
                     <option>Equity</option>
                   </Input>
                 </Col>

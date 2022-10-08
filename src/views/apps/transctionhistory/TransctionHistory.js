@@ -20,7 +20,7 @@ import { ChevronDown, Trash2, Edit } from "react-feather";
 import "../../../assets/scss/plugins/tables/_agGridStyleOverride.scss";
 // import Breadcrumbs from "../../../components/@vuexy/breadCrumbs/BreadCrumb";
 import { Route } from "react-router-dom";
-class UserNotification extends React.Component {
+class TransctionHistory extends React.Component {
   state = {
     rowData: [],
     paginationPageSize: 20,
@@ -43,68 +43,68 @@ class UserNotification extends React.Component {
         // headerCheckboxSelectionFilteredOnly: true,
         // headerCheckboxSelection: true,
       },
-      {
-        headerName: "Title",
-        field: "title",
-        width: 180,
-        // pinned: window.innerWidth > 992 ? "left" : false,
-        cellRendererFramework: (params) => {
-          return (
-            <div className="d-flex align-items-center cursor-pointer">
-              <span>{params.data.title}</span>
-            </div>
-          );
-        },
-      },
-      {
-        headerName: "Description",
-        field: "desc",
-        width: 180,
-        cellRendererFramework: (params) => {
-          return (
-            <div className="d-flex align-items-center cursor-pointer">
-              <span>{params.data.desc}</span>
-            </div>
-          );
-        },
-      },
-      {
-        headerName: "Image",
-        field: "img",
-        width: 180,
-        cellRendererFramework: (params) => {
-          return (
-            <div className="d-flex align-items-center cursor-pointer">
-              <span>{params.data.img}</span>
-            </div>
-          );
-        },
-      },
       //   {
-      //     headerName: "Email",
-      //     field: "email",
+      //     headerName: "User Name",
+      //     field: "fullname",
       //     width: 180,
+      //     // pinned: window.innerWidth > 992 ? "left" : false,
       //     cellRendererFramework: (params) => {
       //       return (
       //         <div className="d-flex align-items-center cursor-pointer">
-      //           <span>{params.data.email}</span>
+      //           <span>{params.data.userid.fullname}</span>
       //         </div>
       //       );
       //     },
       //   },
+      {
+        headerName: "Mobile",
+        field: "mobile",
+        width: 180,
+        cellRendererFramework: (params) => {
+          return (
+            <div className="d-flex align-items-center cursor-pointer">
+              <span>{params.data.userid?.mobile}</span>
+            </div>
+          );
+        },
+      },
+      {
+        headerName: "Payment Method",
+        field: "razorpay_payment_id",
+        width: 180,
+        cellRendererFramework: (params) => {
+          return (
+            <div className="d-flex align-items-center cursor-pointer">
+              <span>{params.data.razorpay_payment_id}</span>
+            </div>
+          );
+        },
+      },
+      {
+        headerName: "Membership Plan",
+        field: "pack_name",
+        width: 180,
+        cellRendererFramework: (params) => {
+          return (
+            <div className="d-flex align-items-center cursor-pointer">
+              <span>{params.data.planId?.pack_name}</span>
+            </div>
+          );
+        },
+      },
 
-      // {
-      //   headerName: "Image",
-      //   field: "userimg",
-      //   width: 180,
-      //   cellRendererFramework: (params) => {
-      //     return (
-      //       <div className="d-flex align-items-center cursor-pointer">
-      //         <span>{params.data.userid.userimg}</span>
-      //       </div>
-      //     );
+      //   {
+      //     headerName: "Image",
+      //     field: "userimg",
+      //     width: 180,
+      //     cellRendererFramework: (params) => {
+      //       return (
+      //         <div className="d-flex align-items-center cursor-pointer">
+      //           <span>{params.data.userid.userimg}</span>
+      //         </div>
+      //       );
+      //     },
       //   },
-      // },
       //   {
       //     headerName: "City",
       //     field: "district",
@@ -117,30 +117,30 @@ class UserNotification extends React.Component {
       //       );
       //     },
       //   },
-      //   {
-      //     headerName: "Start Date",
-      //     field: "district",
-      //     width: 180,
-      //     cellRendererFramework: (params) => {
-      //       return (
-      //         <div className="d-flex align-items-center cursor-pointer">
-      //           <span>{params.data.district}</span>
-      //         </div>
-      //       );
-      //     },
-      //   },
-      //   {
-      //     headerName: "Expiry Date",
-      //     field: "district",
-      //     width: 180,
-      //     cellRendererFramework: (params) => {
-      //       return (
-      //         <div className="d-flex align-items-center cursor-pointer">
-      //           <span>{params.data.district}</span>
-      //         </div>
-      //       );
-      //     },
-      //   },
+      {
+        headerName: "Start Date",
+        field: "date",
+        width: 180,
+        cellRendererFramework: (params) => {
+          return (
+            <div className="d-flex align-items-center cursor-pointer">
+              <span>{params.data.date}</span>
+            </div>
+          );
+        },
+      },
+      {
+        headerName: "Expiry Date",
+        field: "expdate",
+        width: 180,
+        cellRendererFramework: (params) => {
+          return (
+            <div className="d-flex align-items-center cursor-pointer">
+              <span>{params.data.expdate}</span>
+            </div>
+          );
+        },
+      },
       //   // {
       //   //   headerName: "Status",
       //   //   field: "userverified",
@@ -195,7 +195,7 @@ class UserNotification extends React.Component {
   };
   async componentDidMount() {
     axiosConfig
-      .get(`/get_notification`)
+      .get(`/membershipPayment`)
       .then((response) => {
         let rowData = response.data.data;
         JSON.stringify(rowData);
@@ -205,14 +205,14 @@ class UserNotification extends React.Component {
         console.log(error.response);
       });
   }
-  // async runthisfunction(id) {
-  //   console.log(id);
-  //   await axiosConfig
-  //     .get(`/dealer/deletedealershipform/${id}`)
-  //     .then((response) => {
-  //       console.log(response);
-  //     });
-  // }
+  //   async runthisfunction(id) {
+  //     console.log(id);
+  //     await axiosConfig
+  //       .get(`/dealer/deletedealershipform/${id}`)
+  //       .then((response) => {
+  //         console.log(response);
+  //       });
+  //   }
 
   onGridReady = (params) => {
     this.gridApi = params.api;
@@ -361,4 +361,4 @@ class UserNotification extends React.Component {
     );
   }
 }
-export default UserNotification;
+export default TransctionHistory;

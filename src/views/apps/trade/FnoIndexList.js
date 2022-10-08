@@ -254,18 +254,19 @@ class FnoIndexList extends React.Component {
           );
         },
       },
-      // {
-      //   headerName: "Date ",
-      //   field: "createdAt",
-      //   width: 140,
-      //   cellRendererFramework: (params) => {
-      //     return (
-      //       <div className="d-flex align-items-center cursor-pointer">
-      //         <span>{moment(params.data.createdAt).format("L")}</span>
-      //       </div>
-      //     );
-      //   },
-      // },
+      {
+        headerName: "Date ",
+        field: "date",
+        width: 140,
+        cellRendererFramework: (params) => {
+          return (
+            <div className="d-flex align-items-center cursor-pointer">
+              {/* <span>{moment(params.data.date).format("L")}</span>  */}
+              <span>{params.data.date}</span>
+            </div>
+          );
+        },
+      },
       {
         headerName: "Expiry Date ",
         field: "expDate",

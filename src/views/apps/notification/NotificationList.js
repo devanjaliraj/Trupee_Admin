@@ -115,11 +115,9 @@ class NotificationList extends React.Component {
   }
   async runthisfunction(id) {
     console.log(id);
-    await axiosConfig
-      .get(`/admin/deletenotification/${id}`)
-      .then((response) => {
-        console.log(response);
-      });
+    await axiosConfig.get(`/deletenotification/${id}`).then((response) => {
+      console.log(response);
+    });
   }
 
   onGridReady = (params) => {
