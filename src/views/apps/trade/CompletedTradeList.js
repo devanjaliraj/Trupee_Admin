@@ -20,6 +20,7 @@ import { history } from "../../../history";
 import "../../../assets/scss/plugins/tables/_agGridStyleOverride.scss";
 import "../../../assets/scss/pages/users.scss";
 import { Route } from "react-router-dom";
+import moment from "moment";
 
 class CompletedTradeList extends React.Component {
   state = {
@@ -246,18 +247,18 @@ class CompletedTradeList extends React.Component {
           );
         },
       },
-      // {
-      //   headerName: "Profit/Loss",
-      //   field: "profit_loss_amt",
-      //   width: 140,
-      //   cellRendererFramework: (params) => {
-      //     return (
-      //       <div className="d-flex align-items-center cursor-pointer">
-      //         <span>{params.data.profit_loss_amt}</span>
-      //       </div>
-      //     );
-      //   },
-      // },
+      {
+        headerName: "Date",
+        field: "updatedAt",
+        width: 120,
+        cellRendererFramework: (params) => {
+          return (
+            <div className="d-flex align-items-center cursor-pointer">
+              <span>{moment(params.data.updatedAt).format("ll")} </span>
+            </div>
+          );
+        },
+      },
 
       {
         headerName: "Number Of Lots",

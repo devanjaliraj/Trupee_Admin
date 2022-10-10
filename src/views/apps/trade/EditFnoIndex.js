@@ -344,16 +344,7 @@ class EditFnoIndex extends React.Component {
                     onChange={this.changeHandler}
                   />
                 </Col>
-                {/* <Col lg="6" md="6" className="mb-2">
-                  <Label>Achieved Target+</Label>
-                  <Input
-                    type="number"
-                    placeholder="Enter Target 5"
-                    name="t5"
-                    value={this.state.t5}
-                    onChange={this.changeHandler}
-                  />
-                </Col> */}
+
                 <Col lg="6" md="6" className="mb-2">
                   <Label>Quantity</Label>
                   <Input
@@ -492,7 +483,7 @@ class EditFnoIndex extends React.Component {
                     </span>
                   </div>
                 </Col>
-                <Col lg="3" md="3" sm="3" className="mb-3 mt-1">
+                {/* <Col lg="3" md="3" sm="3" className="mb-3 mt-1">
                   <Label className="mb-1">T4</Label>
                   <div className="form-label-group">
                     <input
@@ -511,7 +502,7 @@ class EditFnoIndex extends React.Component {
                       {this.state.FT4_type}
                     </span>
                   </div>
-                </Col>
+                </Col> */}
                 <Col lg="3" md="3" className="mb-2">
                   <Label>T4</Label>
                   <Input
@@ -522,7 +513,7 @@ class EditFnoIndex extends React.Component {
                     onChange={this.changeHandler}
                   />
                 </Col>
-                <Col lg="3" md="3" sm="3" className="mb-3 mt-1">
+                {/* <Col lg="3" md="3" sm="3" className="mb-3 mt-1">
                   <Label className="mb-1">T5</Label>
                   <div className="form-label-group">
                     <input
@@ -541,7 +532,7 @@ class EditFnoIndex extends React.Component {
                       {this.state.FT5_type}
                     </span>
                   </div>
-                </Col>
+                </Col> */}
                 <Col lg="3" md="3" className="mb-2">
                   <Label>T5</Label>
                   <Input
@@ -552,7 +543,7 @@ class EditFnoIndex extends React.Component {
                     onChange={this.changeHandler}
                   />
                 </Col>
-                <Col lg="3" md="3" sm="3" className="mb-3 mt-1">
+                {/* <Col lg="3" md="3" sm="3" className="mb-3 mt-1">
                   <Label className="mb-1">T6</Label>
                   <div className="form-label-group">
                     <input
@@ -571,7 +562,7 @@ class EditFnoIndex extends React.Component {
                       {this.state.FT6_type}
                     </span>
                   </div>
-                </Col>
+                </Col> */}
                 <Col lg="3" md="3" className="mb-2">
                   <Label>T6</Label>
                   <Input
@@ -582,7 +573,7 @@ class EditFnoIndex extends React.Component {
                     onChange={this.changeHandler}
                   />
                 </Col>
-                <Col lg="3" md="3" sm="3" className="mb-3 mt-1">
+                {/* <Col lg="3" md="3" sm="3" className="mb-3 mt-1">
                   <Label className="mb-1">T7</Label>
                   <div className="form-label-group">
                     <input
@@ -601,7 +592,7 @@ class EditFnoIndex extends React.Component {
                       {this.state.FT7_type}
                     </span>
                   </div>
-                </Col>
+                </Col> */}
                 <Col lg="3" md="3" className="mb-2">
                   <Label>T7</Label>
                   <Input
@@ -633,7 +624,7 @@ class EditFnoIndex extends React.Component {
                       name="status"
                       value="Closed"
                     />
-                    <span style={{ marginRight: "3px" }}>Closed</span>
+                    <span style={{ marginRight: "3px" }}>Completed</span>
                   </div>
                 </Col>
               </Row>

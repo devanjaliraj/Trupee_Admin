@@ -484,7 +484,17 @@ class EditEquityCash extends React.Component {
                     </span>
                   </div>
                 </Col>
-                <Col lg="4" md="4" className="mb-2">
+                <Col lg="3" md="3" className="mb-2">
+                  <Label>T5</Label>
+                  <Input
+                    type="number"
+                    placeholder="Enter Target 5"
+                    name="t6"
+                    value={this.state.t5}
+                    onChange={this.changeHandler}
+                  />
+                </Col>
+                <Col lg="3" md="3" className="mb-2">
                   <Label>T6</Label>
                   <Input
                     type="number"
@@ -494,7 +504,7 @@ class EditEquityCash extends React.Component {
                     onChange={this.changeHandler}
                   />
                 </Col>
-                <Col lg="4" md="4" className="mb-2">
+                <Col lg="3" md="3" className="mb-2">
                   <Label>T7</Label>
                   <Input
                     type="number"
@@ -505,7 +515,7 @@ class EditEquityCash extends React.Component {
                   />
                 </Col>
                 <Col lg="3" md="3" sm="3" className="mb-3 mt-1">
-                  <Label className="mb-1">Status</Label>
+                  <Label className="mb-1">Call Status</Label>
                   <div
                     className="form-label-group"
                     onChange={(e) => this.changeHandler6(e)}
@@ -523,7 +533,7 @@ class EditEquityCash extends React.Component {
                       name="status"
                       value="Deactive"
                     />
-                    <span style={{ marginRight: "3px" }}>NA</span>
+                    <span style={{ marginRight: "3px" }}>Completed</span>
                   </div>
                 </Col>
                 <Col lg="6" md="6" className="mb-2">
@@ -535,9 +545,6 @@ class EditEquityCash extends React.Component {
                     value={this.state.cstmMsg}
                     onChange={this.changeHandler}
                   />
-                  {/* <span>
-                    <b> We will type 210+ Keep booking or trailing stop loss</b>
-                  </span> */}
                 </Col>
               </Row>
 
