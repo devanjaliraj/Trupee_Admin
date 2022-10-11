@@ -36,8 +36,12 @@ class EditEquityCash extends React.Component {
       t3_type: false,
       T4: "",
       t4_type: false,
-      t5: "",
+      T5: "",
+      T6: "",
+      T7: "",
       t5_type: false,
+      t6_type: false,
+      t7_type: false,
       qty: "",
       investment_amt: "",
       no_of_lots: "",
@@ -79,8 +83,12 @@ class EditEquityCash extends React.Component {
           t3_type: response.data.data.t3_type,
           T4: response.data.data.T4,
           t4_type: response.data.data.t4_type,
-          t5: response.data.data.t5,
+          T5: response.data.data.T5,
+          T6: response.data.data.T6,
+          T7: response.data.data.T7,
           t5_type: response.data.data.t5_type,
+          t6_type: response.data.data.t6_type,
+          t7_type: response.data.data.t7_type,
           qty: response.data.data.qty,
           investment_amt: response.data.data.investment_amt,
           no_of_lots: response.data.data.no_of_lots,
@@ -155,6 +163,27 @@ class EditEquityCash extends React.Component {
       this.setState({ t4_type: "true" });
     } else {
       this.setState({ t4_type: "false" });
+    }
+  };
+  changeHandlert5 = (e) => {
+    if (e.target.checked) {
+      this.setState({ t5_type: "true" });
+    } else {
+      this.setState({ t5_type: "false" });
+    }
+  };
+  changeHandlert6 = (e) => {
+    if (e.target.checked) {
+      this.setState({ t6_type: "true" });
+    } else {
+      this.setState({ t6_type: "false" });
+    }
+  };
+  changeHandlert7 = (e) => {
+    if (e.target.checked) {
+      this.setState({ t7_type: "true" });
+    } else {
+      this.setState({ t7_type: "false" });
     }
   };
   changeHandler6 = (e) => {
@@ -489,8 +518,8 @@ class EditEquityCash extends React.Component {
                   <Input
                     type="number"
                     placeholder="Enter Target 5"
-                    name="t6"
-                    value={this.state.t5}
+                    name="T5"
+                    value={this.state.T5}
                     onChange={this.changeHandler}
                   />
                 </Col>
@@ -499,8 +528,8 @@ class EditEquityCash extends React.Component {
                   <Input
                     type="number"
                     placeholder="Enter Target 6"
-                    name="t6"
-                    value={this.state.t6}
+                    name="T6"
+                    value={this.state.T6}
                     onChange={this.changeHandler}
                   />
                 </Col>
@@ -509,8 +538,8 @@ class EditEquityCash extends React.Component {
                   <Input
                     type="number"
                     placeholder="Enter Target 7"
-                    name="t7"
-                    value={this.state.t7}
+                    name="T7"
+                    value={this.state.T7}
                     onChange={this.changeHandler}
                   />
                 </Col>
