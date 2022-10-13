@@ -238,15 +238,14 @@ export default class EditMembership extends Component {
                         value="Active"
                       />
                       <span style={{ marginRight: "20px" }}>Active</span>
-
-                      {/* <input
+                      <input
                         style={{ marginRight: "3px" }}
                         type="radio"
                         name="false"
                         value="Deactive"
-                      /> */}
+                      />
 
-                      {/* <span style={{ marginRight: "3px" }}>Deactive</span> */}
+                      <span style={{ marginRight: "3px" }}>Deactive</span>
                     </div>
                   </Col>
                 </Col>
