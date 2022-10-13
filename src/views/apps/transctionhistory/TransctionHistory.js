@@ -93,30 +93,30 @@ class TransctionHistory extends React.Component {
         },
       },
 
-      //   {
-      //     headerName: "Image",
-      //     field: "userimg",
-      //     width: 180,
-      //     cellRendererFramework: (params) => {
-      //       return (
-      //         <div className="d-flex align-items-center cursor-pointer">
-      //           <span>{params.data.userid.userimg}</span>
-      //         </div>
-      //       );
-      //     },
-      //   },
-      //   {
-      //     headerName: "City",
-      //     field: "district",
-      //     width: 180,
-      //     cellRendererFramework: (params) => {
-      //       return (
-      //         <div className="d-flex align-items-center cursor-pointer">
-      //           <span>{params.data.district}</span>
-      //         </div>
-      //       );
-      //     },
-      //   },
+      {
+        headerName: "MRP Price",
+        field: "mrp_price",
+        width: 180,
+        cellRendererFramework: (params) => {
+          return (
+            <div className="d-flex align-items-center cursor-pointer">
+              <span>{params.data.planId?.mrp_price}</span>
+            </div>
+          );
+        },
+      },
+      {
+        headerName: "Discount Price",
+        field: "des_price",
+        width: 180,
+        cellRendererFramework: (params) => {
+          return (
+            <div className="d-flex align-items-center cursor-pointer">
+              <span>{params.data.planId?.des_price}</span>
+            </div>
+          );
+        },
+      },
       {
         headerName: "Start Date",
         field: "date",
