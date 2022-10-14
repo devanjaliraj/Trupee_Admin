@@ -37,6 +37,9 @@ class AnalyticsDashboard extends React.Component {
       day7planearnig: {},
       basicplanearning: {},
       freeusers: {},
+      total: {},
+      weekly: {},
+      thirtydays: {},
     };
   }
 
@@ -74,6 +77,38 @@ class AnalyticsDashboard extends React.Component {
       .catch((error) => {
         console.log(error);
       });
+    axiosConfig
+      .get("/today_profit_loss")
+      .then((response) => {
+        console.log(response.data);
+        //console.log(response.data.data);
+        this.setState({ total: response.data });
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+
+    axiosConfig
+      .get("/weekely_profit_loss")
+      .then((response) => {
+        console.log(response.data);
+        //console.log(response.data.data);
+        this.setState({ weekly: response.data });
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+    axiosConfig
+      .get("/monthly_profit_loss")
+      .then((response) => {
+        console.log(response.data);
+        //console.log(response.data.data);
+        this.setState({ thirtydays: response.data });
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+
     // axiosConfig
     //   .get("/dealer/total7dayplanearnig")
     //   .then((response) => {
@@ -236,7 +271,7 @@ class AnalyticsDashboard extends React.Component {
               </CardTitle>
 
               <CardText tag="h3" style={{ color: "white" }}>
-                {this.state.basicplanearning.Earning}
+                {this.state.total.total_prft_loss}
               </CardText>
             </Card>
           </Col>
@@ -252,7 +287,7 @@ class AnalyticsDashboard extends React.Component {
               </CardTitle>
 
               <CardText tag="h3" style={{ color: "white" }}>
-                {this.state.basicplanearning.Earning}
+                {this.state.weekly.weekly_profit_loss}
               </CardText>
             </Card>
           </Col>
@@ -268,7 +303,7 @@ class AnalyticsDashboard extends React.Component {
               </CardTitle>
 
               <CardText tag="h3" style={{ color: "white" }}>
-                {this.state.basicplanearning.Earning}
+                {this.state.thirtydays.thirtydays_prft_loss}
               </CardText>
             </Card>
           </Col>

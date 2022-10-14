@@ -85,35 +85,10 @@ class RefferEarn extends React.Component {
           );
         },
       },
-
-      // {
-      //   headerName: "Gender",
-      //   field: "gender",
-      //   width: 120,
-      //   cellRendererFramework: (params) => {
-      //     return (
-      //       <div className="d-flex align-items-center cursor-pointer">
-      //         <span>{params.data.userid?.gender}</span>
-      //       </div>
-      //     );
-      //   },
-      // },
-      // {
-      //   headerName: "Date Of Birth",
-      //   field: "dob",
-      //   width: 120,
-      //   cellRendererFramework: (params) => {
-      //     return (
-      //       <div className="d-flex align-items-center cursor-pointer">
-      //         <span>{params.data.userid?.dob}</span>
-      //       </div>
-      //     );
-      //   },
-      // },
       {
         headerName: "Amount",
         field: "amount",
-        width: 120,
+        width: 110,
         cellRendererFramework: (params) => {
           return (
             <div className="d-flex align-items-center cursor-pointer">
@@ -125,7 +100,7 @@ class RefferEarn extends React.Component {
       {
         headerName: "Membership plan",
         field: "pack_name",
-        width: 120,
+        width: 180,
         cellRendererFramework: (params) => {
           return (
             <div className="d-flex align-items-center cursor-pointer">
@@ -137,7 +112,7 @@ class RefferEarn extends React.Component {
       {
         headerName: "Refferal Code",
         field: "refral_Code",
-        width: 120,
+        width: 150,
         cellRendererFramework: (params) => {
           return (
             <div className="d-flex align-items-center cursor-pointer">
@@ -147,9 +122,9 @@ class RefferEarn extends React.Component {
         },
       },
       {
-        headerName: "Start Date",
+        headerName: "Date",
         field: "createdAt",
-        width: 120,
+        width: 100,
         cellRendererFramework: (params) => {
           return (
             <div className="d-flex align-items-center cursor-pointer">
@@ -161,9 +136,9 @@ class RefferEarn extends React.Component {
       },
 
       {
-        headerName: "Expiry Date",
+        headerName: "Expiry",
         field: "updatedAt",
-        width: 120,
+        width: 105,
         cellRendererFramework: (params) => {
           return (
             <div className="d-flex align-items-center cursor-pointer">
@@ -194,7 +169,7 @@ class RefferEarn extends React.Component {
       {
         headerName: "Actions",
         field: "sortorder",
-        width: 150,
+        width: 110,
         // pinned: window.innerWidth > 992 ? "right" : false,
         cellRendererFramework: (params) => {
           return (
@@ -236,7 +211,7 @@ class RefferEarn extends React.Component {
   }
   async runthisfunction(id) {
     console.log(id);
-    await axiosConfig.get(`//${id}`).then((response) => {
+    await axiosConfig.get(`/dltReferEarn/${id}`).then((response) => {
       console.log(response);
     });
   }

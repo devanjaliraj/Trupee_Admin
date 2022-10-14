@@ -47,7 +47,7 @@ class PerformanceSheet extends React.Component {
         headerName: "Month",
         field: "month",
         // filter: true,
-        width: 250,
+        width: 180,
         // pinned: window.innerWidth > 992 ? "left" : false,
         cellRendererFramework: (params) => {
           return (
@@ -61,7 +61,7 @@ class PerformanceSheet extends React.Component {
         headerName: "Year",
         field: "year",
         // filter: true,
-        width: 250,
+        width: 180,
         // pinned: window.innerWidth > 992 ? "left" : false,
         cellRendererFramework: (params) => {
           return (
@@ -75,8 +75,8 @@ class PerformanceSheet extends React.Component {
         headerName: "Discount Price",
         field: "dst_price",
         // filter: true,
-        width: 250,
-        
+        width: 180,
+
         cellRendererFramework: (params) => {
           return (
             <div className="d-flex align-items-center cursor-pointer">
@@ -89,7 +89,7 @@ class PerformanceSheet extends React.Component {
         headerName: "MRP",
         field: "mrp",
         // filter: true,
-        width: 250,
+        width: 180,
         // pinned: window.innerWidth > 992 ? "left" : false,
         cellRendererFramework: (params) => {
           return (
@@ -99,39 +99,12 @@ class PerformanceSheet extends React.Component {
           );
         },
       },
-      // {
-      //   headerName: "Start Date",
-      //   field: "desc",
-      //   // filter: true,
-      //   width: 250,
-      //   // pinned: window.innerWidth > 992 ? "left" : false,
-      //   cellRendererFramework: (params) => {
-      //     return (
-      //       <div className="d-flex align-items-center cursor-pointer">
-      //         <span>{params.data.desc}</span>
-      //       </div>
-      //     );
-      //   },
-      // },
-      // {
-      //   headerName: "Expiry Date",
-      //   field: "desc",
-      //   // filter: true,
-      //   width: 250,
-      //   // pinned: window.innerWidth > 992 ? "left" : false,
-      //   cellRendererFramework: (params) => {
-      //     return (
-      //       <div className="d-flex align-items-center cursor-pointer">
-      //         <span>{params.data.desc}</span>
-      //       </div>
-      //     );
-      //   },
-      // },
+
       // {
       //   headerName: "Status",
       //   field: "completed",
       //   // filter: completed,
-      //   width: 200,
+      //   width: 180,
       //   cellRendererFramework: (params) => {
       //     return params.value === "Active" ? (
       //       <div className="badge badge-pill badge-success">
@@ -147,7 +120,7 @@ class PerformanceSheet extends React.Component {
       {
         headerName: "Actions",
         field: "sortorder",
-        width: 250,
+        width: 180,
         // pinned: window.innerWidth > 992 ? "right" : false,
         cellRendererFramework: (params) => {
           return (

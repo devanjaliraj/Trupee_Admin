@@ -37,19 +37,16 @@ class FeedBackList extends React.Component {
         headerName: "S.No",
         valueGetter: "node.rowIndex + 1",
         field: "node.rowIndex + 1",
-        width: 80,
+        width: 150,
         filter: true,
         // checkboxSelection: true,
         // headerCheckboxSelectionFilteredOnly: true,
         // headerCheckboxSelection: true,
       },
-
       {
         headerName: "User Name",
         field: "firstname",
-
-        width: 150,
-
+        width: 250,
         cellRendererFramework: (params) => {
           return (
             <div className="d-flex align-items-center cursor-pointer">
@@ -64,9 +61,7 @@ class FeedBackList extends React.Component {
       {
         headerName: "Mobile",
         field: "mobile",
-
-        width: 150,
-
+        width: 200,
         cellRendererFramework: (params) => {
           return (
             <div className="d-flex align-items-center cursor-pointer">
@@ -75,13 +70,10 @@ class FeedBackList extends React.Component {
           );
         },
       },
-
       {
         headerName: "Descripiton",
         field: "desc",
-
-        width: 150,
-        // pinned: window.innerWidth > 992 ? "left" : false,
+        width: 300,
         cellRendererFramework: (params) => {
           return (
             <div className="d-flex align-items-center cursor-pointer">
@@ -93,7 +85,7 @@ class FeedBackList extends React.Component {
       {
         headerName: "Actions",
         field: "sortorder",
-        width: 150,
+        width: 200,
         // pinned: window.innerWidth > 992 ? "right" : false,
         cellRendererFramework: (params) => {
           return (
@@ -113,7 +105,6 @@ class FeedBackList extends React.Component {
                   />
                 )}
               /> */}
-
               <Trash2
                 className="mr-50"
                 size="25px"
@@ -132,17 +123,11 @@ class FeedBackList extends React.Component {
   };
 
   async componentDidMount() {
-    await axiosConfig
-      .get("/getFeedback", {
-        // headers: {
-        //   "auth-adtoken": localStorage.getItem("auth-adtoken"),
-        // },
-      })
-      .then((response) => {
-        const rowData = response.data.data;
-        console.log(rowData);
-        this.setState({ rowData });
-      });
+    await axiosConfig.get("/getFeedback").then((response) => {
+      const rowData = response.data.data;
+      console.log(rowData);
+      this.setState({ rowData });
+    });
   }
   async runthisfunction(id) {
     console.log(id);

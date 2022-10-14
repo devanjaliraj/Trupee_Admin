@@ -59,11 +59,61 @@ class TransctionHistory extends React.Component {
       {
         headerName: "Mobile",
         field: "mobile",
-        width: 180,
+        width: 150,
         cellRendererFramework: (params) => {
           return (
             <div className="d-flex align-items-center cursor-pointer">
               <span>{params.data.userid?.mobile}</span>
+            </div>
+          );
+        },
+      },
+
+      {
+        headerName: "Membership Plan",
+        field: "pack_name",
+        width: 180,
+        cellRendererFramework: (params) => {
+          return (
+            <div className="d-flex align-items-center cursor-pointer">
+              <span>{params.data.planId?.pack_name}</span>
+            </div>
+          );
+        },
+      },
+
+      {
+        headerName: "MRP Price",
+        field: "mrp_price",
+        width: 125,
+        cellRendererFramework: (params) => {
+          return (
+            <div className="d-flex align-items-center cursor-pointer">
+              <span>{params.data.planId?.mrp_price}</span>
+            </div>
+          );
+        },
+      },
+      {
+        headerName: "Discount",
+        field: "desc",
+        width: 120,
+        cellRendererFramework: (params) => {
+          return (
+            <div className="d-flex align-items-center cursor-pointer">
+              <span>{params.data.planId?.desc}</span>
+            </div>
+          );
+        },
+      },
+      {
+        headerName: "Total Price",
+        field: "des_price",
+        width: 130,
+        cellRendererFramework: (params) => {
+          return (
+            <div className="d-flex align-items-center cursor-pointer">
+              <span>{params.data.planId?.des_price}</span>
             </div>
           );
         },
@@ -81,46 +131,9 @@ class TransctionHistory extends React.Component {
         },
       },
       {
-        headerName: "Membership Plan",
-        field: "pack_name",
-        width: 180,
-        cellRendererFramework: (params) => {
-          return (
-            <div className="d-flex align-items-center cursor-pointer">
-              <span>{params.data.planId?.pack_name}</span>
-            </div>
-          );
-        },
-      },
-
-      {
-        headerName: "MRP Price",
-        field: "mrp_price",
-        width: 180,
-        cellRendererFramework: (params) => {
-          return (
-            <div className="d-flex align-items-center cursor-pointer">
-              <span>{params.data.planId?.mrp_price}</span>
-            </div>
-          );
-        },
-      },
-      {
-        headerName: "Discount Price",
-        field: "des_price",
-        width: 180,
-        cellRendererFramework: (params) => {
-          return (
-            <div className="d-flex align-items-center cursor-pointer">
-              <span>{params.data.planId?.des_price}</span>
-            </div>
-          );
-        },
-      },
-      {
-        headerName: "Start Date",
+        headerName: "Date",
         field: "date",
-        width: 180,
+        width: 120,
         cellRendererFramework: (params) => {
           return (
             <div className="d-flex align-items-center cursor-pointer">
@@ -130,9 +143,9 @@ class TransctionHistory extends React.Component {
         },
       },
       {
-        headerName: "Expiry Date",
+        headerName: "Expiry",
         field: "expdate",
-        width: 180,
+        width: 120,
         cellRendererFramework: (params) => {
           return (
             <div className="d-flex align-items-center cursor-pointer">
@@ -158,39 +171,39 @@ class TransctionHistory extends React.Component {
       //   //     ) : null;
       //   //   },
       //   // },
-      {
-        headerName: "Actions",
-        field: "sortorder",
-        width: 180,
-        // pinned: window.innerWidth > 992 ? "right" : false,
-        cellRendererFramework: (params) => {
-          return (
-            <div className="actions cursor-pointer">
-              {/* <Route
-                render={({ history }) => (
-                  <Edit
-                    className="mr-50"
-                    size="25px"
-                    color="blue"
-                    onClick={() => history.push(`/app/users/editUsers`)}
-                  />
-                )}
-              /> */}
+      // {
+      //   headerName: "Actions",
+      //   field: "sortorder",
+      //   width: 100,
+      //   // pinned: window.innerWidth > 992 ? "right" : false,
+      //   cellRendererFramework: (params) => {
+      //     return (
+      //       <div className="actions cursor-pointer">
+      //         {/* <Route
+      //           render={({ history }) => (
+      //             <Edit
+      //               className="mr-50"
+      //               size="25px"
+      //               color="blue"
+      //               onClick={() => history.push(`/app/users/editUsers`)}
+      //             />
+      //           )}
+      //         /> */}
 
-              <Trash2
-                className="mr-50"
-                size="25px"
-                color="red"
-                onClick={() => {
-                  let selectedData = this.gridApi.getSelectedRows();
-                  this.runthisfunction(params.data._id);
-                  this.gridApi.updateRowData({ remove: selectedData });
-                }}
-              />
-            </div>
-          );
-        },
-      },
+      //         {/* <Trash2
+      //           className="mr-50"
+      //           size="25px"
+      //           color="red"
+      //           onClick={() => {
+      //             let selectedData = this.gridApi.getSelectedRows();
+      //             this.runthisfunction(params.data._id);
+      //             this.gridApi.updateRowData({ remove: selectedData });
+      //           }}
+      //         /> */}
+      //       </div>
+      //     );
+      //   },
+      // },
     ],
   };
   async componentDidMount() {
@@ -248,7 +261,7 @@ class TransctionHistory extends React.Component {
             <Row className="m-2">
               <Col>
                 <h1 col-sm-6 className="float-left">
-                  User Notificarion List
+                  Transction History List
                 </h1>
               </Col>
             </Row>

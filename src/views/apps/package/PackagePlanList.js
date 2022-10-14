@@ -59,7 +59,7 @@ class PackagePlanList extends React.Component {
       {
         headerName: "MRP Price",
         field: "mrp_price",
-        width: 120,
+        width: 125,
         cellRendererFramework: (params) => {
           return (
             <div className="d-flex align-items-center cursor-pointer">
@@ -69,9 +69,9 @@ class PackagePlanList extends React.Component {
         },
       },
       {
-        headerName: "Discount Price",
+        headerName: "Total Price",
         field: "des_price",
-        width: 150,
+        width: 160,
         cellRendererFramework: (params) => {
           return (
             <div className="d-flex align-items-center cursor-pointer">
@@ -113,7 +113,7 @@ class PackagePlanList extends React.Component {
       {
         headerName: "Actions",
         field: "sortorder",
-        width: 180,
+        width: 150,
         // pinned: window.innerWidth > 992 ? "right" : false,
         cellRendererFramework: (params) => {
           return (
@@ -158,11 +158,9 @@ class PackagePlanList extends React.Component {
 
   async runthisfunction(id) {
     console.log(id);
-    await axiosConfig
-      .get(`/deleteplan/${id}`)
-      .then((response) => {
-        console.log(response);
-      });
+    await axiosConfig.get(`/deleteplan/${id}`).then((response) => {
+      console.log(response);
+    });
   }
 
   onGridReady = (params) => {
@@ -199,7 +197,7 @@ class PackagePlanList extends React.Component {
             <Row className="m-2">
               <Col>
                 <h1 col-sm-6 className="float-left">
-                  Membership Plan List
+                  Package Plan List
                 </h1>
               </Col>
             </Row>

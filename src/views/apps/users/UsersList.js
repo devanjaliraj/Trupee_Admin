@@ -136,19 +136,6 @@ class UsersList extends React.Component {
       // },
 
       // {
-      //   headerName: "Expiry Date",
-      //   field: "expdate",
-      //   width: 120,
-      //   cellRendererFramework: (params) => {
-      //     return (
-      //       <div className="d-flex align-items-center cursor-pointer">
-      //         <span>{params.data.expdate}</span>
-      //         {/* <span>{moment(params.data.updatedAt).format("ll")} </span> */}
-      //       </div>
-      //     );
-      //   },
-      // },
-      // {
       //   headerName: "Status",
       //   field: "status",
       //   filter: true,
@@ -363,4 +350,3 @@ class UsersList extends React.Component {
   }
 }
 export default UsersList;
-

@@ -26,7 +26,6 @@ export default class AddStartUp extends Component {
       title: "",
       desc: "",
       img: "",
-
       selectedName: "",
       selectedFile: null,
     };
@@ -46,12 +45,10 @@ export default class AddStartUp extends Component {
   submitHandler = (e) => {
     e.preventDefault();
     console.log(this.state);
-
     const data = new FormData();
     data.append("title", this.state.title);
     data.append("desc", this.state.desc);
     data.append("img", this.state.selectedFile, this.state.selectedName);
-
     for (var value of data.values()) {
       console.log(value);
     }
@@ -125,21 +122,10 @@ export default class AddStartUp extends Component {
                     onChange={this.changeHandler}
                   ></Input>
                 </Col>
-                {/* <Col lg="6" md="6" sm="6" className="mb-2">
-                  <Label>Image</Label>
-                  <Input
-                    // required
-                    type="text"
-                    name="image"
-                    placeholder=""
-                    value={this.state.image}
-                    onChange={this.changeHandler}
-                  ></Input>
-                </Col> */}
                 <Col lg="6" md="6" sm="6" className="mb-2">
                   <Label>Image</Label>
-                  <Input
-                    required
+                  <CustomInput
+                    // required
                     type="file"
                     name="img"
                     onChange={this.onChangeHandler}
@@ -157,7 +143,6 @@ export default class AddStartUp extends Component {
                     onChange={this.changeHandler}
                   ></Input>
                 </Col>
-
                 {/* <Col lg="6" md="6" sm="6" className="mb-2">
                   <Label className="mb-1">Status</Label>
                   <div

@@ -95,9 +95,17 @@ const navigationConfig = [
     permissions: ["admin", "editor"],
     navLink: "/app/membership/membershipList",
   },
+  // {
+  //   id: "membershipLists",
+  //   title: "Membership List",
+  //   type: "item",
+  //   icon: <Icon.ArrowRight size={12} />,
+  //   permissions: ["admin", "editor"],
+  //   navLink: "/app/membership/membershipList",
+  // },
   {
     id: "packagePlanList",
-    title: "Active Members ",
+    title: "Package Plan ",
     type: "item",
     icon: <Icon.ArrowRight size={12} />,
     permissions: ["admin", "editor"],
