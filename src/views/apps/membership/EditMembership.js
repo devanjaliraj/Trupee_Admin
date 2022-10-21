@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { Component } from 'react'
 import {
   Card,
   CardBody,
@@ -10,40 +10,41 @@ import {
   Input,
   CustomInput,
   Button,
-} from "reactstrap";
-import swal from "sweetalert";
-import axiosConfig from "../../../axiosConfig";
+} from 'reactstrap'
+import swal from 'sweetalert'
+import axiosConfig from '../../../axiosConfig'
 
-import { Route } from "react-router-dom";
-import Breadcrumbs from "../../../components/@vuexy/breadCrumbs/BreadCrumb";
+import { Route } from 'react-router-dom'
+import Breadcrumbs from '../../../components/@vuexy/breadCrumbs/BreadCrumb'
 // import moment from "moment";
 
 export default class EditMembership extends Component {
   constructor(props) {
-    super(props);
+    super(props)
     this.state = {
-      firstname: "",
-      lastname: "",
-      mobile: "",
-      email: "",
-      gender: "",
-      dob: "",
-      pack_name: "",
-      date: "",
-      expdate: "",
-      status: "",
-      // firstnameU: [],
-      // mobileU: [],
-      // emailU: [],
-      // lastnameU: [],
-      // dobU: [],
-      // genderU: [],
+      userid: '',
+      firstname: '',
+      lastname: '',
+      mobile: '',
+      email: '',
+      gender: '',
+      dob: '',
+      pack_name: '',
+      date: '',
+      expdate: '',
+      status: '',
+      firstnameU: [],
+      mobileU: [],
+      emailU: [],
+      lastnameU: [],
+      dobU: [],
+      genderU: [],
       pack_nameM: [],
-    };
+    }
   }
 
   componentDidMount() {
-    let { id } = this.props.match.params;
+    let { id } = this.props.match.params
 
     axiosConfig
       .get(`/viewonemembership/${id}`, {
@@ -52,44 +53,61 @@ export default class EditMembership extends Component {
         // },
       })
       .then((response) => {
-        console.log(response);
+        console.log('@@@@@@@@@@@@@@@', response.data.getdetail)
         this.setState({
-          firstname: response.data.data.firstname,
-          mobile: response.data.data.mobile,
-          email: response.data.data.email,
-          gender: response.data.data.gender,
-          dob: response.data.data.dob,
-          lastname: response.data.data.lastname,
-          status: response.data.data.status,
-        });
+          userid: response.data.getdetail.userid,
+          mobile: response.data.getdetail.mobile,
+          email: response.data.getdetail.email,
+          gender: response.data.getdetail.gender,
+          dob: response.data.getdetail.dob,
+          lastname: response.data.getdetail.lastname,
+          status: response.getdetail.status,
+        })
       })
       .catch((error) => {
-        console.log(error);
-      });
+        console.log(error)
+      })
     //plan//
     axiosConfig
-      .get("/plan_list")
+      .get('/plan_list')
       .then((response) => {
-        console.log(response);
+        console.log(response)
         this.setState({
           pack_nameM: response.data.data,
-        });
+        })
       })
       .catch((error) => {
-        console.log(error);
-      });
+        console.log(error)
+      })
+    axiosConfig
+      .get('/getuser')
+      .then((response) => {
+        console.log(response)
+        this.setState({
+          // pack_nameM: response.data.data,
+          firstnameU: response.data.data,
+          mobileU: response.data.data,
+          emailU: response.data.data,
+          lastnameU: response.data.data,
+          dobU: response.data.data,
+          genderU: response.data.data,
+        })
+      })
+      .catch((error) => {
+        console.log(error)
+      })
   }
 
   changeHandler1 = (e) => {
-    this.setState({ status: e.target.value });
-  };
+    this.setState({ status: e.target.value })
+  }
 
   changeHandler = (e) => {
-    this.setState({ [e.target.name]: e.target.value });
-  };
+    this.setState({ [e.target.name]: e.target.value })
+  }
   submitHandler = (e) => {
-    e.preventDefault();
-    let { id } = this.props.match.params;
+    e.preventDefault()
+    let { id } = this.props.match.params
     axiosConfig
       .post(`/updatemembership/${id}`, this.state, {
         // headers: {
@@ -97,15 +115,15 @@ export default class EditMembership extends Component {
         // },
       })
       .then((response) => {
-        console.log(response);
-        swal("Success!", "Submitted SuccessFull!", "success");
-        this.props.history.push(`/app/membership/MembershipList`);
+        console.log(response)
+        swal('Success!', 'Submitted SuccessFull!', 'success')
+        this.props.history.push(`/app/membership/MembershipList`)
       })
 
       .catch((error) => {
-        console.log(error);
-      });
-  };
+        console.log(error)
+      })
+  }
 
   render() {
     return (
@@ -128,7 +146,7 @@ export default class EditMembership extends Component {
                   <Button
                     className=" btn btn-danger float-right"
                     onClick={() =>
-                      history.push("/app/membership/MembershipList")
+                      history.push('/app/membership/MembershipList')
                     }
                   >
                     Back
@@ -149,6 +167,23 @@ export default class EditMembership extends Component {
                     onChange={this.changeHandler}
                   ></Input>
                 </Col>
+                {/* <Col lg="6" md="6" sm="6" className="mb-2">
+                  <Label>User Name</Label>
+                  <CustomInput
+                    type="text"
+                    name="firstname"
+                    value={this.state.userid?.firstname}
+                    onChange={this.changeHandler}
+                  >
+                    <option>Select user</option>
+                    {this.state.firstnameU?.map((userN) => (
+                      <option value={userN?._id} key={userN?._id}>
+                        {userN?.firstname}
+                      </option>
+                    ))}
+                  </CustomInput>
+                </Col> */}
+
                 <Col lg="6" md="6" sm="6" className="mb-2">
                   <Label>Mobile</Label>
                   <Input
@@ -232,20 +267,20 @@ export default class EditMembership extends Component {
                       onChange={this.changeHandler1}
                     >
                       <input
-                        style={{ marginRight: "3px" }}
+                        style={{ marginRight: '3px' }}
                         type="radio"
                         name="status"
                         value="Active"
                       />
-                      <span style={{ marginRight: "20px" }}>Active</span>
+                      <span style={{ marginRight: '20px' }}>Active</span>
                       <input
-                        style={{ marginRight: "3px" }}
+                        style={{ marginRight: '3px' }}
                         type="radio"
                         name="false"
                         value="Deactive"
                       />
 
-                      <span style={{ marginRight: "3px" }}>Deactive</span>
+                      <span style={{ marginRight: '3px' }}>Deactive</span>
                     </div>
                   </Col>
                 </Col>
@@ -266,6 +301,6 @@ export default class EditMembership extends Component {
           </CardBody>
         </Card>
       </div>
-    );
+    )
   }
 }
